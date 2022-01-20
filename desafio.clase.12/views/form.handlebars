@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Formulario para ingresar un nuevo producto</h2>
+    <button class="btn btn-dark"><a href="/api/productos" style="text-decoration: none; color: white">Ir a catalogo de
+            productos</a></button>
+    <form action="/api/productos" method="POST" class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input id="name" type="text" name="name" class="form-control">
+        <label for="autor" class="form-label">Autor</label>
+        <input id="autor" type="text" name="autor" class="form-control">
+        <label for="categoria" class="form-label">Categoria</label>
+        <input id="categoria" type="text" name="categoria" class="form-control">
+        <label for="precio" class="form-label">Precio</label>
+        <input id="precio" type="text" name="precio" class="form-control">
+        <label for="href" class="form-label">Link de imagen del libro</label>
+        <input id="href" type="text" name="href" class="form-control">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>

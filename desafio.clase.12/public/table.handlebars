@@ -1,0 +1,56 @@
+<div id="destino">
+    <div class="container">
+        <h2>Formulario para ingresar un nuevo producto</h2>
+        <button class="btn btn-dark"><a href="/api/productos" style="text-decoration: none; color: white">Ir a catalogo
+                de
+                productos</a></button>
+        <form action="/api/productos" method="POST" class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input id="name" type="text" name="name" class="form-control">
+            <label for="autor" class="form-label">Autor</label>
+            <input id="autor" type="text" name="autor" class="form-control">
+            <label for="categoria" class="form-label">Categoria</label>
+            <input id="categoria" type="text" name="categoria" class="form-control">
+            <label for="precio" class="form-label">Precio</label>
+            <input id="precio" type="text" name="precio" class="form-control">
+            <label for="href" class="form-label">Link de imagen del libro</label>
+            <input id="href" type="text" name="href" class="form-control">
+            <button type="submit" class="btn btn-primary" onclick=cargaDato()>Enviar</button>
+
+        </form>
+
+    </div>
+    <br>
+    <div class="container" style="text-align: center;">
+        <h1>Catalogo de libros</h1>
+        <button class="btn btn-dark"><a href="/" style="text-decoration: none; color: white">Ir a formulario de
+                carga</a></button>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center">
+            <table class="table">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Precio</th>
+                </tr>
+                {{#each listaDeProductos}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.autor}}</td>
+                    <td>{{this.categoria}}</td>
+                    <td>{{this.precio}}</td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Centro de mensajes</h1>
+        <label for="email">Ingrese su email</label>
+        <input id="email" type="email">
+        <div id="chat"></div>
+        <label for="mensaje">Ingrese su mensaje</label>
+        <input id="mensaje" type="text">
+        <button type="button" class="btn btn-dark" onclick=enviarMensaje()>Enviar</button>
+    </div>
+</div>
