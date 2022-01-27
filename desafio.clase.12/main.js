@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 8080;
 const bodyParser = require('body-parser');
 const rutas = require('./router/router.main');
 const { engine } = require('express-handlebars');
+const fs = require('fs');
 let chat = [];
 
 // conexión server y error
@@ -44,8 +45,10 @@ io.on('connection', (socket) => {
         cargarProductos();
     })
     socket.on('nuevoMensaje', (dato) => {
+        chat = JSON.parse(fs.readFileSync('./assets/mensajes.txt', 'utf-8'));
         const mensajeFormateado = `<strong style="color: blue">${dato.email}</strong><span style="color: brown">[${dato.tiempo}]</span> ==><em style="color: green">${dato.msg}</em> <br>`;
         chat.push(mensajeFormateado);
+        fs.writeFileSync('./assets/mensajes.txt', JSON.stringify(chat), 'utf-8');
         cargarMensajes();
     })
 })
