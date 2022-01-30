@@ -11,6 +11,7 @@ const rutas = require('./router/router.main');
 const { engine } = require('express-handlebars');
 const fs = require('fs');
 let chat = [];
+const listadoCorto = [];
 
 // conexión server y error
 httpServer.listen(PORT, (req, res) => {
@@ -27,47 +28,45 @@ app.use('/', express.static('public'));
 // motor de plantillas
 app.engine('handlebars', engine());
 app.set('views', './views');
-app.set('view engine', 'handlebars')
+app.set('view engine', 'handlebars');
 
 // rutas y acciones (router )
 
-app.use('/api/productos', rutas);
+//app.use('/api/productos', rutas);
 app.get('/', (req, res) => {
-    res.render('./table', { listaDeProductos: productos });
+    res.render('../public/table',);
 })
 
 // io.socket
 io.on('connection', (socket) => {
     console.log('Usuario conectado');
+    chat = JSON.parse(fs.readFileSync('./assets/mensajes.txt', 'utf-8'));
     cargarProductos(); //envia productos cuando alguien se conecta
-    setTimeout(() => cargarMensajes(), 500);
-    socket.on('productoNuevo', () => {
-        cargarProductos();
-    })
+    cargarMensajes(); //envia mensajes cuando alguien se conecta
+
+    // el cliente envia un nuevo producto al servidor
+    socket.on('productoNuevo', (nuevoProducto) => cargarProductos(nuevoProducto))
+
+    // el cliente envia un nuevo mensaje al servidor
     socket.on('nuevoMensaje', (dato) => {
-        chat = JSON.parse(fs.readFileSync('./assets/mensajes.txt', 'utf-8'));
-        const mensajeFormateado = `<strong style="color: blue">${dato.email}</strong><span style="color: brown">[${dato.tiempo}]</span> ==><em style="color: green">${dato.msg}</em> <br>`;
-        chat.push(mensajeFormateado);
+        chat.push(dato);
         fs.writeFileSync('./assets/mensajes.txt', JSON.stringify(chat), 'utf-8');
         cargarMensajes();
     })
 })
 
-function cargarProductos() {
-    //sin el setTimeout no actualiza automaticamente (supongo que hay algo que debería ser diferente)
-    setTimeout(() => {
-        // esta parte del for fue a los fines de mostrar un listado de prod mas corto
-        // y poder verificar con mas facilidad si se actualizaba automaticamente.
-        // Si se quiere ver toda la lista (50 prod), editar listadoCorto por productos 
-        // y comentar el array y el for
-        const listadoCorto = [];
-        for (i=productos.length-5; i<productos.length; i++) {
+// funcion para cada producto nuevo que se recibe
+function cargarProductos(nuevoProducto) {
+    if (nuevoProducto != undefined) listadoCorto.push(nuevoProducto)
+    if (listadoCorto == "") {
+        for (i = productos.length - 5; i < productos.length; i++) {
             listadoCorto.push(productos[i])
         }
-        io.sockets.emit('productosActualizado', listadoCorto)
-    }, 500)
+    }
+    io.sockets.emit('productosActualizado', listadoCorto)
 }
 
-function cargarMensajes () {
-        io.sockets.emit('mensajeParaCliente', chat)
+//funcion para mostrar mensajes
+function cargarMensajes() {
+    io.sockets.emit('mensajeParaCliente', chat)
 }
