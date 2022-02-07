@@ -1,0 +1,17 @@
+<table id="destino" class="table">
+    <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Precio</th>
+    </tr>
+    <div></div>
+    {{#each listaDeProductos}}
+    <tr>
+        <td>{{this.nombre}}</td>
+        <td>{{this.descripcion}}</td>
+        <td>{{this.stock}}</td>
+        <td>{{this.precio}}</td>
+    </tr>
+    {{/each}}
+</table>
