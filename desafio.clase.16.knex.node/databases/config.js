@@ -1,4 +1,4 @@
-const options = {
+const optionsSql = {
     client: 'mysql',
     connection: {
         host: '127.0.0.1',
@@ -9,4 +9,11 @@ const options = {
     }
 }
 
-module.exports = options;
+const optionsSqlite = {
+    client: 'sqlite3', // or 'better-sqlite3'
+    connection: {
+      filename: "./mydb.sqlite"
+    }
+  };
+
+module.exports = {optionsSql, optionsSqlite};

@@ -17,9 +17,9 @@
 
     <div class="container">
         <h2>Formulario para ingresar un nuevo producto sabado</h2>
-        <button class="btn btn-dark"><a foto="/api/productos" style="text-decoration: none; color: white">Ir a catalogo
+        {{!-- <button class="btn btn-dark"><a foto="/api/productos" style="text-decoration: none; color: white">Ir a catalogo
                 de
-                productos</a></button>
+                productos</a></button> --}}
         <formclass="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
             <input id="nombre" type="text" name="nombre" class="form-control">
@@ -31,7 +31,7 @@
             <input id="stock" type="number" name="stock" class="form-control">
             <label for="foto" class="form-label">Link de imagen del libro</label>
             <input id="foto" type="text" name="foto" class="form-control">
-            <button type="submit" class="btn btn-primary" onclick=cargaDato()>Enviar</button>
+            <button type="submit" class="btn btn-dark" onclick=cargaDato()>Enviar</button>
 
             </form>
 
@@ -39,8 +39,8 @@
     <br>
     <div class="container" style="text-align: center;">
         <h1>Catalogo de libros</h1>
-        <button class="btn btn-dark"><a foto="/" style="text-decoration: none; color: white">Ir a formulario de
-                carga</a></button>
+        {{!-- <button class="btn btn-dark"><a foto="/" style="text-decoration: none; color: white">Ir a formulario de
+                carga</a></button> --}}
         <div style="display: flex; flex-wrap: wrap; justify-content: center">
             {{{body}}}
         </div>

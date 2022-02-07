@@ -1,25 +1,23 @@
+// server, websocket y handlebar
 const express = require('express');
 const { Server: HttpServer } = require('http');
 const { Server: IOServer } = require('socket.io');
 const app = express();
 const httpServer = new HttpServer(app);
 const io = new IOServer(httpServer);
-const productos = require('./assets/productos.js');
 const PORT = process.env.PORT || 8080;
-const bodyParser = require('body-parser');
-const rutas = require('./router/router.main');
 const { engine } = require('express-handlebars');
-const fs = require('fs');
-let chat = [];
-const listadoCorto = [];
 
-// Funcionamiento de knex.js
+// otras importaciones
+const bodyParser = require('body-parser');
+
+// knex.js y clases
 const knex = require('knex');
 const Contenedor = require('./controller/crudDB');
-const ContenedorProd = require('./controller/crudDBprod');
-const options = require('./databases/config')
-const knexDB = new Contenedor(options, 'websocketchat', knex);
-const knexDBprod = new ContenedorProd(options, 'websocketproductos', knex)
+const {optionsSql, optionsSqlite} = require('./databases/config')
+const knexDBmsg = new Contenedor(optionsSql, 'websocketchat', knex);
+const knexDBprod = new Contenedor(optionsSql, 'websocketproductos', knex)
+const verifyTable = require('./persistencia/verifyTable')
 
 // conexión server y error
 httpServer.listen(PORT, (req, res) => {
@@ -38,37 +36,27 @@ app.engine('handlebars', engine());
 app.set('views', './views');
 app.set('view engine', 'handlebars');
 
-// rutas y acciones (router )
-
-//app.use('/api/productos', rutas);
+// ruta, SACARLO A ROUTER AL FINAL, DESPUES DE TENER SOLO UN CRUD
 app.get('/', async (req, res) => {
     const datos = await knexDBprod.readTable();
     res.render('../public/table', {listaDeProductos: datos});
 })
 
-// io.socket
+// funcionamiento io.socket
 io.on('connection', async (socket) => {
     console.log('Usuario conectado');
-    await knexDB.verifyTable()
-    chat = await knexDB.readTable();
-    
-    // chat = JSON.parse(fs.readFileSync('./assets/mensajes.txt', 'utf-8'));
-    //cargarProductos(); //envia productos cuando alguien se conecta
-    cargarMensajes(); //envia mensajes cuando alguien se conecta
-
+    await verifyTable('websocketproductos', 'websocketchat');
+    const chat = await knexDBmsg.readTable();
+    cargarMensajes(chat);
 
     // el cliente envia un nuevo producto al servidor
     socket.on('productoNuevo', (nuevoProducto) => cargarProductos(nuevoProducto))
 
     // el cliente envia un nuevo mensaje al servidor
     socket.on('nuevoMensaje', async (dato) => {
-        chat.push(dato);
-        
-
-        await knexDB.writeTable(dato);
-
-        // fs.writeFileSync('./assets/mensajes.txt', JSON.stringify(chat), 'utf-8');
-        cargarMensajes();
+        await knexDBmsg.writeTable(dato);
+        const chat = await knexDBmsg.readTable();
+        cargarMensajes(chat);
     })
 })
 
@@ -77,16 +65,11 @@ async function cargarProductos(nuevoProducto) {
     if (nuevoProducto != undefined) {
         await knexDBprod.writeTable(nuevoProducto);
     }
-    /* if (listadoCorto == "") {
-        for (i = productos.length - 5; i < productos.length; i++) {
-            listadoCorto.push(productos[i])
-        }
-    } */
     const nuevoListado = await knexDBprod.readTable();
     io.sockets.emit('productosActualizado', nuevoListado)
 }
 
 //funcion para mostrar mensajes
-function cargarMensajes() {
-    io.sockets.emit('mensajeParaCliente', chat)
+function cargarMensajes(chatCompleto) {
+    io.sockets.emit('mensajeParaCliente', chatCompleto)
 }

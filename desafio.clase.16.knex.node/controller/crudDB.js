@@ -5,10 +5,15 @@ class Contenedor {
         this.options = options;
         this.nameTable = nameTable
         this.knex = knex(options);
+        if (nameTable === "websocketchat") {
+            this.columns = ['user', 'timestamp', 'message'];
+        } else {
+            this.columns = ['codigo', 'nombre', 'descripcion', 'precio', 'foto', 'stock', 'timestamp'];
+        }
     }
 
     async readTable() {
-        const datos = await this.knex.from(this.nameTable).select('user', 'timestamp', 'message')
+        const datos = await this.knex.from(this.nameTable).select(this.columns)
         return datos;
     }
 
