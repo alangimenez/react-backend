@@ -21,7 +21,7 @@ class Contenedor {
             const info = JSON.parse(await fs.promises.readFile(`${this.name}.txt`, `utf-8`));
             const filtro = (dato) => +dato.id === number;
             const resultado = info.findIndex(filtro);
-            if (resultado < 0) return console.log(`La pelicula ${number} no existe`);
+            if (resultado < 0) return console.log(null);
             console.log(info[resultado]);
         }
         catch (e) {
@@ -42,7 +42,7 @@ class Contenedor {
                 id: idNuevo,
             })
             await fs.promises.writeFile(`${this.name}.txt`, JSON.stringify(info))
-            console.log(info);
+            console.log(`La nueva pelicula tiene el id ${idNuevo}`);
         }
         catch (e) {
             console.log(e.message);
@@ -74,13 +74,13 @@ class Contenedor {
     }
 }
 
-const prueba = new Contenedor("nada");
+const prueba = new Contenedor("productos");
 async function ejecutarPruebas() {
     // await prueba.getAll();
-    // await prueba.getById(3);
-    await prueba.save("batman", 1500, "enlaces de la foto");
+    // await prueba.getById(5);
+    // await prueba.save("batman", 1500, "enlaces de la foto");
     // await prueba.deleteAll();
-    // await prueba.deleteById(2);
+    // await prueba.deleteById(1);
 }
 
 ejecutarPruebas();
