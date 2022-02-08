@@ -1,48 +1,86 @@
 const fs = require('fs');
-
-let name, objeto, objetoParseado;
+const fsPromises = require('fs').promises;
 
 class Contenedor {
     constructor(nombreDeArchivo) {
-        name = nombreDeArchivo;
-        objeto = fs.readFileSync(`${nombreDeArchivo}.txt`, `utf-8`);
-        objetoParseado = JSON.parse(objeto);
+        this.name = nombreDeArchivo;
     }
 
-    getAll() {
-        console.log(objetoParseado);
-    }
-
-    getById(number) {
-        if (number >= objetoParseado.length) {
-            return console.log("El objeto pedido no existe")
+    async getAll() {
+        try {
+            const datos = JSON.parse(await fs.promises.readFile(`${this.name}.txt`, `utf-8`));
+            console.log(datos);
         }
-        console.log(objetoParseado[number]);
+        catch (e) {
+            console.log(e.message);
+        }
     }
 
-    save(title, price) {
-        objetoParseado.push({
-            title: title,
-            price: price,
-            id: objetoParseado.length,
-        })
-        fs.writeFileSync(`${name}.txt`, JSON.stringify(objetoParseado, null, 1))
-        console.log(objetoParseado)
+    async getById(number) {
+        try {
+            const info = JSON.parse(await fs.promises.readFile(`${this.name}.txt`, `utf-8`));
+            const filtro = (dato) => +dato.id === number;
+            const resultado = info.findIndex(filtro);
+            if (resultado < 0) return console.log(`La pelicula ${number} no existe`);
+            console.log(info[resultado]);
+        }
+        catch (e) {
+            console.log(e.message);
+        }
     }
 
-    deleteAll() {
-        fs.writeFileSync(`${name}.txt`, "")
+    async save(title, price, thumbnail) {
+        try {
+            let idNuevo;
+            let info = await fs.promises.readFile(`${this.name}.txt`, `utf-8`);
+            info === "" ? info = [] : info = JSON.parse(info); // por si el txt esta completamente vacio
+            info.length === 0 ? idNuevo = 1 : idNuevo = info[info.length - 1].id + 1
+            info.push({
+                title: title,
+                price: price,
+                thumbnail: thumbnail,
+                id: idNuevo,
+            })
+            await fs.promises.writeFile(`${this.name}.txt`, JSON.stringify(info))
+            console.log(info);
+        }
+        catch (e) {
+            console.log(e.message);
+        }
     }
 
-    deleteById (number) {
-        objetoParseado.splice(number, 1);
-        fs.writeFileSync(`${name}.txt`, JSON.stringify(objetoParseado, null, 1))
+    async deleteAll() {
+        try {
+            await fs.promises.writeFile(`${this.name}.txt`, "[]")
+        }
+        catch (e) {
+            console.log(e.message);
+        }
+    }
+
+    async deleteById(number) {
+        try {
+            const info = JSON.parse(await fs.promises.readFile(`${this.name}.txt`, `utf-8`));
+            const filtro = (dato) => +dato.id === number;
+            const resultado = info.findIndex(filtro);
+            if (resultado < 0) return console.log(`La pelicula ${number} no existe`);
+            info.splice(resultado, 1);
+            await fs.promises.writeFile(`${this.name}.txt`, JSON.stringify(info))
+            console.log(`El objeto ${number} fue eliminado con éxito`);    
+        }
+        catch (e) {
+            console.log(e.message);
+        }
     }
 }
 
-const prueba = new Contenedor("objeto");
-console.log(prueba.getAll());
-console.log(prueba.getById(2));
-console.log(prueba.save("suits", 350));
-prueba.deleteAll();
-prueba.deleteById(0);
+const prueba = new Contenedor("nada");
+async function ejecutarPruebas() {
+    // await prueba.getAll();
+    // await prueba.getById(3);
+    await prueba.save("batman", 1500, "enlaces de la foto");
+    // await prueba.deleteAll();
+    // await prueba.deleteById(2);
+}
+
+ejecutarPruebas();
