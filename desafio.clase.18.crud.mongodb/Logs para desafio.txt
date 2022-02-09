@@ -1,0 +1,977 @@
+Microsoft Windows [Versión 10.0.19042.1466]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\Alan>mongosh
+Current Mongosh Log ID: 62042ff1ad51e440c99a59d0
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.1.9
+Using MongoDB:          5.0.6
+Using Mongosh:          1.1.9
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting:
+   2022-02-09T17:53:45.796-03:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2022-02-09T17:53:45.796-03:00: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+------
+
+test> show dbs
+admin         41 kB
+basededatos  156 kB
+config       111 kB
+local        160 kB
+test> use ecommerce
+switched to db ecommerce
+ecommerce> db.productos.insertMany([{
+...         id: 1,
+...         timestamp: 1001,
+...         nombre: 'libro A',
+...         descripcion: 'descripcion A',
+...         codigo: 'codigo A',
+...         foto: 'foto A',
+...         precio: 120,
+...         stock: 120
+...     },
+...     {
+.....         id: 2,
+.....         timestamp: 1002,
+.....         nombre: 'libro B',
+.....         descripcion: 'descripcion B',
+.....         codigo: 'codigo B',
+.....         foto: 'foto B',
+.....         precio: 580,
+.....         stock: 580
+.....     },
+...     {
+.....         id: 3,
+.....         timestamp: 103,
+.....         nombre: 'libro C',
+.....         descripcion: 'descripcion C',
+.....         codigo: 'codigo C',
+.....         foto: 'foto C',
+.....         precio: 900,
+.....         stock: 900
+.....     },
+...     {
+.....         id: 4,
+.....         timestamp: 1004,
+.....         nombre: 'libro D',
+.....         descripcion: 'descripcion D',
+.....         codigo: 'codigo D',
+.....         foto: 'foto D',
+.....         precio: 1280,
+.....         stock: 1280
+.....     },
+...     {
+.....         id: 5,
+.....         timestamp: 1005,
+.....         nombre: 'libro E',
+.....         descripcion: 'descripcion E',
+.....         codigo: 'codigo E',
+.....         foto: 'foto E',
+.....         precio: 1700,
+.....         stock: 1700
+.....     },
+...     {
+.....         id: 6,
+.....         timestamp: 1006,
+.....         nombre: 'libro F',
+.....         descripcion: 'descripcion F',
+.....         codigo: 'codigo F',
+.....         foto: 'foto F',
+.....         precio: 2300,
+.....         stock: 2300
+.....     },
+...     {
+.....         id: 7,
+.....         timestamp: 1007,
+.....         nombre: 'libro G',
+.....         descripcion: 'descripcion G',
+.....         codigo: 'codigo G',
+.....         foto: 'foto G',
+.....         precio: 2860,
+.....         stock: 2860
+.....     },
+...     {
+.....         id: 8,
+.....         timestamp: 1008,
+.....         nombre: 'libro H',
+.....         descripcion: 'descripcion H',
+.....         codigo: 'codigo H',
+.....         foto: 'foto H',
+.....         precio: 3350,
+.....         stock: 3350
+.....     },
+...     {
+.....         id: 9,
+.....         timestamp: 1009,
+.....         nombre: 'libro I',
+.....         descripcion: 'descripcion I',
+.....         codigo: 'codigo I',
+.....         foto: 'foto I',
+.....         precio: 4320,
+.....         stock: 4320
+.....     },
+...     {
+.....         id: 10,
+.....         timestamp: 1010,
+.....         nombre: 'libro J',
+.....         descripcion: 'descripcion J',
+.....         codigo: 'codigo J',
+.....         foto: 'foto J',
+.....         precio: 4990,
+.....         stock: 4990
+ecommerce> db.productos.find()
+[
+  {cknowledged: true,
+    _id: ObjectId("620430367cdaddda4eae2981"),
+    id: 1,bjectId("620430367cdaddda4eae2981"),
+    timestamp: 1001,20430367cdaddda4eae2982"),
+    nombre: 'libro A',430367cdaddda4eae2983"),
+    descripcion: 'descripcion A',da4eae2984"),
+    codigo: 'codigo A',30367cdaddda4eae2985"),
+    foto: 'foto A',620430367cdaddda4eae2986"),
+    precio: 120,d("620430367cdaddda4eae2987"),
+    stock: 120tId("620430367cdaddda4eae2988"),
+  },'8': ObjectId("620430367cdaddda4eae2989"),
+  { '9': ObjectId("620430367cdaddda4eae298a")
+    _id: ObjectId("620430367cdaddda4eae2982"),
+    id: 2,
+    timestamp: 1002,
+    nombre: 'libro B',
+    descripcion: 'descripcion B',
+    codigo: 'codigo B',
+    foto: 'foto B',
+    precio: 580,
+    stock: 580
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2983"),
+    id: 3,
+    timestamp: 103,
+    nombre: 'libro C',
+    descripcion: 'descripcion C',
+    codigo: 'codigo C',
+    foto: 'foto C',
+    precio: 900,
+    stock: 900
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2984"),
+    id: 4,
+    timestamp: 1004,
+    nombre: 'libro D',
+    descripcion: 'descripcion D',
+    codigo: 'codigo D',
+    foto: 'foto D',
+    precio: 1280,
+    stock: 1280
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2985"),
+    id: 5,
+    timestamp: 1005,
+    nombre: 'libro E',
+    descripcion: 'descripcion E',
+    codigo: 'codigo E',
+    foto: 'foto E',
+    precio: 1700,
+    stock: 1700
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2986"),
+    id: 6,
+    timestamp: 1006,
+    nombre: 'libro F',
+    descripcion: 'descripcion F',
+    codigo: 'codigo F',
+    foto: 'foto F',
+    precio: 2300,
+    stock: 2300
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2987"),
+    id: 7,
+    timestamp: 1007,
+    nombre: 'libro G',
+    descripcion: 'descripcion G',
+    codigo: 'codigo G',
+    foto: 'foto G',
+    precio: 2860,
+    stock: 2860
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2988"),
+    id: 8,
+    timestamp: 1008,
+    nombre: 'libro H',
+    descripcion: 'descripcion H',
+    codigo: 'codigo H',
+    foto: 'foto H',
+    precio: 3350,
+    stock: 3350
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2989"),
+    id: 9,
+    timestamp: 1009,
+    nombre: 'libro I',
+    descripcion: 'descripcion I',
+    codigo: 'codigo I',
+    foto: 'foto I',
+    precio: 4320,
+    stock: 4320
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae298a"),
+    id: 10,
+    timestamp: 1010,
+    nombre: 'libro J',
+    descripcion: 'descripcion J',
+    codigo: 'codigo J',
+    foto: 'foto J',
+    precio: 4990,
+    stock: 4990
+  }
+]
+ecommerce> db.mensajes.insertMany([{
+...         email: 'usuario1@gmail.com',
+...         fechayhora: 1001,
+...         mensaje: 'mensaje 1'
+...     },
+...     {
+.....         email: 'usuario2@gmail.com',
+.....         fechayhora: 1002,
+.....         mensaje: 'mensaje 2'
+.....     },
+...     {
+.....         email: 'usuario3@gmail.com',
+.....         fechayhora: 1003,
+.....         mensaje: 'mensaje 3'
+.....     },
+...     {
+.....         email: 'usuario4@gmail.com',
+.....         fechayhora: 1004,
+.....         mensaje: 'mensaje 4'
+.....     },
+...     {
+.....         email: 'usuario5@gmail.com',
+.....         fechayhora: 1005,
+.....         mensaje: 'mensaje 5'
+.....     },
+...     {
+.....         email: 'usuario6@gmail.com',
+.....         fechayhora: 1006,
+.....         mensaje: 'mensaje 6'
+.....     },
+...     {
+.....         email: 'usuario7@gmail.com',
+.....         fechayhora: 1007,
+.....         mensaje: 'mensaje 7'
+.....     },
+...     {
+.....         email: 'usuario8@gmail.com',
+.....         fechayhora: 1008,
+.....         mensaje: 'mensaje 8'
+.....     },
+...     {
+.....         email: 'usuario9@gmail.com',
+.....         fechayhora: 1009,
+.....         mensaje: 'mensaje 9'
+.....     },
+...     {
+.....         email: 'usuario10@gmail.com',
+.....         fechayhora: 1010,
+.....         mensaje: 'mensaje 10'
+.....     }])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("620431457cdaddda4eae298b"),
+    '1': ObjectId("620431457cdaddda4eae298c"),
+    '2': ObjectId("620431457cdaddda4eae298d"),
+    '3': ObjectId("620431457cdaddda4eae298e"),
+    '4': ObjectId("620431457cdaddda4eae298f"),
+    '5': ObjectId("620431457cdaddda4eae2990"),
+    '6': ObjectId("620431457cdaddda4eae2991"),
+    '7': ObjectId("620431457cdaddda4eae2992"),
+    '8': ObjectId("620431457cdaddda4eae2993"),
+    '9': ObjectId("620431457cdaddda4eae2994")
+  }
+}
+ecommerce> db.productos.find()
+[
+  {
+    _id: ObjectId("620430367cdaddda4eae2981"),
+    id: 1,
+    timestamp: 1001,
+    nombre: 'libro A',
+    descripcion: 'descripcion A',
+    codigo: 'codigo A',
+    foto: 'foto A',
+    precio: 120,
+    stock: 120
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2982"),
+    id: 2,
+    timestamp: 1002,
+    nombre: 'libro B',
+    descripcion: 'descripcion B',
+    codigo: 'codigo B',
+    foto: 'foto B',
+    precio: 580,
+    stock: 580
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2983"),
+    id: 3,
+    timestamp: 103,
+    nombre: 'libro C',
+    descripcion: 'descripcion C',
+    codigo: 'codigo C',
+    foto: 'foto C',
+    precio: 900,
+    stock: 900
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2984"),
+    id: 4,
+    timestamp: 1004,
+    nombre: 'libro D',
+    descripcion: 'descripcion D',
+    codigo: 'codigo D',
+    foto: 'foto D',
+    precio: 1280,
+    stock: 1280
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2985"),
+    id: 5,
+    timestamp: 1005,
+    nombre: 'libro E',
+    descripcion: 'descripcion E',
+    codigo: 'codigo E',
+    foto: 'foto E',
+    precio: 1700,
+    stock: 1700
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2986"),
+    id: 6,
+    timestamp: 1006,
+    nombre: 'libro F',
+    descripcion: 'descripcion F',
+    codigo: 'codigo F',
+    foto: 'foto F',
+    precio: 2300,
+    stock: 2300
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2987"),
+    id: 7,
+    timestamp: 1007,
+    nombre: 'libro G',
+    descripcion: 'descripcion G',
+    codigo: 'codigo G',
+    foto: 'foto G',
+    precio: 2860,
+    stock: 2860
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2988"),
+    id: 8,
+    timestamp: 1008,
+    nombre: 'libro H',
+    descripcion: 'descripcion H',
+    codigo: 'codigo H',
+    foto: 'foto H',
+    precio: 3350,
+    stock: 3350
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2989"),
+    id: 9,
+    timestamp: 1009,
+    nombre: 'libro I',
+    descripcion: 'descripcion I',
+    codigo: 'codigo I',
+    foto: 'foto I',
+    precio: 4320,
+    stock: 4320
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae298a"),
+    id: 10,
+    timestamp: 1010,
+    nombre: 'libro J',
+    descripcion: 'descripcion J',
+    codigo: 'codigo J',
+    foto: 'foto J',
+    precio: 4990,
+    stock: 4990
+  }
+]
+ecommerce> db.mensajes.find()
+[
+  {
+    _id: ObjectId("620431457cdaddda4eae298b"),
+    email: 'usuario1@gmail.com',
+    fechayhora: 1001,
+    mensaje: 'mensaje 1'
+  },
+  {
+    _id: ObjectId("620431457cdaddda4eae298c"),
+    email: 'usuario2@gmail.com',
+    fechayhora: 1002,
+    mensaje: 'mensaje 2'
+  },
+  {
+    _id: ObjectId("620431457cdaddda4eae298d"),
+    email: 'usuario3@gmail.com',
+    fechayhora: 1003,
+    mensaje: 'mensaje 3'
+  },
+  {
+    _id: ObjectId("620431457cdaddda4eae298e"),
+    email: 'usuario4@gmail.com',
+    fechayhora: 1004,
+    mensaje: 'mensaje 4'
+  },
+  {
+    _id: ObjectId("620431457cdaddda4eae298f"),
+    email: 'usuario5@gmail.com',
+    fechayhora: 1005,
+    mensaje: 'mensaje 5'
+  },
+  {
+    _id: ObjectId("620431457cdaddda4eae2990"),
+    email: 'usuario6@gmail.com',
+    fechayhora: 1006,
+    mensaje: 'mensaje 6'
+  },
+  {
+    _id: ObjectId("620431457cdaddda4eae2991"),
+    email: 'usuario7@gmail.com',
+    fechayhora: 1007,
+    mensaje: 'mensaje 7'
+  },
+  {
+    _id: ObjectId("620431457cdaddda4eae2992"),
+    email: 'usuario8@gmail.com',
+    fechayhora: 1008,
+    mensaje: 'mensaje 8'
+  },
+  {
+    _id: ObjectId("620431457cdaddda4eae2993"),
+    email: 'usuario9@gmail.com',
+    fechayhora: 1009,
+    mensaje: 'mensaje 9'
+  },
+  {
+    _id: ObjectId("620431457cdaddda4eae2994"),
+    email: 'usuario10@gmail.com',
+    fechayhora: 1010,
+    mensaje: 'mensaje 10'
+  }
+]
+ecommerce> db.productos.countDocuments()
+10
+ecommerce> db.mensajes.countDocuments()
+10
+ecommerce> db.productos.insertOne({id: 11, timestamp: 1011, nombre: 'libro K', descripcion: 'descripcion K', codigo: 'codigo K', foto: 'foto K', precio: 4545, stock: 4545})
+{
+  acknowledged: true,
+  insertedId: ObjectId("620433c37cdaddda4eae2995")
+}
+ecommerce> db.productos.find({'precio': {$lt: 1000}})
+[
+  {
+    _id: ObjectId("620430367cdaddda4eae2981"),
+    id: 1,
+    timestamp: 1001,
+    nombre: 'libro A',
+    descripcion: 'descripcion A',
+    codigo: 'codigo A',
+    foto: 'foto A',
+    precio: 120,
+    stock: 120
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2982"),
+    id: 2,
+    timestamp: 1002,
+    nombre: 'libro B',
+    descripcion: 'descripcion B',
+    codigo: 'codigo B',
+    foto: 'foto B',
+    precio: 580,
+    stock: 580
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2983"),
+    id: 3,
+    timestamp: 103,
+    nombre: 'libro C',
+    descripcion: 'descripcion C',
+    codigo: 'codigo C',
+    foto: 'foto C',
+    precio: 900,
+    stock: 900
+  }
+]
+ecommerce> db.productos.find({'precio': {$in: [1000, 3000]}})
+
+ecommerce> db.productos.find({$or: [{'precio': {$gte: 1000}}, {'precio': {$lte: 3000}}]})
+[
+  {
+    _id: ObjectId("620430367cdaddda4eae2981"),
+    id: 1,
+    timestamp: 1001,
+    nombre: 'libro A',
+    descripcion: 'descripcion A',
+    codigo: 'codigo A',
+    foto: 'foto A',
+    precio: 120,
+    stock: 120
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2982"),
+    id: 2,
+    timestamp: 1002,
+    nombre: 'libro B',
+    descripcion: 'descripcion B',
+    codigo: 'codigo B',
+    foto: 'foto B',
+    precio: 580,
+    stock: 580
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2983"),
+    id: 3,
+    timestamp: 103,
+    nombre: 'libro C',
+    descripcion: 'descripcion C',
+    codigo: 'codigo C',
+    foto: 'foto C',
+    precio: 900,
+    stock: 900
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2984"),
+    id: 4,
+    timestamp: 1004,
+    nombre: 'libro D',
+    descripcion: 'descripcion D',
+    codigo: 'codigo D',
+    foto: 'foto D',
+    precio: 1280,
+    stock: 1280
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2985"),
+    id: 5,
+    timestamp: 1005,
+    nombre: 'libro E',
+    descripcion: 'descripcion E',
+    codigo: 'codigo E',
+    foto: 'foto E',
+    precio: 1700,
+    stock: 1700
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2986"),
+    id: 6,
+    timestamp: 1006,
+    nombre: 'libro F',
+    descripcion: 'descripcion F',
+    codigo: 'codigo F',
+    foto: 'foto F',
+    precio: 2300,
+    stock: 2300
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2987"),
+    id: 7,
+    timestamp: 1007,
+    nombre: 'libro G',
+    descripcion: 'descripcion G',
+    codigo: 'codigo G',
+    foto: 'foto G',
+    precio: 2860,
+    stock: 2860
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2988"),
+    id: 8,
+    timestamp: 1008,
+    nombre: 'libro H',
+    descripcion: 'descripcion H',
+    codigo: 'codigo H',
+    foto: 'foto H',
+    precio: 3350,
+    stock: 3350
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2989"),
+    id: 9,
+    timestamp: 1009,
+    nombre: 'libro I',
+    descripcion: 'descripcion I',
+    codigo: 'codigo I',
+    foto: 'foto I',
+    precio: 4320,
+    stock: 4320
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae298a"),
+    id: 10,
+    timestamp: 1010,
+    nombre: 'libro J',
+    descripcion: 'descripcion J',
+    codigo: 'codigo J',
+    foto: 'foto J',
+    precio: 4990,
+    stock: 4990
+  },
+  {
+    _id: ObjectId("620433c37cdaddda4eae2995"),
+    id: 11,
+    timestamp: 1011,
+    nombre: 'libro K',
+    descripcion: 'descripcion K',
+    codigo: 'codigo K',
+    foto: 'foto K',
+    precio: 4545,
+    stock: 4545
+  }
+]
+ecommerce> db.productos.find({$and: [{'precio': {$gte: 1000}}, {'precio': {$lte: 3000}}]})
+[
+  {
+    _id: ObjectId("620430367cdaddda4eae2984"),
+    id: 4,
+    timestamp: 1004,
+    nombre: 'libro D',
+    descripcion: 'descripcion D',
+    codigo: 'codigo D',
+    foto: 'foto D',
+    precio: 1280,
+    stock: 1280
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2985"),
+    id: 5,
+    timestamp: 1005,
+    nombre: 'libro E',
+    descripcion: 'descripcion E',
+    codigo: 'codigo E',
+    foto: 'foto E',
+    precio: 1700,
+    stock: 1700
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2986"),
+    id: 6,
+    timestamp: 1006,
+    nombre: 'libro F',
+    descripcion: 'descripcion F',
+    codigo: 'codigo F',
+    foto: 'foto F',
+    precio: 2300,
+    stock: 2300
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2987"),
+    id: 7,
+    timestamp: 1007,
+    nombre: 'libro G',
+    descripcion: 'descripcion G',
+    codigo: 'codigo G',
+    foto: 'foto G',
+    precio: 2860,
+    stock: 2860
+  }
+]
+ecommerce> db.productos.find({'precio': {$gt: 3000}})
+[
+  {
+    _id: ObjectId("620430367cdaddda4eae2988"),
+    id: 8,
+    timestamp: 1008,
+    nombre: 'libro H',
+    descripcion: 'descripcion H',
+    codigo: 'codigo H',
+    foto: 'foto H',
+    precio: 3350,
+    stock: 3350
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2989"),
+    id: 9,
+    timestamp: 1009,
+    nombre: 'libro I',
+    descripcion: 'descripcion I',
+    codigo: 'codigo I',
+    foto: 'foto I',
+    precio: 4320,
+    stock: 4320
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae298a"),
+    id: 10,
+    timestamp: 1010,
+    nombre: 'libro J',
+    descripcion: 'descripcion J',
+    codigo: 'codigo J',
+    foto: 'foto J',
+    precio: 4990,
+    stock: 4990
+  },
+  {
+    _id: ObjectId("620433c37cdaddda4eae2995"),
+    id: 11,
+    timestamp: 1011,
+    nombre: 'libro K',
+    descripcion: 'descripcion K',
+    codigo: 'codigo K',
+    foto: 'foto K',
+    precio: 4545,
+    stock: 4545
+  }
+]
+ecommerce> db.productos.find({},{nombre: 1}).sort({precio: 1}).skip(2).limit(1)
+[ { _id: ObjectId("620430367cdaddda4eae2983"), nombre: 'libro C' } ]
+ecommerce> db.productos.update({}, {$set: {'stock': 100}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+ecommerce> db.productos.updateMany({}, {$set: {'stock': 100}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 10,
+  upsertedCount: 0
+}
+ecommerce>
+{
+ecommerce>
+  insertedId: null,
+ecommerce>
+  modifiedCount: 1,
+ecommerce>
+}
+ecommerce>
+
+ecommerce>
+
+ecommerce>
+
+ecommerce>
+
+ecommerce> db.productos.update({precio: {$gt: 4000}}, {$set: {'stock': 0}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+ecommerce> db.productos.updateMany({precio: {$gt: 4000}}, {$set: {'stock': 0}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+ecommerce> db.productos.find({precio: {$gt: 3000}})
+[
+  {
+    _id: ObjectId("620430367cdaddda4eae2988"),
+    id: 8,
+    timestamp: 1008,
+    nombre: 'libro H',
+    descripcion: 'descripcion H',
+    codigo: 'codigo H',
+    foto: 'foto H',
+    precio: 3350,
+    stock: 100
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2989"),
+    id: 9,
+    timestamp: 1009,
+    nombre: 'libro I',
+    descripcion: 'descripcion I',
+    codigo: 'codigo I',
+    foto: 'foto I',
+    precio: 4320,
+    stock: 0
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae298a"),
+    id: 10,
+    timestamp: 1010,
+    nombre: 'libro J',
+    descripcion: 'descripcion J',
+    codigo: 'codigo J',
+    foto: 'foto J',
+    precio: 4990,
+    stock: 0
+  },
+  {
+    _id: ObjectId("620433c37cdaddda4eae2995"),
+    id: 11,
+    timestamp: 1011,
+    nombre: 'libro K',
+    descripcion: 'descripcion K',
+    codigo: 'codigo K',
+    foto: 'foto K',
+    precio: 4545,
+    stock: 0
+  }
+]
+ecommerce> db.productos.deleteMany({precio: {$lt: 1000}})
+{ acknowledged: true, deletedCount: 3 }
+ecommerce> db.productos.find({}, {precio: 1}).sort(precio: 1)
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:46)
+
+> 1 | db.productos.find({}, {precio: 1}).sort(precio: 1)
+    |                                               ^
+  2 |
+
+ecommerce> db.productos.find({}, {precio: 1}).sort({precio: 1})
+[
+  { _id: ObjectId("620430367cdaddda4eae2984"), precio: 1280 },
+  { _id: ObjectId("620430367cdaddda4eae2985"), precio: 1700 },
+  { _id: ObjectId("620430367cdaddda4eae2986"), precio: 2300 },
+  { _id: ObjectId("620430367cdaddda4eae2987"), precio: 2860 },
+  { _id: ObjectId("620430367cdaddda4eae2988"), precio: 3350 },
+  { _id: ObjectId("620430367cdaddda4eae2989"), precio: 4320 },
+  { _id: ObjectId("620433c37cdaddda4eae2995"), precio: 4545 },
+  { _id: ObjectId("620430367cdaddda4eae298a"), precio: 4990 }
+]
+ecommerce> db.createUser({user: 'pepe', pwd: 'asd456', roles: [{role: 'read', db: 'ecommerce'}]})
+{ ok: 1 }
+ecommerce>
+
+
+
+
+:\Users\Alan>mongosh -u pepe -p asd456
+Current Mongosh Log ID: 62043da7b829a6dfc08d2084
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.1.9
+Using MongoDB:          5.0.6
+Using Mongosh:          1.1.9
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+test> use ecommerce
+switched to db ecommerce
+ecommerce> db.productos.find()
+[
+  {
+    _id: ObjectId("620430367cdaddda4eae2984"),
+    id: 4,
+    timestamp: 1004,
+    nombre: 'libro D',
+    descripcion: 'descripcion D',
+    codigo: 'codigo D',
+    foto: 'foto D',
+    precio: 1280,
+    stock: 100
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2985"),
+    id: 5,
+    timestamp: 1005,
+    nombre: 'libro E',
+    descripcion: 'descripcion E',
+    codigo: 'codigo E',
+    foto: 'foto E',
+    precio: 1700,
+    stock: 100
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2986"),
+    id: 6,
+    timestamp: 1006,
+    nombre: 'libro F',
+    descripcion: 'descripcion F',
+    codigo: 'codigo F',
+    foto: 'foto F',
+    precio: 2300,
+    stock: 100
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2987"),
+    id: 7,
+    timestamp: 1007,
+    nombre: 'libro G',
+    descripcion: 'descripcion G',
+    codigo: 'codigo G',
+    foto: 'foto G',
+    precio: 2860,
+    stock: 100
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2988"),
+    id: 8,
+    timestamp: 1008,
+    nombre: 'libro H',
+    descripcion: 'descripcion H',
+    codigo: 'codigo H',
+    foto: 'foto H',
+    precio: 3350,
+    stock: 100
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae2989"),
+    id: 9,
+    timestamp: 1009,
+    nombre: 'libro I',
+    descripcion: 'descripcion I',
+    codigo: 'codigo I',
+    foto: 'foto I',
+    precio: 4320,
+    stock: 0
+  },
+  {
+    _id: ObjectId("620430367cdaddda4eae298a"),
+    id: 10,
+    timestamp: 1010,
+    nombre: 'libro J',
+    descripcion: 'descripcion J',
+    codigo: 'codigo J',
+    foto: 'foto J',
+    precio: 4990,
+    stock: 0
+  },
+  {
+    _id: ObjectId("620433c37cdaddda4eae2995"),
+    id: 11,
+    timestamp: 1011,
+    nombre: 'libro K',
+    descripcion: 'descripcion K',
+    codigo: 'codigo K',
+    foto: 'foto K',
+    precio: 4545,
+    stock: 0
+  }
+]
+ecommerce> db.insertOne({name: 'alan'})
+TypeError: db.insertOne is not a function
+ecommerce> db.productos.insertOne({name: 'alan'})
+MongoServerError: not authorized on ecommerce to execute command { insert: "productos", documents: [ { name: "alan", _id: ObjectId('62043deb8bdbd1e6d27f83e0') } ], ordered: true, lsid: { id: UUID("5caa5804-2c71-4a04-8d06-bbd9b25a9ab1") }, $db: "ecommerce" }
+ecommerce> db.productos.deleteMany({})
+MongoServerError: not authorized on ecommerce to execute command { delete: "productos", deletes: [ { q: {}, limit: 0 } ], ordered: true, lsid: { id: UUID("5caa5804-2c71-4a04-8d06-bbd9b25a9ab1") }, $db: "ecommerce" }
+ecommerce> e
+
