@@ -1,30 +1,23 @@
+// express y router
 const express = require('express');
 const router = express.Router();
-const productos = require('../assets/productos');
-const ContenedorProd = require('../controller/crudDBprod');
 
+// funcionamiento knex y config
 const knex = require('knex');
-const options = require('../databases/config')
-const knoxDB = new ContenedorProd(options, 'websocketchat', knex)
+const { Contenedor, nameTableSql } = require('../persistencia/crudDB');
+const { optionsSql, optionsSqlite } = require('../databases/config');
+const knexDBprod = new Contenedor(optionsSql, nameTableSql, knex)
 
 router.get('/', async (req, res) => {
-    const datos = await knoxDB.readTable()
-    console.log(datos);
-    // res.render('./layouts/main', {listaDeProductos: datos});
+    try {
+        const datos = await knexDBprod.readTable();
+        res.render('../public/table', { listaDeProductos: datos });
+    }
+    catch (e) {
+        console.log(e.message);
+    }
 })
 
-router.post('/', (req, res) => {
-    const { name, autor, categoria, precio, href } = req.body;
-    const idNuevo = productos.length + 1;
-    productos.push({
-        id: idNuevo,
-        name,
-        autor, 
-        categoria,
-        precio,
-        href,
-    })
-    res.redirect('/');
-})
 
-module.exports = router;
+
+module.exports = { router };
