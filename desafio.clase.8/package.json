@@ -1,17 +1,18 @@
 {
-  "name": "desafio",
+  "name": "servidor-http",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "servidor.js",
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {},
   "scripts": {
     "start": "node main.js",
     "start-dev": "nodemon main.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.2",
-    "nodemon": "^2.0.15"
-  }
+  "license": "ISC"
 }
