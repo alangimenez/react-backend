@@ -16,7 +16,7 @@ class Contenedor {
     }
 
     getAll() {
-        if (this.datos.length === 0) return console.log({
+        if (this.datos.length === 0) return ({
             error: 2,
             mensaje: `El archivo no contiene información a mostrar`
         })

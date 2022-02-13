@@ -11,7 +11,7 @@ class Contenedor {
         catch (e) {
             this.datos = [];
             fs.writeFileSync(`${this.name}.txt`, JSON.stringify(''))
-            console.log({ error: 1, mensaje: `El archivo no existe. Se ha creado uno nuevo con el nombre ${this.name}.txt` })
+            console.log({ error: 1, mensaje: `El archivo no existe o esta vacio. Se creará uno para ser utilizado, o se utilizara el existente` })
         }
     }
 
@@ -82,11 +82,11 @@ class Contenedor {
     }
 }
 
-const prueba = new Contenedor("casa");
+const prueba = new Contenedor("vacio");
 async function ejecutarPruebas() {
     // await prueba.getAll();
-    // await prueba.getById(2);
-    // console.log(`La pelicula tiene el id ${await prueba.save("batman", 1500, "enlaces de la foto")}`);
+    // await prueba.getById(10);
+    // console.log(`La pelicula tiene el id ${await prueba.save("batman", 1250, "enlaces de la foto")}`);
     // await prueba.deleteAll();
     // await prueba.deleteById(1);
 }

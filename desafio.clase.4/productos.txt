@@ -1,1 +1,1 @@
-[]
+[{"title":"batman","price":1500,"thumbnail":"enlaces de la foto","id":1},{"title":"batman 2","price":2500,"thumbnail":"enlaces de la foto","id":2},{"title":"batman 3","price":3500,"thumbnail":"enlaces de la foto","id":3}]
