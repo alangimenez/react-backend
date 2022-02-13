@@ -5,19 +5,20 @@ const fsPromises = require('fs').promises;
 class Contenedor {
     constructor(nombreDeArchivo) {
         this.name = nombreDeArchivo;
+        this.route = `./assets/${this.name}.txt`
         try {
-            this.datos = JSON.parse(fs.readFileSync(`./assets/${this.name}.txt`, `utf-8`));
+            this.datos = JSON.parse(fs.readFileSync(this.route, `utf-8`));
             if (this.datos === '') this.datos = [];
         }
         catch (e) {
             this.datos = [];
-            fs.writeFileSync(`./assets/${this.name}.txt`, JSON.stringify(''))
+            fs.writeFileSync(this.route, JSON.stringify(''))
             console.log({ error: 1, mensaje: `El archivo no existe. Se ha creado uno nuevo con el nombre ${this.name}.txt` })
         }
     }
 
     getAll() {
-        if (this.datos.length === 0) return console.log({
+        if (this.datos.length === 0) return ({
             error: 2,
             mensaje: `El archivo no contiene información a mostrar`
         })
@@ -47,7 +48,7 @@ class Contenedor {
                 id: idNuevo,
             }
             this.datos.push(nuevaPelicula)
-            await fs.promises.writeFile(`${this.name}.txt`, JSON.stringify(this.datos))
+            await fs.promises.writeFile(this.route, JSON.stringify(this.datos))
             return nuevaPelicula;
         }
         catch (e) {
@@ -57,7 +58,7 @@ class Contenedor {
 
     async deleteAll() {
         try {
-            await fs.promises.writeFile(`${this.name}.txt`, "[]")
+            await fs.promises.writeFile(this.route, "[]")
         }
         catch (e) {
             console.log(e.message);
@@ -65,16 +66,21 @@ class Contenedor {
     }
 
     async put (id, pelicula) {
-        const peliculaSeleccionada = this.getById(id);
-        if (peliculaSeleccionada.error === 3) return peliculaSeleccionada;
-        const peliculaModificada = {
-            ...peliculaSeleccionada,
-            ...pelicula
+        try {
+            const peliculaSeleccionada = this.getById(id);
+            if (peliculaSeleccionada.error === 3) return peliculaSeleccionada;
+            const peliculaModificada = {
+                ...peliculaSeleccionada,
+                ...pelicula
+            }
+            const ubicacionPelicula = this.datos.findIndex(e => e === peliculaSeleccionada);
+            this.datos[ubicacionPelicula] = peliculaModificada;
+            await fs.promises.writeFile(this.route, JSON.stringify(this.datos))
+            return peliculaModificada;
         }
-        const ubicacionPelicula = this.datos.findIndex(peliculaSeleccionada);
-        this.datos[ubicacionPelicula] = peliculaModificada
-        await fs.promises.writeFile(`./assets/${this.name}.txt`, this.datos)
-        return peliculaModificada;
+        catch (e) {
+            console.log(e.message);
+        }
     }
 
     async deleteById(number) {
@@ -86,7 +92,7 @@ class Contenedor {
                 mensaje: `producto no encontrado`
             });
             this.datos.splice(resultado, 1);
-            await fs.promises.writeFile(`${this.name}.txt`, JSON.stringify(this.datos))
+            await fs.promises.writeFile(this.route, JSON.stringify(this.datos))
             return number;
         }
         catch (e) {

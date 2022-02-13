@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
 const { obtenerPeliculas,
     obtenerPeliculaPorId,
     guardarPelicula,
@@ -7,6 +8,7 @@ const { obtenerPeliculas,
     eliminarPelicula } = require('../controller/controller.main')
 
 router.use(express.json());
+router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get('/', (req, res) => obtenerPeliculas(req, res)) 
 

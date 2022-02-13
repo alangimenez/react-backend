@@ -14,16 +14,12 @@
     <div class="container">
         <h2>Formulario para ingresar un nuevo producto</h2>
         <form action="/api/productos" method="POST" class="mb-3">
-            <label for="name" class="form-label">Nombre</label>
-            <input id="name" type="text" name="name" class="form-control">
-            <label for="autor" class="form-label">Autor</label>
-            <input id="autor" type="text" name="autor" class="form-control">
-            <label for="categoria" class="form-label">Categoria</label>
-            <input id="categoria" type="text" name="categoria" class="form-control">
-            <label for="precio" class="form-label">Precio</label>
-            <input id="precio" type="text" name="precio" class="form-control">
-            <label for="href" class="form-label">Link de imagen del libro</label>
-            <input id="href" type="text" name="href" class="form-control">
+            <label for="title" class="form-label">Title</label>
+            <input id="title" type="text" name="title" class="form-control">
+            <label for="price" class="form-label">Price</label>
+            <input id="price" type="number" name="price" class="form-control">
+            <label for="thumbnail" class="form-label">Thumbnail</label>
+            <input id="thumbnail" type="text" name="thumbnail" class="form-control">
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
