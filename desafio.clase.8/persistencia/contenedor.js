@@ -39,17 +39,17 @@ class Contenedor {
         }
     }
 
-    async save(pelicula) {
+    async save(producto) {
         try {
             let idNuevo;
             this.datos.length === 0 ? idNuevo = 1 : idNuevo = this.datos[this.datos.length - 1].id + 1;
-            const nuevaPelicula = {
-                ...pelicula,
+            const nuevaproducto = {
+                ...producto,
                 id: idNuevo,
             }
-            this.datos.push(nuevaPelicula)
+            this.datos.push(nuevaproducto)
             await fs.promises.writeFile(this.route, JSON.stringify(this.datos))
-            return nuevaPelicula;
+            return nuevaproducto;
         }
         catch (e) {
             console.log(e.message);
@@ -65,18 +65,18 @@ class Contenedor {
         }
     }
 
-    async put (id, pelicula) {
+    async put (id, producto) {
         try {
-            const peliculaSeleccionada = this.getById(id);
-            if (peliculaSeleccionada.error === 3) return peliculaSeleccionada;
-            const peliculaModificada = {
-                ...peliculaSeleccionada,
-                ...pelicula
+            const productoSeleccionado = this.getById(id);
+            if (productoSeleccionado.error === 3) return productoSeleccionado;
+            const productoModificado = {
+                ...productoSeleccionado,
+                ...producto
             }
-            const ubicacionPelicula = this.datos.findIndex(e => e === peliculaSeleccionada);
-            this.datos[ubicacionPelicula] = peliculaModificada;
+            const ubicacionProducto = this.datos.findIndex(e => e === productoSeleccionado);
+            this.datos[ubicacionProducto] = productoModificado;
             await fs.promises.writeFile(this.route, JSON.stringify(this.datos))
-            return peliculaModificada;
+            return productoModificado;
         }
         catch (e) {
             console.log(e.message);

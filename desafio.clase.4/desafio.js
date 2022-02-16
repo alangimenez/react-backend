@@ -20,7 +20,7 @@ class Contenedor {
             error: 2,
             mensaje: `El archivo no contiene información a mostrar`
         })
-        return console.log(this.datos);
+        return this.datos;
     }
 
     async getById(number) {
@@ -30,7 +30,7 @@ class Contenedor {
                 error: 3,
                 mensaje: `El producto solicitado no existe`
             });
-            console.log(prodId);
+            return prodId;
         }
         catch (e) {
             console.log(e.message);
@@ -74,7 +74,6 @@ class Contenedor {
             });
             this.datos.splice(resultado, 1);
             await fs.promises.writeFile(`${this.name}.txt`, JSON.stringify(this.datos))
-            console.log({ mensaje: `El objeto ${number} fue eliminado con éxito` });
         }
         catch (e) {
             console.log(e.message);
@@ -84,11 +83,19 @@ class Contenedor {
 
 const prueba = new Contenedor("vacio");
 async function ejecutarPruebas() {
-    // await prueba.getAll();
-    // await prueba.getById(10);
-    // console.log(`La pelicula tiene el id ${await prueba.save("batman", 1250, "enlaces de la foto")}`);
-    // await prueba.deleteAll();
-    // await prueba.deleteById(1);
+    const prod1 = await prueba.save('prod1', 222, "imagen1");
+    const prod2 = await prueba.save('prod2', 222, "imagen2");
+    const prod3 = await prueba.save('prod3', 222, "imagen3");
+    const todos = await prueba.getAll();
+    console.log(prod1);
+    console.log(prod2);
+    console.log(prod3);
+    console.log(todos);
+    const index = await prueba.getById(2);
+    console.log(index);
+    console.log(`La pelicula tiene el id ${await prueba.save("batman", 1250, "enlaces de la foto")}`);
+    await prueba.deleteAll();
+    await prueba.deleteById(1);
 }
 
 ejecutarPruebas();

@@ -2,32 +2,32 @@ const Contenedor = require('../persistencia/contenedor')
 
 const contenedor = new Contenedor("productos");
 
-function obtenerPeliculas (req, res) {
+function obtenerProductos (req, res) {
     res.json(contenedor.getAll())
 }
 
-function obtenerPeliculaPorId (req, res) {
-    const pelicula = contenedor.getById(+req.params.id)
-    res.json(pelicula);
+function obtenerProductoPorId (req, res) {
+    const producto = contenedor.getById(+req.params.id)
+    res.json(producto);
 }
 
-async function guardarPelicula (req, res) {
-    const idPeliculaNueva = await contenedor.save(req.body);
-    res.json(idPeliculaNueva)
+async function guardarProducto (req, res) {
+    const idProductoNuevo = await contenedor.save(req.body);
+    res.json(idProductoNuevo)
 }
 
-async function modificarPelicula (req, res) {
+async function modificarProducto (req, res) {
     const dato = await contenedor.put(+req.params.id, req.body);
     res.json(dato);
 }
 
-async function eliminarPelicula (req, res) {
-    const idPeliculaEliminada = await contenedor.deleteById(req.params.id);
-    if (idPeliculaEliminada === req.params.id) {
-        res.json({mensaje: `La pelicula ${idPeliculaEliminada} fue eliminada con éxito`})
+async function eliminarProducto (req, res) {
+    const idProductoEliminado = await contenedor.deleteById(req.params.id);
+    if (idProductoEliminado === req.params.id) {
+        res.json({mensaje: `La pelicula ${idProductoEliminado} fue eliminada con éxito`})
     } else {
-        res.json(idPeliculaEliminada);
+        res.json(idProductoEliminado);
     }
 }
 
-module.exports={obtenerPeliculas, obtenerPeliculaPorId, guardarPelicula, eliminarPelicula, modificarPelicula}
+module.exports={obtenerProductos, obtenerProductoPorId, guardarProducto, modificarProducto, eliminarProducto}
