@@ -1,50 +1,48 @@
 const fs = require('fs');
-const { CrudBasico } = require('./crud');
-const { leerArchivo, escribirArchivo } = require('./fileSystem');
+const { CrudBasico } = require('../persistencia/crud');
+const { leerArchivo, escribirArchivo } = require('../persistencia/fileSystem');
+const pathProductos = `./assets/productos.txt`;
 
 const producto = new CrudBasico();
 
 function obtenerProductos(req, res) {
-    const productos = leerArchivo('./assets/productos.txt');
-    res.json(productos);
+    res.json(leerArchivo(pathProductos));
 }
 
 function obtenerProductoPorId(req, res) {
     const { id } = req.params;
-    const productos = leerArchivo('./assets/productos.txt');
+    const productos = leerArchivo(pathProductos);
     const productoIdMostrar = producto.read(productos, id);
     res.json(productoIdMostrar);
 }
 
 function eliminarProducto(req, res) {
     const { id } = req.params;
-    const productos = leerArchivo('./assets/productos.txt');
+    const productos = leerArchivo(pathProductos);
     const productosPostDelete = producto.delete(productos, id);
-    escribirArchivo('./assets/productos.txt', productosPostDelete);
+    escribirArchivo(pathProductos, productosPostDelete);
     res.json(productosPostDelete);
 }
 
 function subirProducto(req, res) {
-    const productos = leerArchivo('./assets/productos.txt');
-    const productosActualizado = producto.create(productos, req.body)
-    escribirArchivo('./assets/productos.txt', productosActualizado);
-    res.json(productosActualizado);
+    const productos = leerArchivo(pathProductos);
+    const {array: productosActualizado, nuevoProducto} = producto.create(productos, req.body)
+    escribirArchivo(pathProductos, productosActualizado);
+    res.json(nuevoProducto);
 }
 
 function modificarProducto(req, res) {
     const { id } = req.params;
-    const productos = leerArchivo('./assets/productos.txt');
-    const infos = producto.read(productos, req.params.id); //devuelve un producto
+    const productos = leerArchivo(pathProductos);
+    const productoSeleccionado = producto.read(productos, req.params.id); //devuelve un producto
     const prodNuevaCaract = {
-      id,
+      id: +id,
+      timestamp: Date.now(),
       ...req.body,
     };
-    const productoModificado = producto.put(infos, prodNuevaCaract);
-    const filtro = (dato) => dato.id == id;
-    const result = productos.findIndex(filtro);
-    productos[result] = productoModificado[0];
-    escribirArchivo('./assets/productos.txt', productos)
-    res.json(productos);
+    const {array: listadoModificado, result: indexProdModificado} = producto.put(productos, prodNuevaCaract);
+    escribirArchivo(pathProductos, listadoModificado)
+    res.json(listadoModificado[indexProdModificado]);
 }
 
 module.exports = {
@@ -52,5 +50,6 @@ module.exports = {
     obtenerProductoPorId,
     eliminarProducto,
     subirProducto,
-    modificarProducto
+    modificarProducto,
+    pathProductos
 }

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { leerArchivo, escribirArchivo } = require('../controller/fileSystem');
+const { leerArchivo, escribirArchivo } = require('../persistencia/fileSystem');
 
 //se podria usar este mismo mid para validar id de carrito? pensar que el path podria venir por parametro (ver como enviar el path sin pisar los otros parametros)
 function controlId(req, res, next) {

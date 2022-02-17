@@ -7,12 +7,6 @@ const routerProductos = require('./router/productos.router');
 const routerCarrito = require('./router/carrito.router');
 const { validarRuta } = require('./middlewares/middlewares');
 
-let productos;
-const productoPrevio = fs.readFile('./assets/productos.txt', 'utf-8', (err, data) => {
-    if (err) throw err;
-    productos = JSON.parse(data);
-})
-
 const server = app.listen(PORT, () => {
     console.log(`Servidor escuchando en puerto ${PORT}`);
 }).on('error', (error => {

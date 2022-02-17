@@ -1,12 +1,13 @@
 const fs = require('fs');
 const admin = true;
-const { leerArchivo, escribirArchivo } = require('../controller/fileSystem');
+const { leerArchivo, escribirArchivo } = require('../persistencia/fileSystem');
+const { pathProductos } = require('../controller/controller.productos')
 
 function validarCarrito(req, res, next) {
     const { idCarr, idProd } = req.params;
     const carrito = leerArchivo('./assets/carrito.txt');
     const productos = leerArchivo('./assets/productos.txt');
-    
+
     /*const carritoPrevio = fs.readFileSync('./assets/carrito.txt', 'utf-8');
     const carrito = JSON.parse(carritoPrevio);
     const productosPrevio = fs.readFileSync('./assets/productos.txt', 'utf-8');
@@ -54,13 +55,24 @@ function validarDelete(req, res, next) {
 }
 
 // validacion si es admin o no
-function validarAdmin (req, res, next) {
-    if (admin == false) return res.status(401).json({error: -1, descripcion: `ruta '${req.url}' metodo ${req.method} no autorizada`});
+function validarAdmin(req, res, next) {
+    if (admin === false) return res.status(401).json({ error: -1, descripcion: `ruta '${req.url}' metodo ${req.method} no autorizada` });
     next();
 }
 
-function validarRuta (req, res, next) {
-    res.status(500).json({error: -2, descripcion: `ruta '${req.url}' metodo ${req.method} no implementado`})
+function validarRuta(req, res, next) {
+    res.status(404).json({ error: -2, descripcion: `ruta '${req.url}' metodo ${req.method} no implementado` })
 }
 
-module.exports = {validarCarrito, validarDelete, validarAdmin, validarRuta};
+function validarArchivo(req, res, next) {
+    try {
+        const dato = leerArchivo(pathProductos);
+    }
+    catch (e) {
+        console.log(e.message)
+        return res.status(404).json({ error: -3, message: `El archivo que se busca leer no existe o esta vacio.` })
+    }
+    next();
+}
+
+module.exports = { validarCarrito, validarDelete, validarAdmin, validarRuta, validarArchivo };
