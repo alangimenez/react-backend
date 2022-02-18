@@ -1,29 +1,21 @@
 const fs = require('fs');
 const admin = true;
 const { leerArchivo, escribirArchivo } = require('../persistencia/fileSystem');
-const { pathProductos } = require('../controller/controller.productos')
+const pathCarrito = './assets/carrito.txt';
+const pathProductos = './assets/productos.txt';
 
 function validarCarrito(req, res, next) {
     const { idCarr, idProd } = req.params;
     const carrito = leerArchivo('./assets/carrito.txt');
     const productos = leerArchivo('./assets/productos.txt');
 
-    /*const carritoPrevio = fs.readFileSync('./assets/carrito.txt', 'utf-8');
-    const carrito = JSON.parse(carritoPrevio);
-    const productosPrevio = fs.readFileSync('./assets/productos.txt', 'utf-8');
-    const productos = JSON.parse(productosPrevio);*/
-
-    // validación idCarrito mayor al id del ultimo carrito
-    // esta validacion podria eliminarse y dejar solo la segunda y tercera??
-    if (idCarr > carrito[carrito.length - 1].id || idCarr < 0) return res.status(404).json('El carrito buscado no existe')
-
     // validación idCarrito exista en el array
-    const carrFiltrado = carrito.filter(e => e.id == +idCarr)
-    if (carrFiltrado == "") return res.json("el carrito buscado no existe validacion 2")
+    const carrFiltrado = carrito.findIndex(e => e.id === +idCarr)
+    if (carrFiltrado === -1) return res.json({ error: -7, message: `El carrito seleccionado no existe` })
 
     // validacion idProd exista dentro de los productos en listado
-    const prodFiltrado = productos.filter(f => f.id == +idProd)
-    if (prodFiltrado == "") return res.json('El producto que se intenta agregar no existe')
+    const prodFiltrado = productos.findIndex(f => f.id === +idProd)
+    if (prodFiltrado === -1) return res.json({ error: -5, message: `El producto seleccionado no existe` })
     next();
 }
 
@@ -32,24 +24,16 @@ function validarDelete(req, res, next) {
 
     const carrito = leerArchivo('./assets/carrito.txt');
 
-    /*
-    const carritoPrevio = fs.readFileSync('./assets/carrito.txt', 'utf-8');
-    const carrito = JSON.parse(carritoPrevio);*/
-
-    // validación idCarrito mayor al id del ultimo carrito
-    // esta validacion capaz pueda eliminarse dejando solo la segunda
-    if (idCarr > carrito[carrito.length - 1].id || idCarr < 0) return res.status(404).json('El carrito buscado no existe')
-
     // validación idCarrito exista en el array
-    const carrFiltrado = carrito.filter(e => e.id == +idCarr)
-    if (carrFiltrado == "") return res.json("el carrito buscado no existe validacion 2")
+    const carrFiltrado = carrito.find(e => e.id === +idCarr)
+    if (carrFiltrado === undefined) return res.json({ error: -7, message: `El carrito seleccionado no existe` })
 
     // validacion si carrito tiene productos
-    if (carrFiltrado.producto == undefined) return res.json("el carrito buscado no contiene productos")
+    if (carrFiltrado.producto === undefined) return res.json({ error: -8, message: `El carrito seleccionado no contiene productos` })
 
     // validación idProducto exista en idCarrito
-    const prodFiltrado = carrFiltrado[0].producto.filter(f => f.id == +idProd)
-    if (prodFiltrado == "") return res.json('el producto buscado no existe en el carrito')
+    const prodFiltrado = carrFiltrado.producto.findIndex(f => f.id === +idProd)
+    if (prodFiltrado === -1) return res.json({ error: -10, message: `El producto no existe en el carrito seleccionado` })
 
     next();
 }
@@ -66,13 +50,22 @@ function validarRuta(req, res, next) {
 
 function validarArchivo(req, res, next) {
     try {
-        const dato = leerArchivo(pathProductos);
+        const datoProducto = leerArchivo(pathProductos);
+        const datoCarrito = leerArchivo(pathCarrito);
     }
     catch (e) {
         console.log(e.message)
-        return res.status(404).json({ error: -3, message: `El archivo que se busca leer no existe o esta vacio.` })
+        return res.status(400).json({ error: -3, message: `Los archivos que se buscan leer no existen o el formato es incorrecto.` })
     }
     next();
 }
 
-module.exports = { validarCarrito, validarDelete, validarAdmin, validarRuta, validarArchivo };
+module.exports = {
+    validarCarrito,
+    validarDelete,
+    validarAdmin,
+    validarRuta,
+    validarArchivo,
+    pathCarrito,
+    pathProductos
+};

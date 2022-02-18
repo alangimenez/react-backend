@@ -1,16 +1,15 @@
 const fs = require('fs');
 const { CrudBasico } = require('../persistencia/crud');
 const { leerArchivo, escribirArchivo } = require('../persistencia/fileSystem');
-const pathCarrito = './assets/carrito.txt';
-const pathProductos = './assets/productos.txt';
+const { pathCarrito, pathProductos } = require('../middlewares/middlewares');
 
 const carrito = new CrudBasico();
 
 function crearCarrito(req, res) {
     const carritos = leerArchivo(pathCarrito);
-    const carritosActualizado = carrito.create(carritos);
+    const {array: carritosActualizado, nuevoProducto: nuevoCarrito} = carrito.create(carritos);
     escribirArchivo(pathCarrito, carritosActualizado);
-    res.json(carritosActualizado);
+    res.json(nuevoCarrito);
 }
 
 function eliminarCarrito(req, res) {
@@ -23,36 +22,35 @@ function eliminarCarrito(req, res) {
 
 function prodAlCarrito(req, res) {
     const { idCarr, idProd } = req.params;
-    const carritos = leerArchivo(pathCarrito);
-    const productos = leerArchivo(pathProductos);
-    const carritoSelecccionado = carrito.read(carritos, idCarr);
-    const productoSeleccionado = carrito.read(productos, idProd);
-    if (carritoSelecccionado[0].producto == undefined) carritoSelecccionado[0].producto = [];
-    carritoSelecccionado[0].producto.push(productoSeleccionado[0]);
-    const indexCarritoSeleccionado = carritos.indexOf(carritoSelecccionado[0])
-    carritos[indexCarritoSeleccionado] = carritoSelecccionado[0];
-    escribirArchivo(pathCarrito, carritos);
-    res.json(carritos);
+    const listadoCarrito = leerArchivo(pathCarrito);
+    const listadoProductos = leerArchivo(pathProductos);
+    const carritoSelecccionado = carrito.read(listadoCarrito, idCarr); // objeto
+    const productoSeleccionado = carrito.read(listadoProductos, idProd); // objeto
+    if (carritoSelecccionado.producto === undefined) carritoSelecccionado.producto = [];
+    carritoSelecccionado.producto.push(productoSeleccionado);
+    const indexCarritoSeleccionado = listadoCarrito.indexOf(carritoSelecccionado)
+    listadoCarrito[indexCarritoSeleccionado] = carritoSelecccionado;
+    escribirArchivo(pathCarrito, listadoCarrito);
+    res.json(carritoSelecccionado);
 }
 
 function prodDelCarrito(req, res) {
     const { idCarr } = req.params;
     const carritos = leerArchivo(pathCarrito);
     const productoCarrito = carrito.read(carritos, idCarr);
-    if (productoCarrito[0].producto == undefined) return res.json({error: "El carrito no tiene productos incorporados"})
-    res.json(productoCarrito[0].producto);
+    res.json(productoCarrito.producto);
 }
 
 function elimProdDelCarrito(req, res) {
     const { idCarr, idProd } = req.params;
-    const carritos = leerArchivo(pathCarrito);
-    const carritoFiltrado = carrito.read(carritos, idCarr);
-    const carritoPostEliminado = carrito.delete(carritoFiltrado[0].producto, idProd);
-    carritoFiltrado[0].producto = carritoPostEliminado
-    const filtro = (dato) => dato.id == carritoFiltrado[0].id;
-    const result = carritos.findIndex(filtro);
-    carritos[result] = carritoFiltrado[0];
-    res.json(carritos);
+    const listadoCarrito = leerArchivo(pathCarrito);
+    const carritoFiltrado = carrito.read(listadoCarrito, idCarr);
+    const carritoPostEliminado = carrito.delete(carritoFiltrado.producto, idProd);
+    carritoFiltrado.producto = carritoPostEliminado
+    const result = listadoCarrito.findIndex(e => e.id === carritoFiltrado.id);
+    listadoCarrito[result] = carritoFiltrado;
+    escribirArchivo(pathCarrito, listadoCarrito);
+    res.json(listadoCarrito[result]);
 }
 
 module.exports = {

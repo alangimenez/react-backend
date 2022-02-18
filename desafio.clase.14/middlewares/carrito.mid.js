@@ -1,24 +1,24 @@
 const fs = require('fs');
 const { leerArchivo, escribirArchivo } = require('../persistencia/fileSystem');
+const {pathCarrito} = require('./middlewares');
 
-//se podria usar este mismo mid para validar id de carrito? pensar que el path podria venir por parametro (ver como enviar el path sin pisar los otros parametros)
 function controlId(req, res, next) {
     const { idCarr } = req.params;
-
-    const carrito = leerArchivo('./assets/carrito.txt');
-
-    // validacion 1 (esta validacion podria eliminarse)
-    if (idCarr > +carrito[carrito.length - 1].id) return res.status(404).send(`<h1>El carrito solicitado no se encuentra</h1>`)
-
-    // validacion 2
-    const filtro = (dato) => dato.id == idCarr;
-    const result = carrito.findIndex(filtro);
-    if (result == -1) return res.status(404).send(`<h1>El carrito solicitado no se encuentra</h1>`)
-
+    const carrito = leerArchivo(pathCarrito);
+    const result = carrito.findIndex(e => e.id === +idCarr);
+    if (result === -1) return res.status(404).json({error: -8, message: `El carrito solicitado no existe`});
     next();
+}
 
+function productosEnCarrito (req, res, next) {
+    const {idCarr} = req.params;
+    const carrito = leerArchivo(pathCarrito);
+    const result = carrito.find(e => e.id === +idCarr);
+    if (!result.producto) return res.status(400).json({error: -9, message: `El carrito solicitado no contiene productos cargados`})
+    next();
 }
 
 module.exports = {
-    controlId
+    controlId,
+    productosEnCarrito
 }
