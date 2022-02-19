@@ -5,6 +5,7 @@ const { pathCarrito, pathProductos } = require('../middlewares/middlewares');
 
 const carrito = new CrudBasico();
 
+// crea carrito, muestra objeto
 function crearCarrito(req, res) {
     const carritos = leerArchivo(pathCarrito);
     const {array: carritosActualizado, nuevoProducto: nuevoCarrito} = carrito.create(carritos);
@@ -12,14 +13,16 @@ function crearCarrito(req, res) {
     res.json(nuevoCarrito);
 }
 
+// elimina carrito, muestra array completo
 function eliminarCarrito(req, res) {
-    const { id } = req.params;
+    const { idCarr } = req.params;
     const carritos = leerArchivo(pathCarrito);
-    const carritosActualizado = carrito.delete(carritos, id);
+    const carritosActualizado = carrito.delete(carritos, idCarr);
     escribirArchivo(pathCarrito, carritosActualizado);
     res.json(carritosActualizado);
 }
 
+// inserta productos en carrito, muestra el carrito seleccionado completo
 function prodAlCarrito(req, res) {
     const { idCarr, idProd } = req.params;
     const listadoCarrito = leerArchivo(pathCarrito);
@@ -34,6 +37,7 @@ function prodAlCarrito(req, res) {
     res.json(carritoSelecccionado);
 }
 
+// lista todos los productos de un carrito
 function prodDelCarrito(req, res) {
     const { idCarr } = req.params;
     const carritos = leerArchivo(pathCarrito);
@@ -41,6 +45,7 @@ function prodDelCarrito(req, res) {
     res.json(productoCarrito.producto);
 }
 
+// elimina productos del carrito, muestra listado de productos del carrito
 function elimProdDelCarrito(req, res) {
     const { idCarr, idProd } = req.params;
     const listadoCarrito = leerArchivo(pathCarrito);

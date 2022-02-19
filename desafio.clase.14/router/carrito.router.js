@@ -1,30 +1,32 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
-const { validarCarrito, validarDelete, validarArchivo } = require('../middlewares/middlewares');
+const { validarArchivo } = require('../middlewares/middlewares');
 const { crearCarrito,
     eliminarCarrito,
     prodAlCarrito,
     prodDelCarrito,
     elimProdDelCarrito } = require('../controller/controller.carrito');
-const { controlId, productosEnCarrito } = require('../middlewares/carrito.mid')
+const { validarCarrito,
+    productosEnCarrito,
+    valProdDelCarrito } = require('../middlewares/carrito.mid')
+const { controlProducto } = require('../middlewares/productos.mid')
+
 
 // crear un carrito
-router.post('/', validarArchivo, crearCarrito) //ok
+router.post('/', validarArchivo, crearCarrito)
 
-// lee el archivo de carrito, revisa si el carrito existe, y lo elimina.
-router.delete('/:idCarr', [validarArchivo, controlId], eliminarCarrito) //ok
+// elimina carrito
+router.delete('/:idCarr', [validarArchivo, validarCarrito], eliminarCarrito)
 
-// se hacen validacion para saber si existe el carrito y el producto en middleware
-// luego, una vez confirmados los datos, se implementa logica para agregar los productos
-// en el carrito seleccionado, dependiendo si ya hay productos agregados o no
-router.post('/:idCarr/productos/:idProd', [validarArchivo, validarCarrito], prodAlCarrito) //ok
+// agrega productos al carrito
+router.post('/:idCarr/productos/:idProd', [validarArchivo, validarCarrito, controlProducto], prodAlCarrito)
 
-// lista los productos de un carrito, y devolvera error si el carrito no existe.
-router.get('/:idCarr/productos', [validarArchivo, controlId, productosEnCarrito], prodDelCarrito) //ok
+// array de los productos de un carrito
+router.get('/:idCarr/productos', [validarArchivo, validarCarrito, productosEnCarrito], prodDelCarrito)
 
-// en middleware valida si existe el carrito y los productos a eliminar en el carrito,
-// y una vez validado datos, logica para eliminar los productos del carrito
-router.delete('/:idCarr/productos/:idProd', [validarArchivo, validarDelete], elimProdDelCarrito) //ok
+// elimina productos de un carrito (los elimina de a uno, no todos juntos)
+router.delete('/:idCarr/productos/:idProd',
+    [validarArchivo, validarCarrito, productosEnCarrito, valProdDelCarrito],
+    elimProdDelCarrito)
 
 module.exports = router;
