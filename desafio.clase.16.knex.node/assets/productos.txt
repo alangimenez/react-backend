@@ -1,0 +1,1 @@
+[{"nombre":"libro 1","descripcion":"libro 1","precio":"1515","foto":"libro 1","stock":"1515","timestamp":"2022-02-20T19:34:08.704Z"}]

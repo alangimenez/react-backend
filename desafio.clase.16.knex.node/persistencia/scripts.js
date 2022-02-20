@@ -1,34 +1,24 @@
 const { optionsSql, optionsSqlite } = require('../databases/config')
-const knexSql = require('knex')(optionsSql);
-const knexSqlite = require('knex')(optionsSqlite);
+const { baseDeDatos } = require('../persistencia/index');
+const { conexionMensajes, conexionProductos } = require('../persistencia/index')
 
-async function verifyTable(nameTableSql, nameTableSqlite) {
+async function verifyTable() {
     try {
-        const hasTableSqlite = await knexSqlite.schema.hasTable(nameTableSqlite);
-        if (hasTableSqlite == false) {
-            await knexSqlite.schema.createTable(nameTableSqlite, table => {
-                table.increments('id').primary();
-                table.string('user'),
-                    table.string('timestamp'),
-                    table.string('message')
-            })
+
+        // comprobar tabla en sqlite
+        const hasTableSqlite = await baseDeDatos(conexionMensajes.type, conexionMensajes.nameTable).verificarTable();
+        if (hasTableSqlite === false) {
+            await baseDeDatos(conexionMensajes.type, conexionMensajes.nameTable).crearTable(conexionMensajes.info);
         }
-        const hasTableSql = await knexSql.schema.hasTable(nameTableSql);
-        if (hasTableSql == false) {
-            await knexSql.schema.createTable(nameTableSql, table => {
-                table.increments('id').primary();
-                table.integer('codigo'),
-                    table.string('nombre'),
-                    table.string('descripcion'),
-                    table.float('precio'),
-                    table.string('foto'),
-                    table.integer('stock'),
-                    table.integer('timestamp')
-            })
+
+        // comprobar tabla en mariadb
+        const hasTableSql = await baseDeDatos(conexionProductos.type, conexionProductos.nameTable).verificarTable();
+        if (hasTableSql === false) {
+            await baseDeDatos(conexionProductos.type, conexionProductos.nameTable).crearTable(conexionProductos.info);
         }
     }
     catch (e) {
-        console.log(e.message);
+        console.log(e);
     }
 
 }
