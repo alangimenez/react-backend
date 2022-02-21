@@ -1,4 +1,3 @@
-const { optionsSql, optionsSqlite } = require('../databases/config')
 const { baseDeDatos } = require('../persistencia/index');
 const { conexionMensajes, conexionProductos } = require('../persistencia/index')
 

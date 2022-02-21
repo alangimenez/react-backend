@@ -10,7 +10,9 @@ module.exports = function (server) {
         await verifyTable();
         const chat = await baseDeDatos(conexionMensajes.type, conexionMensajes.nameTable, conexionMensajes.info).readTable();
         io.sockets.emit('mensajeParaCliente', chat);
-
+        const nuevoListado = await baseDeDatos(conexionProductos.type, conexionProductos.nameTable, conexionProductos.info).readTable();
+        io.sockets.emit('productosActualizado', nuevoListado)
+        
         //producto nuevo
         socket.on('productoNuevo', async (nuevoProducto) => {
             if (nuevoProducto != undefined) {

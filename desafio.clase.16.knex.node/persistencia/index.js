@@ -2,8 +2,12 @@ const { ContenedorDB } = require('./contenedores/crudDB');
 const { ContenedorFS } = require('./contenedores/crudFS');
 const { ContenedorM } = require('./contenedores/crudM');
 
-const conexionMensajes = { type: 'memory', nameTable: 'chatsabado', info: 'mensajes' }
-const conexionProductos = { type: 'memory', nameTable: 'websocketproductos', info: 'productos' }
+// para configurar donde persistira la información, en type tiene la opcion:
+// mariadb (pasarle el nombre de tabla), mysqlite (pasarle el nombre de tabla),
+// filesystem (no hace uso del nombre de tabla) o memory (no hace uso del nombre de tabla).
+// si se coloca otro dato la aplicación dará error. 
+const conexionMensajes = { type: 'mysqlite', nameTable: 'websocketchat', info: 'mensajes' }
+const conexionProductos = { type: 'mariadb', nameTable: 'otratablaproductos', info: 'productos' }
 
 function baseDeDatos (config, nameTable, type) {
     let guardado = "";

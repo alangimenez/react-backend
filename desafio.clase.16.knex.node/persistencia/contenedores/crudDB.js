@@ -55,7 +55,7 @@ class ContenedorDB {
                         table.float('precio');
                         table.string('foto');
                         table.integer('stock');
-                        table.integer('timestamp')
+                        table.string('timestamp')
                     })
                 default:
                     break;

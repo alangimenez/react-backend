@@ -24,7 +24,7 @@ class ContenedorFS {
         }
     }
 
-    async verificarTable() {
+    verificarTable() {
         return true;
     }
 }
