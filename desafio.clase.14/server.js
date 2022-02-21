@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const bodyParser = require('body-parser');
-const fs = require('fs');
 const routerProductos = require('./router/productos.router');
 const routerCarrito = require('./router/carrito.router');
 const { validarRuta } = require('./middlewares/middlewares');
@@ -18,4 +17,4 @@ app.use(express.json());
 
 app.use('/api/productos', routerProductos);
 app.use('/api/carrito', routerCarrito);
-app.use('*', validarRuta)
+app.use('*', validarRuta);
