@@ -1,7 +1,7 @@
 const { ContenedorDB } = require('./contenedores/crudSqLite');
 const { ContenedorFS } = require('./contenedores/crudFS');
 
-config = 'memoria';
+config = 'firebase';
 
 // para configurar donde persistira la información, en type tiene la opcion:
 // mariadb (pasarle el nombre de tabla), mysqlite (pasarle el nombre de tabla),
@@ -29,6 +29,14 @@ function fnProductos() {
             const { DaoMemoriaProducto } = require('./daos/productos/daoMemoriaProductos');
             opProductos = new DaoMemoriaProducto();
             break;
+        case 'mongodb':
+            const { DaoMongoProducto } = require('./daos/productos/daoMongoProductos');
+            opProductos = new DaoMongoProducto();
+            break;
+        case 'firebase':
+            const { DaoFirebaseProductos } = require('./daos/productos/daoFirebaseProductos');
+            opProductos = new DaoFirebaseProductos();
+            break;
         default:
             break;
     }
@@ -51,6 +59,14 @@ function fnCarritos() {
         case 'memoria':
             const { DaoMemoriaCarrito } = require('./daos/carritos/daoMemoriaCarrito');
             opCarritos = new DaoMemoriaCarrito();
+            break;
+        case 'mongodb':
+            const { DaoMongoCarrito } = require('./daos/carritos/daoMongoCarrito');
+            opCarritos = new DaoMongoCarrito();
+            break;
+        case 'firebase':
+            const { DaoFirebaseCarrito } = require('./daos/carritos/daoFirebaseCarrito');
+            opCarritos = new DaoFirebaseCarrito();
             break;
         default:
             break;

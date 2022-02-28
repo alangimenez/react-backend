@@ -12,15 +12,15 @@ const { obtenerProductos,
 router.get('/', validarArchivo, obtenerProductos)
 
 // obtiene un producto en especifico
-router.get('/:idProd', [validarArchivo, controlProducto], obtenerProductoPorId) 
+router.get('/:idProd', obtenerProductoPorId) 
 
 // elimina un producto
-router.delete('/:idProd', [validarAdmin, validarArchivo, controlProducto], eliminarProducto)
+router.delete('/:idProd', [validarAdmin], eliminarProducto)
 
 // sube un nuevo producto
-router.post('/', [validarAdmin, validarArchivo, validarProduct], subirProducto)
+router.post('/', [validarAdmin], subirProducto)
 
 // actualiza datos de producto (actualiza el timestamp si o si)
-router.put('/:idProd', [validarAdmin, validarArchivo, controlProducto, controlPropProducto], modificarProducto)
+router.put('/:idProd', [validarAdmin], modificarProducto)
 
 module.exports = router;

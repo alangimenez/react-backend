@@ -8,32 +8,26 @@ const carrito = new CrudBasico();
 
 // crea carrito, muestra objeto
 async function crearCarrito(req, res) {
-    const { nuevoObjeto : nuevoCarrito } = await fnCarritos().subirInfo();
+    const nuevoCarrito = await fnCarritos().subirInfo();
     res.json(nuevoCarrito);
 }
 
 // elimina carrito, muestra array completo
-function eliminarCarrito(req, res) {
+async function eliminarCarrito(req, res) {
     const { idCarr } = req.params;
-    const carritos = leerArchivo(pathCarrito);
-    const carritosActualizado = carrito.delete(carritos, idCarr);
-    escribirArchivo(pathCarrito, carritosActualizado);
-    res.json(carritosActualizado);
+    const listadoActualizado = await fnCarritos().eliminarInfo(+idCarr)
+    res.json(listadoActualizado);
 }
 
 // inserta productos en carrito, muestra el carrito seleccionado completo
-function prodAlCarrito(req, res) {
+async function prodAlCarrito(req, res) {
     const { idCarr, idProd } = req.params;
-    const listadoCarrito = leerArchivo(pathCarrito);
-    const listadoProductos = leerArchivo(pathProductos);
-    const carritoSelecccionado = carrito.read(listadoCarrito, idCarr); // objeto
-    const productoSeleccionado = carrito.read(listadoProductos, idProd); // objeto
-    if (carritoSelecccionado.producto === undefined) carritoSelecccionado.producto = [];
-    carritoSelecccionado.producto.push(productoSeleccionado);
-    const indexCarritoSeleccionado = listadoCarrito.indexOf(carritoSelecccionado)
-    listadoCarrito[indexCarritoSeleccionado] = carritoSelecccionado;
-    escribirArchivo(pathCarrito, listadoCarrito);
-    res.json(carritoSelecccionado);
+    const productoSeleccionado = await fnProductos().leerInfoPorId(idProd);
+    if (!productoSeleccionado) return res.status(404).json({error: -1, message: `producto no encontrado`});
+    const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarr);
+    if (!carritoSeleccionado) return res.status(404).json({error: -4, message: `carrito no encontrado`});
+    const carritoActualizado = await fnCarritos().actualizarCarrito(carritoSeleccionado, productoSeleccionado);
+    res.json(carritoActualizado);
 }
 
 // lista todos los productos de un carrito

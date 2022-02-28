@@ -12,40 +12,40 @@ async function obtenerProductos(req, res) {
 }
 
 // muestra un producto
-function obtenerProductoPorId(req, res) {
+async function obtenerProductoPorId(req, res) {
     const { idProd } = req.params;
-    const prodFiltrado = fnProductos().leerInfoPorId(idProd);
+    const prodFiltrado = await fnProductos().leerInfoPorId(idProd);
+    if (!prodFiltrado) return res.status(404).json({error: -1, message: `producto no encontrado`})
     res.json(prodFiltrado);
 }
 
 // elimina un producto, muestra array completo de productos
-function eliminarProducto(req, res) {
+async function eliminarProducto(req, res) {
     const { idProd } = req.params;
-    const productosPostDelete = fnProductos().eliminarInfo(idProd)
+    const productosPostDelete = await fnProductos().eliminarInfo(idProd)
+    if (productosPostDelete.error) return res.status(400).json(productosPostDelete)
     res.json(productosPostDelete);
 }
 
 // incorpora nuevo producto, lo muestra
-function subirProducto(req, res) {
-    const productos = leerArchivo(pathProductos);
-    const { array: productosActualizado, nuevoProducto } = producto.create(productos, req.body)
-    escribirArchivo(pathProductos, productosActualizado);
+async function subirProducto(req, res) {
+    const nuevoProducto = await fnProductos().subirInfo(req.body);
+    if (nuevoProducto.error) return res.status(400).json(nuevoProducto)
     res.json(nuevoProducto);
 }
 
 // modifica un producto, lo muestra
-function modificarProducto(req, res) {
+async function modificarProducto(req, res) {
     const { idProd } = req.params;
-    const productos = leerArchivo(pathProductos);
-    // const productoSeleccionado = producto.read(productos, req.params.id); //devuelve un producto
     const prodNuevaCaract = {
         ...req.body,
         id: +idProd,
         timestamp: Date.now(),
     };
-    const { array: listadoModificado, result: indexProdModificado } = producto.put(productos, prodNuevaCaract);
-    escribirArchivo(pathProductos, listadoModificado)
-    res.json(listadoModificado[indexProdModificado]);
+    const productoModificado = await fnProductos().actualizarInfo(prodNuevaCaract)
+    if (productoModificado.error === -1) return res.status(404).json(productoModificado)
+    if (productoModificado.error === -3) return res.status(400).json(productoModificado)
+    res.json(productoModificado);
 }
 
 module.exports = {
