@@ -38,6 +38,7 @@ class CrudFS {
                 nuevoObjeto = {
                     id: idNuevo,
                     timestamp: Date.now(),
+                    productos: [],
                 };
                 datos.push(nuevoObjeto);
             }

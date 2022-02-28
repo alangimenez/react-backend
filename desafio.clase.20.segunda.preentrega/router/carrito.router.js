@@ -28,11 +28,9 @@ router.delete('/:idCarr', [validarArchivo], eliminarCarrito)
 router.post('/:idCarr/productos/:idProd', [validarArchivo], prodAlCarrito)
 
 // array de los productos de un carrito
-router.get('/:idCarr/productos', [validarArchivo, validarCarrito, productosEnCarrito], prodDelCarrito)
+router.get('/:idCarr/productos', [validarArchivo], prodDelCarrito)
 
 // elimina productos de un carrito (los elimina de a uno, no todos juntos)
-router.delete('/:idCarr/productos/:idProd',
-    [validarArchivo, validarCarrito, productosEnCarrito, valProdDelCarrito],
-    elimProdDelCarrito)
+router.delete('/:idCarr/productos/:idProd', [validarArchivo], elimProdDelCarrito)
 
 module.exports = router;

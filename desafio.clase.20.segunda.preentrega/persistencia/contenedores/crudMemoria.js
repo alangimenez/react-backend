@@ -65,6 +65,7 @@ class CrudMemoria {
             nuevoObjeto = {
                 id: idNuevo,
                 timestamp: Date.now(),
+                productos: []
             };
         }
         this.data.push(nuevoObjeto);

@@ -26,29 +26,29 @@ async function prodAlCarrito(req, res) {
     if (!productoSeleccionado) return res.status(404).json({error: -1, message: `producto no encontrado`});
     const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarr);
     if (!carritoSeleccionado) return res.status(404).json({error: -4, message: `carrito no encontrado`});
-    const carritoActualizado = await fnCarritos().actualizarCarrito(carritoSeleccionado, productoSeleccionado);
+    const carritoActualizado = await fnCarritos().actualizarProdEnCarrito(carritoSeleccionado, productoSeleccionado);
     res.json(carritoActualizado);
 }
 
 // lista todos los productos de un carrito
-function prodDelCarrito(req, res) {
+async function prodDelCarrito(req, res) {
     const { idCarr } = req.params;
-    const carritos = leerArchivo(pathCarrito);
-    const productoCarrito = carrito.read(carritos, idCarr);
-    res.json(productoCarrito.producto);
+    const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarr);
+    if (!carritoSeleccionado) return res.status(404).json({error: -4, message: `carrito no encontrado`})
+    if (carritoSeleccionado.productos.length === 0) return res.json({error: -5, message: `el carrito no posee productos`})
+    res.json(carritoSeleccionado.productos);
 }
 
 // elimina productos del carrito, muestra listado de productos del carrito
-function elimProdDelCarrito(req, res) {
+async function elimProdDelCarrito(req, res) {
     const { idCarr, idProd } = req.params;
-    const listadoCarrito = leerArchivo(pathCarrito);
-    const carritoFiltrado = carrito.read(listadoCarrito, idCarr);
-    const carritoPostEliminado = carrito.delete(carritoFiltrado.producto, idProd);
-    carritoFiltrado.producto = carritoPostEliminado
-    const result = listadoCarrito.findIndex(e => e.id === carritoFiltrado.id);
-    listadoCarrito[result] = carritoFiltrado;
-    escribirArchivo(pathCarrito, listadoCarrito);
-    res.json(listadoCarrito[result]);
+    const listadoCarritos = await fnCarritos().leerInfo();
+    const carritoSeleccionado = listadoCarritos.find(e => e.id === +idCarr);
+    if (!carritoSeleccionado) return res.status(404).json({error: -4, message: `carrito no encontrado`});
+    const prodEnCarrito = carritoSeleccionado.productos.find(e => e.id === +idProd);
+    if (!prodEnCarrito) return res.status(400).json({error: -6, message: `el producto no existe en el carrito`});
+    const carritoActualizado = await fnCarritos().eliminarProdEnCarrito(listadoCarritos, carritoSeleccionado, prodEnCarrito)
+    res.json(carritoActualizado);
 }
 
 module.exports = {

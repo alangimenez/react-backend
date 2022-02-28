@@ -52,6 +52,7 @@ class CrudFirebase {
             await doc.create({
                 id: idNuevo,
                 timestamp: Date.now(),
+                productos: [],
             });
         }
         return this.leerInfoPorId(idNuevo)
