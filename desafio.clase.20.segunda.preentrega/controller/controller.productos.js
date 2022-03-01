@@ -1,9 +1,4 @@
-const { CrudBasico } = require('../persistencia/crud');
-const { leerArchivo, escribirArchivo } = require('../persistencia/fileSystem');
-const pathProductos = `./assets/productos.txt`;
-const { fnProductos, fnCarritos } = require('../persistencia/index');
-
-const producto = new CrudBasico();
+const { fnProductos } = require('../persistencia/index');
 
 // muestra todos los productos
 async function obtenerProductos(req, res) {
@@ -54,5 +49,4 @@ module.exports = {
     eliminarProducto,
     subirProducto,
     modificarProducto,
-    pathProductos
 }

@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { validarAdmin, validarArchivo } = require('../middlewares/middlewares');
-const { controlProducto, validarProduct, controlPropProducto } = require('../middlewares/productos.mid')
+const { validarAdmin } = require('../middlewares/middlewares');
 const { obtenerProductos,
     obtenerProductoPorId,
     eliminarProducto,
@@ -9,7 +8,7 @@ const { obtenerProductos,
     modificarProducto } = require('../controller/controller.productos');
 
 // obtiene array de productos
-router.get('/', validarArchivo, obtenerProductos)
+router.get('/', obtenerProductos)
 
 // obtiene un producto en especifico
 router.get('/:idProd', obtenerProductoPorId) 

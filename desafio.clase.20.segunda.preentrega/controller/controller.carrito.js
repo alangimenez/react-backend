@@ -1,10 +1,4 @@
-const fs = require('fs');
-const { CrudBasico } = require('../persistencia/crud');
-const { leerArchivo, escribirArchivo } = require('../persistencia/fileSystem');
-const { pathCarrito, pathProductos } = require('../middlewares/middlewares');
 const { fnProductos, fnCarritos } = require('../persistencia/index');
-
-const carrito = new CrudBasico();
 
 // crea carrito, muestra objeto
 async function crearCarrito(req, res) {

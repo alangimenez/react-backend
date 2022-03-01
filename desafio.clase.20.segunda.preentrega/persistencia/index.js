@@ -1,26 +1,8 @@
-const { ContenedorDB } = require('./contenedores/crudSqLite');
-const { ContenedorFS } = require('./contenedores/crudFS');
-
 config = process.env.PERSISTENCIA;
-
-// para configurar donde persistira la información, en type tiene la opcion:
-// mariadb (pasarle el nombre de tabla), mysqlite (pasarle el nombre de tabla),
-// filesystem (no hace uso del nombre de tabla) o memory (no hace uso del nombre de tabla).
-// si se coloca otro dato la aplicación dará error. 
-const conexionMensajes = { type: 'mysqlite', nameTable: 'websocketchat', info: 'mensajes' }
-const conexionProductos = { type: 'mariadb', nameTable: 'otratablaproductos', info: 'productos' }
 
 function fnProductos() {
     let opProductos = "";
     switch (config) {
-        case 'mariadb':
-            const { DaoMemoriaProductoMariaDB } = require('./daos/productos/daoMariaDBProductos');
-            opProductos = new DaoMemoriaProductoMariaDB('websocketproductos');
-            break;
-        case 'mysqlite':
-            const { DaoMemoriaProductoSQLite } = require('./daos/productos/daoSqLiteProductos');
-            opProductos = new DaoMemoriaProductoSQLite('websocketproductos');
-            break;
         case 'filesystem':
             const { DaoMemoriaProductoFS } = require('./daos/productos/daoFileSystemProductos');
             opProductos = new DaoMemoriaProductoFS();
@@ -46,12 +28,6 @@ function fnProductos() {
 function fnCarritos() {
     let opCarritos = "";
     switch (config) {
-        case 'mariadb':
-            productos = new ContenedorDB(config, nameTable);
-            break;
-        case 'mysqlite':
-            productos = new ContenedorDB(config, nameTable);
-            break;
         case 'filesystem':
             const { DaoMemoriaCarritoFS } = require('./daos/carritos/daoFileSystemCarrito');
             opCarritos = new DaoMemoriaCarritoFS();
@@ -73,8 +49,6 @@ function fnCarritos() {
     }
     return opCarritos;
 }
-
-
 
 module.exports = {
     fnProductos,
