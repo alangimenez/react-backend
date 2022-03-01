@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 const bodyParser = require('body-parser');
 const routerProductos = require('./router/productos.router');
 const routerCarrito = require('./router/carrito.router');

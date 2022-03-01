@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const uri = `mongodb+srv://leonel654321:programacion@coderhouse.7epn5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = process.env.MONGODB_URI;
 const { controlProps } = require('../../middlewares/controlProps');
 
 (async () => {

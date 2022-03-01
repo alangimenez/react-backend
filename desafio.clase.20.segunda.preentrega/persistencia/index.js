@@ -1,7 +1,7 @@
 const { ContenedorDB } = require('./contenedores/crudSqLite');
 const { ContenedorFS } = require('./contenedores/crudFS');
 
-config = 'memoria';
+config = process.env.PERSISTENCIA;
 
 // para configurar donde persistira la información, en type tiene la opcion:
 // mariadb (pasarle el nombre de tabla), mysqlite (pasarle el nombre de tabla),

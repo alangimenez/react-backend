@@ -1,7 +1,7 @@
 const admin = require("firebase-admin");
 const { controlProps } = require('../../middlewares/controlProps');
 
-const serviceAccount = require('../../databases/backend-ecommerce-c1032-firebase-adminsdk-jmi0l-5bbf875df7.json');
+const serviceAccount = require(process.env.FIREBASE_ROUTE);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
