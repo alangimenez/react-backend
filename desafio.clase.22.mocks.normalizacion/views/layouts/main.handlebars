@@ -73,12 +73,16 @@
     <div class="container">
         <h1 style="text-align: center">Centro de mensajes de handlebars</h1>
         <h3 id="mensajeCompresion"></h3>
-        <label for="email">Ingrese su email</label>
-        <input id="email" type="email">
+        <div style="margin: 1rem 1rem 1rem 0">
+            <label for="email">Ingrese su email</label>
+            <input id="email" type="email">
+        </div>
+        <div style="margin: 1rem 1rem 1rem 0">
+            <label for="mensaje">Ingrese su mensaje</label>
+            <input id="mensaje" type="text">
+        </div>
+        <button type="button" class="btn btn-dark" style="margin-bottom: 1rem" onclick=enviarMensaje()>Enviar</button>
         <div id="chat"></div>
-        <label for="mensaje">Ingrese su mensaje</label>
-        <input id="mensaje" type="text">
-        <button type="button" class="btn btn-dark" onclick=enviarMensaje()>Enviar</button>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>

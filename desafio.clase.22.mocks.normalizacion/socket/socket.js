@@ -1,7 +1,7 @@
 const { verifyTable } = require('../persistencia/scripts');
 const { baseDeDatos } = require('../persistencia/index');
 const { conexionMensajes, conexionProductos } = require('../persistencia/index')
-const { normalizarMensaje } = require('../persistencia/utils/normalizr')
+const { normalizarMensaje } = require('../utils/normalizr')
 const util = require('util');
 
 module.exports = function (server) {

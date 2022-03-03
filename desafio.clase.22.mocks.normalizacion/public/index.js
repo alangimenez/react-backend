@@ -34,7 +34,7 @@ socket.on('mensajeParaCliente', (dato) => {
         chat: [mensajeSchema]
     })
     const datoDesnormalizado = normalizr.denormalize(dato.result, chatSchema, dato.entities);
-    const historialMostrar = datoDesnormalizado.chat.map(e => {
+    const historialMostrar = datoDesnormalizado.chat.reverse().map(e => {
         return `<strong style="color:blue">${e.author.id}</strong>
         <span style="color:brown">${e.id}</span> 
         <em style="color:green">${e.text}</em> <br>`
