@@ -20,7 +20,7 @@ router.use(session({
     saveUninitialized: false,
     rolling: true, // esta propiedad hace que se reinicie el tiempo de expiracion
     store: MongoStore.create({
-        mongoUrl: `mongodb+srv://leonel654321:<password>@coderhouse.7epn5.mongodb.net/myThirdDatabase?retryWrites=true&w=majority`,
+        mongoUrl: `mongodb+srv://leonel654321:C0mput4d0r4s.@coderhouse.7epn5.mongodb.net/myThirdDatabase?retryWrites=true&w=majority`,
         ttl: 60,
     }),
     cookie: {

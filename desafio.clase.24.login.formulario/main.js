@@ -30,10 +30,16 @@ app.set('view engine', 'handlebars');
 
 // rutas
 app.use('/', homePage);
-app.get('/login', (req, res) => res.sendFile(__dirname + '/public/login.html'));
+app.get('/login', (req, res) => res.render('../views/login'));
 app.get('/logout', (req, res) => {
-  req.session.destroy(() => {
-    res.clearCookie('my-session');
-    /* res.sendFile(__dirname + '/public/logout.html') */
-  })
+  if (req.session.user) {
+    const user = req.session.user;
+    req.session.destroy(() => {
+      res.clearCookie('my-session');
+      res.render('../views/logout', { usuario: user });
+    })
+  } else {
+    res.redirect('/login')
+  }
+
 })

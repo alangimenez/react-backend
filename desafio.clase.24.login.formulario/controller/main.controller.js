@@ -13,7 +13,7 @@ const productosRandom = (req, res) => {
 const renderizarVista = (req, res) => {
     {
         try {
-            res.render('../public/table', { mensaje: req.session.user });
+            res.render('../views/table', { mensaje: req.session.user });
         }
         catch (e) {
             console.log(e.message);
