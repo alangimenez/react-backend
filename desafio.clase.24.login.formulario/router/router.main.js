@@ -11,15 +11,21 @@ router.use(express.urlencoded({ extended: true }));
 // session
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const { cookie } = require('express/lib/response');
 
 router.use(session({
     name: 'my-session',
     secret: 'top-secret-51',
     resave: false,
     saveUninitialized: false,
+    rolling: true, // esta propiedad hace que se reinicie el tiempo de expiracion
     store: MongoStore.create({
-        mongoUrl: `mongodb+srv://leonel654321:C0mput4d0r4s.@coderhouse.7epn5.mongodb.net/myThirdDatabase?retryWrites=true&w=majority`
-    })
+        mongoUrl: `mongodb+srv://leonel654321:<password>@coderhouse.7epn5.mongodb.net/myThirdDatabase?retryWrites=true&w=majority`,
+        ttl: 60,
+    }),
+    cookie: {
+        maxAge: 60000,
+    }
 }));
 
 router.get('/', async (req, res) => {

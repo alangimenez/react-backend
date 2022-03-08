@@ -34,6 +34,6 @@ app.get('/login', (req, res) => res.sendFile(__dirname + '/public/login.html'));
 app.get('/logout', (req, res) => {
   req.session.destroy(() => {
     res.clearCookie('my-session');
-    res.sendFile(__dirname + '/public/logout.html')
+    /* res.sendFile(__dirname + '/public/logout.html') */
   })
 })
