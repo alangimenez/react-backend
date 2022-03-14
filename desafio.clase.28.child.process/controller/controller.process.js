@@ -1,7 +1,7 @@
 const minimist = require('minimist');
 const { fork } = require('child_process');
 
-const argumentos = minimist(process.argv.splice(2));
+const argumentos = minimist(process.argv.slice(2));
 
 const datosProcess = (req, res) => {
     let informacion = {

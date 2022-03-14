@@ -1,7 +1,7 @@
 require('dotenv').config()
 const minimist = require('minimist');
 
-const argumentos = minimist(process.argv.splice(2), {
+const argumentos = minimist(process.argv.slice(2), {
     default: {
         PORT: 8080
     }
