@@ -1,3 +1,19 @@
+Desafio 28 (child process)
+Está hecho sobre el desafio 20 y no sobre el último desafio (me equivoque al copiar la carpeta, espero que no 
+haya problema). 
+Se agrego la ruta /api/randoms que genera 100 millones de números y muestra en una tabla cuanto ha 
+salido cada número del 1 al 1000. El proceso de calculo de los 100 millones de números se genera en un proceso secundario (y si se intenta hacer otro request durante el tiempo que corre el proceso, el servidor sigue 
+respondiendo). 
+Se agrego la ruta /info que muestra los datos del proyecto solicitados. Tener presente que los argumentos 
+que muestra son SOLAMENTE los que se pasen sueltos (entendi que pedia eso, pero si no avisarme y lo modifico).
+Se agrego un archivo .env para pasarle los datos sensibles (puerto, modo de persistencia, ruta mongodb y ruta
+de credencial Firebase). El puerto se pasa por linea de comandos (--PORT) y si no será 8080 por defecto.
+
+Me queda la siguiente duda: al ejecutar node server.js --PORT xxxx, me toma xxxx como puerto de escucha (lo cual
+es correcto), pero si le paso npm run start-dev --PORT xxxx, no me toma al puerto xxxx (y por ende pasa al puerto
+por defecto que es 8080). No pude dar con el motivo por el cual hace esto, no se si tendra algo que ver con 
+nodemon.
+
 Desafio 20 (segunda preentrega)
 Esta entrega para funcionar necesita de un archivo .env y de la clave privada de autenticación para firebase.
 El modelo de archivo .env es el siguiente:

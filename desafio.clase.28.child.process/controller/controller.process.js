@@ -17,7 +17,7 @@ const datosProcess = (req, res) => {
 }
 
 const random = (req, res) => {
-    let numero = 25000000;
+    let numero = 10000000;
     let arrayNumeros = [];
     if (req.query.cant) {
         numero = req.query.cant
