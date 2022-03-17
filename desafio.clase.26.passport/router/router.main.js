@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('../middlewares/passport');
 
-const { renderizarVista, productosRandom, login, logout, registro } = require('../controller/main.controller');
+const { renderizarVista, productosRandom, logout, registro } = require('../controller/main.controller');
 
 router.use(express.json());
 router.use('/', express.static('public'));
@@ -12,11 +12,11 @@ router.use(express.urlencoded({ extended: true }));
 // session
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const { cookie } = require('express/lib/response');
+// const { cookie } = require('express/lib/response');
 
 router.use(session({
     name: 'my-session',
-    secret: 'top-secret-51',
+    secret: 'gatos',
     resave: false,
     saveUninitialized: false,
     rolling: true,
@@ -25,7 +25,7 @@ router.use(session({
         ttl: 60,
     }),
     cookie: {
-        maxAge: 60000,
+        maxAge: 600000,
     }
 }));
 router.use(passport.initialize());
@@ -46,11 +46,6 @@ router.post('/login',
     async (req, res) => {
         res.redirect('/');
     });
-
-router.get('/profile', async (req, res) => {
-    const user = await req.session.user;
-    res.json(user);
-})
 
 router.get('/login', (req, res) => res.render('../views/login'));
 

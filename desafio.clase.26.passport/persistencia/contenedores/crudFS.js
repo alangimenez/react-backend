@@ -16,11 +16,8 @@ class ContenedorFS {
     writeTable(message) {
         try {
             const datos = this.readTable();
-            const existeUsuario = datos.find(e => e.email === message.email);
-            if (existeUsuario) return {error: 'email ya registrado'}
             datos.push(message);
-            this.fs.writeFileSync(this.path, JSON.stringify(datos), 'utf-8');
-            return message;
+            this.fs.writeFileSync(this.path, JSON.stringify(datos), 'utf-8')
         }
         catch (e) {
             console.log(e.message);

@@ -14,16 +14,25 @@ es correcto), pero si le paso npm run start-dev --PORT xxxx, no me toma al puert
 por defecto que es 8080). No pude dar con el motivo por el cual hace esto, no se si tendra algo que ver con 
 nodemon.
 
+Desafio 26 (passport)
+Este desafio está hecho sobre el desafio 24. Se incorporó passport para el registro y login de los usuarios,
+así como las pantallas de error si se ingresa contraseña invalida, o un usuario incorrecto. También se agregó
+los enlaces para poder redirigirse al login desde las pantallas de error y desde las vistas de registro y login.
+Tanto la sesión, como los datos de usuarios se guardan en MongoDB. Las funcionalidades anteriores se mantuvieron 
+sin cambios (agregar productos, el chat y el generar datos random con Faker.js, teniendo persistencia en 
+FileSystem para hacerlo mas rápido dado que era el CRUD mas a mano). Este desafio solo tiene un DAOs implementado
+para MongoDB, el resto no lo tiene porque originalmente este desafio era sin DAOs. 
+
 Desafio 20 (segunda preentrega)
 Esta entrega para funcionar necesita de un archivo .env y de la clave privada de autenticación para firebase.
 El modelo de archivo .env es el siguiente:
 
 PORT=8080
-# la persistencia puede ser firebase, mongodb, memoria o filesystem
+la persistencia puede ser firebase, mongodb, memoria o filesystem
 PERSISTENCIA="firebase"
-# se coloca la ruta uri de mongodb
+se coloca la ruta uri de mongodb
 MONGODB_URI=`ruta/de/mongodb/uri`
-# se coloca la ruta del archivo .json para acceder a firebase
+se coloca la ruta del archivo .json para acceder a firebase
 FIREBASE_ROUTE='ruta/del/archivo/.json/para/acceder/a/firebase'
 
 No se implemento la funcionalidad en SQlite y MariaDB dado que era opcional, y preferi centrarme en hacer lo indispensable del desafio para poder avanzar con los últimos 2 desafios que me restan para estar al día. Me hice bastante lio con MongoDB pero creo que ha quedado bien. Todo el feedback es bienvenido, por lo que si algo no funciona correctamente, favor de avisarme!
