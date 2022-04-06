@@ -1,0 +1,6 @@
+[2022-04-05T22:03:46.294] [WARN] warningsFile - Peticion incorrecta a /, metodo GET
+[2022-04-05T22:04:34.118] [WARN] warningsFile - Peticion incorrecta a /, metodo GET
+[2022-04-05T22:06:29.578] [WARN] warningsFile - Peticion incorrecta a /api/product, metodo GET
+[2022-04-05T22:06:43.622] [WARN] warningsFile - Peticion incorrecta a /api/product, metodo DELETE
+[2022-04-05T22:07:03.555] [WARN] warningsFile - Peticion incorrecta a /api/produ, metodo DELETE
+[2022-04-05T22:09:26.010] [WARN] warningsFile - Peticion incorrecta a /api/produ, metodo DELETE
