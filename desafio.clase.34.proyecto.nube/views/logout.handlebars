@@ -1,0 +1,19 @@
+<div class="container" style="background-color: grey">
+    <h1 id="deslogueo" style="padding: 1rem">Hasta pronto, {{usuario}}</h1>
+</div>
+<script>
+    if (window.location.href === "http://localhost:8080/logout") {
+        window.onload = function () {
+            setTimeout(() => {
+                window.location.href = "http://localhost:8080/login"
+            }, 2000)
+        }
+    } else {
+        window.onload = function () {
+            setTimeout(() => {
+                window.location.href = "https://coderhousedesafio34.herokuapp.com/login"
+            }, 2000)
+        }
+    }
+
+</script>

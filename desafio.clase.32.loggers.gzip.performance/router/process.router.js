@@ -8,6 +8,16 @@ const { logger, infoLogger, warningLogger, errorLogger } = require('../log4js/in
 router.get('/info', (req, res) => {
     logger.info(`Peticion a ${req.url}, metodo ${req.method}`)
     const informacion = datosProcess(req, res);
+    console.log({
+        titulo: `Informacion de sistema`,
+        argumentos: informacion.argumentos,
+        plataforma: informacion.plataforma,
+        version: informacion.version,
+        memoria: informacion.memoria,
+        pathEjecucion: informacion.pathEjecucion,
+        id: informacion.id,
+        carpeta: informacion.carpeta,
+    });
     res.render('info', {
         titulo: `Informacion de sistema`,
         argumentos: informacion.argumentos,
@@ -20,6 +30,6 @@ router.get('/info', (req, res) => {
     })
 });
 
-router.get('/api/randoms', (req, res) => random (req, res))
+// router.get('/api/randoms', (req, res) => random (req, res))
 
 module.exports = router;

@@ -1,0 +1,1 @@
+[{"firstname":"Alan","lastname":"Gimenez","email":"alan@gmail.com","password":"$2b$10$oYqgQXl1UXmppbO7hIgu7.LbaWEffWLt6Et17o6nFxxyOL4S6W9F6"},{"firstname":"Alan","lastname":"Gimenez","id":"alan@gmail.com","password":"$2b$10$UvmcKj.8qYnKtCJ2wT2VUOWBlVoKPrGUU5Id.ICemhLVDOR80SDFi"}]
