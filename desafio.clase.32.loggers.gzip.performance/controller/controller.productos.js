@@ -1,6 +1,6 @@
 const { fnProductos } = require('../persistencia/index');
 
-const { logger, errorLogger } = require('../log4js/index');
+const { logger, errorLogger } = require('../config/log4js');
 
 // muestra todos los productos
 async function obtenerProductos(req, res) {

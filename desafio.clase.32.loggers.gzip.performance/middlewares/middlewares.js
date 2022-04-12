@@ -2,7 +2,7 @@ const admin = true;
 const { leerArchivo } = require('../persistencia/fileSystem');
 const pathCarrito = './assets/carrito.txt';
 const pathProductos = './assets/productos.txt';
-const { warningLogger, errorLogger } = require('../log4js/index');
+const { warningLogger, errorLogger } = require('../config/log4js');
 
 // revisa si es admin o no
 function validarAdmin(req, res, next) {

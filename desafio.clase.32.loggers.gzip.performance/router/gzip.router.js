@@ -3,7 +3,7 @@ const router = express.Router();
 const { datosProcess, random } = require('../controller/controller.process');
 const compression = require('compression');
 
-const { logger, infoLogger, warningLogger, errorLogger } = require('../log4js/index');
+const { logger, infoLogger, warningLogger, errorLogger } = require('../config/log4js');
 
 router.use(compression());
 

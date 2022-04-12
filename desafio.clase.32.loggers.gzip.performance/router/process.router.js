@@ -3,7 +3,7 @@ const router = express.Router();
 const { datosProcess, random } = require('../controller/controller.process');
 
 // logger
-const { logger, infoLogger, warningLogger, errorLogger } = require('../log4js/index');
+const { logger, infoLogger, warningLogger, errorLogger } = require('../config/log4js');
 
 router.get('/info', (req, res) => {
     logger.info(`Peticion a ${req.url}, metodo ${req.method}`)

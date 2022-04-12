@@ -10,7 +10,7 @@ const { validarRuta } = require('./middlewares/middlewares');
 const { engine } = require('express-handlebars');
 
 // logger
-const { logger, consoleLogger, infoLogger, warningLogger, errorLogger } = require('./log4js/index');
+const { logger, consoleLogger, infoLogger, warningLogger, errorLogger } = require('./config/log4js');
 
 // motor de plantillas
 app.set('views', './views');

@@ -1,7 +1,7 @@
 const { fnProductos, fnCarritos } = require('../persistencia/index');
 
 // logger
-const { logger, errorLogger } = require('../log4js/index');
+const { logger, errorLogger } = require('../config/log4js');
 
 // crea carrito, muestra objeto
 async function crearCarrito(req, res) {
