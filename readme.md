@@ -24,3 +24,4 @@ Perdón por el error del desafío del cual partir, pero bueno, ya que lo habia h
 
 
 PD: el informe lo deje en Word, porque si lo imprimo en .pdf, no se porque desaparecían las imágenes! 
+PD2: para poder inicializar el proyecto, se debe crear un archivo .env, que debe ser como el archivo example.env.js, donde se setea la variable URI_MONGODB para poder conectarse a la base de datos correspondiente. Está es la única variable de entorno que necesita para funcionar.
