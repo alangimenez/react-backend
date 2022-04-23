@@ -1,0 +1,17 @@
+<div style="display: flex; justify-content: space-around">
+    {{#each listaProductos}}
+
+    <div class="card" style="width: 18rem;">
+        {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+        <div class="card-body">
+            <h5 class="card-title">{{this.nombre}}</h5>
+            <p class="card-text">{{this.descripcion}}</p>
+            <p class="card-text">Stock: {{this.stock}}</p>
+            <p class="card-text">Timestamp: {{this.timestamp}}</p>
+            <p class="card-text">Precio: <strong>{{this.precio}}</strong></p>
+            <a href='/api/productos/{{this.id}}'' class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+{{/each}}
+</div>

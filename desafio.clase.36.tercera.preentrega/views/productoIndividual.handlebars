@@ -1,0 +1,29 @@
+<div class="card" style="width: 18rem;">
+    {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+    <div class="card-body">
+        <h5 class="card-title">{{objeto.nombre}}</h5>
+        <p class="card-text">{{objeto.descripcion}}</p>
+        <p class="card-text">Stock: {{objeto.stock}}</p>
+        <p class="card-text">Timestamp: {{objeto.timestamp}}</p>
+        <p class="card-text">Precio: <strong>{{objeto.precio}}</strong></p>
+        <button onclick=post()>Agregar al carrito</button>
+    </div>
+    <div id="mensaje"></div>
+</div>
+
+<script>
+    function post() {
+        document.getElementById("mensaje").innerHTML = "Aguarde un momento";
+        fetch(`http://localhost:8080/api/carrito/3/productos/{{objeto.id}}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(data =>
+            data.json()
+        ).then(response => {
+            console.log(response);
+            document.getElementById("mensaje").innerHTML = "El producto fue agregado con éxito";
+        }).catch(error => console.error('Error:', error))
+    }
+</script>

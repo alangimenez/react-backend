@@ -3,7 +3,8 @@ const { fnProductos } = require('../persistencia/index');
 // muestra todos los productos
 async function obtenerProductos(req, res) {
     const prod = await fnProductos().leerInfo();
-    res.json(prod);
+    // res.json(prod);
+    res.render('../views/productos', {listaProductos: prod});
 }
 
 // muestra un producto
@@ -11,7 +12,8 @@ async function obtenerProductoPorId(req, res) {
     const { idProd } = req.params;
     const prodFiltrado = await fnProductos().leerInfoPorId(idProd);
     if (!prodFiltrado) return res.status(404).json({error: -1, message: `producto no encontrado`})
-    res.json(prodFiltrado);
+    // res.json(prodFiltrado);
+    res.render('../views/productoIndividual', {objeto: prodFiltrado});
 }
 
 // elimina un producto, muestra array completo de productos

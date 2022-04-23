@@ -17,12 +17,12 @@ class CrudMongo {
     }
 
     async leerInfo() {
-        const informacion = await this.model.find({}, { __v: 0 });
+        const informacion = await this.model.find({}, { __v: 0 }).lean();
         return informacion;
     }
 
     async leerInfoPorId(id) {
-        let prodFiltrado = await this.model.find({id: id}, { __v: 0 });
+        let prodFiltrado = await this.model.find({id: id}, { __v: 0 }).lean();
         if (prodFiltrado.length === 0) prodFiltrado = "";
         return prodFiltrado[0];
     }

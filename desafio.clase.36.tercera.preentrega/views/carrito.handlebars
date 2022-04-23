@@ -1,0 +1,18 @@
+<div>
+    <h2>{{carrito.id}}</h2>
+    <table class="table">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Precio</th>
+            </tr>
+            <div></div>
+            {{#each productosEnCarrito}}
+            <tr>
+                <td>{{this.nombre}}</td>
+                <td>{{this.descripcion}}</td>
+                <td>{{this.precio}}</td>
+            </tr>
+            {{/each}}
+        </table>
+</div>

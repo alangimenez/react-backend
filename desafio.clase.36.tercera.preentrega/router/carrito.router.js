@@ -14,6 +14,12 @@ router.get('/', async (req, res) => {
     res.json(listadoCarritos);
 })
 
+router.get('/:idCarr', async (req, res) => {
+    const carritoFiltrado = await fnCarritos().leerInfoPorId(req.params.idCarr);
+    console.log(carritoFiltrado);
+    res.render('../views/carrito', {productosEnCarrito: carritoFiltrado.productos})
+})
+
 // crear un carrito
 router.post('/', validarArchivo, crearCarrito)
 
