@@ -1,0 +1,18 @@
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+const coleccion = 'usuarios';
+
+const usuarioSchema = new Schema ({
+    id: {type: String},
+    password: {type: String},
+    nombre: {type: String},
+    direccion: {type: String},
+    edad: {type: Number},
+    telefono: {type: String}
+    // falta subir foto, debe guardarse en espacio publico
+})
+
+const Usuario = mongoose.model(coleccion, usuarioSchema);
+
+module.exports = Usuario;

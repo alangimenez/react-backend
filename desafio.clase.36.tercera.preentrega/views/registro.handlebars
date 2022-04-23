@@ -1,0 +1,37 @@
+<div class="container" style="background-color: grey">
+    <h1 style="padding: 1rem">Registro de usuario</h1>
+    <div style="padding: 1rem">
+        <form action="/api/usuario/registro" method="POST">
+            <label id="username" style="margin: 0.5rem 0rem"><strong>Email</strong></label>
+            <br>
+            <input id="username" name="username" type="email" style="margin: 0.5rem 0rem">
+            <br>
+            <label id="password" style="margin: 0.5rem 0rem"><strong>Contraseña</strong></label>
+            <br>
+            <input id="password" name="password" type="password" style="margin: 0.5rem 0rem">
+            <br>
+            <label id="passwordRetry" style="margin: 0.5rem 0rem"><strong>Confirme contraseña</strong></label>
+            <br>
+            <input id="passwordRetry" name="passwordRetry" type="password" style="margin: 0.5rem 0rem">
+            <br>
+            <label id="firstname" style="margin: 0.5rem 0rem"><strong>Nombre</strong></label>
+            <br>
+            <input id="firstname" name="firstname" style="margin: 0.5rem 0rem">
+            <br>
+            <label id="direction" style="margin: 0.5rem 0rem"><strong>Direccion</strong></label>
+            <br>
+            <input id="direction" name="direction" style="margin: 0.5rem 0rem">
+            <br>
+            <label id="age" style="margin: 0.5rem 0rem"><strong>Edad</strong></label>
+            <br>
+            <input id="age" name="age" style="margin: 0.5rem 0rem">
+            <br>
+            <label id="telephone" style="margin: 0.5rem 0rem"><strong>Telefono</strong></label>
+            <br>
+            <input id="telephone" name="telephone" style="margin: 0.5rem 0rem">
+            <br>
+            <button type="submit" class="btn btn-dark" style="margin: 0.5rem 0rem">Registrarse</button>
+        </form>
+    </div>
+    <p style="font-weight: bold">Si desea loguearse, haga click <a href="/api/usuario/login">aquí</a></p>
+</div>
