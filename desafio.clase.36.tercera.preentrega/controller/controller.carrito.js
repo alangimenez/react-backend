@@ -1,4 +1,6 @@
 const { fnProductos, fnCarritos } = require('../persistencia/index');
+const {enviarMailPedido} = require('../utils/nodemailer');
+const whatsapp = require('../utils/twilio');
 
 // crea carrito, muestra objeto
 async function crearCarrito(req, res) {
@@ -45,10 +47,18 @@ async function elimProdDelCarrito(req, res) {
     res.json(carritoActualizado);
 }
 
+async function confirmarCompra (req, res) {
+    const carrito = await fnCarritos().leerInfoPorId(req.params.idCarr);
+    const productosConfirmados = carrito.productos;
+    enviarMail("Alan", "Alan", productosConfirmados);
+    whatsapp('+5491122558261', 'Alan', 'Alan');
+}
+
 module.exports = {
     crearCarrito,
     eliminarCarrito,
     prodAlCarrito,
     prodDelCarrito,
-    elimProdDelCarrito
+    elimProdDelCarrito, 
+    confirmarCompra
 }

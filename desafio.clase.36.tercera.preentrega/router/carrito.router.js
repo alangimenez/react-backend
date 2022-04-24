@@ -5,7 +5,8 @@ const { crearCarrito,
     eliminarCarrito,
     prodAlCarrito,
     prodDelCarrito,
-    elimProdDelCarrito } = require('../controller/controller.carrito');
+    elimProdDelCarrito,
+    confirmarCompra } = require('../controller/controller.carrito');
 const { fnCarritos } = require('../persistencia/index');
 
 // ver carritos (eliminar luego de controlado todo, porque la consigna no lo pide)
@@ -16,8 +17,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:idCarr', async (req, res) => {
     const carritoFiltrado = await fnCarritos().leerInfoPorId(req.params.idCarr);
-    console.log(carritoFiltrado);
-    res.render('../views/carrito', {productosEnCarrito: carritoFiltrado.productos})
+    res.render('../views/carrito', { productosEnCarrito: carritoFiltrado.productos })
 })
 
 // crear un carrito
@@ -34,5 +34,7 @@ router.get('/:idCarr/productos', [validarArchivo], prodDelCarrito)
 
 // elimina productos de un carrito (los elimina de a uno, no todos juntos)
 router.delete('/:idCarr/productos/:idProd', [validarArchivo], elimProdDelCarrito)
+
+router.post('/:idCarr/confirmar', (req, res) => confirmarCompra(req, res))
 
 module.exports = router;

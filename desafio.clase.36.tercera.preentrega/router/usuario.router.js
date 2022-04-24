@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('../middlewares/passport');
 
-const email = require('../utils/nodemailer');
+const {enviarMailRegistro} = require('../utils/nodemailer');
 
 const { renderizarVista, productosRandom, logout, registro } = require('../controller/controller.usuario');
 
@@ -55,7 +55,7 @@ router.get('/logout', (req, res) => logout(req, res))
 router.post('/registro',
     passport.authenticate('registro', { failureRedirect: '/api/usuario/registro-error' }),
     (req, res) => {
-        email();
+        enviarMailRegistro(req.body.username, req.body.firstname, req.body.direction, req.body.age, req.body.telephone);
         res.redirect('/api/usuario');
     })
 
