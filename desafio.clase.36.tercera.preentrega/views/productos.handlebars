@@ -1,3 +1,10 @@
+<div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
+    {{#if isActive}}
+        <p>Bienvenido {{isActive}}</p>
+        <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+    {{/if}}
+    <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
+</div>
 <div style="display: flex; justify-content: space-around">
     {{#each listaProductos}}
 
@@ -9,9 +16,8 @@
             <p class="card-text">Stock: {{this.stock}}</p>
             <p class="card-text">Timestamp: {{this.timestamp}}</p>
             <p class="card-text">Precio: <strong>{{this.precio}}</strong></p>
-            <a href='/api/productos/{{this.id}}'' class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-{{/each}}
+            <a href='/api/productos/{{this.id}}' class="btn btn-primary">Ver producto</a>
+        </div>
+    </div>
+    {{/each}}
 </div>

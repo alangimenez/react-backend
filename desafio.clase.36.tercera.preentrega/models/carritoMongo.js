@@ -5,6 +5,7 @@ const coleccion = 'carritos';
 
 const carritosSchema = new Schema ({
     id: {type: Number},
+    user: {type: String},
     timestamp: {type: String},
     productos: {type: Array}
 })

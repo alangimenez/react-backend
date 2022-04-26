@@ -1,19 +1,28 @@
 const { fnProductos } = require('../persistencia/index');
+const passport = require('../middlewares/passport');
 
 // muestra todos los productos
 async function obtenerProductos(req, res) {
     const prod = await fnProductos().leerInfo();
-    // res.json(prod);
-    res.render('../views/productos', {listaProductos: prod});
+    if (req.user) {
+        res.render('../views/productos', {listaProductos: prod, isActive: req.user.id, boton: "Cerrar sesión", user: req.user.id});
+    } else {
+        res.render('../views/productos', {listaProductos: prod, boton: "Iniciar sesión"});
+    }
 }
 
 // muestra un producto
 async function obtenerProductoPorId(req, res) {
     const { idProd } = req.params;
+    console.log(req.user);
     const prodFiltrado = await fnProductos().leerInfoPorId(idProd);
     if (!prodFiltrado) return res.status(404).json({error: -1, message: `producto no encontrado`})
     // res.json(prodFiltrado);
-    res.render('../views/productoIndividual', {objeto: prodFiltrado});
+    if (req.user) {
+        res.render('../views/productoIndividual', {objeto: prodFiltrado, isActive: req.user.id, boton: "Cerrar sesión", user: req.user.id});
+    } else {
+        res.render('../views/productoIndividual', {objeto: prodFiltrado, boton: "Iniciar sesión"});
+    }
 }
 
 // elimina un producto, muestra array completo de productos

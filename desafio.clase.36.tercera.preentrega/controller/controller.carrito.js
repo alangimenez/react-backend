@@ -4,8 +4,8 @@ const whatsapp = require('../utils/twilio');
 
 // crea carrito, muestra objeto
 async function crearCarrito(req, res) {
-    const nuevoCarrito = await fnCarritos().subirInfo();
-    res.json(nuevoCarrito);
+    const nuevoCarrito = await fnCarritos().subirInfo(req.body.username);
+    return(nuevoCarrito);
 }
 
 // elimina carrito, muestra array completo
@@ -17,13 +17,18 @@ async function eliminarCarrito(req, res) {
 
 // inserta productos en carrito, muestra el carrito seleccionado completo
 async function prodAlCarrito(req, res) {
-    const { idCarr, idProd } = req.params;
-    const productoSeleccionado = await fnProductos().leerInfoPorId(idProd);
-    if (!productoSeleccionado) return res.status(404).json({error: -1, message: `producto no encontrado`});
-    const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarr);
-    if (!carritoSeleccionado) return res.status(404).json({error: -4, message: `carrito no encontrado`});
-    const carritoActualizado = await fnCarritos().actualizarProdEnCarrito(carritoSeleccionado, productoSeleccionado);
-    res.json(carritoActualizado);
+    if (req.user) {
+        const { idCarr, idProd } = req.params;
+        const productoSeleccionado = await fnProductos().leerInfoPorId(idProd);
+        if (!productoSeleccionado) return res.status(404).json({error: -1, message: `producto no encontrado`});
+        const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarr);
+        if (!carritoSeleccionado) return res.status(404).json({error: -4, message: `carrito no encontrado`});
+        const carritoActualizado = await fnCarritos().actualizarProdEnCarrito(carritoSeleccionado, productoSeleccionado);
+        res.json(carritoActualizado);
+    } else {
+        res.json({login: "login"})
+    }
+    
 }
 
 // lista todos los productos de un carrito
@@ -50,8 +55,9 @@ async function elimProdDelCarrito(req, res) {
 async function confirmarCompra (req, res) {
     const carrito = await fnCarritos().leerInfoPorId(req.params.idCarr);
     const productosConfirmados = carrito.productos;
-    enviarMail("Alan", "Alan", productosConfirmados);
-    whatsapp('+5491122558261', 'Alan', 'Alan');
+    await enviarMailPedido("Alan", "Alan", productosConfirmados);
+    await whatsapp('+5491122558261', 'Alan', 'Alan');
+    const resultado = await fnCarritos().vaciarCarrito(req.params.idCarr);
 }
 
 module.exports = {

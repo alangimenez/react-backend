@@ -11,7 +11,7 @@ const { obtenerProductos,
 router.get('/', obtenerProductos)
 
 // obtiene un producto en especifico
-router.get('/:idProd', obtenerProductoPorId) 
+router.get('/:idProd', obtenerProductoPorId)
 
 // elimina un producto
 router.delete('/:idProd', [validarAdmin], eliminarProducto)

@@ -1,3 +1,11 @@
+<div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
+    {{#if isActive}}
+        <p>Bienvenido {{isActive}}</p>
+        <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+    {{/if}}
+    <a href="/api/productos" class="btn btn-dark">Volver a pagina principal</a>
+    <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
+</div>
 <div>
     <h2>{{carrito.id}}</h2>
     <table class="table">
@@ -16,11 +24,12 @@
         {{/each}}
     </table>
     <button onclick=comprar()>Confirmar compra</button>
+    <button onclick=vaciar()>Vaciar carrito</button>
 </div>
 
 <script>
     function comprar() {
-        fetch(`http://localhost:8080/api/carrito/3/confirmar`, {
+        fetch(`http://localhost:8080/api/carrito/{{user}}/confirmar`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -29,6 +38,22 @@
             data.json()
         ).then(response => {
             console.log(response);
+            console.log("hola");
+            window.location.href = "http://localhost:8080/api/carrito/compra/realizada/muchas/gracias";
+        }).catch(error => console.error('Error:', error))
+    }
+
+    function vaciar() {
+        fetch(`http://localhost:8080/api/carrito/vaciar`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({hola: "{{user}}"})
+        }).then(data =>
+            data.json()
+        ).then(response => {
+            window.location.href = `http://localhost:8080/api/carrito/{{user}}`;
         }).catch(error => console.error('Error:', error))
     }
 </script>

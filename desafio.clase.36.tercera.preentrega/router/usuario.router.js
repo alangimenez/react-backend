@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('../middlewares/passport');
+const {crearCarrito} = require('../controller/controller.carrito')
 
 const {enviarMailRegistro} = require('../utils/nodemailer');
 
@@ -10,27 +11,6 @@ const { renderizarVista, productosRandom, logout, registro } = require('../contr
 router.use(express.json());
 router.use('/', express.static('public'));
 router.use(express.urlencoded({ extended: true }));
-
-// session
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-
-router.use(session({
-    name: 'my-session',
-    secret: 'gatos',
-    resave: false,
-    saveUninitialized: false,
-    rolling: true,
-    store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI,
-        ttl: 60,
-    }),
-    cookie: {
-        maxAge: 600000,
-    }
-}));
-router.use(passport.initialize());
-router.use(passport.session());
 
 router.get('/', async (req, res) => {
     if (req.user) {
@@ -43,7 +23,7 @@ router.get('/', async (req, res) => {
 router.post('/login',
     passport.authenticate('login', { failureRedirect: '/api/usuario/login-error' }),
     async (req, res) => {
-        res.redirect('/api/usuario');
+        res.redirect('/api/productos');
     });
 
 router.get('/login', (req, res) => res.render('../views/login'));
@@ -56,7 +36,8 @@ router.post('/registro',
     passport.authenticate('registro', { failureRedirect: '/api/usuario/registro-error' }),
     (req, res) => {
         enviarMailRegistro(req.body.username, req.body.firstname, req.body.direction, req.body.age, req.body.telephone);
-        res.redirect('/api/usuario');
+        crearCarrito(req, res);
+        res.redirect('/api/productos');
     })
 
 router.get('/registro-error', (req, res) => res.render('registroError', { error: req.session.error }));

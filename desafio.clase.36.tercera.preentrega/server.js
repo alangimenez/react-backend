@@ -22,7 +22,30 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
+// session
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
+const passport = require('./middlewares/passport');
+app.use(session({
+    name: 'my-session',
+    secret: 'gatos',
+    resave: false,
+    saveUninitialized: false,
+    rolling: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI,
+        ttl: 60,
+    }),
+    cookie: {
+        maxAge: 600000,
+    }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/api/productos', routerProductos);
 app.use('/api/carrito', routerCarrito);
 app.use('/api/usuario', routerUsuario);
 app.use('*', validarRuta);
+

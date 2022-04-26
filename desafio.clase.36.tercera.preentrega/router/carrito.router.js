@@ -17,7 +17,12 @@ router.get('/', async (req, res) => {
 
 router.get('/:idCarr', async (req, res) => {
     const carritoFiltrado = await fnCarritos().leerInfoPorId(req.params.idCarr);
-    res.render('../views/carrito', { productosEnCarrito: carritoFiltrado.productos })
+    if (req.user) {
+        res.render('../views/carrito', {productosEnCarrito: carritoFiltrado.productos, user: req.user.id, isActive: req.user.id, boton: "Cerrar sesión"});
+    } else {
+        // chequear esto, tecnicamente no deberia acceder al carrito si no esta logueado
+        res.render('../views/loginError', {error: "Primero debe loguearse"});
+    }
 })
 
 // crear un carrito
@@ -35,6 +40,17 @@ router.get('/:idCarr/productos', [validarArchivo], prodDelCarrito)
 // elimina productos de un carrito (los elimina de a uno, no todos juntos)
 router.delete('/:idCarr/productos/:idProd', [validarArchivo], elimProdDelCarrito)
 
-router.post('/:idCarr/confirmar', (req, res) => confirmarCompra(req, res))
+router.post('/:idCarr/confirmar', async (req, res) => {
+    await confirmarCompra(req, res);
+    console.log({resultado: "todo salio ok"})
+    res.json({resultado: "todo salio ok"}) ;
+})
+
+router.get('/compra/realizada/muchas/gracias', (req, res) => res.render('../views/resultado'))
+
+router.post('/vaciar', async (req, res) => {
+    await fnCarritos().vaciarCarrito(req.body.hola);
+    res.json({mensaje: "hola"});
+})
 
 module.exports = router;

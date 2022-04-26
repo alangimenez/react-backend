@@ -20,10 +20,6 @@ async function enviarMailPedido (nombre, email, lista) {
 
 async function enviarMailRegistro (nombre, email, direccion, edad, telefono) {
     try {
-        let datos = "";
-        for (let i = 0; i < lista.length; i++) {
-            pedido = pedido + `Productos ${i+1} es ${lista[i].nombre}. `
-        }
         const mail = await transporter.sendMail({
             from: 'Node JS server',
             to: process.env.NODEMAILER,

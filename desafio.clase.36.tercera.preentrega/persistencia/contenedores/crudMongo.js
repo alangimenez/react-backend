@@ -31,7 +31,7 @@ class CrudMongo {
         let idNuevo, nuevoObjeto;
         const listadoProductos = await this.leerInfo();
         listadoProductos.length === 0 ? idNuevo = 1 : idNuevo = listadoProductos[listadoProductos.length - 1].id + 1;
-        if (objeto) {
+        if (objeto.nombre) {
             const validacion = controlProps(objeto);
             if (validacion) return validacion;
             nuevoObjeto = await this.model.create({
@@ -47,6 +47,7 @@ class CrudMongo {
         } else {
             nuevoObjeto = await this.model.create({
                 id: idNuevo,
+                user: objeto,
                 timestamp: Date.now(),
             })
         }
@@ -68,6 +69,12 @@ class CrudMongo {
     async eliminarInfo(id) {
         const result = await this.model.deleteOne({id: id});
         if (result.deletedCount === 0) return { error: -1, message: `producto no encontrado` }
+        return this.leerInfo();
+    }
+
+    // corregir, borra todos los carritos
+    async vaciarCarrito() {
+        const result = await this.model.deleteOne({});
         return this.leerInfo();
     }
 

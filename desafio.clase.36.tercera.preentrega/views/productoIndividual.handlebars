@@ -1,3 +1,11 @@
+<div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
+    {{#if isActive}}
+        <p>Bienvenido {{isActive}}</p>
+        <a href="/api/productos" class="btn btn-dark">Volver a pagina principal</a>
+        <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+    {{/if}}
+    <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
+</div>
 <div class="card" style="width: 18rem;">
     {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
     <div class="card-body">
@@ -6,15 +14,16 @@
         <p class="card-text">Stock: {{objeto.stock}}</p>
         <p class="card-text">Timestamp: {{objeto.timestamp}}</p>
         <p class="card-text">Precio: <strong>{{objeto.precio}}</strong></p>
-        <button onclick=post()>Agregar al carrito</button>
+        <button onclick=post() class="btn btn-dark">Agregar al carrito</button>
     </div>
     <div id="mensaje"></div>
 </div>
+<div id="error-login"></div>
 
 <script>
     function post() {
         document.getElementById("mensaje").innerHTML = "Aguarde un momento";
-        fetch(`http://localhost:8080/api/carrito/3/productos/{{objeto.id}}`, {
+        fetch(`http://localhost:8080/api/carrito/{{user}}/productos/{{objeto.id}}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -22,8 +31,17 @@
         }).then(data =>
             data.json()
         ).then(response => {
-            console.log(response);
-            document.getElementById("mensaje").innerHTML = "El producto fue agregado con éxito";
+            if (response.login === "login") {
+                document.getElementById("error-login").innerHTML = "Debe loguearse para agregar productos al carrito. Lo vamos a redirigir :D";
+                setTimeout(() => {
+                    window.location.href = "http://localhost:8080/api/usuario/login";
+                }, 2000)
+            } else {
+                document.getElementById("mensaje").innerHTML = "El producto fue agregado con éxito";
+                setTimeout(() => {
+                    document.getElementById("mensaje").innerHTML = "";
+                }, 3500)
+            }
         }).catch(error => console.error('Error:', error))
     }
 </script>

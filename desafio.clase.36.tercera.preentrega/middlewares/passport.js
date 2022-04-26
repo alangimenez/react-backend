@@ -32,7 +32,7 @@ passport.use('login', new LocalStrategy({
 },
     async (req, username, password, done) => {
         /* const usuarioLogueado = Usuario.getByEmail(username) */ // con FileSystem
-        const usuarioLogueado = await UsuarioMongo.leerInfoPorId(username)
+        const usuarioLogueado = await UsuarioMongo.leerInfoPorId(username);
         if (!usuarioLogueado) {
             req.session.error = "El usuario no existe";
             return done(null, false);
@@ -42,6 +42,7 @@ passport.use('login', new LocalStrategy({
             console.log('Invalid password');
             return done(null, false);
         }
+        req.user = usuarioLogueado;
         return done(null, usuarioLogueado);
     }));
 
