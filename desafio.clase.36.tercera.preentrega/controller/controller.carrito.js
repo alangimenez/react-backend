@@ -35,7 +35,7 @@ async function eliminarCarrito(req, res) {
 
 // inserta productos en carrito, muestra el carrito seleccionado completo
 async function prodAlCarrito(req, res) {
-    if (req.user) {
+    if (req.user || req.params.idCarr != "na") {
         const { idCarr, idProd } = req.params;
         const productoSeleccionado = await fnProductos().leerInfoPorId(idProd);
         if (!productoSeleccionado) {

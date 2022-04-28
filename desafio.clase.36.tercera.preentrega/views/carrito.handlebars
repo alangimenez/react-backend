@@ -1,7 +1,7 @@
 <div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
     {{#if isActive}}
-        <p>Bienvenido {{isActive}}</p>
-        <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+    <p>Bienvenido {{isActive}}</p>
+    <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
     {{/if}}
     <a href="/api/productos" class="btn btn-dark">Volver a pagina principal</a>
     <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
@@ -26,9 +26,15 @@
     <button onclick=comprar()>Confirmar compra</button>
     <button onclick=vaciar()>Vaciar carrito</button>
 </div>
+<div class="spinner" style="font-size: 18px" id="spinner">
+    <div class="head"></div>
+</div>
+<p id="mensaje"></p>
 
 <script>
     function comprar() {
+        document.getElementById("spinner").style.display = "block";
+        document.getElementById("mensaje").innerHTML = "Por favor, espere mientras generamos su pedido";
         fetch(`http://localhost:8080/api/carrito/{{user}}/confirmar`, {
             method: 'POST',
             headers: {
@@ -49,7 +55,7 @@
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({id: "{{user}}"})
+            body: JSON.stringify({ id: "{{user}}" })
         }).then(data =>
             data.json()
         ).then(response => {

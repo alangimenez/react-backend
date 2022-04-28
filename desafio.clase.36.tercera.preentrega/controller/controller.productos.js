@@ -24,7 +24,7 @@ async function obtenerProductoPorId(req, res) {
     if (req.user) {
         res.render('../views/productoIndividual', { objeto: prodFiltrado, isActive: req.user.id, boton: "Cerrar sesión", user: req.user.id });
     } else {
-        res.render('../views/productoIndividual', { objeto: prodFiltrado, boton: "Iniciar sesión" });
+        res.render('../views/productoIndividual', { objeto: prodFiltrado, boton: "Iniciar sesión", user: "na" });
     }
 }
 

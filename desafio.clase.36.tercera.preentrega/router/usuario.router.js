@@ -21,7 +21,7 @@ router.post('/login',
 router.get('/login', (req, res) => res.render('../views/login'));
 
 // endpoint para renderizar pantalla de registro
-router.get('/registro', (req, res) => registro(req, res))
+router.get('/registro', (req, res) => res.render('../views/registro'))
 
 // endpoint para renderizar pantalla de logout
 router.get('/logout', (req, res) => logout(req, res))
