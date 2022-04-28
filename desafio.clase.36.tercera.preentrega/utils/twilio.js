@@ -1,4 +1,5 @@
 const client = require('../config/config.twilio');
+const { logger, errorLogger } = require('../config/config.log4js');
 
 async function whatsapp (destino, nombre, email) {
     try {
@@ -7,10 +8,26 @@ async function whatsapp (destino, nombre, email) {
             to: `whatsapp:${destino}`, // quitar el whatsapp: para mensajes de texto
             body: `Ha recibido un nuevo pedido de ${nombre} - ${email}`
         });
-        console.log(message);
+        logger.info(message);
     } catch (error) {
-        console.log(error)
+        errorLogger.error(error)
     }
 }
 
-module.exports = whatsapp;
+async function mensajeTexto (destino, nombre) {
+    try {
+        const message = await client.messages.create({
+            from: process.env.NUMBER_SMS_TWILIO,
+            to: `${destino}`,
+            body: `Su pedido ha sido recibido, y se encuentra en proceso. Muchas gracias ${nombre}`
+        });
+        logger.info(message);
+    } catch (error) {
+        errorLogger.error(error)
+    }
+}
+
+module.exports = {
+    whatsapp,
+    mensajeTexto
+}

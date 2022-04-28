@@ -7,11 +7,12 @@ const routerCarrito = require('./router/carrito.router');
 const routerUsuario = require('./router/usuario.router');
 const { validarRuta } = require('./middlewares/middlewares');
 const { engine } = require('express-handlebars');
+const { logger, errorLogger} = require('./config/config.log4js');
 
 const server = app.listen(PORT, () => {
-    console.log(`Servidor escuchando en puerto ${PORT}`);
+    logger.info(`Servidor escuchando en puerto ${PORT}`);
 }).on('error', (error => {
-    console.log(error);
+    errorLogger.error(error);
 }));
 
 // motor de plantillas
@@ -47,5 +48,6 @@ app.use(passport.session());
 app.use('/api/productos', routerProductos);
 app.use('/api/carrito', routerCarrito);
 app.use('/api/usuario', routerUsuario);
+app.get('/', (req, res) => {res.redirect('/api/productos')})
 app.use('*', validarRuta);
 

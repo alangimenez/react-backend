@@ -1,16 +1,25 @@
+const { errorLogger } = require('../config/config.log4js');
+const { crearCarrito } = require('../controller/controller.carrito')
+const { enviarMailRegistro } = require('../utils/nodemailer');
+
 const renderizarVista = (req, res) => {
-    {
-        try {
+    try {
+        if (req.user) {
             res.render('../views/table', { mensaje: req.user.id });
         }
-        catch (e) {
-            console.log(e.message);
+        else {
+            res.redirect('/api/usuario/login')
         }
+    }
+    catch (e) {
+        errorLogger.error(e.message);
     }
 }
 
 const registro = (req, res) => {
-    res.render('registro')
+    enviarMailRegistro(req.body.username, req.body.firstname, req.body.direction, req.body.age, req.body.telephone);
+    crearCarrito(req, res);
+    res.redirect('/api/productos');
 }
 
 const logout = (req, res) => {
@@ -21,14 +30,25 @@ const logout = (req, res) => {
             res.render('../views/logout', { usuario: user });
         })
     } else {
-        res.redirect('/api/usuario/login')
+        res.redirect('/login')
     }
 }
 
+const perfil = (req, res) => {
+    res.render('../views/perfil', {
+        isActive: req.user.id,
+        user: req.user.id,
+        boton: "Cerrar sesión",
+        nombre: req.user.nombre,
+        direccion: req.user.direccion,
+        edad: req.user.edad,
+        telefono: req.user.telefono,
+    })
+}
+
 module.exports = {
-    //productosRandom,
     renderizarVista,
-    //login,
-    logout, 
-    registro
+    logout,
+    registro, 
+    perfil
 }

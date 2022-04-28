@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 const uri = process.env.MONGODB_URI;
 const { controlProps } = require('../../middlewares/controlProps');
 
+const { logger, errorLogger } = require('../../config/config.log4js');
+
 (async () => {
     try {
         await mongoose.connect(uri);
-        console.log('database connected')
+        logger.info('database connected')
     } catch (e) {
-        console.log(e.message);
+        errorLogger.error(e.message);
     }
 })();
 

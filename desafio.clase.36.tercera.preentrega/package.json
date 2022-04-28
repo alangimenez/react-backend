@@ -20,6 +20,7 @@
     "express-session": "^1.17.2",
     "firebase-admin": "^10.0.2",
     "knex": "^1.0.3",
+    "log4js": "^6.4.6",
     "mongoose": "^6.2.3",
     "mysql": "^2.18.1",
     "nodemailer": "^6.7.3",

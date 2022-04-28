@@ -6,24 +6,16 @@ const { crearCarrito,
     prodAlCarrito,
     prodDelCarrito,
     elimProdDelCarrito,
-    confirmarCompra } = require('../controller/controller.carrito');
-const { fnCarritos } = require('../persistencia/index');
+    confirmarCompra,
+    verCarritos,
+    verCarritoUsuario,
+    vaciarCarrito } = require('../controller/controller.carrito');
 
 // ver carritos (eliminar luego de controlado todo, porque la consigna no lo pide)
-router.get('/', async (req, res) => {
-    const listadoCarritos = await fnCarritos().leerInfo();
-    res.json(listadoCarritos);
-})
+router.get('/', async (req, res) => verCarritos(req, res))
 
-router.get('/:idCarr', async (req, res) => {
-    const carritoFiltrado = await fnCarritos().leerInfoPorId(req.params.idCarr);
-    if (req.user) {
-        res.render('../views/carrito', {productosEnCarrito: carritoFiltrado.productos, user: req.user.id, isActive: req.user.id, boton: "Cerrar sesión"});
-    } else {
-        // chequear esto, tecnicamente no deberia acceder al carrito si no esta logueado
-        res.render('../views/loginError', {error: "Primero debe loguearse"});
-    }
-})
+// ver un carrito en particular de algun usuario
+router.get('/:idCarr', async (req, res) => verCarritoUsuario(req, res))
 
 // crear un carrito
 router.post('/', validarArchivo, crearCarrito)
@@ -40,17 +32,16 @@ router.get('/:idCarr/productos', [validarArchivo], prodDelCarrito)
 // elimina productos de un carrito (los elimina de a uno, no todos juntos)
 router.delete('/:idCarr/productos/:idProd', [validarArchivo], elimProdDelCarrito)
 
+// endpoint para confirmar compra
 router.post('/:idCarr/confirmar', async (req, res) => {
     await confirmarCompra(req, res);
-    console.log({resultado: "todo salio ok"})
-    res.json({resultado: "todo salio ok"}) ;
+    res.json({ resultado: "todo salio ok" });
 })
 
+// endpoint post finalizada la compra
 router.get('/compra/realizada/muchas/gracias', (req, res) => res.render('../views/resultado'))
 
-router.post('/vaciar', async (req, res) => {
-    await fnCarritos().vaciarCarrito(req.body.hola);
-    res.json({mensaje: "hola"});
-})
+// endpoint para vaciar el carrito
+router.post('/vaciar', async (req, res) => vaciarCarrito(req, res))
 
 module.exports = router;

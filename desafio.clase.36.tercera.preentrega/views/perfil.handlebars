@@ -1,0 +1,15 @@
+<div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
+    {{#if isActive}}
+        <p>Bienvenido {{isActive}}</p>
+        <a href='/api/productos' class="btn btn-dark">Pagina principal</a>
+        <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+    {{/if}}
+    <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
+</div>
+<div>
+    <h2>Perfil de {{user}}</h2>
+    <p>Nombre: {{nombre}}</p>
+    <p>Dirección: {{direccion}}</p>
+    <p>Edad: {{edad}}</p>
+    <p>Telefono: {{telefono}}</p>
+</div>
