@@ -14,13 +14,13 @@ Falta implementar los siguientes puntos:
 Tambien tener presente que el carrito aún no cumple todas las funciones de un carrito (por ejemplo no se puede eliminar un producto en particular, ni calcula el total, no puede agregar productos directamente del carrito, etc), dado que por una cuestión de tiempo no llegue a hacerlo.
 
 Pero si está incorporado el resto de pedidos de la consigna:
--Hay una sección de mi perfil que trae los datos
--Se puede loguear, desloguear y registrarse
--En el caso de que se produzca algun error al registrarse (como usuario ya registrado) o al loguearse (como pass invalida), redirige a pestañas correspondientes
--Cada vez que alguien se registra, envia un mail al mail que aclaremos en variables de entorno
--Cada vez que se hace un pedido, envia un wpp al usuario (siempre y cuando haya ingresado bien el numero manualmente al registrarse, dado que aun no implemente el validador), así como el mail y el wpp al admin, lo cual tiene presente las variables de entorno para definir el destinatario
--Los render tienen presente si el usuario esta logueado o no (si esta logueado, figura el boton de cerrar sesion, pero en caso contrario figura el de iniciar sesión)
--En caso de que quiera agregar productos al carrito sin estar logueado, te redirige al login.
+- Hay una sección de mi perfil que trae los datos
+- Se puede loguear, desloguear y registrarse
+- En el caso de que se produzca algun error al registrarse (como usuario ya registrado) o al loguearse (como pass invalida), redirige a pestañas correspondientes
+- Cada vez que alguien se registra, envia un mail al mail que aclaremos en variables de entorno
+- Cada vez que se hace un pedido, envia un wpp al usuario (siempre y cuando haya ingresado bien el numero manualmente al registrarse, dado que aun no implemente el validador), así como el mail y el wpp al admin, lo cual tiene presente las variables de entorno para definir el destinatario
+- Los render tienen presente si el usuario esta logueado o no (si esta logueado, figura el boton de cerrar sesion, pero en caso contrario figura el de iniciar sesión)
+- En caso de que quiera agregar productos al carrito sin estar logueado, te redirige al login.
 
 En el caso de levantar el proyecto localmente, se debe configurar el archivo .env siguiendo el modelo de example.env.js, guiandose por los comentarios.
 
@@ -29,3 +29,5 @@ En caso de revisar el proyecto en Heroku, los mails al registrarse y al hacer un
 El frontend es algo hiperbásico simplemente para ir cumpliendo con las cosas de la consigna, por eso el formato bastante básico.
 
 De antemano te agradezco por el feedback, y mientras voy incorporando lo que me falta a medida que lo voy haciendo.
+
+PD: pensadolo bien, para que el envio de mensajes de Heroku funcione, debería mandarse sin las comillas "join then-route" al +1 415 523 8886 para validar el número. La otra opción es probarlo de manera local configurando las variables de entorno a una cuenta de Twilio propia.
