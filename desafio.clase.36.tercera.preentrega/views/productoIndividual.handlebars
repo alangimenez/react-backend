@@ -25,10 +25,17 @@
 <div id="error-login"></div>
 
 <script>
+    let ruta;
+    if (window.location.href.includes("localhost")) {
+        ruta = "http://localhost:8080"
+    } else {
+        let ubicacion = window.location.href.indexOf('/api');
+        ruta = window.location.href.slice(0, ubicacion);
+    }
     function post() {
         document.getElementById("spinner").style.display = "block";
         document.getElementById("mensaje").innerHTML = "Aguarde un momento";
-        fetch(`http://localhost:8080/api/carrito/{{user}}/productos/{{objeto.id}}`, {
+        fetch(`${ruta}/api/carrito/{{user}}/productos/{{objeto.id}}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -41,7 +48,7 @@
                 document.getElementById("mensaje").innerHTML = "";
                 document.getElementById("error-login").innerHTML = "Debe loguearse para agregar productos al carrito. Lo vamos a redirigir :D";
                 setTimeout(() => {
-                    window.location.href = "http://localhost:8080/api/usuario/login";
+                    window.location.href = `${ruta}/api/usuario/login`;
                 }, 2000)
             } else {
                 document.getElementById("spinner").style.display = "none";

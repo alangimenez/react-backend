@@ -3,8 +3,11 @@
         <p>Bienvenido {{isActive}}</p>
         <a href='/api/usuario/{{user}}/mi-perfil' class="btn btn-dark">Mi perfil</a>
         <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+        <a href="/api/usuario/{{logout}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
-    <a href="/api/usuario/login" class="btn btn-dark">{{boton}}</a>
+    {{#if login }}  
+        <a href="/api/usuario/{{login}}" class="btn btn-dark">{{boton}}</a>
+    {{/if}}
 </div>
 <div style="display: flex; justify-content: space-around">
     {{#each listaProductos}}

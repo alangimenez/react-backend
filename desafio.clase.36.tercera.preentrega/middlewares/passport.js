@@ -19,12 +19,13 @@ passport.use('registro', new LocalStrategy({
             edad: req.body.age,
             telefono: req.body.telephone
         };
-        const usuarioRegistrado = await UsuarioMongo.subirInfoUser(newUser);
-        if (usuarioRegistrado.error) {
+        const usuarioLogueado = await UsuarioMongo.leerInfoPorId(req.body.username);
+        if (usuarioLogueado != undefined) {
             req.session.error = "El email ya se encuentra registrado";
             errorLogger.error(req.session.error);
             return done(null, false)
         }
+        const usuarioRegistrado = await UsuarioMongo.subirInfoUser(newUser);
         logger.info('El usuario fue registrado con éxito');
         // console.log('El usuario fue registrado con éxito');
         return done(null, usuarioRegistrado);

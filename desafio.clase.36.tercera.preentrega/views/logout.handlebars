@@ -3,12 +3,19 @@
 </div>
 
 <script>
-        window.onload = () => {
-            const dato = document.getElementById('deslogueo').innerHTML;
-            if (dato.includes('Hasta pronto') === true) {
-                setTimeout(() => {
-                    window.location.href = "http://localhost:8080/api/usuario/login";
-                }, 2000)
-            }
+    window.onload = () => {
+        let ruta;
+        if (window.location.href.includes("localhost")) {
+            ruta = "http://localhost:8080"
+        } else {
+            let ubicacion = window.location.href.indexOf('/api');
+            ruta = window.location.href.slice(0, ubicacion);
         }
-    </script>
+        const dato = document.getElementById('deslogueo').innerHTML;
+        if (dato.includes('Hasta pronto') === true) {
+            setTimeout(() => {
+                window.location.href = `${ruta}/api/usuario/login`;
+            }, 2000)
+        }
+    }
+</script>

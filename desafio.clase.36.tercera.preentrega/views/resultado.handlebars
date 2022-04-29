@@ -5,7 +5,14 @@
 </div>
 
 <script>
+    let ruta;
+    if (window.location.href.includes("localhost")) {
+        ruta = "http://localhost:8080"
+    } else {
+        let ubicacion = window.location.href.indexOf('/api');
+        ruta = window.location.href.slice(0, ubicacion);
+    }
     setTimeout(() => {
-        window.location.href = "http://localhost:8080/api/productos";
+        window.location.href = `${ruta}/api/productos`;
     }, 5000)
 </script>

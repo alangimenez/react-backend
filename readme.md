@@ -1,27 +1,31 @@
-Desafio 32
-Buenas noches, espero que andes muy bien!
+Desafio 36
+Buenas noches. Hago entrega de la tercer preentrega.
 
+La misma aún no está terminada, dado que faltan 2 o 3 puntos de la consigna, pero si está bastante avanzado.
 
+El link de Heroku es: https://tercer-preentrega.herokuapp.com/api/productos
 
-Creo que me hice un poco de lio con esta entrega, pero lo voy a entregar igual con lo que hice porque, lo que hice ya lo hice. Con respecto a lo que me indicas que no tiene el metodo login, es verdad! Pero porque no lo hice sobre esa entrega, lo hice sobre los desafios que tenian la api productos/carritos. Quizas aca me equivoque yo y recien ahora que me lo marcas me doy cuenta. Igual al menos quiero entregar lo que hice para despues de ultima corregirlo (aunque esto explica porque no esta la ruta login y porque no esta sockets y mensajes).
+Falta implementar los siguientes puntos:
+- No está para cargar la foto de perfil.
+- No están hechos los test de Artillery
+- No está hecha la validación del número de telefono a cargar (pero si se carga correctamente, con el +codigo de pais + codigo de area + telefono, al hacer un pedido te llega el wpp)
+- Hay archivos viejos que deberían eliminarse (esencialmente los contenedores y daos de otras formas de persistencia, y algun middlewares obsoleto)
 
+Tambien tener presente que el carrito aún no cumple todas las funciones de un carrito (por ejemplo no se puede eliminar un producto en particular, ni calcula el total, no puede agregar productos directamente del carrito, etc), dado que por una cuestión de tiempo no llegue a hacerlo.
 
+Pero si está incorporado el resto de pedidos de la consigna:
+-Hay una sección de mi perfil que trae los datos
+-Se puede loguear, desloguear y registrarse
+-En el caso de que se produzca algun error al registrarse (como usuario ya registrado) o al loguearse (como pass invalida), redirige a pestañas correspondientes
+-Cada vez que alguien se registra, envia un mail al mail que aclaremos en variables de entorno
+-Cada vez que se hace un pedido, envia un wpp al usuario (siempre y cuando haya ingresado bien el numero manualmente al registrarse, dado que aun no implemente el validador), así como el mail y el wpp al admin, lo cual tiene presente las variables de entorno para definir el destinatario
+-Los render tienen presente si el usuario esta logueado o no (si esta logueado, figura el boton de cerrar sesion, pero en caso contrario figura el de iniciar sesión)
+-En caso de que quiera agregar productos al carrito sin estar logueado, te redirige al login.
 
-Respecto al logger info en los controllers, están ahi dado que cada endpoint tiene su propio controller que maneja la logica. Como la consigna pedia hacer un  log de todas las peticiones al servidor (es decir, entiendo que a cualquier endpoint), el lugar donde debía agregarlo por como tengo estructurado mi proyecto era en el controller (lo pude haber puesto en el router, pero me parecio mejor dejar limpio el router y agregarlo dentro de la función que manejaba la lógica). 
+En el caso de levantar el proyecto localmente, se debe configurar el archivo .env siguiendo el modelo de example.env.js, guiandose por los comentarios.
 
+En caso de revisar el proyecto en Heroku, los mails al registrarse y al hacer un pedido se envian a una casilla de Nodemailer, por lo que no vas a poder chequearlo, pero en caso de haber cargado correctamente el numero de telefono al registrarse, si debería llegarte el wpp de confirmación.
 
+El frontend es algo hiperbásico simplemente para ir cumpliendo con las cosas de la consigna, por eso el formato bastante básico.
 
-Se cambio el archivo log4js a la carpeta config, y desde ahi se crean los loggers, que quedarán guardados en la carpeta infoLog. 
-
-
-
-Todas las pruebas de performance quedaron sueltitas en la carpeta raíz del proyecto. Adicionalmente, se agrego un pequeño informe, aunque literalmente no supe bien que poner (hice comparaciones entre las pruebas de Artillery y el --prof de Node.js). Las pruebas de performance se hicieron corriendo el escenario de que la ruta /info, antes de mandar la información, hace un console.log y NO hace un console.log (esto sería los 2 escenarios que se compararon). Al menos eso entendí de la consigna. 
-
-
-
-Perdón por el error del desafío del cual partir, pero bueno, ya que lo habia hecho todo al resto, al menos quería entregarlo con lo que pude hacer.
-
-
-
-PD: el informe lo deje en Word, porque si lo imprimo en .pdf, no se porque desaparecían las imágenes! 
-PD2: para poder inicializar el proyecto, se debe crear un archivo .env, que debe ser como el archivo example.env.js, donde se setea la variable URI_MONGODB para poder conectarse a la base de datos correspondiente. Está es la única variable de entorno que necesita para funcionar.
+De antemano te agradezco por el feedback, y mientras voy incorporando lo que me falta a medida que lo voy haciendo.

@@ -2,6 +2,9 @@ const { errorLogger } = require('../config/config.log4js');
 const { crearCarrito } = require('../controller/controller.carrito')
 const { enviarMailRegistro } = require('../utils/nodemailer');
 
+const { DaoMongoUsuario } = require('../persistencia/daos/usuario/daoMongoUsuario');
+const UsuarioMongo = new DaoMongoUsuario();
+
 const renderizarVista = (req, res) => {
     try {
         if (req.user) {
@@ -16,7 +19,7 @@ const renderizarVista = (req, res) => {
     }
 }
 
-const registro = (req, res) => {
+const registro = async (req, res) => {
     enviarMailRegistro(req.body.username, req.body.firstname, req.body.direction, req.body.age, req.body.telephone);
     crearCarrito(req, res);
     res.redirect('/api/productos');
@@ -49,6 +52,6 @@ const perfil = (req, res) => {
 module.exports = {
     renderizarVista,
     logout,
-    registro, 
+    registro,
     perfil
 }

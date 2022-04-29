@@ -300,3 +300,39 @@
   moreInfo: 'https://www.twilio.com/docs/errors/21211',
   details: undefined
 }
+[2022-04-28T15:53:04.032] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-04-28T16:47:57.953] [ERROR] error - RestException [Error]: The 'To' number 654 is not a valid phone number.
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21211,
+  moreInfo: 'https://www.twilio.com/docs/errors/21211',
+  details: undefined
+}
+[2022-04-28T16:47:58.807] [ERROR] error - RestException [Error]: The 'To' number 654 is not a valid phone number.
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21211,
+  moreInfo: 'https://www.twilio.com/docs/errors/21211',
+  details: undefined
+}
+[2022-04-28T19:25:11.630] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-04-28T19:25:27.982] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-04-28T19:27:36.174] [ERROR] error - Invalid password
+[2022-04-28T19:51:55.429] [ERROR] error - El email ya se encuentra registrado
+[2022-04-28T19:54:14.863] [ERROR] error - El email ya se encuentra registrado
+[2022-04-28T19:54:45.399] [ERROR] error - El email ya se encuentra registrado
+[2022-04-28T19:55:40.840] [ERROR] error - El email ya se encuentra registrado

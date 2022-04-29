@@ -6,9 +6,9 @@ const { logger, errorLogger } = require('../config/config.log4js');
 async function obtenerProductos(req, res) {
     const prod = await fnProductos().leerInfo();
     if (req.user) {
-        res.render('../views/productos', { listaProductos: prod, isActive: req.user.id, boton: "Cerrar sesión", user: req.user.id });
+        res.render('../views/productos', { listaProductos: prod, isActive: req.user.id, boton: "Cerrar sesión", user: req.user.id, logout: 'logout' });
     } else {
-        res.render('../views/productos', { listaProductos: prod, boton: "Iniciar sesión" });
+        res.render('../views/productos', { listaProductos: prod, boton: "Iniciar sesión", login: 'login' });
     }
 }
 
