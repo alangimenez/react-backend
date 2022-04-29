@@ -21,6 +21,7 @@ Pero si está incorporado el resto de pedidos de la consigna:
 - Cada vez que se hace un pedido, envia un wpp al usuario (siempre y cuando haya ingresado bien el numero manualmente al registrarse, dado que aun no implemente el validador), así como el mail y el wpp al admin, lo cual tiene presente las variables de entorno para definir el destinatario
 - Los render tienen presente si el usuario esta logueado o no (si esta logueado, figura el boton de cerrar sesion, pero en caso contrario figura el de iniciar sesión)
 - En caso de que quiera agregar productos al carrito sin estar logueado, te redirige al login.
+- Posee habilitado el modo CLUSTER y FORK. Por defecto arranca en FORK, pero en caso de querer el modo CLUSTER, se debe ejecutar node server.js -m CLUSTER (-m o --MODE es el parametro que identifica el modo de arranque)
 
 En el caso de levantar el proyecto localmente, se debe configurar el archivo .env siguiendo el modelo de example.env.js, guiandose por los comentarios.
 
