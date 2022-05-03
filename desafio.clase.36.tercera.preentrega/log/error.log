@@ -393,3 +393,36 @@
   moreInfo: 'https://www.twilio.com/docs/errors/21211',
   details: undefined
 }
+[2022-05-02T19:21:27.661] [ERROR] error - El email ya se encuentra registrado
+[2022-05-02T20:02:15.396] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T20:02:21.706] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T20:05:03.314] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T20:09:38.781] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T20:10:01.255] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T20:10:15.636] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T20:11:39.487] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T20:25:01.734] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T20:25:26.445] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T20:26:02.447] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:30:15.140] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:30:34.580] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:30:42.644] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:31:04.740] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:31:38.392] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:33:15.077] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:35:03.102] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:35:48.707] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:36:22.063] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:38:11.477] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:38:28.642] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:39:09.486] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:42:48.149] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:43:01.106] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:43:29.913] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:44:38.698] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:45:41.632] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:46:00.228] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:47:28.386] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:48:52.353] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-02T21:49:14.160] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-03T18:20:00.387] [ERROR] error - ruta '/' metodo GET no implementado

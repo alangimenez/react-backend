@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('../middlewares/passport');
-const { renderizarVista, perfil, logout, registro } = require('../controller/controller.usuario');
+const { renderizarVista, perfil, logout, registro, avatar } = require('../controller/controller.usuario');
+const upload = require('../config/config.multer');
 
 router.use(express.json());
-router.use('/', express.static('public'));
 router.use(express.urlencoded({ extended: true }));
 
 // lleva a la vista tabla de entregas anteriores, no debería estar
@@ -29,7 +29,7 @@ router.get('/logout', (req, res) => logout(req, res))
 // endpoint para registrarse
 router.post('/registro',
     passport.authenticate('registro', { failureRedirect: '/api/usuario/registro-error' }),
-    (req, res) => registro (req, res))
+    (req, res) => registro(req, res))
 
 // endpoint para renderizar pantalla de error de registro
 router.get('/registro-error', (req, res) => res.render('registroError', { error: req.session.error }));
@@ -39,5 +39,7 @@ router.get('/login-error', (req, res) => res.render('loginError', { error: req.s
 
 // endpoint para ver mi perfil
 router.get('/:idUser/mi-perfil', (req, res) => perfil(req, res))
+
+router.post('/perfil', upload.single('archivo'),(req, res) => avatar(req, res))
 
 module.exports = router;

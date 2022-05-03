@@ -1,15 +1,21 @@
 <div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
     {{#if isActive}}
-        <p>Bienvenido {{isActive}}</p>
-        <a href='/api/productos' class="btn btn-dark">Pagina principal</a>
-        <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+    <p>Bienvenido {{isActive}}</p>
+    <a href='/api/productos' class="btn btn-dark">Pagina principal</a>
+    <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
     {{/if}}
     <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
 </div>
 <div>
     <h2>Perfil de {{user}}</h2>
+    <img src="{{foto}}" alt="foto-de-perfil">
     <p>Nombre: {{nombre}}</p>
     <p>Dirección: {{direccion}}</p>
     <p>Edad: {{edad}}</p>
     <p>Telefono: {{telefono}}</p>
+    <form action='/api/usuario/perfil' enctype="multipart/form-data" method="POST">
+        <input type="file" id="archivo" name="archivo" class="input-file"><span onclick="clearFile('single')"
+            class="clear-button">X</span>
+        <div><input type="submit" value="Upload File" class="submit-button"></div>
+    </form>
 </div>

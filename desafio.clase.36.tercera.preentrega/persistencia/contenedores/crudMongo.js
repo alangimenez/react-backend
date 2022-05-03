@@ -64,6 +64,7 @@ class CrudMongo {
             direccion: objeto.direccion,
             edad: objeto.edad,
             telefono: objeto.telefono,
+            foto: objeto.foto
         })
         return nuevoObjeto
     }

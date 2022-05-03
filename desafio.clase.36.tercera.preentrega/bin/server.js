@@ -1,13 +1,13 @@
-const config = require('./config/config.process.env');
+const config = require('../config/config.process.env');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const routerProductos = require('./router/productos.router');
-const routerCarrito = require('./router/carrito.router');
-const routerUsuario = require('./router/usuario.router');
-const { validarRuta } = require('./middlewares/middlewares');
+const routerProductos = require('../router/productos.router');
+const routerCarrito = require('../router/carrito.router');
+const routerUsuario = require('../router/usuario.router');
+const { validarRuta } = require('../middlewares/middlewares');
 const { engine } = require('express-handlebars');
-const { logger, errorLogger} = require('./config/config.log4js');
+const { logger, errorLogger} = require('../config/config.log4js');
 const cluster = require('cluster');
 const os = require('os');
 
@@ -56,7 +56,7 @@ app.use(express.json());
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const passport = require('./middlewares/passport');
+const passport = require('../middlewares/passport');
 app.use(session({
     name: 'my-session',
     secret: 'gatos',
@@ -73,6 +73,8 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(express.static('./public'));
 
 app.use('/api/productos', routerProductos);
 app.use('/api/carrito', routerCarrito);

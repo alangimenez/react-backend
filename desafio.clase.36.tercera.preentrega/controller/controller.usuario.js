@@ -1,6 +1,7 @@
 const { errorLogger } = require('../config/config.log4js');
 const { crearCarrito } = require('../controller/controller.carrito')
 const { enviarMailRegistro } = require('../utils/nodemailer');
+path = require('path')
 
 const { DaoMongoUsuario } = require('../persistencia/daos/usuario/daoMongoUsuario');
 const UsuarioMongo = new DaoMongoUsuario();
@@ -46,12 +47,29 @@ const perfil = (req, res) => {
         direccion: req.user.direccion,
         edad: req.user.edad,
         telefono: req.user.telefono,
+        foto: req.user.foto,
     })
+}
+
+const avatar = async (req, res) => {
+    const file = req.file;
+    if (!file) {
+        const error = new Error('Debes cargar un archivo');
+        error.httpStatusCode = 400;
+        return next(error);
+    }
+    const usuario = {
+        id: req.user.id,
+        foto: path.join(`/${file.filename}`)
+    }
+    await UsuarioMongo.actualizarAvatarUsuario(usuario);
+    res.redirect(`${req.user.id}/mi-perfil`)
 }
 
 module.exports = {
     renderizarVista,
     logout,
     registro,
-    perfil
+    perfil,
+    avatar
 }

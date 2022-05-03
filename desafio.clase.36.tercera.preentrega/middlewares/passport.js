@@ -17,7 +17,8 @@ passport.use('registro', new LocalStrategy({
             id: username,
             password: encrypt(password),
             edad: req.body.age,
-            telefono: req.body.telephone
+            telefono: req.body.telephone,
+            foto: "",
         };
         const usuarioLogueado = await UsuarioMongo.leerInfoPorId(req.body.username);
         if (usuarioLogueado != undefined) {

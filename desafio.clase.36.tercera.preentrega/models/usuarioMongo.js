@@ -9,8 +9,8 @@ const usuarioSchema = new Schema ({
     nombre: {type: String},
     direccion: {type: String},
     edad: {type: Number},
-    telefono: {type: String}
-    // falta subir foto, debe guardarse en espacio publico
+    telefono: {type: String},
+    foto: {type: String}
 })
 
 const Usuario = mongoose.model(coleccion, usuarioSchema);
