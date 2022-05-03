@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { validarAdmin } = require('../middlewares/middlewares');
+const { validarProduct, controlPropProducto } = require('../middlewares/productos.mid');
 const { obtenerProductos,
     obtenerProductoPorId,
     eliminarProducto,
@@ -17,9 +18,9 @@ router.get('/:idProd', obtenerProductoPorId)
 router.delete('/:idProd', [validarAdmin], eliminarProducto)
 
 // sube un nuevo producto
-router.post('/', [validarAdmin], subirProducto)
+router.post('/', [validarAdmin, validarProduct], subirProducto)
 
 // actualiza datos de producto (actualiza el timestamp si o si)
-router.put('/:idProd', [validarAdmin], modificarProducto)
+router.put('/:idProd', [validarAdmin, controlPropProducto], modificarProducto)
 
 module.exports = router;

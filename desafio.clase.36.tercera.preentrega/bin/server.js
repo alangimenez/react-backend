@@ -1,13 +1,13 @@
-const config = require('../config/config.process.env');
+const config = require('../src/config/config.process.env');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const routerProductos = require('../router/productos.router');
-const routerCarrito = require('../router/carrito.router');
-const routerUsuario = require('../router/usuario.router');
-const { validarRuta } = require('../middlewares/middlewares');
+const routerProductos = require('../src/router/productos.router');
+const routerCarrito = require('../src/router/carrito.router');
+const routerUsuario = require('../src/router/usuario.router');
+const { validarRuta } = require('../src/middlewares/middlewares');
 const { engine } = require('express-handlebars');
-const { logger, errorLogger} = require('../config/config.log4js');
+const { logger, errorLogger} = require('../src/config/config.log4js');
 const cluster = require('cluster');
 const os = require('os');
 
@@ -46,7 +46,7 @@ if (config.MODE === "CLUSTER") {
 
 // motor de plantillas
 app.engine('handlebars', engine());
-app.set('views', './views');
+app.set('views', './src/views');
 app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -56,7 +56,7 @@ app.use(express.json());
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const passport = require('../middlewares/passport');
+const passport = require('../src/middlewares/passport');
 app.use(session({
     name: 'my-session',
     secret: 'gatos',

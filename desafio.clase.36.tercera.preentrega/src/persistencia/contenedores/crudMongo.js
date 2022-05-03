@@ -30,9 +30,11 @@ class CrudMongo {
     }
 
     async subirInfo(objeto) {
-        let idNuevo, nuevoObjeto;
-        const listadoProductos = await this.leerInfo();
-        listadoProductos.length === 0 ? idNuevo = 1 : idNuevo = listadoProductos[listadoProductos.length - 1].id + 1;
+        let nuevoObjeto = await this.model.create(objeto);
+
+        /* let idNuevo, nuevoObjeto;
+        const lista = await this.leerInfo();
+        lista.length === 0 ? idNuevo = 1 : idNuevo = lista[lista.length - 1].id + 1;
         if (objeto.nombre) {
             const validacion = controlProps(objeto);
             if (validacion) return validacion;
@@ -52,7 +54,7 @@ class CrudMongo {
                 user: objeto,
                 timestamp: Date.now(),
             })
-        }
+        } */
         return nuevoObjeto
     }
 
@@ -82,9 +84,6 @@ class CrudMongo {
     }
 
     async actualizarInfo(objeto) {
-        if (!objeto.nombre && !objeto.descripcion && !objeto.codigo && !objeto.foto && !objeto.precio && !objeto.stock) return (
-            { error: -3, message: `Las caracteristicas que se intentan actualizar del producto no existen` }
-        )
         let resultado = ""; 
         if (objeto.nombre) resultado = await this.model.updateOne({id: objeto.id}, {$set: {nombre: objeto.nombre}});
         if (objeto.codigo) resultado = await this.model.updateOne({id: objeto.id}, {$set: {codigo: objeto.codigo}});
