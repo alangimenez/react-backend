@@ -20,7 +20,8 @@ class DaoMongoCarrito extends CrudMongo {
     }
 
     async vaciarCarrito(id) {
-        await this.model.updateOne({user: id}, {$set: {productos: []}});
+        const resultado = await this.model.updateOne({user: id}, {$set: {productos: []}});
+        return resultado;
     }
 
     async leerInfoPorId(id) {

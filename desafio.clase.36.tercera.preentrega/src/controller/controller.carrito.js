@@ -12,18 +12,31 @@ async function verCarritos(req, res) {
 // ver un carrito de un usuario en particular
 async function verCarritoUsuario(req, res) {
     const carritoFiltrado = await fnCarritos().leerInfoPorId(req.params.idCarr);
-    if (req.user) {
+
+    // response con JSON
+    if (!carritoFiltrado) return res.status(404).json({error: -12, message: `carrito no encontrado`}) 
+    res.status(200).json(carritoFiltrado);
+
+    // response con template
+    /* if (req.user) {
         res.render('../views/carrito', { productosEnCarrito: carritoFiltrado.productos, user: req.user.id, isActive: req.user.id, boton: "Cerrar sesión" });
     } else {
         // chequear esto, tecnicamente no deberia acceder al carrito si no esta logueado
         res.render('../views/loginError', { error: "Primero debe loguearse" });
-    }
+    } */
 }
 
 // crea carrito, muestra objeto
 async function crearCarrito(req, res) {
-    const nuevoCarrito = await fnCarritos().subirInfo(req.body.username);
-    return (nuevoCarrito);
+    const lista = await fnCarritos().leerInfo();
+    lista.length === 0 ? idNuevo = 1 : idNuevo = lista[lista.length - 1].id + 1;
+    const carritoSubir = {
+        id: idNuevo,
+        user: req.body.username,
+        timestamp: Date.now(),
+    }
+    const nuevoCarrito = await fnCarritos().subirInfo(carritoSubir);
+    res.status(201).json(nuevoCarrito);
 }
 
 // elimina carrito, muestra array completo
@@ -35,7 +48,7 @@ async function eliminarCarrito(req, res) {
 
 // inserta productos en carrito, muestra el carrito seleccionado completo
 async function prodAlCarrito(req, res) {
-    if (req.user || req.params.idCarr != "na") {
+    try {
         const { idCarr, idProd } = req.params;
         const productoSeleccionado = await fnProductos().leerInfoPorId(idProd);
         if (!productoSeleccionado) {
@@ -49,10 +62,10 @@ async function prodAlCarrito(req, res) {
         }
         const carritoActualizado = await fnCarritos().actualizarProdEnCarrito(carritoSeleccionado, productoSeleccionado);
         res.json(carritoActualizado);
-    } else {
-        res.json({ login: "login" })
+    } catch (e) {
+        errorLogger.error(e)
+        res.json({error: -1, message: `producto no encontrado`})
     }
-
 }
 
 // lista todos los productos de un carrito
@@ -74,7 +87,7 @@ async function prodDelCarrito(req, res) {
 async function elimProdDelCarrito(req, res) {
     const { idCarr, idProd } = req.params;
     const listadoCarritos = await fnCarritos().leerInfo();
-    const carritoSeleccionado = listadoCarritos.find(e => e.id === +idCarr);
+    const carritoSeleccionado = listadoCarritos.find(e => e.user === idCarr);
     if (!carritoSeleccionado) {
         errorLogger.error(`carrito no encontrado`);
         return res.status(404).json({ error: -4, message: `carrito no encontrado` });
@@ -82,7 +95,7 @@ async function elimProdDelCarrito(req, res) {
     const prodEnCarrito = carritoSeleccionado.productos.find(e => e.id === +idProd);
     if (!prodEnCarrito) {
         errorLogger.error(`el producto no existe en el carrito`);
-        return res.status(400).json({ error: -6, message: `el producto no existe en el carrito` });
+        return res.status(404).json({ error: -6, message: `el producto no existe en el carrito` });
     }
     const carritoActualizado = await fnCarritos().eliminarProdEnCarrito(listadoCarritos, carritoSeleccionado, prodEnCarrito)
     res.json(carritoActualizado);
@@ -96,11 +109,14 @@ async function confirmarCompra(req, res) {
     await whatsapp(req.user.telefono, req.user.nombre, req.user.id);
     await mensajeTexto(req.user.telefono, req.user.nombre);
     const resultado = await fnCarritos().vaciarCarrito(req.params.idCarr);
+    return productosConfirmados;
 }
 
 async function vaciarCarrito(req, res) {
-    await fnCarritos().vaciarCarrito(req.body.id);
-    res.json({ mensaje: req.body.id });
+    const cambio = await fnCarritos().vaciarCarrito(req.body.id);
+    if (cambio.matchedCount === 0) return res.status(404).json({error: -13, message: `usuario no encontrado`});
+    const carrito = await fnCarritos().leerInfoPorId(req.body.id);
+    res.json(carrito).status(201);
 }
 
 module.exports = {

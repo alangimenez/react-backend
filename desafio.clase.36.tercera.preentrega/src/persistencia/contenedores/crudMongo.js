@@ -72,7 +72,7 @@ class CrudMongo {
     }
 
     async eliminarInfo(id) {
-        const result = await this.model.deleteOne({id: id});
+        const result = await this.model.deleteOne({user: id});
         if (result.deletedCount === 0) return { error: -1, message: `producto no encontrado` }
         return this.leerInfo();
     }

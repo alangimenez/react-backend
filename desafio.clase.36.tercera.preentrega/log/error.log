@@ -11,3 +11,54 @@
 [2022-05-03T19:30:36.249] [ERROR] error - { error: -1, message: 'producto no encontrado' }
 [2022-05-03T19:39:33.827] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
 [2022-05-03T19:42:16.196] [ERROR] error - { error: -1, message: 'producto no encontrado' }
+[2022-05-03T23:20:22.983] [ERROR] error - Cannot read property 'get' of undefined
+[2022-05-03T23:27:03.709] [ERROR] error - carrito no encontrado
+[2022-05-03T23:27:10.981] [ERROR] error - carrito no encontrado
+[2022-05-03T23:27:22.586] [ERROR] error - producto no encontrado
+[2022-05-03T23:29:36.085] [ERROR] error - CastError: Cast to Number failed for value "esdf" (type string) at path "id" for model "productos"
+    at model.Query.exec (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\query.js:4650:21)
+    at model.Query.Query.then (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\query.js:4749:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5) {
+  messageFormat: undefined,
+  stringValue: '"esdf"',
+  kind: 'Number',
+  value: 'esdf',
+  path: 'id',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\cast\number.js:27:10)
+      at SchemaNumber.cast (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\schema\number.js:380:12)
+      at SchemaNumber.SchemaType.applySetters (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\schematype.js:1179:12)
+      at SchemaNumber.SchemaType._castForQuery (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\schematype.js:1613:15)
+      at SchemaNumber.castForQuery (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\schema\number.js:434:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\schematype.js:1580:20)
+      at cast (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\cast.js:344:32)
+      at model.Query.Query.cast (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\query.js:5085:12)
+      at model.Query.Query._castConditions (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\query.js:2143:10)
+      at model.Query.<anonymous> (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\mongoose\lib\query.js:2170:8) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-05-03T23:29:49.110] [ERROR] error - producto no encontrado
+[2022-05-03T23:47:19.971] [ERROR] error - el carrito no posee productos
+[2022-05-03T23:47:39.108] [ERROR] error - carrito no encontrado
+[2022-05-03T23:47:45.338] [ERROR] error - carrito no encontrado
+[2022-05-03T23:47:54.226] [ERROR] error - el carrito no posee productos
+[2022-05-03T23:49:52.910] [ERROR] error - carrito no encontrado
+[2022-05-03T23:51:04.771] [ERROR] error - carrito no encontrado
+[2022-05-03T23:51:47.077] [ERROR] error - carrito no encontrado
+[2022-05-03T23:52:08.592] [ERROR] error - carrito no encontrado
+[2022-05-03T23:52:59.279] [ERROR] error - carrito no encontrado
+[2022-05-03T23:53:05.102] [ERROR] error - carrito no encontrado
+[2022-05-03T23:53:12.642] [ERROR] error - el producto no existe en el carrito
+[2022-05-03T23:53:18.711] [ERROR] error - el producto no existe en el carrito
+[2022-05-03T23:53:23.346] [ERROR] error - el producto no existe en el carrito
+[2022-05-03T23:53:32.767] [ERROR] error - el producto no existe en el carrito
+[2022-05-03T23:53:37.422] [ERROR] error - el producto no existe en el carrito

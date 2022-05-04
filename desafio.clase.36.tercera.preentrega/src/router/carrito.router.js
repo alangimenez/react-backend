@@ -18,24 +18,24 @@ router.get('/', async (req, res) => verCarritos(req, res))
 router.get('/:idCarr', async (req, res) => verCarritoUsuario(req, res))
 
 // crear un carrito
-router.post('/', validarArchivo, crearCarrito)
+router.post('/', crearCarrito)
 
 // elimina carrito
-router.delete('/:idCarr', [validarArchivo], eliminarCarrito)
+router.delete('/:idCarr', eliminarCarrito)
 
 // agrega productos al carrito
-router.post('/:idCarr/productos/:idProd', [validarArchivo], prodAlCarrito)
+router.post('/:idCarr/productos/:idProd', prodAlCarrito)
 
 // array de los productos de un carrito
-router.get('/:idCarr/productos', [validarArchivo], prodDelCarrito)
+router.get('/:idCarr/productos', prodDelCarrito)
 
 // elimina productos de un carrito (los elimina de a uno, no todos juntos)
-router.delete('/:idCarr/productos/:idProd', [validarArchivo], elimProdDelCarrito)
+router.delete('/:idCarr/productos/:idProd', elimProdDelCarrito)
 
 // endpoint para confirmar compra
 router.post('/:idCarr/confirmar', async (req, res) => {
-    await confirmarCompra(req, res);
-    res.json({ resultado: "todo salio ok" });
+    const compra = await confirmarCompra(req, res);
+    res.status(200).json(compra);
 })
 
 // endpoint post finalizada la compra
