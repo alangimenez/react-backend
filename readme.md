@@ -1,4 +1,29 @@
-Desafio 36
+Desafio 38
+Buenas noches. Hago entrega del desafio 38 - Arquitectura en capas.
+
+El proyecto ya traia bastante incorporado la arquitectura por capas, sin embargo, se termino de implementar correcciones para que quede bien reflejado.
+
+- La carpeta "config" posee las configuraciones para el proyecto (en este caso, solamente para el logger y variables de entorno)
+- La carpeta "router" posee solamente las rutas y solicitudes al controller para procesar peticiones
+- La carpeta "models" posee solo los modelos de objetos que se implementarán en las BD
+- La carpeta "persistencia" posee los metodos para interactuar con la Base de Datos, con los CRUDs y DAOs correspondientes. Vale aclarar que hay persistencia para MongoDB, Firebase, Memoria y FileSystem, pero SOLO se debe utilizar el de MongoDB (el resto no está probado, y como hice cambios en los controller, es muy probable que den error. No los elimine porque luego pienso adaptarlos)
+- La carpeta "views" contiene los handlebars para renderizar vistas en los endpoint de los router gzip y process
+- La carpeta "middlewares" solo posee middlewares, que hacen controles en ciertos endpoints
+- La carpeta "infoLog" guarda los logs dependiendo del tipo de mensaje que se dispara. La configuración del logger está en la carpeta correspondiente
+- La carpeta "utils" solo posee una función llamada en un controlador, y lo deje aparte dado que lo tome de otro desafio
+- La carpeta "databases" posee accesos a las bases de datos correspondientes. La configuración también podría estar en la carpeta config, pero decidi dejarla aca porque me parecio algo muy especifico de esta carpeta en particular. 
+- La carpeta "assets" posee los archivos para persistir la información en caso de utilizar como metodo de persistencia FileSystem, una vez que corrija bien el CRUD del mismo.
+- La carpeta "controller" posee la logica para recibir las peticiones de parte de los router, hacer peticiones de información a persistencia, y devolver información al peticionante, sea que la request haya sido correcta o invalida. 
+
+Como en desafio anteriores, en el desafio va un archivo sample.env.js para poder levantar el proyecto con las variables de entorno adecuadas.
+
+Adicionalmente, tener presente que los endpoint de los router carrito y productos, devuelven información en formato JSON. Sin embargo, los endpoints de los routes gzip y process devuelven información en formato template, dado que así lo requeria la consigna en su momento.
+
+Gracias de antemano por el feedback! Alan.
+
+
+
+Desafio 36 (EN PROCESO DE CORRECCIONES)
 Buenas noches. Hago entrega de la tercer preentrega.
 
 La misma aún no está terminada, dado que faltan 2 o 3 puntos de la consigna, pero si está bastante avanzado.
