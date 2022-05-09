@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('../middlewares/passport');
-const { perfil, 
-    logout, 
-    registro, 
-    avatar, 
-    login, 
-    registroError, 
+const { perfil,
+    logout,
+    registro,
+    avatar,
+    login,
+    registroError,
     loginError } = require('../controller/controller.usuario');
 const upload = require('../config/config.multer');
+const usuarioLogueado = require('../middlewares/usuarios.mid');
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
@@ -33,9 +34,11 @@ router.get('/registro-error', (req, res) => registroError(req, res));
 router.get('/login-error', (req, res) => loginError(req, res));
 
 // endpoint para ver mi perfil
-router.get('/:idUser/mi-perfil', (req, res) => perfil(req, res))
+router.get('/mi-perfil', (req, res) => perfil(req, res))
 
-router.post('/perfil', upload.single('archivo'),(req, res) => avatar(req, res))
+router.post('/perfil',
+    [usuarioLogueado, upload.single('archivo')],
+    (req, res) => avatar(req, res))
 
 // endpoint para renderizar pantalla de login (ESTE ENDPOINT DEVUELVE UN TEMPLATE)
 // router.get('/login', (req, res) => res.render('../views/login'));

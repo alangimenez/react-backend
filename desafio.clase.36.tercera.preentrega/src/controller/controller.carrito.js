@@ -34,7 +34,7 @@ async function crearCarrito(req, res) {
         id: idNuevo,
         user: req.body.username,
         timestamp: Date.now(),
-        tota: 0
+        total: 0
     }
     const nuevoCarrito = await fnCarritos().subirInfo(carritoSubir);
 
@@ -64,7 +64,8 @@ async function prodAlCarrito(req, res) {
             errorLogger.error(`carrito no encontrado`);
             return res.status(404).json({ error: -4, message: `carrito no encontrado` });
         }
-        const carritoActualizado = await fnCarritos().actualizarProdEnCarrito(carritoSeleccionado, productoSeleccionado);
+        let carritoActualizado = await fnCarritos().actualizarProdEnCarrito(carritoSeleccionado, productoSeleccionado);
+        carritoActualizado = await calculoTotalCarrito(carritoActualizado);
         res.json(carritoActualizado);
     } catch (e) {
         errorLogger.error(e)
@@ -101,7 +102,8 @@ async function elimProdDelCarrito(req, res) {
         errorLogger.error(`el producto no existe en el carrito`);
         return res.status(404).json({ error: -6, message: `el producto no existe en el carrito` });
     }
-    const carritoActualizado = await fnCarritos().eliminarProdEnCarrito(listadoCarritos, carritoSeleccionado, prodEnCarrito)
+    let carritoActualizado = await fnCarritos().eliminarProdEnCarrito(listadoCarritos, carritoSeleccionado, prodEnCarrito)
+    carritoActualizado = await calculoTotalCarrito(carritoActualizado);
     res.json(carritoActualizado);
 }
 
@@ -112,20 +114,28 @@ async function confirmarCompra(req, res) {
     await enviarMailPedido(req.user.nombre, req.user.id, productosConfirmados);
     await whatsapp(req.user.telefono, req.user.nombre, req.user.id);
     await mensajeTexto(req.user.telefono, req.user.nombre);
-    const resultado = await fnCarritos().vaciarCarrito(req.params.idCarr);
-    return productosConfirmados;
+    let resultado = await fnCarritos().vaciarCarrito(req.params.idCarr);
+    resultado = await calculoTotalCarrito(resultado);
+    const compra = {
+        productos: productosConfirmados,
+        total: carrito.total,
+    }
+    calculoTotalCarrito({user: carrito.user});
+    return compra;
 }
 
 async function vaciarCarrito(req, res) {
     const cambio = await fnCarritos().vaciarCarrito(req.body.id);
     if (cambio.matchedCount === 0) return res.status(404).json({error: -13, message: `usuario no encontrado`});
-    const carrito = await fnCarritos().leerInfoPorId(req.body.id);
+    let carrito = await fnCarritos().leerInfoPorId(req.body.id);
+    carrito = await calculoTotalCarrito(carrito);
     res.json(carrito).status(201);
 }
 
 async function modificarCantidadDeProdEnCarrito (req, res) {
     const { idCarr, idProd } = req.params;
     const { cantidad } = req.body;
+    if (cantidad < 1) return res.status(400).json({error: `La cantidad ingresada debe ser mayor o igual a 1`})
     const listadoCarritos = await fnCarritos().leerInfo();
     const carritoSeleccionado = listadoCarritos.find(e => e.user === idCarr);
     if (!carritoSeleccionado) {
@@ -138,8 +148,8 @@ async function modificarCantidadDeProdEnCarrito (req, res) {
         return res.status(404).json({ error: -6, message: `el producto no existe en el carrito` });
     }
     prodEnCarrito.cantidad = cantidad;
-    const listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(idCarr, carritoSeleccionado, prodEnCarrito);
-    calculoTotalCarrito(listadoActualizado);
+    let listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(idCarr, carritoSeleccionado, prodEnCarrito);
+    listadoActualizado = await calculoTotalCarrito(listadoActualizado);
     res.status(201).json(listadoActualizado);
 }
 
@@ -153,7 +163,7 @@ async function calculoTotalCarrito (carrito) {
             total = total + (carrito.productos[i].precio * carrito.productos[i].cantidad);
         }
     }
-    await fnCarritos().actualizarTotalCarrito(carrito.user, total);    
+    return await fnCarritos().actualizarTotalCarrito(carrito.user, total);  
 }
 
 module.exports = {

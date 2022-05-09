@@ -99,3 +99,180 @@
 [2022-05-09T11:41:38.135] [ERROR] error - El email ya se encuentra registrado
 [2022-05-09T11:46:26.926] [ERROR] error - El email ya se encuentra registrado
 [2022-05-09T11:57:20.717] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-05-09T16:15:41.195] [ERROR] error - producto no encontrado
+[2022-05-09T16:20:39.008] [ERROR] error - No ha completado todos los campos necesarios del producto
+[2022-05-09T19:21:19.585] [ERROR] error - El email ya se encuentra registrado
+[2022-05-09T19:23:30.035] [ERROR] error - Invalid password
+[2022-05-09T19:23:37.659] [ERROR] error - El usuario no existe
+[2022-05-09T19:24:55.408] [ERROR] error - El email ya se encuentra registrado
+[2022-05-09T19:55:52.825] [ERROR] error - TypeError: Assignment to constant variable.
+    at prodAlCarrito (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\src\controller\controller.carrito.js:68:28)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[2022-05-09T20:22:16.899] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-05-09T20:22:17.730] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-05-09T20:24:02.224] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-05-09T20:24:03.093] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-05-09T20:25:18.200] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-05-09T20:25:18.994] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-05-09T20:25:35.846] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-05-09T20:25:36.704] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-05-09T20:26:48.202] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-05-09T20:26:49.020] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-05-09T20:26:56.234] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-05-09T20:26:57.135] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\desafio.clase.36.tercer.preentrega\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}

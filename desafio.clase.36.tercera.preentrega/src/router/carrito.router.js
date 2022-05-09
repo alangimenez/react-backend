@@ -36,7 +36,7 @@ router.delete('/:idCarr/productos/:idProd', elimProdDelCarrito)
 // endpoint para confirmar compra
 router.post('/:idCarr/confirmar', async (req, res) => {
     const compra = await confirmarCompra(req, res);
-    res.status(200).json(compra);
+    res.status(201).json(compra);
 })
 
 // endpoint post finalizada la compra

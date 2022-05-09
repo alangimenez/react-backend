@@ -37,28 +37,31 @@ const logout = (req, res) => {
         req.session.destroy(() => {
             res.clearCookie('my-session');
             // respuesta con JSON
-            res.status(200).json({message: `El usuario se ha deslogueado correctamente`})
+            res.status(200).json({ message: `El usuario se ha deslogueado correctamente` })
 
 
             // respuesta con template
             // res.render('../views/logout', { usuario: user });
         })
     } else {
-        res.status(400).json({message: `No existe usuario logueado para desloguearse`})
+        res.status(400).json({ message: `No existe usuario logueado para desloguearse` })
     }
 }
 
 const perfil = (req, res) => {
     // response con JSON
-    res.status(200).json({
-        user: req.user.id,
-        nombre: req.user.nombre,
-        direccion: req.user.direccion,
-        edad: req.user.edad,
-        telefono: req.user.telefono,
-        foto: req.user.foto,
-    })
-
+    if (req.user) {
+        res.status(200).json({
+            user: req.user.id,
+            nombre: req.user.nombre,
+            direccion: req.user.direccion,
+            edad: req.user.edad,
+            telefono: req.user.telefono,
+            foto: req.user.foto,
+        })
+    } else {
+        res.status(401).json({ error: `No existe usuario logueado` });
+    }
 
     // response con template
     /*res.render('../views/perfil', {
@@ -74,26 +77,30 @@ const perfil = (req, res) => {
 }
 
 const avatar = async (req, res) => {
+
     const file = req.file;
     if (!file) {
-        const error = new Error('Debes cargar un archivo');
-        error.httpStatusCode = 400;
-        return next(error);
+        // const error = new Error('Debes cargar un archivo');
+        // error.httpStatusCode = 400;
+        // return next(error);
+        return res.status(400).json({ error: `No hay un archivo cargado` });
     }
     const usuario = {
         id: req.user.id,
         foto: path.join(`/${file.filename}`)
     }
     await UsuarioMongo.actualizarAvatarUsuario(usuario);
-    
+
     // response con json
     res.status(201).json(usuario);
+
+
 
     // response con template
     // res.redirect(`${req.user.id}/mi-perfil`)
 }
 
-const login  = (req, res) => {
+const login = (req, res) => {
     const usuario = {
         id: req.user.id,
         nombre: req.user.nombre,
@@ -106,7 +113,7 @@ const login  = (req, res) => {
 
 const registroError = (req, res) => {
     // response con JSON
-    res.status(400).json({error: req.session.error});
+    res.status(400).json({ error: req.session.error });
 
     // response con template
     // res.render('registroError', { error: req.session.error })
@@ -114,7 +121,7 @@ const registroError = (req, res) => {
 
 const loginError = (req, res) => {
     // resopnse con JSON
-    res.status(400).json({error: req.session.error});
+    res.status(400).json({ error: req.session.error });
 
     // response con template
     // res.render('loginError', { error: req.session.error })

@@ -1,0 +1,596 @@
+{
+	"info": {
+		"_postman_id": "c2acb801-c68b-48c0-bcc0-4843c6f01f6c",
+		"name": "tercera-preentrega-coderhouse-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Carrito",
+			"item": [
+				{
+					"name": "Crear carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": 123}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								""
+							]
+						},
+						"description": "Este endpoint generará un nuevo carrito al registrarse un nuevo usuario. Dado que no es un endpoint que se debiera llamar directamente, NO devuelve nada.\n\nPara probarlo, se puede:\n\n1.  Probar el endpoint de Registro de usuario, y revisar que se cree el carrito en MongoAtlas\n2.  Hacer un post con un body como el que figura de ejemplo, cancelar el request, y revisar que se cree el carrito en MongoAtlas"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"123"
+							]
+						},
+						"description": "Este endpoint elimina un carrito via parametro en la URL. En el proyecto este endpoint NO se utiliza, pero no lo elimine dado que luego podría implementar una función de eliminar cuenta (por si el usuario quisiera)"
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar productos a carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/alanaa@gmail.com/productos/18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"alanaa@gmail.com",
+								"productos",
+								"18"
+							]
+						},
+						"description": "Agrega un producto al carrito, utilizando para ambos los parametros pasados por la URL. En el caso de que el carrito o el producto no exista, dara el error correspondiente.\n\nTener presente que este endpoint aún NO tiene agregada la validación de si el usuario esta logueado para agregar productos a su carrito."
+					},
+					"response": []
+				},
+				{
+					"name": "Todos los carritos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								""
+							]
+						},
+						"description": "Trae todos los carritos. No es de utilidad en la aplicación, simplemente fue armado para hacer mas rápido algunas verificaciones en la app."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar productos de carrito",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/alanaa@gmail.com/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"alanaa@gmail.com",
+								"productos"
+							]
+						},
+						"description": "Devuelve todos los productos que tenga en su carrito un usuario, dependiendo cual le pasemos por parametro en URL.\n\nTener presente que este endpoint aún NO tiene agregada la validación de si el usuario esta logueado para ver los productos en su carrito."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto de carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/alanaa@gmail.com/productos/18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"alanaa@gmail.com",
+								"productos",
+								"18"
+							]
+						},
+						"description": "Elimina un producto de un carrito, siguiendo los parametros pasados por la URL. En caso de que el usuario o el producto no exista, dará el error correspondiente.\n\nTener presente que este endpoint aún NO tiene agregada la validación de si el usuario esta logueado para eliminar productos de su carrito."
+					},
+					"response": []
+				},
+				{
+					"name": "Confirmar compra",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/alanaa@gmail.com/confirmar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"alanaa@gmail.com",
+								"confirmar"
+							]
+						},
+						"description": "Confirma la compra, con los productos que tenga al momento el usuario en su carrito, sabiendo el usuario a través del parametro en la URL.\n\nAun NO está implementada la validación de si el usuario esta logueado para confirmar la compra."
+					},
+					"response": []
+				},
+				{
+					"name": "Mensaje compra finalizada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/compra/realizada/muchas/gracias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"compra",
+								"realizada",
+								"muchas",
+								"gracias"
+							]
+						},
+						"description": "Renderiza el HTML de compra confirmada. Se debe adaptar para que muestre que fue lo que compro y algun detalle adicional."
+					},
+					"response": []
+				},
+				{
+					"name": "Vaciar un carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": \"alanaa@gmail.com\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/vaciar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"vaciar"
+							]
+						},
+						"description": "Elimina todos los productos de un carrito.\n\nAun NO tiene implementada la validación de saber si el usuario esta logueado para ejecutar este comando."
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar cantidad de prod en carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"cantidad\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/alanaa@gmail.com/modificar/18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"alanaa@gmail.com",
+								"modificar",
+								"18"
+							]
+						},
+						"description": "Modifica la cantidad de unidades de un producto que existen en un carrito.\n\nTodavia no tiene implementada la parte de la validación de si el usuario está logueado para poder hacer modificaciones.\n\nNO cargarle letras, hace crashear el carrito (todavia no está solucionado)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Obtener todos los productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos"
+							]
+						},
+						"description": "Obtiene todos los productos cargados"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener producto por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/productos/17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"17"
+							]
+						},
+						"description": "Obtener un producto en particular pasandole el id especifico"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar producto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"prueba para el put\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/productos/17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"17"
+							]
+						},
+						"description": "Actualiza los atributos pasados en el body. Se podrá actualizar el nombre, descripción, código, foto, precio y stock (tal como figura en \"Subir producto\"). No admite que intenten actualizarse otros parametros. En caso de pasar un parametro correcto y otro incorrecto, ignorará este último."
+					},
+					"response": []
+				},
+				{
+					"name": "Subir producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"prueba para el POST\",\r\n    \"descripcion\": \"descripcio nde nuevo libro\",\r\n    \"codigo\": 5000,\r\n    \"foto\": \"foto del nuevo libro\",\r\n    \"precio\": 5100,\r\n    \"stock\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/productos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								""
+							]
+						},
+						"description": "Sube un producto a la base de datos. En caso de no pasarle todos los parametros, dará error. Si hay parametros de más, los ignorará. Los parametros mínimos, son los del ejemplo."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/productos/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"19"
+							]
+						},
+						"description": "Elimina el producto solicitado via parametro en la URL."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Login usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"alan@gmail.com\", \"password\": \"password\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desloguear usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"logout"
+							]
+						},
+						"description": "Se desloguea el usuario. No utiliza parametros dado que lo hará con el req.user que tiene seteado la aplicación al momento de ejecutar el request. Si no hay usuario registrado, dará el error correspondiente (400)"
+					},
+					"response": []
+				},
+				{
+					"name": "Registro usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"firstname\": \"Alan\", \"direction\": \"Saavedra\", \"username\": \"alan@gmail.com\", \"password\": \"password\", \"age\": 28, \"telephone\": \"+5491122558261\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/registro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"registro"
+							]
+						},
+						"description": "Sirve para el registro de usuario. En caso de querer registrar un mail ya registrado, dará el error correspondiente (400)"
+					},
+					"response": []
+				},
+				{
+					"name": "Perfil de usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/mi-perfil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"mi-perfil"
+							]
+						},
+						"description": "Muestra la información personal del usuario logueado. Utilizará la información del req.user para saber que usuario debe buscar. En caso de no haber usuario logueado, dará el error correspondiente (400)."
+					},
+					"response": []
+				},
+				{
+					"name": "Subir foto de perfil",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/Alan/Pictures/avatar.JPG"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/perfil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"perfil"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
