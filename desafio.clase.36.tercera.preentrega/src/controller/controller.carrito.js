@@ -34,9 +34,13 @@ async function crearCarrito(req, res) {
         id: idNuevo,
         user: req.body.username,
         timestamp: Date.now(),
+        tota: 0
     }
     const nuevoCarrito = await fnCarritos().subirInfo(carritoSubir);
-    res.status(201).json(nuevoCarrito);
+
+    // La respuesta no es necesaria, dado que el carrito solo se crea a traves de un registro de usuario
+    // y lo importante es que devuelva los datos del usuario nuevo, y no los del carrito nuevo.
+    // res.status(201).json(nuevoCarrito);
 }
 
 // elimina carrito, muestra array completo
@@ -119,6 +123,39 @@ async function vaciarCarrito(req, res) {
     res.json(carrito).status(201);
 }
 
+async function modificarCantidadDeProdEnCarrito (req, res) {
+    const { idCarr, idProd } = req.params;
+    const { cantidad } = req.body;
+    const listadoCarritos = await fnCarritos().leerInfo();
+    const carritoSeleccionado = listadoCarritos.find(e => e.user === idCarr);
+    if (!carritoSeleccionado) {
+        errorLogger.error(`carrito no encontrado`);
+        return res.status(404).json({ error: -4, message: `carrito no encontrado` });
+    }
+    const prodEnCarrito = carritoSeleccionado.productos.find(e => e.id === +idProd);
+    if (!prodEnCarrito) {
+        errorLogger.error(`el producto no existe en el carrito`);
+        return res.status(404).json({ error: -6, message: `el producto no existe en el carrito` });
+    }
+    prodEnCarrito.cantidad = cantidad;
+    const listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(idCarr, carritoSeleccionado, prodEnCarrito);
+    calculoTotalCarrito(listadoActualizado);
+    res.status(201).json(listadoActualizado);
+}
+
+async function calculoTotalCarrito (carrito) {
+    let total = 0;
+    if (!carrito.productos) {
+        total = 0;
+    } else {
+        for (let i = 0; i < carrito.productos.length; i++) {
+            
+            total = total + (carrito.productos[i].precio * carrito.productos[i].cantidad);
+        }
+    }
+    await fnCarritos().actualizarTotalCarrito(carrito.user, total);    
+}
+
 module.exports = {
     crearCarrito,
     eliminarCarrito,
@@ -128,5 +165,6 @@ module.exports = {
     confirmarCompra,
     verCarritos,
     verCarritoUsuario,
-    vaciarCarrito
+    vaciarCarrito,
+    modificarCantidadDeProdEnCarrito
 }

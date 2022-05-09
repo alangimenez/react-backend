@@ -23,7 +23,12 @@ const renderizarVista = (req, res) => {
 const registro = async (req, res) => {
     enviarMailRegistro(req.body.username, req.body.firstname, req.body.direction, req.body.age, req.body.telephone);
     crearCarrito(req, res);
-    res.redirect('/api/productos');
+
+    // response con JSON
+    res.status(201).json(req.body);
+
+    // response con template
+    // res.redirect('/api/productos');
 }
 
 const logout = (req, res) => {
@@ -31,15 +36,32 @@ const logout = (req, res) => {
         const user = req.user.id;
         req.session.destroy(() => {
             res.clearCookie('my-session');
-            res.render('../views/logout', { usuario: user });
+            // respuesta con JSON
+            res.status(200).json({message: `El usuario se ha deslogueado correctamente`})
+
+
+            // respuesta con template
+            // res.render('../views/logout', { usuario: user });
         })
     } else {
-        res.redirect('/login')
+        res.status(400).json({message: `No existe usuario logueado para desloguearse`})
     }
 }
 
 const perfil = (req, res) => {
-    res.render('../views/perfil', {
+    // response con JSON
+    res.status(200).json({
+        user: req.user.id,
+        nombre: req.user.nombre,
+        direccion: req.user.direccion,
+        edad: req.user.edad,
+        telefono: req.user.telefono,
+        foto: req.user.foto,
+    })
+
+
+    // response con template
+    /*res.render('../views/perfil', {
         isActive: req.user.id,
         user: req.user.id,
         boton: "Cerrar sesión",
@@ -48,7 +70,7 @@ const perfil = (req, res) => {
         edad: req.user.edad,
         telefono: req.user.telefono,
         foto: req.user.foto,
-    })
+    })*/
 }
 
 const avatar = async (req, res) => {
@@ -63,7 +85,39 @@ const avatar = async (req, res) => {
         foto: path.join(`/${file.filename}`)
     }
     await UsuarioMongo.actualizarAvatarUsuario(usuario);
-    res.redirect(`${req.user.id}/mi-perfil`)
+    
+    // response con json
+    res.status(201).json(usuario);
+
+    // response con template
+    // res.redirect(`${req.user.id}/mi-perfil`)
+}
+
+const login  = (req, res) => {
+    const usuario = {
+        id: req.user.id,
+        nombre: req.user.nombre,
+        direccion: req.user.direccion,
+        edad: req.user.edad,
+        telefono: req.user.telefono
+    }
+    res.status(200).json(usuario);
+}
+
+const registroError = (req, res) => {
+    // response con JSON
+    res.status(400).json({error: req.session.error});
+
+    // response con template
+    // res.render('registroError', { error: req.session.error })
+}
+
+const loginError = (req, res) => {
+    // resopnse con JSON
+    res.status(400).json({error: req.session.error});
+
+    // response con template
+    // res.render('loginError', { error: req.session.error })
 }
 
 module.exports = {
@@ -71,5 +125,8 @@ module.exports = {
     logout,
     registro,
     perfil,
-    avatar
+    avatar,
+    login,
+    registroError,
+    loginError
 }

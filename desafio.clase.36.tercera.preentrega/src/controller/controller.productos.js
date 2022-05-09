@@ -69,7 +69,8 @@ async function subirProducto(req, res) {
             codigo: req.body.codigo,
             foto: req.body.foto,
             precio: req.body.precio,
-            stock: req.body.stock
+            stock: req.body.stock,
+            cantidad: 1
         }
         const productoSubido = await fnProductos().subirInfo(nuevoProducto);
         if (nuevoProducto.error) {

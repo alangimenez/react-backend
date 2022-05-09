@@ -7,7 +7,8 @@ const carritosSchema = new Schema ({
     id: {type: Number},
     user: {type: String},
     timestamp: {type: String},
-    productos: {type: Array}
+    productos: {type: Array},
+    total: {type: Number}
 })
 
 const Carrito = mongoose.model(coleccion, carritosSchema);

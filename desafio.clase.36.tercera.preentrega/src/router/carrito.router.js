@@ -9,7 +9,8 @@ const { crearCarrito,
     confirmarCompra,
     verCarritos,
     verCarritoUsuario,
-    vaciarCarrito } = require('../controller/controller.carrito');
+    vaciarCarrito,
+    modificarCantidadDeProdEnCarrito } = require('../controller/controller.carrito');
 
 // ver carritos (eliminar luego de controlado todo, porque la consigna no lo pide)
 router.get('/', async (req, res) => verCarritos(req, res))
@@ -43,5 +44,8 @@ router.get('/compra/realizada/muchas/gracias', (req, res) => res.render('../view
 
 // endpoint para vaciar el carrito
 router.post('/vaciar', async (req, res) => vaciarCarrito(req, res))
+
+// modificar cantidad de unidades de un producto dentro del carrito
+router.post('/:idCarr/modificar/:idProd', (req, res) => modificarCantidadDeProdEnCarrito (req, res))
 
 module.exports = router;

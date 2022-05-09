@@ -12,6 +12,7 @@ const productoSchema = new Schema ({
     foto: {type: String},
     precio: {type: Number},
     stock: {type: Number},
+    cantidad: {type: Number}
 })
 
 const Producto = mongoose.model(coleccion, productoSchema);

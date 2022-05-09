@@ -29,6 +29,19 @@ class DaoMongoCarrito extends CrudMongo {
         if (prodFiltrado.length === 0) prodFiltrado = "";
         return prodFiltrado[0];
     }
+
+    async actualizarCantidadDeProductos (carrito, lista, producto) {
+        await this.eliminarProdEnCarrito("a", lista, producto);
+        await this.actualizarProdEnCarrito(lista, producto);
+        const listadoActualizado = await this.model.find({id: lista.id}, { __v: 0 });
+        return listadoActualizado[0];
+    }
+
+    async actualizarTotalCarrito (carrito, total) {
+        await this.model.updateOne({user: carrito}, {$set: {total: total}})
+        const listadoActualizado = await this.model.find({user: carrito}, { __v: 0 });
+        return listadoActualizado[0];
+    }
 }
 
 module.exports = {
