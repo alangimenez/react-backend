@@ -1,29 +1,28 @@
-Desafio 38
-Buenas noches. Hago entrega del desafio 38 - Arquitectura en capas.
+Desafio 36 (SEGUNDA ENTREGA)
+Buenas tardes. Hago reentrega de la tercer preentrega.
 
-El proyecto ya traia bastante incorporado la arquitectura por capas, sin embargo, se termino de implementar correcciones para que quede bien reflejado.
+Tome nota de varias cosas indicadas en la devolución, y en base a eso (y otros errores que yo fui viendo al probarlo), implemente los siguientes cambios:
+- Todos los endpoint ahora devuelven información en formato JSON (o error en el mismo formato si fuera el caso). 
+- Se corrigieron algunos errores que tenian ciertos endpoints, ademas de los que me marcaste en la corrección (nada extremo, si no que capaz en algun dato faltaba validación, o no se reflejaba correctamente en MongoAtlas, cosas así, pequeñas)
+- Se termino la parte del carrito que era lo que había faltado.
+- Se incorporó la parte de cargar la foto de perfil.
+- Se entrega la colección de Postman utilizada para realizar las pruebas. Cada endpoint tiene un pequeño comentario de que debería hacer y como se debería utilizar. Se que esto no era necesario pero capaz es de ayuda.
 
-- La carpeta "config" posee las configuraciones para el proyecto (en este caso, solamente para el logger y variables de entorno)
-- La carpeta "router" posee solamente las rutas y solicitudes al controller para procesar peticiones
-- La carpeta "models" posee solo los modelos de objetos que se implementarán en las BD
-- La carpeta "persistencia" posee los metodos para interactuar con la Base de Datos, con los CRUDs y DAOs correspondientes. Vale aclarar que hay persistencia para MongoDB, Firebase, Memoria y FileSystem, pero SOLO se debe utilizar el de MongoDB (el resto no está probado, y como hice cambios en los controller, es muy probable que den error. No los elimine porque luego pienso adaptarlos)
-- La carpeta "views" contiene los handlebars para renderizar vistas en los endpoint de los router gzip y process
-- La carpeta "middlewares" solo posee middlewares, que hacen controles en ciertos endpoints
-- La carpeta "infoLog" guarda los logs dependiendo del tipo de mensaje que se dispara. La configuración del logger está en la carpeta correspondiente
-- La carpeta "utils" solo posee una función llamada en un controlador, y lo deje aparte dado que lo tome de otro desafio
-- La carpeta "databases" posee accesos a las bases de datos correspondientes. La configuración también podría estar en la carpeta config, pero decidi dejarla aca porque me parecio algo muy especifico de esta carpeta en particular. 
-- La carpeta "assets" posee los archivos para persistir la información en caso de utilizar como metodo de persistencia FileSystem, una vez que corrija bien el CRUD del mismo.
-- La carpeta "controller" posee la logica para recibir las peticiones de parte de los router, hacer peticiones de información a persistencia, y devolver información al peticionante, sea que la request haya sido correcta o invalida. 
+Sigue faltando implementar mas mejoras para que el proyecto sea mucho mas estable y solido, como por ejemplo:
+- Validar que solo se pueda editar el carrito de un usuario si el mismo esta logueado, en caso contrario arrojar error 401
+- Validar que si agrego 2 productos iguales al carrito, se agrupen.
+- Validar el dato que se ingresa al intentar cambiar la cantidad de unidades de un producto.
+- Armar alguna especie de lógica de usuarios comunes/admin para poder cargar, editar y eliminar productos (con esto me refiero a que un usuario comun si quisiera cargar productos, debería dar error 401/403 (no recuerdo cual es el apropiado), pero si lo hace un user admin no debería haber problemas)
+- Armar la lógica para guardar las compras hechas en algun apartado de orders (y que lo pueda ver tanto el usuario admin como cada usuario con sus propias compras a través de algún endpoint en particular)
+- Refactorizar codigo (en especial del DAOs de Carrito y de los controllers)
 
-Como en desafio anteriores, en el desafio va un archivo sample.env.js para poder levantar el proyecto con las variables de entorno adecuadas.
+Falta seguir avanzando bastante de cara al proyecto final, pero creo que para lo que es la tercer preentrega ahora está bastante mas alineado. 
 
-Adicionalmente, tener presente que los endpoint de los router carrito y productos, devuelven información en formato JSON. Sin embargo, los endpoints de los routes gzip y process devuelven información en formato template, dado que así lo requeria la consigna en su momento.
+Al igual que antes, está el ejemplo de example.env.js para poder levantar el servidor localmente.
 
-Gracias de antemano por el feedback! Alan.
+Cualquier cosa avisarme, y muchas gracias de antemano! 
 
-
-
-Desafio 36 (EN PROCESO DE CORRECCIONES)
+Desafio 36 (PRIMER ENTREGA)
 Buenas noches. Hago entrega de la tercer preentrega.
 
 La misma aún no está terminada, dado que faltan 2 o 3 puntos de la consigna, pero si está bastante avanzado.
@@ -32,7 +31,6 @@ El link de Heroku es: https://tercer-preentrega.herokuapp.com/api/productos
 
 Falta implementar los siguientes puntos:
 - No está para cargar la foto de perfil.
-- No están hechos los test de Artillery
 - No está hecha la validación del número de telefono a cargar (pero si se carga correctamente, con el +codigo de pais + codigo de area + telefono, al hacer un pedido te llega el wpp)
 - Hay archivos viejos que deberían eliminarse (esencialmente los contenedores y daos de otras formas de persistencia, y algun middlewares obsoleto)
 
