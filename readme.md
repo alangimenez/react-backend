@@ -1,3 +1,31 @@
+Desafio 40
+Buenas tardes. Hago entrega del desafio 40.
+
+En el mismo se trato de mejorar un poco la lógica de la aplicación, tratando de separar bien las responsabilidades de cada capa.
+
+Lo que es la parte de aplicar DAOs ya estaba hecho (tener presente que solo funciona el DAOs de Mongo, el resto no esta probado y es probable que no funcione porque habia aplicado cambios anteriormente, y no adapte el resto de DAOs/CRUDs). 
+
+Lo que es la parte del DTO/patron Repository, lo aplique en una capa intermedia entre el controller y el DAOs. Me costo un poco entender este punto, y como no lo habiamos visto en clases, lo aplique según lo que entendi, quedando la aplicación de la siguiente manera:
+
+- Los routers se encargan de determinar los endpoints disponibles.
+- Los controllers se encargan solamente de recibir las peticiones del router y enviar la información necesaria al repository, así como dar respuesta al cliente una vez obtenida la respuesta del repository.
+- El repository (patron repository) tiene la responsabilidad de armar los DTO request/response, que sirven para enviar la información a los DAOs (en el caso de request) y al controller (en el caso de response). Es decir, esta capa se ocupa de requerir a todos los DAOs necesarios parar armar los DTOs correspondientes para persistir en la base de datos la información necesaria. A su vez, al recibir información de la base de datos, se encarga de armar un DTO para enviar al cliente, con la información que a este le concierne (por ejemplo, al usuario no le interesa ver el _id que le asigna Mongo a cada registro, por ende esto la capa repository se encarga de eliminarlo). 
+- Los DAOs/CRUDs son los que se encargan de persistir la información en la base de datos.
+
+A su vez, siguen estando los Middlewares que controlan información y lanzan errores en caso de no ingresar información necesaria para el Request. 
+
+Aproveche toda esta entrega para tratar de implementar los try/catch, de manera que la aplicación no rompa y que se pueda seguir con mas facilidad donde suceden los errores. 
+
+Por último, para convertir los datos a/desde DTO, se armaron varias funciones aparte, para tratar de reutilizar algo de código.
+
+Creo que ahora la aplicación quedo algo mas ordenada (al menos encontrar los errores y arreglarlo me fue super sencillo, y me di cuenta que implementando los DTO, me fue mas sencillo modificar si era necesario los datos a mostrar al cliente / a persistir en la base de datos) y no crashea tanto como antes.
+
+Tener presente que lo del patron Repository solo fue aplicado a la sección de productos/carritos (hay otros 2 routers que no lo aplique).
+
+Si no era tan así lo del patron Repository, avisarme y lo modifico, lo realice a como lo entendi. Y obviamente, gracias de antemano por todo el feedback! Alan.
+
+----------------------///----------------------
+
 Desafio 36 (SEGUNDA ENTREGA)
 Buenas tardes. Hago reentrega de la tercer preentrega.
 
