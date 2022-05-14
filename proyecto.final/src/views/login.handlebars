@@ -1,0 +1,22 @@
+<div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
+    <a href="/api/productos" class="btn btn-dark">Volver a pagina principal</a>
+</div>
+<div style="background-color: grey" class="container">
+    <h1 style="padding: 1rem">Login de usuario</h1>
+    <div style="padding: 1rem">
+        <form action="/api/usuario/login" method="POST">
+            <label id="username" style="margin: 0.5rem 0rem"><strong>Usuario</strong></label>
+            <br>
+            <input id="username" name="username" style="margin: 0.5rem 0rem">
+            <br>
+            <label id="password" style="margin: 0.5rem 0rem"><strong>Contraseña</strong></label>
+            <br>
+            <input id="password" name="password" style="margin: 0.5rem 0rem" type="password">
+            <br>
+            <button type="submit" class="btn btn-dark" style="margin: 0.5rem 0rem">Iniciar sesión</button>
+        </form>
+    </div>
+    <div style="padding-bottom: 0.5rem">
+        <p style="font-weight: bold;">Si desea registrarse, haga click <a href="/api/usuario/registro">aqui</a></p>
+    </div>
+</div>

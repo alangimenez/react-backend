@@ -1,0 +1,21 @@
+<div class="container" style="background-color: grey">
+    <h1 id="deslogueo" style="padding: 1rem">Hasta pronto, {{usuario}}</h1>
+</div>
+
+<script>
+    window.onload = () => {
+        let ruta;
+        if (window.location.href.includes("localhost")) {
+            ruta = "http://localhost:8080"
+        } else {
+            let ubicacion = window.location.href.indexOf('/api');
+            ruta = window.location.href.slice(0, ubicacion);
+        }
+        const dato = document.getElementById('deslogueo').innerHTML;
+        if (dato.includes('Hasta pronto') === true) {
+            setTimeout(() => {
+                window.location.href = `${ruta}/api/usuario/login`;
+            }, 2000)
+        }
+    }
+</script>

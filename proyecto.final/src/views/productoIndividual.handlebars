@@ -1,0 +1,62 @@
+<div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
+    {{#if isActive}}
+    <p>Bienvenido {{isActive}}</p>
+    <a href="/api/productos" class="btn btn-dark">Volver a pagina principal</a>
+    <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+    {{/if}}
+    <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
+</div>
+<div class="card" style="flex-direction: unset; width: 18rem;">
+    <img class="card-img-top" src="{{objeto.foto}}" alt="Card image cap">
+    <span class="card-body">
+        <h5 class="card-title">{{objeto.nombre}}</h5>
+        <p class="card-text">{{objeto.descripcion}}</p>
+        <p class="card-text">Stock: {{objeto.stock}}</p>
+        <p class="card-text">Timestamp: {{objeto.timestamp}}</p>
+        <p class="card-text">Precio: <strong>{{objeto.precio}}</strong></p>
+        <button onclick=post() class="btn btn-dark">Agregar al carrito</button>
+    </span>
+    <div class="spinner" style="font-size: 18px" id="spinner">
+        <div class="head"></div>
+    </div>
+    <div id="mensaje"></div>
+</div>
+
+<div id="error-login"></div>
+
+<script>
+    let ruta;
+    if (window.location.href.includes("localhost")) {
+        ruta = "http://localhost:8080"
+    } else {
+        let ubicacion = window.location.href.indexOf('/api');
+        ruta = window.location.href.slice(0, ubicacion);
+    }
+    function post() {
+        document.getElementById("spinner").style.display = "block";
+        document.getElementById("mensaje").innerHTML = "Aguarde un momento";
+        fetch(`${ruta}/api/carrito/{{user}}/productos/{{objeto.id}}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(data =>
+            data.json()
+        ).then(response => {
+            if (response.login === "login") {
+                document.getElementById("spinner").style.display = "none";
+                document.getElementById("mensaje").innerHTML = "";
+                document.getElementById("error-login").innerHTML = "Debe loguearse para agregar productos al carrito. Lo vamos a redirigir :D";
+                setTimeout(() => {
+                    window.location.href = `${ruta}/api/usuario/login`;
+                }, 2000)
+            } else {
+                document.getElementById("spinner").style.display = "none";
+                document.getElementById("mensaje").innerHTML = "El producto fue agregado con éxito";
+                setTimeout(() => {
+                    document.getElementById("mensaje").innerHTML = "";
+                }, 3500)
+            }
+        }).catch(error => console.error('Error:', error))
+    }
+</script>

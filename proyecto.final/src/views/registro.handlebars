@@ -1,0 +1,58 @@
+<div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
+    <a href="/api/productos" class="btn btn-dark">Volver a pagina principal</a>
+</div>
+<div class="container" style="background-color: grey">
+    <h1 style="padding: 1rem">Registro de usuario</h1>
+    <div style="padding: 1rem">
+        <form action="/api/usuario/registro" method="POST">
+            <label style="margin: 0.5rem 0rem"><strong>Email</strong></label>
+            <br>
+            <input id="username" name="username" type="email" style="margin: 0.5rem 0rem" required>
+            <br>
+            <label style="margin: 0.5rem 0rem"><strong>Contraseña</strong></label>
+            <br>
+            <input id="password" name="password" type="password" style="margin: 0.5rem 0rem" required>
+            <br>
+            <label style="margin: 0.5rem 0rem"><strong>Confirme contraseña</strong></label>
+            <br>
+            <input id="passwordRetry" name="passwordRetry" type="password" style="margin: 0.5rem 0rem" required>
+            <br>
+            <label style="margin: 0.5rem 0rem"><strong>Nombre</strong></label>
+            <br>
+            <input id="firstname" name="firstname" style="margin: 0.5rem 0rem" required>
+            <br>
+            <label style="margin: 0.5rem 0rem"><strong>Direccion</strong></label>
+            <br>
+            <input id="direction" name="direction" style="margin: 0.5rem 0rem" required>
+            <br>
+            <label style="margin: 0.5rem 0rem"><strong>Edad</strong></label>
+            <br>
+            <input id="age" name="age" type="number" style="margin: 0.5rem 0rem" required>
+            <br>
+            <label style="margin: 0.5rem 0rem"><strong>Telefono</strong></label>
+            <br>
+            <input id="telephone" name="telephone" style="margin: 0.5rem 0rem" required>
+            <br>
+            {{!-- multer --}}
+            {{!-- <input type="file" id="archivo" name="archivo" class="input-file"><span onclick="clearFile('single')"
+                class="clear-button">X</span> --}}
+            <button id="btn-submit" type="submit" class="btn btn-dark" style="margin: 0.5rem 0rem"
+                disabled="true">Registrarse</button>
+        </form>
+    </div>
+    <p style="font-weight: bold">Si desea loguearse, haga click <a href="/api/usuario/login">aquí</a></p>
+</div>
+<script>
+    const pass1 = document.getElementById("passwordRetry");
+    pass1.addEventListener('keyup', (e) => {
+        let pass = document.getElementById("password").value;
+        let passRetry = document.getElementById("passwordRetry").value;
+        if (pass === passRetry) {
+            document.getElementById("btn-submit").disabled = false;
+            pass1.style.backgroundColor = "green";
+        } else {
+            document.getElementById("btn-submit").disabled = true;
+            pass1.style.backgroundColor = "orange";
+        }
+    })
+</script>
