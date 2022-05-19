@@ -1,0 +1,12 @@
+[2022-04-12T19:52:36.048] [WARN] warningsFile - Peticion incorrecta a /infos, metodo GET
+[2022-04-12T19:53:48.349] [WARN] warningsFile - Peticion incorrecta a /infos, metodo GET
+[2022-04-12T19:54:12.026] [WARN] warningsFile - Peticion incorrecta a /productos/8, metodo GET
+[2022-04-12T19:54:20.992] [WARN] warningsFile - Peticion incorrecta a /producto/8, metodo GET
+[2022-04-12T19:54:28.306] [WARN] warningsFile - Peticion incorrecta a /api/producto/8, metodo GET
+[2022-05-04T19:30:34.890] [WARN] warningsFile - Peticion incorrecta a , metodo GET
+[2022-05-04T19:30:35.368] [WARN] warningsFile - Peticion incorrecta a /favicon.ico, metodo GET
+[2022-05-04T19:30:41.830] [WARN] warningsFile - Peticion incorrecta a /login, metodo GET
+[2022-05-04T19:30:51.568] [WARN] warningsFile - Peticion incorrecta a /api/usuario/login, metodo GET
+[2022-05-12T12:31:15.078] [WARN] warningsFile - Peticion incorrecta a /api/carrito/alksfj/productos, metodo POST
+[2022-05-12T12:58:28.424] [WARN] warningsFile - Peticion incorrecta a /api/carrito/28/productos/asdf, metodo GET
+[2022-05-12T19:07:49.381] [WARN] warningsFile - Peticion incorrecta a /HNAP1, metodo GET

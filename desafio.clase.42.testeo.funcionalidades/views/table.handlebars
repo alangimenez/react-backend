@@ -1,0 +1,15 @@
+<div class="container">
+    <table class="table table-dark table-striped">
+        <tr>
+            <th scope="col">Numero</th>
+            <th scope="col">Cantidad de veces que salio</th>
+        </tr>
+        <div></div>
+        {{#each listaDeNumeros}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.value}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
