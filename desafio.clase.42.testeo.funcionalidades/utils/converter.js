@@ -43,7 +43,7 @@ class Converter {
     converterVariosProductosDTO(listadoProductos) {
         const listadoProductosDTO = [];
         for (let i = 0; i < listadoProductos.length; i++) {
-            listadoProductosDTO.push(converterProductoDTOresponse(listadoProductos[i]));
+            listadoProductosDTO.push(this.converterProductoDTOresponse(listadoProductos[i]));
         }
         return listadoProductosDTO;
     }

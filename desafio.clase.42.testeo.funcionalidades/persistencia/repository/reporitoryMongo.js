@@ -106,6 +106,7 @@ class Repository {
 
     subirNuevoProducto = async (producto) => {
         try {
+            let idNuevo = 0;
             const lista = await fnProductos().leerInfo();
             lista.length === 0 ? idNuevo = 1 : idNuevo = lista[lista.length - 1].id + 1;
             const productoDTOrequest = converter.convertProductoDTOrequest(idNuevo, producto);
@@ -114,8 +115,8 @@ class Repository {
             return productoDTOresponse;
 
         } catch (e) {
-            errorLogger.error(`Ocurrio un error en obtenerProductoPorId Repository -> ` + e.message);
-            throw new Error(`Ocurrio un error en obtenerProductoPorId Repository -> ` + e.message)
+            errorLogger.error(`Ocurrio un error en subirNuevoProducto Repository -> ` + e.message);
+            throw new Error(`Ocurrio un error en subirNuevoProducto Repository -> ` + e.message)
         }
     }
 

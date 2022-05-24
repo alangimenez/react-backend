@@ -10,3 +10,4 @@
 [2022-05-12T12:31:15.078] [WARN] warningsFile - Peticion incorrecta a /api/carrito/alksfj/productos, metodo POST
 [2022-05-12T12:58:28.424] [WARN] warningsFile - Peticion incorrecta a /api/carrito/28/productos/asdf, metodo GET
 [2022-05-12T19:07:49.381] [WARN] warningsFile - Peticion incorrecta a /HNAP1, metodo GET
+[2022-05-24T18:19:45.662] [WARN] warningsFile - Peticion incorrecta a /api/productos/19, metodo POST
