@@ -126,18 +126,18 @@ class Middlewares {
                 }
             }
             if (req.body.codigo) {
-                if (typeof (req.body.codigo) != "number") {
-                    return error("middlewareError", "Por favor, introduzca un código en formato number", res);
+                if (typeof (req.body.codigo) != "number" || req.body.codigo <= 0) {
+                    return error("middlewareError", "Por favor, introduzca un código en formato number mayor a 0", res);
                 }
             }
             if (req.body.precio) {
-                if (typeof (req.body.precio) != "number") {
-                    return error("middlewareError", "Por favor, introduzca un precio en formato number", res);
+                if (typeof (req.body.precio) != "number" || req.body.precio <= 0) {
+                    return error("middlewareError", "Por favor, introduzca un precio en formato number mayor a 0", res);
                 }
             }
             if (req.body.stock) {
-                if (typeof (req.body.stock) != "number") {
-                    return error("middlewareError", "Por favor, introduzca un stock en formato number", res);
+                if (typeof (req.body.stock) != "number" || req.body.stock <= 0) {
+                    return error("middlewareError", "Por favor, introduzca un stock en formato number mayor a 0", res);
                 }
             }
             if (req.body.foto) {

@@ -8,7 +8,7 @@
     "start-dev": "nodemon server.js",
     "test-autocannon": "node autocannon/benchmark.js",
     "start-0x": "0x server.js",
-    "test": "mocha test/productos.test.js"
+    "test": "mocha test/productos.test.js --timeout 5000"
   },
   "keywords": [],
   "author": "",

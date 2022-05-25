@@ -527,3 +527,48 @@
 [2022-05-24T19:44:53.088] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
 [2022-05-24T19:44:53.293] [ERROR] error - Por favor, introduzca un stock en formato number
 [2022-05-24T19:44:53.500] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:46:54.481] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:47:19.498] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:47:47.943] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:47:58.508] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:48:14.532] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:56:02.261] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T10:56:40.657] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T10:57:06.845] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T10:57:20.814] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T10:58:32.842] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T10:59:30.274] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:00:14.269] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:01:10.497] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:09:06.022] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:09:43.549] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:10:20.791] [ERROR] error - Por favor, introduzca un código en formato number
+[2022-05-25T11:10:58.011] [ERROR] error - Por favor, introduzca un precio en formato number
+[2022-05-25T11:14:07.679] [ERROR] error - Por favor, introduzca un precio en formato number mayor a 0
+[2022-05-25T11:32:03.170] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T11:32:49.646] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T11:33:31.702] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T11:34:15.552] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T11:36:35.616] [ERROR] error - Por favor, introduzca un código en formato number mayor a 0
+[2022-05-25T11:43:12.813] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T11:43:24.105] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T11:43:51.900] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T11:44:02.536] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T11:46:11.931] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T11:46:11.958] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T11:46:12.162] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T11:46:12.180] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T11:46:12.726] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:46:12.757] [ERROR] error - Por favor, introduzca un stock en formato number mayor a 0
+[2022-05-25T11:46:13.734] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T11:46:13.941] [ERROR] error - Por favor, introduzca un stock en formato number mayor a 0
+[2022-05-25T11:46:14.143] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T12:25:24.073] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T12:25:24.093] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T12:25:24.380] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T12:25:24.401] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T12:25:24.957] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T12:25:24.976] [ERROR] error - Por favor, introduzca un stock en formato number mayor a 0
+[2022-05-25T12:25:25.981] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T12:25:26.224] [ERROR] error - Por favor, introduzca un stock en formato number mayor a 0
+[2022-05-25T12:25:26.530] [ERROR] error - El producto buscado no se encuentra

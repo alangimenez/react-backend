@@ -1,7 +1,12 @@
+const { before } = require('mocha');
+
 const request = require('supertest')('http://localhost:8080');
 const expect = require('chai').expect;
 
 describe('grupo de test a modulo productos', () => {
+    before(async () => {
+        let response = await request.get('/api/productos');
+    })
     {
         it('get de todos los productos', async () => {
             let response = await request.get('/api/productos');
