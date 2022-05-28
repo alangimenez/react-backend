@@ -1,0 +1,574 @@
+[2022-04-12T19:54:36.392] [ERROR] error - error
+[2022-05-04T20:17:32.912] [ERROR] error - error
+[2022-05-04T20:20:39.774] [ERROR] error - Error en peticion a /1, metodo GET
+[2022-05-04T20:20:50.939] [ERROR] error - Error en peticion a /2, metodo GET
+[2022-05-04T20:21:45.791] [ERROR] error - Error en peticion a /2, metodo GET
+[2022-05-04T20:22:29.730] [ERROR] error - Error en peticion a /2, metodo GET
+[2022-05-04T20:23:20.524] [ERROR] error - Error en peticion a /2, metodo GET
+[2022-05-04T20:24:03.277] [ERROR] error - Error en peticion a /2, metodo GET
+[2022-05-04T20:24:24.076] [ERROR] error - Error en peticion a /2, metodo GET
+[2022-05-04T20:25:02.218] [ERROR] error - Error en peticion a /2, metodo GET
+[2022-05-04T20:27:30.872] [ERROR] error - error
+[2022-05-04T20:27:34.794] [ERROR] error - Error en peticion a /a, metodo GET
+[2022-05-04T20:33:16.323] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:33:39.582] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:36:21.034] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:36:46.605] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:37:02.890] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:38:35.090] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:39:20.362] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:39:24.338] [ERROR] error - { error: -1, message: 'producto no encontrado' }
+[2022-05-04T20:39:29.583] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:39:38.335] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:43:29.510] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:43:38.537] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:43:41.883] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-04T20:43:41.884] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-04T22:27:05.702] [ERROR] error - error
+[2022-05-04T22:28:29.271] [ERROR] error - CastError: Cast to Number failed for value "as" (type string) at path "id" for model "carritos"
+    at model.Query.exec (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4650:21)
+    at model.Query.Query.then (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4749:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5) {
+  messageFormat: undefined,
+  stringValue: '"as"',
+  kind: 'Number',
+  value: 'as',
+  path: 'id',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast\number.js:27:10)
+      at SchemaNumber.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:380:12)
+      at SchemaNumber.SchemaType.applySetters (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1179:12)
+      at SchemaNumber.SchemaType._castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1613:15)
+      at SchemaNumber.castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:434:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1580:20)
+      at cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast.js:344:32)
+      at model.Query.Query.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:5085:12)
+      at model.Query.Query._castConditions (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2143:10)
+      at model.Query.<anonymous> (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2170:8) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-05-04T22:28:40.566] [ERROR] error - producto no encontrado
+[2022-05-04T22:28:45.031] [ERROR] error - CastError: Cast to Number failed for value "as" (type string) at path "id" for model "productos"
+    at model.Query.exec (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4650:21)
+    at model.Query.Query.then (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4749:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5) {
+  messageFormat: undefined,
+  stringValue: '"as"',
+  kind: 'Number',
+  value: 'as',
+  path: 'id',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast\number.js:27:10)
+      at SchemaNumber.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:380:12)
+      at SchemaNumber.SchemaType.applySetters (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1179:12)
+      at SchemaNumber.SchemaType._castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1613:15)
+      at SchemaNumber.castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:434:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1580:20)
+      at cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast.js:344:32)
+      at model.Query.Query.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:5085:12)
+      at model.Query.Query._castConditions (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2143:10)
+      at model.Query.<anonymous> (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2170:8) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-05-04T22:29:56.720] [ERROR] error - error
+[2022-05-04T22:31:05.242] [ERROR] error - CastError: Cast to Number failed for value "as" (type string) at path "id" for model "carritos"
+    at model.Query.exec (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4650:21)
+    at model.Query.Query.then (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4749:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5) {
+  messageFormat: undefined,
+  stringValue: '"as"',
+  kind: 'Number',
+  value: 'as',
+  path: 'id',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast\number.js:27:10)
+      at SchemaNumber.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:380:12)
+      at SchemaNumber.SchemaType.applySetters (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1179:12)
+      at SchemaNumber.SchemaType._castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1613:15)
+      at SchemaNumber.castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:434:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1580:20)
+      at cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast.js:344:32)
+      at model.Query.Query.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:5085:12)
+      at model.Query.Query._castConditions (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2143:10)
+      at model.Query.<anonymous> (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2170:8) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-05-04T22:31:22.793] [ERROR] error - CastError: Cast to Number failed for value "as" (type string) at path "id" for model "carritos"
+    at model.Query.exec (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4650:21)
+    at model.Query.Query.then (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4749:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5) {
+  messageFormat: undefined,
+  stringValue: '"as"',
+  kind: 'Number',
+  value: 'as',
+  path: 'id',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast\number.js:27:10)
+      at SchemaNumber.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:380:12)
+      at SchemaNumber.SchemaType.applySetters (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1179:12)
+      at SchemaNumber.SchemaType._castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1613:15)
+      at SchemaNumber.castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:434:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1580:20)
+      at cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast.js:344:32)
+      at model.Query.Query.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:5085:12)
+      at model.Query.Query._castConditions (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2143:10)
+      at model.Query.<anonymous> (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2170:8) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-05-04T22:31:26.518] [ERROR] error - CastError: Cast to Number failed for value "as" (type string) at path "id" for model "carritos"
+    at model.Query.exec (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4650:21)
+    at model.Query.Query.then (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4749:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5) {
+  messageFormat: undefined,
+  stringValue: '"as"',
+  kind: 'Number',
+  value: 'as',
+  path: 'id',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast\number.js:27:10)
+      at SchemaNumber.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:380:12)
+      at SchemaNumber.SchemaType.applySetters (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1179:12)
+      at SchemaNumber.SchemaType._castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1613:15)
+      at SchemaNumber.castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:434:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1580:20)
+      at cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast.js:344:32)
+      at model.Query.Query.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:5085:12)
+      at model.Query.Query._castConditions (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2143:10)
+      at model.Query.<anonymous> (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2170:8) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-05-04T22:33:56.459] [ERROR] error - error
+[2022-05-04T22:34:01.372] [ERROR] error - error
+[2022-05-04T22:34:11.792] [ERROR] error - error
+[2022-05-04T22:34:16.650] [ERROR] error - error
+[2022-05-04T22:42:52.991] [ERROR] error - CastError: Cast to Number failed for value "NaN" (type number) at path "id" for model "carritos"
+    at model.Query.exec (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4650:21)
+    at model.Query.Query.then (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:4749:15)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5) {
+  messageFormat: undefined,
+  stringValue: '"NaN"',
+  kind: 'Number',
+  value: NaN,
+  path: 'id',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast\number.js:27:10)
+      at SchemaNumber.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:380:12)
+      at SchemaNumber.SchemaType.applySetters (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1179:12)
+      at SchemaNumber.SchemaType._castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1613:15)
+      at SchemaNumber.castForQuery (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schema\number.js:434:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\schematype.js:1580:20)
+      at cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\cast.js:344:32)
+      at model.Query.Query.cast (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:5085:12)
+      at model.Query.Query._castConditions (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:2143:10)
+      at model.Query.<anonymous> (C:\Users\Alan\Documents\desafio.clase.38.arquitectura.capas\node_modules\mongoose\lib\query.js:3060:8) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'number'
+}
+[2022-05-12T10:20:29.673] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:22:21.690] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:24:06.017] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:25:24.797] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:26:24.807] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:26:43.006] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:27:41.359] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:28:18.281] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:29:35.584] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:29:55.897] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:38:13.690] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:38:43.172] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:39:27.120] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:41:06.436] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:43:13.294] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:43:52.851] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:44:16.876] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:44:41.129] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:45:04.096] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:45:32.789] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:46:13.587] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:48:21.593] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:50:27.024] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:50:27.027] [ERROR] error - Error en nuevoCarrito Repository -> Error en crud
+[2022-05-12T10:51:43.070] [ERROR] error - Error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:51:43.073] [ERROR] error - Error en nuevoCarrito Repository -> Error en crud
+[2022-05-12T10:52:31.414] [ERROR] error - Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:52:31.418] [ERROR] error - Error en nuevoCarrito Repository -> Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:53:02.515] [ERROR] error - Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:53:02.518] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:55:32.876] [ERROR] error - Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:55:32.878] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:56:45.654] [ERROR] error - Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:56:45.658] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:57:52.148] [ERROR] error - Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:57:52.150] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "Alan" (type string) at path "user"
+[2022-05-12T10:59:50.940] [ERROR] error - Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "hlasdf" (type string) at path "user"
+[2022-05-12T10:59:50.944] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to Number failed for value "hlasdf" (type string) at path "user"
+[2022-05-12T11:08:58.408] [ERROR] error - {
+  error: 'middlewareError',
+  message: 'Por favor, introduzca un usuario en formato numero'
+}
+[2022-05-12T11:09:30.879] [ERROR] error - Por favor, introduzca un usuario en formato numero
+[2022-05-12T11:10:42.935] [ERROR] error - Por favor, introduzca un usuario en formato numero
+[2022-05-12T11:11:04.072] [ERROR] error - Por favor, introduzca un usuario en formato numero
+[2022-05-12T11:22:45.224] [ERROR] error - ReferenceError: listadoActualizado is not defined
+    at eliminarCarrito (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\controller\controller.carrito.js:41:18)
+    at Layer.handle [as handle_request] (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\route.js:137:13)
+    at validarArchivo (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\middlewares\middlewares.js:31:5)
+    at Layer.handle [as handle_request] (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\index.js:281:22
+    at param (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\index.js:360:14)
+[2022-05-12T11:23:05.215] [ERROR] error - ReferenceError: listadoActualizado is not defined
+    at eliminarCarrito (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\controller\controller.carrito.js:41:18)
+    at Layer.handle [as handle_request] (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\route.js:137:13)
+    at validarArchivo (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\middlewares\middlewares.js:31:5)
+    at Layer.handle [as handle_request] (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\index.js:281:22
+    at param (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\index.js:360:14)
+[2022-05-12T11:28:51.073] [ERROR] error - Cannot read property 'idCarr' of undefined
+[2022-05-12T11:32:01.365] [ERROR] error - Cannot read property 'idCarr' of undefined
+[2022-05-12T11:32:48.760] [ERROR] error - Error en controller Cannot read property 'idCarr' of undefined
+[2022-05-12T11:37:48.393] [ERROR] error - El carrito buscado no se encuentra
+[2022-05-12T11:40:25.497] [ERROR] error - Ha ocurrido un error en la validación de los datos
+[2022-05-12T11:40:41.473] [ERROR] error - Ha ocurrido un error en la validación de los datos
+[2022-05-12T11:52:22.851] [ERROR] error - Ha ocurrido un error en la validación del carrito
+[2022-05-12T11:52:48.067] [ERROR] error - Ha ocurrido un error en la validación del carrito
+[2022-05-12T12:00:34.194] [ERROR] error - Ha ocurrido un error en la validación del carrito
+[2022-05-12T12:02:07.991] [ERROR] error - Por favor, introduzca un usuario en formato numero
+[2022-05-12T12:03:34.235] [ERROR] error - Por favor, introduzca un usuario en formato numero
+[2022-05-12T12:03:43.235] [ERROR] error - Por favor, introduzca un usuario en formato string
+[2022-05-12T12:04:12.520] [ERROR] error - Por favor, introduzca un usuario en formato string
+[2022-05-12T12:04:36.677] [ERROR] error - Por favor, introduzca un usuario valido
+[2022-05-12T12:05:39.500] [ERROR] error - Ha ocurrido un error en la validación del carrito
+[2022-05-12T12:06:24.582] [ERROR] error - Ha ocurrido un error en la validación del carrito
+[2022-05-12T12:06:56.061] [ERROR] error - Ha ocurrido un error en la validación del carrito
+[2022-05-12T12:07:51.149] [ERROR] error - Ha ocurrido un error en la validación del carrito
+[2022-05-12T12:09:13.052] [ERROR] error - Ha ocurrido un error en la validación del carrito
+[2022-05-12T12:09:22.717] [ERROR] error - El carrito buscado no se encuentra
+[2022-05-12T12:10:16.737] [ERROR] error - El carrito buscado no se encuentra
+[2022-05-12T12:10:19.834] [ERROR] error - Por favor, introduzca un id en formato numero
+[2022-05-12T12:21:13.652] [ERROR] error - Por favor, introduzca un id en formato numero
+[2022-05-12T12:21:53.054] [ERROR] error - Por favor, introduzca un identificador de carrito en formato numero
+[2022-05-12T12:22:02.428] [ERROR] error - El carrito buscado no se encuentra
+[2022-05-12T12:22:07.460] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-12T12:22:17.089] [ERROR] error - El producto buscado no se encuentra
+[2022-05-12T12:31:26.374] [ERROR] error - Por favor, introduzca un identificador de carrito en formato numero
+[2022-05-12T12:31:39.678] [ERROR] error - El carrito buscado no se encuentra
+[2022-05-12T12:52:48.754] [ERROR] error - Por favor, introduzca un identificador de carrito en formato numero
+[2022-05-12T12:52:54.502] [ERROR] error - El carrito buscado no se encuentra
+[2022-05-12T12:52:59.211] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-12T12:53:05.852] [ERROR] error - Ha ocurrido un error validando si existe el producto en el carrito
+[2022-05-12T12:53:49.502] [ERROR] error - Ha ocurrido un error validando si existe el producto en el carrito
+[2022-05-12T12:54:22.281] [ERROR] error - Ha ocurrido un error validando si existe el producto en el carrito
+[2022-05-12T12:54:44.549] [ERROR] error - Ha ocurrido un error validando si existe el producto en el carrito
+[2022-05-12T12:55:10.416] [ERROR] error - El producto no se encuentra en el carrito
+[2022-05-12T12:56:03.779] [ERROR] error - El producto no se encuentra en el carrito
+[2022-05-12T12:56:22.856] [ERROR] error - El producto no se encuentra en el carrito
+[2022-05-12T12:56:50.014] [ERROR] error - El carrito esta vacio
+[2022-05-12T12:58:08.620] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-12T12:58:34.273] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-12T12:58:38.790] [ERROR] error - Ha ocurrido un error validando si existe el producto en el carrito
+[2022-05-12T12:58:44.378] [ERROR] error - Ha ocurrido un error validando si existe el producto en el carrito
+[2022-05-12T12:59:04.716] [ERROR] error - Ha ocurrido un error validando si existe el producto en el carrito
+[2022-05-12T12:59:53.780] [ERROR] error - El producto no se encuentra en el carrito
+[2022-05-12T13:00:12.180] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> req is not defined
+[2022-05-12T13:00:12.187] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> req is not defined
+[2022-05-12T13:00:38.387] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'findIndex' of undefined
+[2022-05-12T13:00:38.389] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'findIndex' of undefined
+[2022-05-12T13:00:56.372] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'findIndex' of undefined
+[2022-05-12T13:00:56.374] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'findIndex' of undefined
+[2022-05-12T13:01:34.679] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'splice' of undefined
+[2022-05-12T13:01:34.684] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'splice' of undefined
+[2022-05-12T13:02:03.716] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> errorLogger is not defined
+[2022-05-12T13:02:03.721] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> errorLogger is not defined
+[2022-05-12T13:03:01.752] [ERROR] error - El carrito esta vacio
+[2022-05-12T13:04:18.813] [ERROR] error - Ocurrio un error en eliminarProdEnCarrito CRUD -> objeto is not defined
+[2022-05-12T13:04:18.816] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Ocurrio un error en eliminarProdEnCarrito CRUD -> objeto is not defined
+[2022-05-12T13:04:18.819] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Ocurrio un error en eliminarProdEnCarrito CRUD -> objeto is not defined
+[2022-05-12T13:07:26.321] [ERROR] error - El carrito esta vacio
+[2022-05-12T13:21:09.542] [ERROR] error - El controlador ha tenido un error -> req is not defined
+[2022-05-12T13:28:45.322] [ERROR] error - Por favor, introduzca un identificador de carrito en formato numero
+[2022-05-12T16:56:31.429] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> converterCarrito is not defined
+[2022-05-12T16:56:31.434] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> converterCarrito is not defined
+[2022-05-12T16:57:23.237] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T16:57:23.242] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:00:14.379] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:00:14.382] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:00:44.406] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:00:44.410] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:01:37.844] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:01:37.846] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:02:14.739] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:02:14.742] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:03:47.548] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:03:47.550] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:04:21.763] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:04:21.768] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:06:01.562] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:06:01.568] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:06:50.106] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:06:50.108] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> carritoActualizadoDTOResponse is not defined
+[2022-05-12T17:24:48.398] [ERROR] error - Por favor, introduzca un identificador de carrito en formato numero
+[2022-05-12T17:24:59.931] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'length' of undefined
+[2022-05-12T17:25:56.773] [ERROR] error - El controlador aa ha tenido un error -> Cannot read property 'length' of undefined
+[2022-05-12T17:26:48.169] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'length' of undefined
+[2022-05-12T17:26:48.174] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'length' of undefined
+[2022-05-12T17:28:12.322] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'length' of undefined
+[2022-05-12T17:28:12.329] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'length' of undefined
+[2022-05-12T18:36:19.742] [ERROR] error - El controlador ha tenido un error -> obtenerTodosLosProductos is not defined
+[2022-05-12T18:36:53.642] [ERROR] error - El controlador ha tenido un error -> obtenerTodosLosProductos is not defined
+[2022-05-12T18:39:43.174] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-12T18:39:58.529] [ERROR] error - El producto buscado no se encuentra
+[2022-05-12T18:40:03.652] [ERROR] error - Ocurrio un error en leerinfo CRUD -> Cast to Number failed for value "NaN" (type number) at path "id" for model "productos"
+[2022-05-12T18:40:03.653] [ERROR] error - Error en peticion a /3, metodo GET
+[2022-05-12T18:44:48.685] [ERROR] error - Error en peticion a undefined, metodo undefined
+[2022-05-12T18:44:48.691] [ERROR] error - Error en peticion a /3, metodo GET
+[2022-05-12T18:45:33.863] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'status' of undefined
+[2022-05-12T18:45:33.868] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'status' of undefined
+[2022-05-12T18:54:38.872] [ERROR] error - Ocurrio un error en obtenerTodosLosProductos Repository -> converterProducto is not defined
+[2022-05-12T18:54:38.874] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerTodosLosProductos Repository -> converterProducto is not defined
+[2022-05-12T18:54:42.837] [ERROR] error - Ocurrio un error en obtenerTodosLosProductos Repository -> converterProducto is not defined
+[2022-05-12T18:54:42.838] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerTodosLosProductos Repository -> converterProducto is not defined
+[2022-05-12T18:56:40.771] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-12T18:56:40.772] [ERROR] error - El controlador ha tenido un error -> eliminarProductPorId is not defined
+[2022-05-12T18:57:01.772] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-12T18:57:11.035] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-12T18:57:34.179] [ERROR] error - El producto buscado no se encuentra
+[2022-05-12T18:57:41.846] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-12T19:23:03.260] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-12T19:23:03.262] [ERROR] error - El controlador ha tenido un error -> subirNuevoProducto is not defined
+[2022-05-12T19:23:23.193] [ERROR] error - El usuario no posee permisos de administrador
+[2022-05-12T19:23:23.194] [ERROR] error - El controlador ha tenido un error -> subirNuevoProducto is not a function
+[2022-05-12T19:24:40.873] [ERROR] error - El controlador ha tenido un error -> subirNuevoProducto is not a function
+[2022-05-12T19:25:06.692] [ERROR] error - Ocurrio un error en obtenerProductoPorId Repository -> Cannot read property 'id' of undefined
+[2022-05-12T19:25:06.695] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerProductoPorId Repository -> Cannot read property 'id' of undefined
+[2022-05-12T19:26:05.124] [ERROR] error - Ocurrio un error en obtenerProductoPorId Repository -> Cannot read property 'id' of undefined
+[2022-05-12T19:26:05.126] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerProductoPorId Repository -> Cannot read property 'id' of undefined
+[2022-05-12T19:27:46.946] [ERROR] error - Ocurrio un error en obtenerProductoPorId Repository -> Cannot read property 'id' of undefined
+[2022-05-12T19:27:46.948] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerProductoPorId Repository -> Cannot read property 'id' of undefined
+[2022-05-12T19:28:32.823] [ERROR] error - Ocurrio un error en obtenerProductoPorId Repository -> Cannot read property 'id' of undefined
+[2022-05-12T19:28:32.825] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerProductoPorId Repository -> Cannot read property 'id' of undefined
+[2022-05-12T19:32:01.225] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-12T19:32:54.785] [ERROR] error - Ha ocurrido un error validando los atributos del producto
+[2022-05-12T19:33:17.545] [ERROR] error - Ha ocurrido un error validando los atributos del productonombre is not defined
+[2022-05-12T19:33:58.837] [ERROR] error - nombre is not defined
+[2022-05-12T19:34:05.978] [ERROR] error - ReferenceError: nombre is not defined
+    at validarAtributosProducto (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\middlewares\middlewares.js:112:9)
+    at Layer.handle [as handle_request] (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\route.js:137:13)
+    at validarAdmin (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\middlewares\middlewares.js:15:5)
+    at Layer.handle [as handle_request] (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\Users\Alan\Documents\desafio.clase.40.arquitectura.servidor\node_modules\express\lib\router\index.js:341:12)
+[2022-05-12T19:35:03.646] [ERROR] error - Por favor, introduzca un nombre en formato string
+[2022-05-12T19:35:11.074] [ERROR] error - Por favor, introduzca un precio en formato number
+[2022-05-12T19:35:22.442] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-12T19:46:46.746] [ERROR] error - Por favor, introduzca una descripcion en formato string
+[2022-05-12T19:47:55.694] [ERROR] error - Por favor, introduzca un código en formato number
+[2022-05-12T19:50:12.206] [ERROR] error - Por favor, introduzca un código en formato number
+[2022-05-12T19:51:08.999] [ERROR] error - Ocurrio un error en actualizarInfo CRUD -> resultado is not defined
+[2022-05-12T19:51:09.001] [ERROR] error - Ocurrio un error en actualizarProductoPorId Repository -> Ocurrio un error en actualizarInfo CRUD -> resultado is not defined
+[2022-05-12T19:52:00.556] [ERROR] error - Ocurrio un error en actualizarInfo CRUD -> resultado is not defined
+[2022-05-12T19:52:00.559] [ERROR] error - Ocurrio un error en actualizarProductoPorId Repository -> Ocurrio un error en actualizarInfo CRUD -> resultado is not defined
+[2022-05-12T19:53:32.173] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-12T19:53:37.840] [ERROR] error - Por favor, introduzca un código en formato number
+[2022-05-24T18:05:50.422] [ERROR] error - Ocurrio un error en obtenerTodosLosProductos Repository -> converterProductoDTOresponse is not defined
+[2022-05-24T18:05:50.426] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerTodosLosProductos Repository -> converterProductoDTOresponse is not defined
+[2022-05-24T18:07:31.608] [ERROR] error - Ocurrio un error en obtenerTodosLosProductos Repository -> converterProductoDTOresponse is not defined
+[2022-05-24T18:07:31.609] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerTodosLosProductos Repository -> converterProductoDTOresponse is not defined
+[2022-05-24T18:25:33.245] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:27:08.869] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:27:21.053] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:28:16.250] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:28:16.269] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T18:28:20.784] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:28:20.805] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T18:39:01.409] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:39:01.430] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T18:39:02.227] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:39:02.247] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T18:39:06.760] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:39:06.780] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T18:39:06.983] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:39:07.195] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:39:07.214] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T18:54:05.039] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:54:05.062] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T18:54:05.296] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:54:05.516] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:54:05.536] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T18:54:05.798] [ERROR] error - Ocurrio un error en obtenerProductoPorId Repository -> idNuevo is not defined
+[2022-05-24T18:54:05.800] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerProductoPorId Repository -> idNuevo is not defined
+[2022-05-24T18:56:07.060] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:56:07.083] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T18:56:07.277] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T18:56:07.296] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T18:56:07.550] [ERROR] error - Ocurrio un error en obtenerProductoPorId Repository -> idNuevo is not defined
+[2022-05-24T18:56:07.553] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerProductoPorId Repository -> idNuevo is not defined
+[2022-05-24T19:00:12.989] [ERROR] error - Ocurrio un error en obtenerProductoPorId Repository -> idNuevo is not defined
+[2022-05-24T19:00:12.990] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerProductoPorId Repository -> idNuevo is not defined
+[2022-05-24T19:31:59.205] [ERROR] error - Ocurrio un error en obtenerProductoPorId Repository -> idNuevo is not defined
+[2022-05-24T19:31:59.207] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerProductoPorId Repository -> idNuevo is not defined
+[2022-05-24T19:32:44.922] [ERROR] error - Ocurrio un error en subirNuevoProducto Repository -> idNuevo is not defined
+[2022-05-24T19:32:44.923] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en subirNuevoProducto Repository -> idNuevo is not defined
+[2022-05-24T19:33:07.199] [ERROR] error - Ocurrio un error en subirNuevoProducto Repository -> Assignment to constant variable.
+[2022-05-24T19:33:07.201] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en subirNuevoProducto Repository -> Assignment to constant variable.
+[2022-05-24T19:33:47.530] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:33:47.550] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:33:47.747] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:33:47.766] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:34:25.730] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:34:25.750] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:34:25.947] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:34:25.963] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:35:18.653] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:35:18.674] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:35:18.871] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:35:18.891] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:36:24.552] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:36:24.574] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:36:24.778] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:36:24.797] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:36:25.273] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-24T19:37:17.665] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:37:17.688] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:37:17.884] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:37:17.904] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:37:18.377] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-24T19:37:18.398] [ERROR] error - Por favor, introduzca un stock en formato number
+[2022-05-24T19:42:13.002] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:42:13.032] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:42:13.223] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:42:13.230] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:42:13.691] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-24T19:42:13.713] [ERROR] error - Por favor, introduzca un stock en formato number
+[2022-05-24T19:42:37.389] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:42:37.411] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:42:37.620] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:42:37.639] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:42:38.130] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-24T19:42:38.146] [ERROR] error - Por favor, introduzca un stock en formato number
+[2022-05-24T19:44:26.836] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:44:26.858] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:44:27.064] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:44:27.084] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:44:27.549] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-24T19:44:27.558] [ERROR] error - Por favor, introduzca un stock en formato number
+[2022-05-24T19:44:28.531] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-24T19:44:28.735] [ERROR] error - Por favor, introduzca un stock en formato number
+[2022-05-24T19:44:51.367] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:44:51.390] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:44:51.589] [ERROR] error - El producto buscado no se encuentra
+[2022-05-24T19:44:51.610] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-24T19:44:52.095] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-24T19:44:52.105] [ERROR] error - Por favor, introduzca un stock en formato number
+[2022-05-24T19:44:53.088] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-24T19:44:53.293] [ERROR] error - Por favor, introduzca un stock en formato number
+[2022-05-24T19:44:53.500] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:46:54.481] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:47:19.498] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:47:47.943] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:47:58.508] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:48:14.532] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T10:56:02.261] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T10:56:40.657] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T10:57:06.845] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T10:57:20.814] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T10:58:32.842] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T10:59:30.274] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:00:14.269] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:01:10.497] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:09:06.022] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:09:43.549] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:10:20.791] [ERROR] error - Por favor, introduzca un código en formato number
+[2022-05-25T11:10:58.011] [ERROR] error - Por favor, introduzca un precio en formato number
+[2022-05-25T11:14:07.679] [ERROR] error - Por favor, introduzca un precio en formato number mayor a 0
+[2022-05-25T11:32:03.170] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T11:32:49.646] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T11:33:31.702] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T11:34:15.552] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T11:36:35.616] [ERROR] error - Por favor, introduzca un código en formato number mayor a 0
+[2022-05-25T11:43:12.813] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T11:43:24.105] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T11:43:51.900] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T11:44:02.536] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T11:46:11.931] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T11:46:11.958] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T11:46:12.162] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T11:46:12.180] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T11:46:12.726] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T11:46:12.757] [ERROR] error - Por favor, introduzca un stock en formato number mayor a 0
+[2022-05-25T11:46:13.734] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T11:46:13.941] [ERROR] error - Por favor, introduzca un stock en formato number mayor a 0
+[2022-05-25T11:46:14.143] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T12:25:24.073] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T12:25:24.093] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T12:25:24.380] [ERROR] error - El producto buscado no se encuentra
+[2022-05-25T12:25:24.401] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-25T12:25:24.957] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-05-25T12:25:24.976] [ERROR] error - Por favor, introduzca un stock en formato number mayor a 0
+[2022-05-25T12:25:25.981] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-05-25T12:25:26.224] [ERROR] error - Por favor, introduzca un stock en formato number mayor a 0
+[2022-05-25T12:25:26.530] [ERROR] error - El producto buscado no se encuentra
