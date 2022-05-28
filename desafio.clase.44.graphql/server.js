@@ -51,12 +51,46 @@ const schema = buildSchema(`
     type Productos {
         id: Int,
         nombre: String,
-        descripcion: String
+        descripcion: String,
+        codigo: Int,
+        foto: String,
+        precio: Int,
+        stock: Int,
+    }
+
+    type Carrito {
+        id: Int,
+        user: String,
+        productos: [Productos],
+    }
+
+    input InputProducto {
+        nombre: String,
+        descripcion: String,
+        codigo: Int,
+        foto: String,
+        precio: Int,
+        stock: Int,
+    }
+    
+    input InputCarrito {
+        usuario: String
     }
 
     type Query {
         getProductos(id: Int): [Productos],
-        getProducto(id: Int): Productos
+        getProducto(id: Int): Productos,
+        getCarrito(id: Int): Carrito,
+        getProductoOfCarrito(id: Int): [Productos]
+    }
+
+    type Mutation {
+        createProducto(datos: InputProducto): Productos,
+        deleteProducto(id: Int): [Productos],
+        updateProducto(id: Int, datos: InputProducto): Productos,
+        createCarrito(datos: InputCarrito): Carrito,
+        addProdToCarrito(idProd: Int, idCarr: Int): Carrito,
+        deleteProdFromCarrito(idProd: Int, idCarr: Int): Carrito,
     }
 `)
 
@@ -73,11 +107,59 @@ function getProducto({id}) {
     return producto;
 }
 
+function createProducto({datos}) {
+    const producto = repositorio.subirNuevoProducto(datos);
+    return producto;
+}
+
+function deleteProducto({id}) {
+    const productos = repositorio.eliminarProductPorId(id);
+    return productos;
+}
+
+function updateProducto({id, datos}) {
+    const producto = repositorio.actualizarProductoPorId(id, datos);
+    return producto;
+}
+
+function getCarrito ({id}) {
+    const carritos = repositorio.obtenerProductosDelCarrito(id);
+    return carritos;
+}
+
+function getProductoOfCarrito ({id}) {
+    const carrito = repositorio.obtenerProductosDelCarrito(id);
+    return carrito.productos;
+}
+
+function createCarrito ({datos}) {
+    const carrito = repositorio.nuevoCarrito(datos.usuario);
+    return carrito;
+}
+
+function addProdToCarrito({idProd, idCarr}) {
+    const productos = repositorio.agregarProductosAlCarrito(idCarr, idProd);
+    return productos;
+}
+
+function deleteProdFromCarrito({idProd, idCarr}) {
+    const carrito = repositorio.eliminarProductosDelCarrito(idCarr, idProd);
+    return carrito;
+}
+
 app.use('/graphql', graphqlHTTP({
     schema: schema,
     rootValue: {
         getProductos,
-        getProducto
+        getProducto,
+        createProducto,
+        deleteProducto,
+        updateProducto,
+        getCarrito, 
+        getProductoOfCarrito,
+        createCarrito,
+        addProdToCarrito,
+        deleteProdFromCarrito
     },
     graphiql: true,
 }))

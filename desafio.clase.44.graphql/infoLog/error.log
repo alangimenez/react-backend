@@ -572,3 +572,7 @@
 [2022-05-25T12:25:25.981] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
 [2022-05-25T12:25:26.224] [ERROR] error - Por favor, introduzca un stock en formato number mayor a 0
 [2022-05-25T12:25:26.530] [ERROR] error - El producto buscado no se encuentra
+[2022-05-28T16:57:25.494] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> converterProducto is not defined
+[2022-05-28T17:13:25.002] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> idNuevo is not defined
+[2022-05-28T17:14:14.907] [ERROR] error - Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to string failed for value "[Object: null prototype] { usuario: 'jn@gmail.com' }" (type object) at path "user"
+[2022-05-28T17:14:14.910] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> Ocurrio un error en subirInfo CRUD -> carritos validation failed: user: Cast to string failed for value "[Object: null prototype] { usuario: 'jn@gmail.com' }" (type object) at path "user"

@@ -15,6 +15,7 @@ class Repository {
     nuevoCarrito = async (user) => {
         try {
             const lista = await fnCarritos().leerInfo();
+            let idNuevo = 0;
             lista.length === 0 ? idNuevo = 1 : idNuevo = lista[lista.length - 1].id + 1;
             const nuevoCarritoDTOrequest = converter.converterCarritoDTOrequest(idNuevo, user);
             const nuevoCarritoDTOresponse = await fnCarritos().subirInfo(nuevoCarritoDTOrequest);
@@ -113,7 +114,6 @@ class Repository {
             const nuevoProducto = await fnProductos().subirInfo(productoDTOrequest);
             const productoDTOresponse = converter.converterProductoDTOresponse(nuevoProducto);
             return productoDTOresponse;
-
         } catch (e) {
             errorLogger.error(`Ocurrio un error en subirNuevoProducto Repository -> ` + e.message);
             throw new Error(`Ocurrio un error en subirNuevoProducto Repository -> ` + e.message)

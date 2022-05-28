@@ -1,0 +1,99 @@
+query obtenerUnProducto {
+  getProducto (id: 15) {
+    id
+    nombre
+    descripcion
+  }
+}
+
+query obtenerTodosLosProductos{
+  getProductos {
+    id
+    nombre
+    descripcion
+  }
+}
+
+mutation crearProducto {
+  createProducto(datos: {nombre:"nuevolibro", descripcion:"nuevadescripcion", codigo:45, foto:"nuevafoto", precio: 45, stock:45}) {
+    id
+    nombre
+    descripcion
+  }
+}
+
+mutation eliminarProductos {
+  deleteProducto(id: 46) {
+    id
+    nombre
+    descripcion
+  }
+}
+
+mutation actualizarProducto {
+  updateProducto(id: 45, datos: {nombre:"prueba de mutation"}) {
+    id 
+    nombre
+    descripcion
+  }
+}
+
+---///---
+
+query obtenerUnCarrito {
+  getCarrito (id: 2) {
+    id
+    user
+    productos {
+      id
+      nombre
+      descripcion
+      precio
+    }
+  }
+}
+
+query obtenerProductosDeUnCarrito {
+  getProductoOfCarrito (id: 2) {
+    id
+    nombre
+    descripcion
+    precio
+  }
+}
+
+mutation crearCarrito {
+  createCarrito(datos: {usuario: "jn@gmail.com"}) {
+    id
+    user
+    productos {
+      id
+      nombre
+      descripcion
+    }
+  }
+}
+
+mutation agregarProductosAlCarrito {
+  addProdToCarrito(idProd: 8, idCarr:2) {
+    id
+    user
+    productos {
+      id
+      nombre
+      descripcion
+    }
+  }
+}
+
+mutation eliminarProductoDelCarrito {
+  deleteProdFromCarrito(idProd:8, idCarr:2) {
+    id
+    user
+    productos {
+      id
+      nombre
+      descripcion
+    }
+  }
+}

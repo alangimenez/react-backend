@@ -9,7 +9,7 @@ class Converter {
             productos: []
         }
         for (let i = 0; i < listadoCarrito.productos.length; i++) {
-            const productoDTO = converterProducto(listadoCarrito.productos[i]);
+            const productoDTO = this.converterProductoDTOresponse(listadoCarrito.productos[i]);
             carritoDTO.productos.push(productoDTO);
         }
         return carritoDTO;
