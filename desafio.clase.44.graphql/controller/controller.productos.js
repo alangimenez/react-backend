@@ -1,12 +1,4 @@
-const { fnProductos } = require('../persistencia/factory');
-const { controlProps } = require('../middlewares/controlProps');
-const { logger, errorLogger } = require('../config/log4js');
 const { error } = require('../error/error');
-const { obtenerTodosLosProductos,
-    obtenerProductPorId,
-    eliminarProductPorId,
-    subirNuevoProducto,
-    actualizarProductoPorId } = require('../persistencia/repository/reporitoryMongo');
 const { Repository } = require('../persistencia/repository/reporitoryMongo');
 const repository = new Repository();
 

@@ -1,14 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { validarAdmin, 
-    controlPropProducto, 
-    validarProducto, 
-    validarAtributosProducto } = require('../middlewares/middlewares');
-const { obtenerProductos,
-    obtenerProductoPorId,
-    eliminarProducto,
-    subirProducto,
-    modificarProducto } = require('../controller/controller.productos');
 const { ProductoController } = require('../controller/controller.productos');
 const producto = new ProductoController();
 const { Middlewares } = require('../middlewares/middlewares');

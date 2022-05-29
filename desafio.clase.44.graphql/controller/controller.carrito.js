@@ -1,9 +1,4 @@
-const { fnProductos, fnCarritos } = require('../persistencia/factory');
-const { logger, errorLogger } = require('../config/log4js');
-const { nuevoCarrito,
-    eliminarProductosDelCarrito,
-    agregarProductosAlCarrito,
-    obtenerProductosDelCarrito } = require('../persistencia/repository/reporitoryMongo');
+const { fnCarritos } = require('../persistencia/factory');
 const { error } = require('../error/error');
 const { Repository } = require('../persistencia/repository/reporitoryMongo');
 const repository = new Repository();
@@ -67,7 +62,6 @@ class CarritoController {
         }
     }
 }
-
 
 module.exports = {
     CarritoController,

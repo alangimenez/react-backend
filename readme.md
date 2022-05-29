@@ -1,10 +1,15 @@
-Desafio 42
-Buenos días, espero que andes muy bien! Hago entrega del desafio 42.
+Desafio 44
+Buenos días, espero que andes muy bien! Hago entrega del desafio 44.
 
-Para la parte del cliente http para probar la aplicación, se creó un minicliente frontend que consume la API vía Axios para ir probando las diferentes funcionalidades (get, update, post, etc). Simplemente se deben cargar los datos correspondientes, y los resultados se mostrarán por consola (sea una operación exitosa o fallida).
+Para este desafio, se agrego todo un router/controller/schema adicional, solo para poder manejar la parte de GraphQL.
 
-Para la parte del testing, se utilizó supertest, chai y mocha, y es una batería de test que lo que hacen es ir probando cada endpoint, pasandole datos correctos, incorrectos o inexistentes, verificando que los resultados sean los esperados sabiendo cuales fueron los datos ingresados. En el script del test, se seteó manualmente el tiempo de timeout, dado que la conexión a la base de datos solo se realiza al hacer el primer request, y si no lo configuraba, siempre me daba timeout (dado que no alcanzaba a conectarse a la base de datos en el timeout por default, que es de 2s).
+En el server, se agrego un endpoint para el router de GraphQL.
+En la capa de router, se creó un nuevo router para manejar solamente GraphQL, donde se definen las configuraciones que deberá manejar GraphQL.
+En la capa de controller, se creó un nuevo controller que maneja las diferentes funciones que necesita GraphQL para las query/mutations. Esta capa directamente llama a la capa repository, la cual no tuvo modificación alguna.
+En los models, se definió el schema que utiliza GraphQL para funcionar, con los type/inputs/query/mutations.
 
-Como siempre, se adjunta el archivo sample.env.js, para poder dar las configuraciones necesarias para levantar el proyecto. Las carpetas importantes para este desafio son las de test y clienteHttp.
+Se adjunta también el archivo codigo-de-prueba.txt que tiene diferentes consultas posibles que se pueden realizar en la consola de GraphiQL.
 
-Como siempre, agradezco el feedback de antemano! Saludos! Alan.
+Como siempre, se adjunta el archivo sample.env.js, para poder dar las configuraciones necesarias para levantar el proyecto.
+
+De anteamno, agradezco el feedback! Saludos! Alan.

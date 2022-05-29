@@ -1,16 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { validarArchivo,
-    validarUser,
-    validarCarrito, 
-    validarProducto,
-    validarProductoEnCarrito} = require('../middlewares/middlewares');
-const { crearCarrito,
-    eliminarCarrito,
-    prodAlCarrito,
-    prodDelCarrito,
-    elimProdDelCarrito,
-    obtenerTodosLosCarritos } = require('../controller/controller.carrito');
 const { CarritoController } = require('../controller/controller.carrito');
 const carrito = new CarritoController();
 const { Middlewares } = require('../middlewares/middlewares');
