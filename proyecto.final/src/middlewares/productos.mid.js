@@ -2,7 +2,7 @@ const admin = true;
 const fs = require('fs');
 const { logger, errorLogger } = require('../config/config.log4js');
 const { errorResponse } = require('../error/error.response');
-const { fnProductos } = require('../persistencia/index');
+const { fnProductos } = require('../persistencia/factory');
 
 // revisa si es admin o no
 function validarAdmin(req, res, next) {

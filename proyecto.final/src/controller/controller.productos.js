@@ -1,120 +1,73 @@
-const { fnProductos } = require('../persistencia/index');
-const passport = require('../middlewares/passport');
-const { logger, errorLogger } = require('../config/config.log4js');
+const { Repository } = require('../persistencia/repository/repositoryMongo');
+const repository = new Repository();
+const { ErrorHandler } = require('../error/error');
+const error = new ErrorHandler();
 
-// muestra todos los productos
-async function obtenerProductos(req, res) {
-    const prod = await fnProductos().leerInfo();
+class ProductController {
+    constructor() { }
 
-    // con JSON
-    res.status(200).json(prod);
+    // muestra todos los productos
+    async obtenerProductos(req, res) {
+        try {
+            // JSON
+            res.status(200).json(await repository.obtenerTodosLosProductos());
 
-    // con template handlebars
-    /* if (req.user) {
-        res.render('../views/productos', { listaProductos: prod, isActive: req.user.id, boton: "Cerrar sesión", user: req.user.id, logout: 'logout' });
-    } else {
-        res.render('../views/productos', { listaProductos: prod, boton: "Iniciar sesión", login: 'login' });
-    } */
-}
-
-// muestra un producto
-async function obtenerProductoPorId(req, res) {
-    const { idProd } = req.params;
-    try {
-        const prodFiltrado = await fnProductos().leerInfoPorId(idProd);
-        if (!prodFiltrado) {
-            errorLogger.error(`producto no encontrado`)
-            return res.status(404).json({ error: -1, message: `producto no encontrado` })
+            // con template handlebars
+            /* if (req.user) {
+                res.render('../views/productos', { listaProductos: prod, isActive: req.user.id, boton: "Cerrar sesión", user: req.user.id, logout: 'logout' });
+            } else {
+                res.render('../views/productos', { listaProductos: prod, boton: "Iniciar sesión", login: 'login' });
+            } */
+        } catch (e) {
+            return error.errorResponse("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
-        // response with JSON
-        res.status(200).json(prodFiltrado);
-    } catch (e) {
-        return res.status(400).json({ error: -10, message: `Por favor, ingrese un número ID válido para buscar` })
     }
 
-    // response with templates
-    /* if (req.user) {
-        res.render('../views/productoIndividual', { objeto: prodFiltrado, isActive: req.user.id, boton: "Cerrar sesión", user: req.user.id });
-    } else {
-        res.render('../views/productoIndividual', { objeto: prodFiltrado, boton: "Iniciar sesión", user: "na" });
-    } */
-}
+    // muestra un producto
+    async obtenerProductoPorId(req, res) {
+        try {
+            // JSON
+            res.status(200).json(await repository.obtenerProductPorId(+req.params.idProd));
 
-// elimina un producto, muestra array completo de productos
-async function eliminarProducto(req, res) {
-    try {
-        const { idProd } = req.params;
-        const productosPostDelete = await fnProductos().eliminarInfo(idProd)
-        if (productosPostDelete.error) {
-            errorLogger.error(productosPostDelete);
-            return res.status(400).json(productosPostDelete);
+            // response with templates
+            /* if (req.user) {
+                res.render('../views/productoIndividual', { objeto: prodFiltrado, isActive: req.user.id, boton: "Cerrar sesión", user: req.user.id });
+            } else {
+                res.render('../views/productoIndividual', { objeto: prodFiltrado, boton: "Iniciar sesión", user: "na" });
+            } */
+        } catch (e) {
+            return error.errorResponse("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
-        res.json(productosPostDelete).status(201);
-    } catch (e) {
-        logger.error(e);
-        return res.status(400).json({ error: -10, message: `Por favor, ingrese un número ID válido para buscar` })
-    }
-}
-
-// incorpora nuevo producto, lo muestra
-async function subirProducto(req, res) {
-    try {
-        const lista = await fnProductos().leerInfo();
-        lista.length === 0 ? idNuevo = 1 : idNuevo = lista[lista.length - 1].id + 1;
-        const nuevoProducto = {
-            nombre: req.body.nombre,
-            id: idNuevo,
-            timestamp: Date.now(),
-            descripcion: req.body.descripcion,
-            codigo: req.body.codigo,
-            foto: req.body.foto,
-            precio: req.body.precio,
-            stock: req.body.stock,
-            cantidad: 1
-        }
-        const productoSubido = await fnProductos().subirInfo(nuevoProducto);
-        if (nuevoProducto.error) {
-            errorLogger.error(nuevoProducto);
-            return res.status(400).json(nuevoProducto);
-        }
-        res.json(productoSubido);
-    } catch (e) {
-        logger.error(e);
-        return res.status(400).json({ error: -11, message: `Las propiedad ingresadas no son del tipo admitidas, por favor verifique y reintente` });
     }
 
-}
-
-// modifica un producto, lo muestra
-async function modificarProducto(req, res) {
-    try {
-        const { idProd } = req.params;
-        const prodNuevaCaract = {
-            ...req.body,
-            id: +idProd,
-            timestamp: Date.now(),
-        };
-        const productoModificado = await fnProductos().actualizarInfo(prodNuevaCaract)
-        if (productoModificado.error === -1) {
-            errorLogger.error(productoModificado);
-            return res.status(404).json(productoModificado);
+    // elimina un producto, muestra array completo de productos
+    async eliminarProducto(req, res) {
+        try {
+            res.status(201).json(await repository.eliminarProductPorId(+req.params.idProd))
+        } catch (e) {
+            return error.errorResponse("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
-        if (productoModificado.error === -3) {
-            errorLogger.error(productoModificado);
-            return res.status(400).json(productoModificado);
-        }
-        res.json(productoModificado);
-    } catch (e) {
-        logger.error(e);
-        res.status(400).json({error: -12, message:`Los datos cargados no son correctos. Por favor verifique y vuelva a intentarlo`})
     }
-    
+
+    // incorpora nuevo producto, lo muestra
+    async subirProducto(req, res) {
+        try {
+            res.status(201).json(await repository.subirNuevoProducto(req.body));
+        } catch (e) {
+            return error.errorResponse("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+        }
+    }
+
+    // modifica un producto, lo muestra
+    async modificarProducto(req, res) {
+        try {
+            res.status(201).json(await repository.actualizarProductoPorId(+req.params.idProd, req.body))
+        } catch (e) {
+            return error.errorResponse("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+        }
+    }
 }
 
 module.exports = {
-    obtenerProductos,
-    obtenerProductoPorId,
-    eliminarProducto,
-    subirProducto,
-    modificarProducto,
+    ProductController,
 }

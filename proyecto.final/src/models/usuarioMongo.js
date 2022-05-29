@@ -10,7 +10,8 @@ const usuarioSchema = new Schema ({
     direccion: {type: String},
     edad: {type: Number},
     telefono: {type: String},
-    foto: {type: String}
+    foto: {type: String},
+    // rol: {type: String} // admin/user
 })
 
 const Usuario = mongoose.model(coleccion, usuarioSchema);

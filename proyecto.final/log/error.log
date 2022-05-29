@@ -283,3 +283,8 @@
 [2022-05-14T18:47:09.301] [ERROR] error - Debe completar todas las propiedades del productos
 [2022-05-14T18:47:24.079] [ERROR] error - Por favor, introduzca un stock en formato number
 [2022-05-14T18:47:31.037] [ERROR] error - Por favor, introduzca un stock en formato number
+[2022-05-28T21:11:13.124] [ERROR] error - El producto buscado no se encuentra
+[2022-05-28T21:11:17.760] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-05-28T21:14:26.139] [ERROR] error - Por favor, introduzca un precio en formato number
+[2022-05-28T21:15:30.938] [ERROR] error - El producto buscado no se encuentra
+[2022-05-28T21:15:35.100] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero

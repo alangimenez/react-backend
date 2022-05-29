@@ -11,6 +11,7 @@ const { perfil,
 const upload = require('../config/config.multer');
 const { usuarioLogueado } = require('../middlewares/usuarios.mid');
 
+// middlewares del router
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
