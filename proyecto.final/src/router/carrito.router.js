@@ -20,7 +20,7 @@ const { CartController } = require('../controller/controller.carrito');
 const cart = new CartController();
 
 // ver carritos (eliminar luego de controlado todo, porque la consigna no lo pide)
-router.get('/', async (req, res) => cart.verCarritos(req, res))
+router.get('/', async (req, res) => cart.obtenerTodosLosCarritos(req, res))
 
 // ver un carrito en particular de algun usuario
 router.get('/:idCarr', async (req, res) => cart.verCarritoUsuario(req, res))

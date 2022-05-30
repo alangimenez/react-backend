@@ -32,9 +32,9 @@ class Repository {
     eliminarProductosDelCarrito = async (idCarrito, idProducto) => {
         try {
             const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarrito);
-            const indexProdEnCarrito = carritoSeleccionado[0].productos.findIndex(e => e.id === idProducto);
-            carritoSeleccionado[0].productos.splice(indexProdEnCarrito, 1);
-            const carritoActualizado = await fnCarritos().eliminarProdEnCarrito(idCarrito, carritoSeleccionado[0].productos);
+            const indexProdEnCarrito = carritoSeleccionado.productos.findIndex(e => e.id === idProducto);
+            carritoSeleccionado.productos.splice(indexProdEnCarrito, 1);
+            const carritoActualizado = await fnCarritos().eliminarProdEnCarrito(idCarrito, carritoSeleccionado.productos);
             const carritoActualizadoDTOResponse = converter.converterCarritoDTOresponse(carritoActualizado);
             return carritoActualizadoDTOResponse;
         } catch (e) {
@@ -64,7 +64,7 @@ class Repository {
     obtenerProductosDelCarrito = async (idCarrito) => {
         try {
             const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarrito);
-            const carritoActualizadoDTOResponse = converter.converterCarritoDTOresponse(carritoSeleccionado[0]);
+            const carritoActualizadoDTOResponse = converter.converterCarritoDTOresponse(carritoSeleccionado);
             return carritoActualizadoDTOResponse;
         } catch (e) {
             errorLogger.error(`Ocurrio un error en agregarProductosAlCarrito Repository -> ` + e.message);

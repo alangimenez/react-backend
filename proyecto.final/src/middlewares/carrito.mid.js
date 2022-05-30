@@ -1,7 +1,9 @@
 const { leerArchivo } = require('../persistencia/fileSystem');
 const { pathCarrito } = require('./middlewares');
 const { logger, errorLogger } = require('../config/config.log4js');
-const { errorResponse } = require('../error/error.response');
+const { ErrorHandler } = require('../error/error');
+const error = new ErrorHandler();
+const { fnCarritos } = require('../persistencia/factory');
 
 /* // controla si existe el carrito
 function validarCarrito(req, res, next) {
@@ -46,56 +48,57 @@ function valProdDelCarrito(req, res, next) {
 function validarUser(req, res, next) {
     try {
         if (!req.body.name) {
-            return errorResponse("middlewareError", "Por favor, introduzca un usuario valido", res);
+            return error.errorResponse(400, "middlewareError", "Por favor, introduzca un usuario valido", res);
         };
         if (typeof (req.body.name) != "string") {
-            return errorResponse(400, "middlewareError", "Por favor, introduzca un usuario en formato string", res);
+            return error.errorResponse(400, "middlewareError", "Por favor, introduzca un usuario en formato string", res);
         }
         next();
     } catch (e) {
-        return errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del usuario -> " + e.message, res);
+        return error.errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del usuario -> " + e.message, res);
     }
 }
 
 async function validarCarrito(req, res, next) {
     try {
-        if (isNaN(req.params.idCarr)) {
-            return errorResponse(400, "middlewareError", "Por favor, introduzca un identificador de carrito en formato numero", res);
-        }
-        const carrito = await fnCarritos().leerInfoPorId(+req.params.idCarr);
+        /* if (isNaN(req.params.idCarr)) {
+            return error.errorResponse(400, "middlewareError", "Por favor, introduzca un identificador de carrito en formato numero", res);
+        } */
+        const carrito = await fnCarritos().leerInfoPorId(req.params.idCarr);
         if (carrito.length === 0) {
-            return errorResponse(400, "middlewareError", "El carrito buscado no se encuentra", res);
+            return error.errorResponse(400, "middlewareError", "El carrito buscado no se encuentra", res);
         }
         next();
     } catch (e) {
-        return error(500, "middlewareError", "Ha ocurrido un error en la validación del carrito -> " + e.message, res);
+        return error.errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del carrito -> " + e.message, res);
     }
 }
 
 async function validarProductoEnCarrito(req, res, next) {
     try {
         if (isNaN(req.params.idProd)) {
-            return errorResponse(400, "middlewareError", "Por favor, introduzca un identificador de producto en formato numero", res);
+            return error.errorResponse(400, "middlewareError", "Por favor, introduzca un identificador de producto en formato numero", res);
         }
-        const carrito = await fnCarritos().leerInfoPorId(+req.params.idCarr);
-        if (carrito[0].productos.length === 0) return error("middlewareError", "El carrito esta vacio", res);
-        const prodEnCarrito = carrito[0].productos.find(e => e.id === +req.params.idProd);
+        const carrito = await fnCarritos().leerInfoPorId(req.params.idCarr);
+        // console.log(carrito);
+        if (carrito.productos.length === 0) return error("middlewareError", "El carrito esta vacio", res);
+        const prodEnCarrito = carrito.productos.find(e => e.id === +req.params.idProd);
         if (!prodEnCarrito) {
-            return errorResponse(404, "middlewareError", "El producto no se encuentra en el carrito", res);
+            return error.errorResponse(404, "middlewareError", "El producto no se encuentra en el carrito", res);
         }
         next();
     } catch (e) {
-        return errorResponse(500, "middlewareError", "Ha ocurrido un error validando si existe el producto en el carrito -> " + e.message, res);
+        return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando si existe el producto en el carrito -> " + e.message, res);
     }
 }
 
 function validarUnidadesProductos(req, res, next) {
     try {
         if (isNaN(req.body.cantidad) || req.body.cantidad < 1) {
-            return errorResponse(400, "middlewareError", "Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero", res);
+            return error.errorResponse(400, "middlewareError", "Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero", res);
         }
     } catch (e) {
-        return errorResponse(500, "middlewareError", "Ha ocurrido un error validando las unidades del producto -> " + e.message, res);
+        return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando las unidades del producto -> " + e.message, res);
     }
 }
 

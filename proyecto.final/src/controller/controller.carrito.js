@@ -1,6 +1,10 @@
 const { fnProductos, fnCarritos } = require('../persistencia/factory');
 const { enviarMailPedido } = require('../utils/nodemailer');
 const { whatsapp, mensajeTexto } = require('../utils/twilio');
+const { ErrorHandler } = require('../error/error');
+const error = new ErrorHandler();
+const { Repository } = require('../persistencia/repository/repositoryMongo');
+const repository = new Repository();
 
 class CartController {
     constructor() { }
@@ -10,7 +14,7 @@ class CartController {
         try {
             res.status(200).json(await fnCarritos().leerInfo());
         } catch (e) {
-            return error("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
@@ -19,63 +23,67 @@ class CartController {
         try {
             await res.status(201).json(await repository.nuevoCarrito(req.body.name));
         } catch (e) {
-            return error("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
     // elimina carrito, muestra array completo
     async eliminarCarrito(req, res) {
         try {
-            const listadoActualizado = await fnCarritos().eliminarInfo(+req.params.idCarr);
+            const listadoActualizado = await fnCarritos().eliminarInfo(req.params.idCarr);
             res.status(201).json(listadoActualizado);
         } catch (e) {
-            return error("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
     // inserta productos en carrito, muestra el carrito seleccionado completo
     async prodAlCarrito(req, res) {
         try {
-            res.status(201).json(await repository.agregarProductosAlCarrito(+req.params.idCarr, +req.params.idProd));
+            res.status(201).json(await repository.agregarProductosAlCarrito(req.params.idCarr, +req.params.idProd));
         } catch (e) {
-            return error("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
     // lista todos los productos de un carrito
     async prodDelCarrito(req, res) {
         try {
-            const carritoSeleccionado = await repository.obtenerProductosDelCarrito(+req.params.idCarr);
+            const carritoSeleccionado = await repository.obtenerProductosDelCarrito(req.params.idCarr);
             res.status(200).json(carritoSeleccionado.productos);
         } catch (e) {
-            return error("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
     // elimina productos del carrito, muestra listado de productos del carrito
     async elimProdDelCarrito(req, res) {
         try {
-            res.status(201).json(await repository.eliminarProductosDelCarrito(+req.params.idCarr, +req.params.idProd));
+            res.status(201).json(await repository.eliminarProductosDelCarrito(req.params.idCarr, +req.params.idProd));
         } catch (e) {
-            return error("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
     // ver un carrito de un usuario en particular
     async verCarritoUsuario(req, res) {
-        const carritoFiltrado = await fnCarritos().leerInfoPorId(req.params.idCarr);
+        try {
+            const carritoFiltrado = await fnCarritos().leerInfoPorId(req.params.idCarr);
 
-        // response con JSON
-        if (!carritoFiltrado) return res.status(404).json({ error: -12, message: `carrito no encontrado` })
-        res.status(200).json(carritoFiltrado);
-
-        // response con template
-        /* if (req.user) {
-            res.render('../views/carrito', { productosEnCarrito: carritoFiltrado.productos, user: req.user.id, isActive: req.user.id, boton: "Cerrar sesión" });
-        } else {
-            // chequear esto, tecnicamente no deberia acceder al carrito si no esta logueado
-            res.render('../views/loginError', { error: "Primero debe loguearse" });
-        } */
+            // response con JSON
+            if (!carritoFiltrado) return res.status(404).json({ error: -12, message: `carrito no encontrado` })
+            res.status(200).json(carritoFiltrado);
+    
+            // response con template
+            /* if (req.user) {
+                res.render('../views/carrito', { productosEnCarrito: carritoFiltrado.productos, user: req.user.id, isActive: req.user.id, boton: "Cerrar sesión" });
+            } else {
+                // chequear esto, tecnicamente no deberia acceder al carrito si no esta logueado
+                res.render('../views/loginError', { error: "Primero debe loguearse" });
+            } */
+        } catch (e) {
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+        }
     }
 
     async confirmarCompra(req, res) {
@@ -94,7 +102,7 @@ class CartController {
             calculoTotalCarrito({user: carrito.user});
             return compra;
         } catch (e) {
-            return error(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
@@ -103,10 +111,10 @@ class CartController {
             const cambio = await fnCarritos().vaciarCarrito(req.body.id);
             if (cambio.matchedCount === 0) return res.status(404).json({error: -13, message: `usuario no encontrado`});
             let carrito = await fnCarritos().leerInfoPorId(req.body.id);
-            carrito = await calculoTotalCarrito(carrito);
+            carrito = await this.calculoTotalCarrito(carrito);
             res.json(carrito).status(201);
         } catch (e) {
-            return error(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
@@ -122,7 +130,7 @@ class CartController {
             listadoActualizado = await calculoTotalCarrito(listadoActualizado);
             res.status(201).json(listadoActualizado);
         } catch (e) {
-            return error(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
