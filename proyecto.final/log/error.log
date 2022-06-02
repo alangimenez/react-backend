@@ -755,3 +755,17 @@
 [2022-05-30T09:33:07.335] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'findIndex' of undefined
 [2022-05-30T09:35:39.629] [ERROR] error - El controlador ha tenido un error -> calculoTotalCarrito is not defined
 [2022-05-30T09:40:11.702] [ERROR] error - El email ya se encuentra registrado
+[2022-06-01T16:37:35.865] [ERROR] error - El email ya se encuentra registrado
+[2022-06-01T16:37:45.943] [ERROR] error - El email ya se encuentra registrado
+[2022-06-01T16:43:08.514] [ERROR] error - El email ya se encuentra registrado
+[2022-06-01T16:43:43.589] [ERROR] error - El email ya se encuentra registrado
+[2022-06-01T16:44:30.396] [ERROR] error - El email ya se encuentra registrado
+[2022-06-01T16:46:19.014] [ERROR] error - El controlador ha tenido un error -> crearCarrito is not a function
+[2022-06-01T16:48:12.709] [ERROR] error - El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-01T16:48:12.712] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-01T20:42:53.633] [ERROR] error - Invalid password
+[2022-06-01T20:44:03.301] [ERROR] error - El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-01T20:44:03.306] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-01T20:44:19.712] [ERROR] error - Invalid password
+[2022-06-01T20:46:04.483] [ERROR] error - Invalid password
+[2022-06-01T20:47:21.313] [ERROR] error - Invalid password

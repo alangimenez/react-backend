@@ -20,13 +20,15 @@ passport.use('registro', new LocalStrategy({
             telefono: req.body.telephone,
             foto: "",
         };
-        const usuarioLogueado = await UsuarioMongo.leerInfoPorId(req.body.username);
-        if (usuarioLogueado != undefined) {
+        const usuarioLogueado = await UsuarioMongo.leerInfoPorId(username);
+        console.log(username);
+        console.log(usuarioLogueado);
+        if (usuarioLogueado.length = 0) {
             req.session.error = "El email ya se encuentra registrado";
             errorLogger.error(req.session.error);
             return done(null, false)
         }
-        const usuarioRegistrado = await UsuarioMongo.subirInfoUser(newUser);
+        const usuarioRegistrado = await UsuarioMongo.subirInfo(newUser);
         logger.info('El usuario fue registrado con éxito');
         // console.log('El usuario fue registrado con éxito');
         return done(null, usuarioRegistrado);
@@ -50,13 +52,14 @@ passport.use('login', new LocalStrategy({
             // console.log('Invalid password');
             return done(null, false);
         }
-        req.user = usuarioLogueado;
-        return done(null, usuarioLogueado);
+        req.user = usuarioLogueado[0];
+        return done(null, usuarioLogueado[0]);
     }));
 
 const salt = () => bcrypt.genSaltSync(10);
 const encrypt = (password) => bcrypt.hashSync(password, salt());
-const isValidPassword = (user, password) => bcrypt.compareSync(password, user.password);
+const isValidPassword = (user, password) => bcrypt.compareSync(password, user[0].password);
+
 
 passport.serializeUser((user, done) => {
     logger.info('Inside serializer');
@@ -68,7 +71,7 @@ passport.deserializeUser(async (id, done) => {
     logger.info('Inside deserializer');
     // console.log('Inside deserializer');
     const user = await UsuarioMongo.leerInfoPorId(id);
-    done(null, user);
+    done(null, user[0]);
 });
 
 module.exports = passport;
