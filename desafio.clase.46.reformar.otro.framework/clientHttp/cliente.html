@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente para consumir API</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>Obtener todos los productos por consola</h1>
+        <button onclick=obtenerProductos()>Obtener todos los productos</button>
+    </div>
+    <div>
+        <h1>Obtener un producto por id por consola</h1>
+        <form>
+            <input required type="number" id="idProductoGet">
+            <button type="submit" onclick=obtenerProductoPorId(event)>Obtener un producto</button>
+        </form>
+    </div>
+    <div>
+        <h1>Subir un producto</h1>
+        <form>
+            <input id="nombre" type="text" required placeholder="Nombre">
+            <input id="descripcion" type="text" required placeholder="Descripcion">
+            <input id="codigo" type="number" required placeholder="Código">
+            <input id="foto" type="text" required placeholder="Foto">
+            <input id="stock" type="number" required placeholder="Stock">
+            <input id="precio" type="number" required placeholder="Precio">
+            <button type="submit" onclick=subirProducto(event)>Subir un producto</button>
+        </form>
+    </div>
+    <div>
+        <h1>Actualizar un producto</h1>
+        <form>
+            <input id="idProductoPut" type="number" required placeholder="Id Producto">
+            <input id="nombrePut" type="text" required placeholder="Nombre">
+            <input id="descripcionPut" type="text" required placeholder="Descripcion">
+            <input id="codigoPut" type="number" required placeholder="Código">
+            <input id="fotoPut" type="text" required placeholder="Foto">
+            <input id="stockPut" type="number" required placeholder="Stock">
+            <input id="precioPut" type="number" required placeholder="Precio">
+            <button type="submit" onclick=actualizarProducto(event)>Actualizar un producto</button>
+        </form>
+    </div>
+    <div>
+        <h1>Eliminar un producto</h1>
+        <form>
+            <input required type="number" id="idProductoDelete">
+            <button onclick=eliminarProducto(event)>Borrar un producto</button>
+        </form>
+    </div>
+
+    <script>
+        function obtenerProductos() {
+            axios.get('http://localhost:8080/api/productos', {
+                responseType: 'json'
+            })
+                .then(res => {
+                    console.log(res.data);
+                })
+        }
+
+        function obtenerProductoPorId(e) {
+            e.preventDefault();
+            const number = document.getElementById('idProductoGet').value;
+            if(!number) return console.log(`Debe cargar un id de un producto`)
+            axios.get(`http://localhost:8080/api/productos/${number}`, {
+                responseType: 'json'
+            })
+                .then(res => {
+                    console.log(res.data);
+                })
+                .catch(error => {
+                    console.log(error.response.data.errorMessage);
+                })
+        }
+
+        function subirProducto(e) {
+            e.preventDefault();
+            axios.post(`http://localhost:8080/api/productos`, {
+                nombre: document.getElementById('nombre').value,
+                descripcion: document.getElementById('descripcion').value,
+                codigo: +document.getElementById('codigo').value,
+                foto: document.getElementById('foto').value,
+                precio: +document.getElementById('precio').value,
+                stock: +document.getElementById('stock').value,
+
+            })
+                .then(res => {
+                    console.log(res.data);
+                })
+                .catch(error => {
+                    console.log(error.response.data.errorMessage);
+                })
+        }
+
+        function actualizarProducto(e) {
+            e.preventDefault();
+            const producto = document.getElementById('idProductoPut').value;
+            let payload = {};
+            if (document.getElementById('nombrePut').value != "") {
+                payload = {
+                    ...payload, 
+                    nombre: document.getElementById('nombrePut').value
+                }
+            }
+            if (document.getElementById('descripcionPut').value) {
+                payload = {
+                    ...payload, 
+                    descripcion: document.getElementById('descripcionPut').value
+                }
+            }
+            if (document.getElementById('codigoPut').value) {
+                payload = {
+                    ...payload, 
+                    codigo: +document.getElementById('codigoPut').value
+                }
+            }
+            if (document.getElementById('fotoPut').value) {
+                payload = {
+                    ...payload, 
+                    foto: document.getElementById('fotoPut').value
+                }
+            }
+            if (document.getElementById('precioPut').value) {
+                payload = {
+                    ...payload, 
+                    precio: +document.getElementById('precioPut').value
+                }
+            }
+            if (document.getElementById('stockPut').value) {
+                payload = {
+                    ...payload, 
+                    stock: +document.getElementById('stockPut').value
+                }
+            }
+            axios.put(`http://localhost:8080/api/productos/${producto}`, {
+                ...payload,
+            })
+                .then(res => {
+                    console.log(res.data);
+                })
+                .catch(error => {
+                    console.log(error.response.data.errorMessage);
+                })
+        }
+
+        function eliminarProducto (e) {
+            e.preventDefault();
+            const producto = +document.getElementById('idProductoDelete').value;
+            axios.delete(`http://localhost:8080/api/productos/${producto}`)
+                .then(res => {
+                    console.log(res.data);
+                })
+                .catch(error => {
+                    console.log(error.response.data.errorMessage);
+                })
+        }
+
+    </script>
+</body>
+
+</html>
