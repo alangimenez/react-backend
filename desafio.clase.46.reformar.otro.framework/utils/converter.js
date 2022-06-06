@@ -8,10 +8,12 @@ class Converter {
             user: listadoCarrito.user,
             productos: []
         }
+        // console.log(listadoCarrito);
         for (let i = 0; i < listadoCarrito.productos.length; i++) {
             const productoDTO = this.converterProductoDTOresponse(listadoCarrito.productos[i]);
             carritoDTO.productos.push(productoDTO);
         }
+        // console.log(carritoDTO);
         return carritoDTO;
     }
 
@@ -45,6 +47,7 @@ class Converter {
         for (let i = 0; i < listadoProductos.length; i++) {
             listadoProductosDTO.push(this.converterProductoDTOresponse(listadoProductos[i]));
         }
+        console.log(listadoProductosDTO);
         return listadoProductosDTO;
     }
 

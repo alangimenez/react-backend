@@ -1,15 +1,17 @@
-Desafio 44
-Buenos días, espero que andes muy bien! Hago entrega del desafio 44.
+Desafio 46
 
-Para este desafio, se agrego todo un router/controller/schema adicional, solo para poder manejar la parte de GraphQL.
+Buenas noches, hago entrega del desafio 46.
 
-En el server, se agrego un endpoint para el router de GraphQL.
-En la capa de router, se creó un nuevo router para manejar solamente GraphQL, donde se definen las configuraciones que deberá manejar GraphQL.
-En la capa de controller, se creó un nuevo controller que maneja las diferentes funciones que necesita GraphQL para las query/mutations. Esta capa directamente llama a la capa repository, la cual no tuvo modificación alguna.
-En los models, se definió el schema que utiliza GraphQL para funcionar, con los type/inputs/query/mutations.
+Para este desafio, se utilizó el framework de Koa, haciendo que se deban enfatizar cambios en la capa de router, capa de controller, el errorHandler y los controles de cada endpoint. A su vez, se creo otro server (para correr Koa).
 
-Se adjunta también el archivo codigo-de-prueba.txt que tiene diferentes consultas posibles que se pueden realizar en la consola de GraphiQL.
+En base a estos lineamientos, no se eliminó nada de lo que ya estaba hecho, si no que se armó en paralelo. El comando para correr el proyecto es npm run start-koa.
 
-Como siempre, se adjunta el archivo sample.env.js, para poder dar las configuraciones necesarias para levantar el proyecto.
+Basicamente, se armó desde cero una capa de router exclusiva para Koa, tanto para el modulo de productos como para carrito. A su vez, también se armó la capa de controller desde cero. La capa controller se conecta a la capa repository, la cual no sufrio cambios dado que esta capa (y la de DAO/CRUD) quedaron "abstraidas", debido a que no necesitaba realizar cambios en estas partes del proyecto. 
 
-De anteamno, agradezco el feedback! Saludos! Alan.
+Por último, se hicieron cambios en el modulo de error, para manejar con ctx en vez de con req, res. A su vez, se reconvirtió la capa de Middlewares a controles que se ejecutan en la capa controller. 
+
+Todas estas nuevas capas creadas para Koa, se ven en las carpetas controllerKoa, controlKoa, routerKoa y errorKoa. A su vez, el archivo server de Koa es serverKoa.
+
+Como siempre, esta el archivo sample.env.js, para poder levantar el proyecto con las variables de entorno necesarias. 
+
+De anteamno, agradezco el feedback habitual!! Y cualquier cosa si algo no quedo muy bien avisarme! Saludos! Alan.

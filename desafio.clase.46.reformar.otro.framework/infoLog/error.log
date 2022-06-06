@@ -609,3 +609,29 @@
 [2022-06-05T22:44:16.312] [ERROR] error - Ocurrio un error en obtenerProductoPorId Repository -> Cannot read property 'id' of undefined
 [2022-06-05T22:44:16.316] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerProductoPorId Repository -> Cannot read property 'id' of undefined
 [2022-06-05T23:04:41.199] [ERROR] error - El controlador ha tenido un error -> Cannot access 'result' before initialization
+[2022-06-06T19:39:31.953] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-06T19:39:31.960] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-06T19:40:24.930] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-06T19:40:24.936] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-06T19:42:36.628] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:42:36.633] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:43:16.475] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:43:16.480] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:43:50.698] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:43:50.699] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:44:28.071] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:44:28.076] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:46:45.464] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:46:45.468] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:48:08.213] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:48:08.217] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:48:47.993] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:48:47.998] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:49:38.236] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:49:38.239] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:51:01.229] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:51:01.233] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:51:49.691] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:51:49.697] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:53:07.131] [ERROR] error - Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-06T19:53:07.136] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en eliminarProductosDelCarrito Repository -> Cannot read property 'productos' of undefined

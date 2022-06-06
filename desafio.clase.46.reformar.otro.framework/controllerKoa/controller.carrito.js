@@ -38,7 +38,7 @@ class CarritoKoaController {
                     return
             }
             ctx.response.status = 201;
-            ctx.body = await fnCarritos().eliminarInfo(+ctx.params.idCarr);
+            ctx.body = await fnCarritos().eliminarInfo(ctx.params.idCarr);
         } catch (e) {
             return error("controllerError", `El controlador ha tenido un error -> ` + e.message, ctx);
         }
@@ -60,7 +60,7 @@ class CarritoKoaController {
                     return
             }
             ctx.response.status = 201;
-            ctx.body = await repository.agregarProductosAlCarrito(+ctx.params.idCarr, +ctx.params.idProd);
+            ctx.body = await repository.agregarProductosAlCarrito(ctx.params.idCarr, +ctx.params.idProd);
         } catch (e) {
             return error("controllerError", `El controlador ha tenido un error -> ` + e.message, ctx);
         }
@@ -76,7 +76,7 @@ class CarritoKoaController {
                     return
             }
             ctx.response.status = 201;
-            const carritoSeleccionado = await repository.obtenerProductosDelCarrito(+ctx.params.idCarr);
+            const carritoSeleccionado = await repository.obtenerProductosDelCarrito(ctx.params.idCarr);
             ctx.body = carritoSeleccionado.productos;
         } catch (e) {
             return error("controllerError", `El controlador ha tenido un error -> ` + e.message, ctx);
@@ -99,7 +99,7 @@ class CarritoKoaController {
                     return
             }
             ctx.response.status = 201;
-            ctx.body = await repository.eliminarProductosDelCarrito(+ctx.params.idCarr, +ctx.params.idProd);
+            ctx.body = await repository.eliminarProductosDelCarrito(ctx.params.idCarr, +ctx.params.idProd);
         } catch (e) {
             return error("controllerError", `El controlador ha tenido un error -> ` + e.message, ctx);
         }

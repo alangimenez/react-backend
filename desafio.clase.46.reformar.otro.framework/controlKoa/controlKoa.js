@@ -65,7 +65,7 @@ class Controls {
             /* if (isNaN(ctx.params.idCarr)) {
                 return {type: "middlewareError", message: "Por favor, introduzca un identificador de carrito en formato numero"};
             } */
-            const carrito = await fnCarritos().leerInfoPorId(+ctx.params.idCarr);
+            const carrito = await fnCarritos().leerInfoPorId(ctx.params.idCarr);
             if (carrito.length === 0) {
                 return {type: "middlewareError", message: "El carrito buscado no se encuentra"};
             }
@@ -90,17 +90,17 @@ class Controls {
 
     async validarProductoEnCarrito(ctx) {
         try {
-            if (isNaN(ctx.params.idProd)) {
+            if (isNaN(+ctx.params.idProd)) {
                 return {type: "middlewareError", message: "Por favor, introduzca un identificador de producto en formato numero"};
             }
-            const carrito = await fnCarritos().leerInfoPorId(+ctx.params.idCarr);
+            const carrito = await fnCarritos().leerInfoPorId(ctx.params.idCarr);
             if (carrito[0].productos.length === 0) return {type: "middlewareError", message: "El carrito esta vacio"};
             const prodEnCarrito = carrito[0].productos.find(e => e.id === +ctx.params.idProd);
             if (!prodEnCarrito) {
                 return {type: "middlewareError", message: "El producto no se encuentra en el carrito"};
             }
         } catch (e) {
-            return {type: "middlewareError", message: "Ha ocurrido un error validando si existe el producto en el carrito"};
+            return {type: "middlewareError", message: e.message};
         }
     }
 
