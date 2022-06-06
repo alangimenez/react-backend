@@ -36,6 +36,16 @@ class DaoMongoCarrito extends CrudMongo {
             throw new Error(`Ocurrio un error en leerInfo CRUD -> ` + e.message)
         }
     }
+
+    async eliminarInfo(id) {
+        try {
+            const result = await this.model.deleteOne({ user: id });
+            return this.leerInfo();
+        } catch (e) {
+            errorLogger.error(`Ocurrio un error en eliminarInfo CRUD -> ` + e.message);
+            throw new Error(`Ocurrio un error en eliminarInfo CRUD -> ` + e.message)
+        }
+    }
 }
 
 module.exports = {

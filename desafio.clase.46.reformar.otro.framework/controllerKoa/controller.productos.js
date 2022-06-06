@@ -1,7 +1,7 @@
 const { Repository } = require('../persistencia/repository/reporitoryMongo');
 const repository = new Repository();
 const { error } = require('../errorKoa/error');
-const { Controls } = require('../middlewareKoa/midKoa');
+const { Controls } = require('../controlKoa/controlKoa');
 const control = new Controls();
 
 class ControllerKoaProduct {
