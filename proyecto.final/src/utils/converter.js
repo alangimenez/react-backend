@@ -3,16 +3,22 @@ class Converter {
 
     // Convierte un carritoModel a un carritoDTO
     converterCarritoDTOresponse(listadoCarrito) {
-        const carritoDTO = {
-            id: listadoCarrito.id,
-            user: listadoCarrito.user,
-            productos: []
+        try {
+            const carritoDTO = {
+                id: listadoCarrito.id,
+                user: listadoCarrito.user,
+                productos: [],
+                total: listadoCarrito.total
+            }
+            for (let i = 0; i < listadoCarrito.productos.length; i++) {
+                const productoDTO = this.converterProductoParaTotal(listadoCarrito.productos[i]);
+                carritoDTO.productos.push(productoDTO);
+            }
+            return carritoDTO;
+        } catch (e) {
+            throw new Error("Hubo un error en converterCarritoDTOresponse " + e.message);
         }
-        for (let i = 0; i < listadoCarrito.productos.length; i++) {
-            const productoDTO = this.converterProductoDTOresponse(listadoCarrito.productos[i]);
-            carritoDTO.productos.push(productoDTO);
-        }
-        return carritoDTO;
+        
     }
 
     // Convierte un productoModel a un productoDTO
@@ -29,12 +35,35 @@ class Converter {
         return productoDTO;
     }
 
+    // Convierte un productoModel a un producto para calcular total
+    converterProductoParaTotal(producto) {
+        try {
+            const productoTotal = {
+                id: producto.id,
+                nombre: producto.nombre,
+                descripcion: producto.descripcion,
+                foto: producto.foto,
+                precio: producto.precio,
+                stock: producto.stock,
+                codigo: producto.codigo,
+                precio: producto.precio,
+                cantidad: producto.cantidad
+            }
+            return productoTotal;
+        } catch (e) {
+            throw new Error("Hubo un error en converterProductoParaTotal");
+        }
+        
+    }
+
     // Convierte un carritoDTO a un carritoModel
     converterCarritoDTOrequest(id, user) {
         const carritoDTO = {
             id: id,
             user: user,
-            timestamp: Date.now(),
+            productos: [],
+            fechaDeCreacion: Date.now(),
+            total: 0
         }
         return carritoDTO
     }
@@ -53,6 +82,7 @@ class Converter {
             ...producto,
             id: id,
             timestamp: Date.now(),
+            cantidad: 1
         }
     }
 }

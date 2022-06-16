@@ -34,7 +34,21 @@ async function enviarMailRegistro(nombre, email, direccion, edad, telefono) {
     }
 }
 
+async function enviarMail (destinatary, subject, body) {
+    try {
+        const mail = await transporter.sendMail({
+            from: 'Node JS server',
+            to: destinatary,
+            subject: subject,
+            html: body
+        });
+    } catch (error) {
+        errorLogger.error(error)
+    }
+}
+
 module.exports = {
     enviarMailPedido,
-    enviarMailRegistro
+    enviarMailRegistro,
+    enviarMail
 }

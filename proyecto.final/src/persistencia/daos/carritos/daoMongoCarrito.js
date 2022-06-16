@@ -10,36 +10,36 @@ class DaoMongoCarrito extends CrudMongo {
 
     async actualizarProdEnCarrito(ubicacion, objeto) {
         try {
-            await this.model.updateOne({ user: ubicacion }, { $push: { productos: objeto } });
-            const listadoActualizado = await this.model.find({ user: ubicacion }, { __v: 0 });
+            await this.model.updateOne({ id: ubicacion }, { $push: { productos: objeto } });
+            const listadoActualizado = await this.model.find({ id: ubicacion }, { __v: 0 });
             return listadoActualizado[0];
         } catch (e) {
-            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);
+            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
         }
         
     }
 
     async eliminarProdEnCarrito(idCarrito, productos) {
         try {
-            await this.model.updateOne({ user: idCarrito }, { $set: { productos: productos } });
-            const listadoActualizado = await this.model.find({ user: idCarrito }, { __v: 0 });
+            await this.model.updateOne({ id: idCarrito }, { $set: { productos: productos } });
+            const listadoActualizado = await this.model.find({ id: idCarrito }, { __v: 0 });
             return listadoActualizado[0];
         } catch (e) {
-            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);
+            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
         }
         
     }
 
     async vaciarCarrito(id) {
         try {
-            const resultado = await this.model.updateOne({ user: id }, { $set: { productos: [] } });
+            const resultado = await this.model.updateOne({ id: id }, { $set: { productos: [] } });
             return resultado;    
         } catch (e) {
             return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);
         }
     }
 
-    async leerInfoPorId(id) {
+   /*  async leerInfoPorId(id) {
         try {
             let prodFiltrado = await this.model.find({ user: id }, { __v: 0 }).lean();
             if (prodFiltrado.length === 0) prodFiltrado = "";
@@ -47,16 +47,20 @@ class DaoMongoCarrito extends CrudMongo {
         } catch (e) {
             return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);
         }
-    }
+    } */
 
-    async actualizarCantidadDeProductos(carrito, lista, producto) {
+    async actualizarCantidadDeProductos(lista, parametros) {
         try {
-            await this.eliminarProdEnCarrito("a", lista, producto);
-            await this.actualizarProdEnCarrito(lista, producto);
-            const listadoActualizado = await this.model.find({ id: lista.id }, { __v: 0 });
+            /*
+            await this.eliminarProdEnCarrito(lista.id, producto);
+            await this.actualizarProdEnCarrito(lista.id, producto);
+            */
+            const result = await this.model.updateOne({id: lista[0].id}, parametros)
+            // console.log(result);
+            const listadoActualizado = await this.model.find({ id: lista[0].id }, { __v: 0 });
             return listadoActualizado[0];
         } catch (e) {
-            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);
+            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
         }
         
     }
@@ -67,7 +71,7 @@ class DaoMongoCarrito extends CrudMongo {
             const listadoActualizado = await this.model.find({ user: carrito }, { __v: 0 });
             return listadoActualizado[0];
         } catch (e) {
-            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);
+            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
         }
     }
 

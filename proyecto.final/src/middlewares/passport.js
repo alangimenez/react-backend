@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt');
 
 const { logger, errorLogger } = require('../config/config.log4js');
 
-const { DaoMongoUsuario } = require('../persistencia/daos/usuario/daoMongoUsuario');
-const UsuarioMongo = new DaoMongoUsuario();
+const { fnUsuarios } = require('../persistencia/factory');
+// const UsuarioMongo = new fnUsuarios();
 
 passport.use('registro', new LocalStrategy({
     passReqToCallback: true,
@@ -19,16 +19,17 @@ passport.use('registro', new LocalStrategy({
             edad: req.body.age,
             telefono: req.body.telephone,
             foto: "",
+            rol: "buyer",
+            cart: 0 // provisorio, el correcto se asigna con la creación del cart
         };
-        const usuarioLogueado = await UsuarioMongo.leerInfoPorId(username);
-        console.log(username);
-        console.log(usuarioLogueado);
-        if (usuarioLogueado.length = 0) {
+        const usuarioLogueado = await fnUsuarios().leerInfoPorId(username);
+        if (usuarioLogueado.length > 0) {
             req.session.error = "El email ya se encuentra registrado";
             errorLogger.error(req.session.error);
             return done(null, false)
         }
-        const usuarioRegistrado = await UsuarioMongo.subirInfo(newUser);
+        const usuarioRegistrado = await fnUsuarios().subirInfo(newUser);
+        req.session.user = newUser;
         logger.info('El usuario fue registrado con éxito');
         // console.log('El usuario fue registrado con éxito');
         return done(null, usuarioRegistrado);
@@ -40,7 +41,7 @@ passport.use('login', new LocalStrategy({
 },
     async (req, username, password, done) => {
         /* const usuarioLogueado = Usuario.getByEmail(username) */ // con FileSystem
-        const usuarioLogueado = await UsuarioMongo.leerInfoPorId(username);
+        const usuarioLogueado = await fnUsuarios().leerInfoPorId(username);
         if (!usuarioLogueado) {
             req.session.error = "El usuario no existe";
             errorLogger.error(req.session.error);
@@ -52,7 +53,7 @@ passport.use('login', new LocalStrategy({
             // console.log('Invalid password');
             return done(null, false);
         }
-        req.user = usuarioLogueado[0];
+        req.session.user = usuarioLogueado[0];
         return done(null, usuarioLogueado[0]);
     }));
 
@@ -70,7 +71,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
     logger.info('Inside deserializer');
     // console.log('Inside deserializer');
-    const user = await UsuarioMongo.leerInfoPorId(id);
+    const user = await fnUsuarios().leerInfoPorId(id);
     done(null, user[0]);
 });
 

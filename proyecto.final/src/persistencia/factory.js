@@ -75,8 +75,34 @@ function fnOrdenes() {
     return opOrdenes;
 }
 
+function fnUsuarios() {
+    let opUsuarios = "";
+    switch (config) {
+        /* case 'filesystem':
+            const { DaoMemoriaCarritoFS } = require('./daos/carritos/daoFileSystemCarrito');
+            opOrdenes = new DaoMemoriaCarritoFS();
+            break;
+        case 'memoria':
+            const { DaoMemoriaCarrito } = require('./daos/carritos/daoMemoriaCarrito');
+            opOrdenes = new DaoMemoriaCarrito();
+            break; */
+        case 'mongodb':
+            const { DaoMongoUsuario } = require('./daos/usuario/daoMongoUsuario');
+            opUsuarios = new DaoMongoUsuario();
+            break;
+        /* case 'firebase':
+            const { DaoFirebaseCarrito } = require('./daos/carritos/daoFirebaseCarrito');
+            opOrdenes = new DaoFirebaseCarrito();
+            break; */
+        default:
+            break;
+    }
+    return opUsuarios;
+}
+
 module.exports = {
     fnProductos,
     fnCarritos, 
-    fnOrdenes
+    fnOrdenes,
+    fnUsuarios
 }

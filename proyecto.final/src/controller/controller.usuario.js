@@ -1,7 +1,7 @@
 const { crearCarrito } = require('../controller/controller.carrito')
 const { CartController } = require('./controller.carrito');
 const cart = new CartController();
-const { enviarMailRegistro } = require('../utils/nodemailer');
+const { enviarMailRegistro, enviarMail } = require('../utils/nodemailer');
 path = require('path')
 
 const { DaoMongoUsuario } = require('../persistencia/daos/usuario/daoMongoUsuario');
@@ -28,10 +28,13 @@ class UserController {
 
     registro = async (req, res) => {
         try {
-            enviarMailRegistro(req.body.username, req.body.firstname, req.body.direction, req.body.age, req.body.telephone);
             cart.crearCarrito(req, res);
+            enviarMail(process.env.USER_NODEMAILER, 
+                `Nuevo registro`, 
+                `Se registro el usuario ${req.body.username}. Nombre: ${req.body.firstname}. Direccion: ${req.body.direction}. 
+                Edad: ${req.body.age}. Telefono: ${req.body.telephone}`)
             delete req.body.password;
-            
+
             // response con JSON
             res.status(201).json(req.body);
 
@@ -44,7 +47,7 @@ class UserController {
 
     logout = (req, res) => {
         try {
-            if (req.user) {
+            if (req.session.user) {
                 const user = req.user.id;
                 req.session.destroy(() => {
                     res.clearCookie('my-session');
@@ -55,7 +58,9 @@ class UserController {
                     // respuesta con template
                     // res.render('../views/logout', { usuario: user });
                 })
+                
             } else {
+                console.log(req.session.user);
                 res.status(400).json({ message: `No existe usuario logueado para desloguearse` })
             }
         } catch (e) {
@@ -123,14 +128,14 @@ class UserController {
 
     login = (req, res) => {
         try {
-            const usuario = {
-                id: req.user.id,
+            console.log(req.session)
+            const user = {
                 nombre: req.user.nombre,
                 direccion: req.user.direccion,
                 edad: req.user.edad,
                 telefono: req.user.telefono
             }
-            res.status(200).json(usuario);
+            res.status(200).json(user);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }

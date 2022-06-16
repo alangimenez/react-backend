@@ -29,7 +29,7 @@ async function validarProducto(req, res, next) {
 
 function validarAtributosProducto (req, res, next) {
     try {
-        if ((!req.body.nombre || !req.body.descripcion || !req.body.codigo || !req.body.foto || !req.body.precio || !req.body.stock) && req.method === "POST") {
+        if ((!req.body.nombre || !req.body.descripcion || !req.body.codigo || !req.body.precio || !req.body.stock) && req.method === "POST") {
             return errorResponse(400, "middlewareError", "Debe completar todas las propiedades del productos", res);
         }
         if ((!req.body.nombre && !req.body.descripcion && !req.body.codigo && !req.body.foto && !req.body.precio && !req.body.stock) && req.method === "PUT") {
@@ -58,11 +58,6 @@ function validarAtributosProducto (req, res, next) {
         if (req.body.stock) {
             if (typeof(req.body.stock) != "number") {
                 return errorResponse(400, "middlewareError", "Por favor, introduzca un stock en formato number", res);
-            } 
-        }
-        if (req.body.foto) {
-            if (typeof(req.body.foto) != "string") {
-                return errorResponse(400, "middlewareError", "Por favor, introduzca un enlace a la foto en formato string", res);
             } 
         }
     } catch (e) {

@@ -771,3 +771,268 @@
 [2022-06-01T20:47:21.313] [ERROR] error - Invalid password
 [2022-06-15T22:17:19.523] [ERROR] error - El controlador ha tenido un error -> Cannot set headers after they are sent to the client
 [2022-06-15T22:17:19.524] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-16T15:28:08.296] [ERROR] error - El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-16T15:28:08.299] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-16T15:34:21.339] [ERROR] error - El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-16T15:34:21.340] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-16T16:12:45.585] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> objeto is not defined
+[2022-06-16T16:12:45.591] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> objeto is not defined
+[2022-06-16T16:12:45.596] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> objeto is not defined
+[2022-06-16T16:13:53.700] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:13:53.704] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:13:53.709] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:16:03.158] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:16:03.161] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:16:03.165] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:20:15.957] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:20:15.969] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:20:15.979] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:23:19.737] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:23:19.747] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:23:19.752] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:23:53.099] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:23:53.102] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:23:53.104] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> res is not defined
+[2022-06-16T16:25:12.612] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> objeto is not defined
+[2022-06-16T16:25:12.614] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> objeto is not defined
+[2022-06-16T16:25:12.617] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> objeto is not defined
+[2022-06-16T16:25:12.619] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> objeto is not defined
+[2022-06-16T16:25:12.624] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> objeto is not defined
+[2022-06-16T16:47:08.936] [ERROR] error - El email ya se encuentra registrado
+[2022-06-16T17:13:27.225] [ERROR] error - El controlador ha tenido un error -> reg is not defined
+[2022-06-16T17:27:26.347] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-16T17:29:37.798] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-16T18:42:05.645] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-16T18:42:13.711] [ERROR] error - Ha ocurrido un error en la validación del carrito -> Cannot read property 'length' of undefined
+[2022-06-16T18:52:22.421] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:52:22.422] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:52:54.978] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:52:54.980] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:53:14.339] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:53:14.342] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:53:14.345] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:53:14.346] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:54:06.585] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:54:06.587] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:54:06.588] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:54:06.589] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T18:58:19.800] [ERROR] error - El controlador ha tenido un error -> this.calculoTotalCarrito is not a function
+[2022-06-16T19:00:49.989] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:00:49.992] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:00:49.994] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:00:49.995] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:02:17.862] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:02:17.863] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:02:17.865] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:02:17.866] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:03:55.753] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:03:55.755] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:03:55.757] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:03:55.759] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "total"
+[2022-06-16T19:19:56.589] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:19:56.591] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:19:56.594] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:22:00.492] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-16T19:22:00.497] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-16T19:22:26.003] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-16T19:22:26.007] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'productos' of undefined
+[2022-06-16T19:22:51.641] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:22:51.646] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:23:12.527] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:23:12.531] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:23:45.703] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:23:45.709] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:25:32.746] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> res is not defined
+[2022-06-16T19:25:32.752] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> res is not defined
+[2022-06-16T19:26:34.858] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> res is not defined
+[2022-06-16T19:26:34.860] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> res is not defined
+[2022-06-16T19:26:34.864] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> res is not defined
+[2022-06-16T19:26:34.867] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> res is not defined
+[2022-06-16T19:27:02.397] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to string failed for value "{
+  _id: new ObjectId("62aba495664623c169facb50"),
+  id: 3,
+  user: 'jueves20220616.1845@gmail.com',
+  fechaDeCreacion: '1655415957811',
+  productos: [
+    {
+      _id: new ObjectId("62aba6ce89e45e1d02deaed7"),
+      id: 4,
+      timestamp: '1655416526908',
+      nombre: 'Sin limite',
+      descripcion: 'Sin descripcion',
+      codigo: 5003,
+      foto: '',
+      precio: 2725,
+      stock: 100,
+      cantidad: 1
+    }
+  ],
+  total: 2725
+}" (type Object) at path "user" for model "carritos"
+[2022-06-16T19:27:02.411] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to string failed for value "{
+  _id: new ObjectId("62aba495664623c169facb50"),
+  id: 3,
+  user: 'jueves20220616.1845@gmail.com',
+  fechaDeCreacion: '1655415957811',
+  productos: [
+    {
+      _id: new ObjectId("62aba6ce89e45e1d02deaed7"),
+      id: 4,
+      timestamp: '1655416526908',
+      nombre: 'Sin limite',
+      descripcion: 'Sin descripcion',
+      codigo: 5003,
+      foto: '',
+      precio: 2725,
+      stock: 100,
+      cantidad: 1
+    }
+  ],
+  total: 2725
+}" (type Object) at path "user" for model "carritos"
+[2022-06-16T19:27:02.428] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to string failed for value "{
+  _id: new ObjectId("62aba495664623c169facb50"),
+  id: 3,
+  user: 'jueves20220616.1845@gmail.com',
+  fechaDeCreacion: '1655415957811',
+  productos: [
+    {
+      _id: new ObjectId("62aba6ce89e45e1d02deaed7"),
+      id: 4,
+      timestamp: '1655416526908',
+      nombre: 'Sin limite',
+      descripcion: 'Sin descripcion',
+      codigo: 5003,
+      foto: '',
+      precio: 2725,
+      stock: 100,
+      cantidad: 1
+    }
+  ],
+  total: 2725
+}" (type Object) at path "user" for model "carritos"
+[2022-06-16T19:27:02.438] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to string failed for value "{
+  _id: new ObjectId("62aba495664623c169facb50"),
+  id: 3,
+  user: 'jueves20220616.1845@gmail.com',
+  fechaDeCreacion: '1655415957811',
+  productos: [
+    {
+      _id: new ObjectId("62aba6ce89e45e1d02deaed7"),
+      id: 4,
+      timestamp: '1655416526908',
+      nombre: 'Sin limite',
+      descripcion: 'Sin descripcion',
+      codigo: 5003,
+      foto: '',
+      precio: 2725,
+      stock: 100,
+      cantidad: 1
+    }
+  ],
+  total: 2725
+}" (type Object) at path "user" for model "carritos"
+[2022-06-16T19:27:02.445] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to string failed for value "{
+  _id: new ObjectId("62aba495664623c169facb50"),
+  id: 3,
+  user: 'jueves20220616.1845@gmail.com',
+  fechaDeCreacion: '1655415957811',
+  productos: [
+    {
+      _id: new ObjectId("62aba6ce89e45e1d02deaed7"),
+      id: 4,
+      timestamp: '1655416526908',
+      nombre: 'Sin limite',
+      descripcion: 'Sin descripcion',
+      codigo: 5003,
+      foto: '',
+      precio: 2725,
+      stock: 100,
+      cantidad: 1
+    }
+  ],
+  total: 2725
+}" (type Object) at path "user" for model "carritos"
+[2022-06-16T19:27:02.450] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to string failed for value "{
+  _id: new ObjectId("62aba495664623c169facb50"),
+  id: 3,
+  user: 'jueves20220616.1845@gmail.com',
+  fechaDeCreacion: '1655415957811',
+  productos: [
+    {
+      _id: new ObjectId("62aba6ce89e45e1d02deaed7"),
+      id: 4,
+      timestamp: '1655416526908',
+      nombre: 'Sin limite',
+      descripcion: 'Sin descripcion',
+      codigo: 5003,
+      foto: '',
+      precio: 2725,
+      stock: 100,
+      cantidad: 1
+    }
+  ],
+  total: 2725
+}" (type Object) at path "user" for model "carritos"
+[2022-06-16T19:27:56.851] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "a" (type string) at path "id" for model "carritos"
+[2022-06-16T19:27:56.852] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "a" (type string) at path "id" for model "carritos"
+[2022-06-16T19:27:56.853] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "a" (type string) at path "id" for model "carritos"
+[2022-06-16T19:27:56.854] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "a" (type string) at path "id" for model "carritos"
+[2022-06-16T19:27:56.854] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "a" (type string) at path "id" for model "carritos"
+[2022-06-16T19:27:56.855] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "a" (type string) at path "id" for model "carritos"
+[2022-06-16T19:29:02.020] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:29:02.026] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:31:23.474] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:31:23.479] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:32:55.885] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:32:55.890] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:34:03.618] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:34:03.624] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:35:21.780] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:35:21.784] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'id' of undefined
+[2022-06-16T19:37:57.165] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse
+[2022-06-16T19:37:57.167] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse
+[2022-06-16T19:39:25.690] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:39:25.692] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:39:25.693] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:39:25.694] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:41:43.339] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:41:43.340] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:41:43.342] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:41:43.343] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:42:43.837] [ERROR] error - Ha ocurrido un error en la validación del carrito -> res is not defined
+[2022-06-16T19:43:43.228] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> res is not defined
+[2022-06-16T19:43:43.230] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> res is not defined
+[2022-06-16T19:45:19.277] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:45:19.278] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:45:19.280] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:45:19.281] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T19:45:54.191] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> req is not defined
+[2022-06-16T19:45:54.196] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> req is not defined
+[2022-06-16T19:46:38.594] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'length' of undefined
+[2022-06-16T19:46:38.599] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'length' of undefined
+[2022-06-16T19:47:03.978] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'length' of undefined
+[2022-06-16T19:47:03.983] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'length' of undefined
+[2022-06-16T19:47:46.849] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'length' of undefined
+[2022-06-16T19:47:46.853] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Cannot read property 'length' of undefined
+[2022-06-16T19:48:50.972] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse
+[2022-06-16T19:48:50.975] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse
+[2022-06-16T19:49:26.872] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T19:49:26.879] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T19:50:14.560] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T19:50:14.565] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T19:51:54.060] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T19:51:54.062] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T19:52:27.837] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T19:52:27.843] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T20:03:08.442] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-16T20:03:19.630] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T20:03:19.632] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T20:04:41.084] [ERROR] error - Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T20:04:41.086] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en agregarProductosAlCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'id' of undefined
+[2022-06-16T20:11:18.925] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T20:11:18.927] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T20:11:18.931] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T20:13:25.625] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T20:13:25.626] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T20:13:25.628] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"

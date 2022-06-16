@@ -36,7 +36,7 @@ class CrudMongo {
         try {
             return await this.model.find({ id: id }, { __v: 0 });
         } catch (e) {
-            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);
+            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
         }
     }
 
@@ -90,6 +90,15 @@ class CrudMongo {
             return this.leerInfoPorId(objeto.id);
         } catch (e) {
             return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);
+        }
+    }
+
+    async actualizarInfoPrueba(id, parametros) {
+        try {
+            const result = await this.model.updateOne({id: id}, parametros);
+            return await this.leerInfoPorId(id);
+        } catch (e) {
+            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
         }
     }
 }

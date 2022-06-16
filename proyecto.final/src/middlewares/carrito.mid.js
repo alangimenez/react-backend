@@ -44,6 +44,16 @@ function valProdDelCarrito(req, res, next) {
 
     next();
 } */
+function validarSesion(req, res, next) {
+    try {
+        if(!req.session.user) {
+            return error.errorResponse(401, "middlewareError", "Por favor, primero debe loguearse para esta petición", res);
+        }
+        next();
+    } catch {
+        return error.errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación de sesión -> " + e.message, res);
+    }
+}
 
 function validarUser(req, res, next) {
     try {
@@ -64,7 +74,7 @@ async function validarCarrito(req, res, next) {
         /* if (isNaN(req.params.idCarr)) {
             return error.errorResponse(400, "middlewareError", "Por favor, introduzca un identificador de carrito en formato numero", res);
         } */
-        const carrito = await fnCarritos().leerInfoPorId(req.params.idCarr);
+        const carrito = await fnCarritos().leerInfoPorId(req.session.user.cart);
         if (carrito.length === 0) {
             return error.errorResponse(400, "middlewareError", "El carrito buscado no se encuentra", res);
         }
@@ -106,5 +116,6 @@ module.exports = {
     validarProductoEnCarrito,
     validarCarrito,
     validarUser,
-    validarUnidadesProductos
+    validarUnidadesProductos,
+    validarSesion
 }
