@@ -30,7 +30,8 @@ class UserController {
         try {
             enviarMailRegistro(req.body.username, req.body.firstname, req.body.direction, req.body.age, req.body.telephone);
             cart.crearCarrito(req, res);
-
+            delete req.body.password;
+            
             // response con JSON
             res.status(201).json(req.body);
 

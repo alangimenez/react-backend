@@ -10,7 +10,8 @@ const ordenSchema = new Schema ({
     productos: {type: Array},
     total: {type: Number},
     status: {type: String},
-    fechaDeEntregado: {type: String}
+    fechaDeEntregado: {type: String},
+    direccion: {type: String}
 })
 
 const Ordenes = mongoose.model(coleccion, ordenSchema);

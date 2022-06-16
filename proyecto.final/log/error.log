@@ -769,3 +769,5 @@
 [2022-06-01T20:44:19.712] [ERROR] error - Invalid password
 [2022-06-01T20:46:04.483] [ERROR] error - Invalid password
 [2022-06-01T20:47:21.313] [ERROR] error - Invalid password
+[2022-06-15T22:17:19.523] [ERROR] error - El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-15T22:17:19.524] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Cannot set headers after they are sent to the client
