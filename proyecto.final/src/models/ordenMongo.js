@@ -6,10 +6,11 @@ const coleccion = 'ordenes';
 const ordenSchema = new Schema ({
     id: {type: Number},
     user: {type: String},
-    fechaDePedido: {type: String},
     productos: {type: Array},
     total: {type: Number},
     status: {type: String},
+    fechaDePedido: {type: String},
+    fechaDeDespacho: {type: String},
     fechaDeEntregado: {type: String},
     direccion: {type: String}
 })

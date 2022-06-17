@@ -3,11 +3,6 @@ const router = express.Router();
 const { validarAtributosProducto,
     validarProducto,
     validarAdmin } = require('../middlewares/productos.mid');
-const { obtenerProductos,
-    obtenerProductoPorId,
-    eliminarProducto,
-    subirProducto,
-    modificarProducto } = require('../controller/controller.productos');
 const { ProductController } = require('../controller/controller.productos');
 const product = new ProductController();
 

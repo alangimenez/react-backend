@@ -1,13 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('../middlewares/passport');
-const { perfil,
-    logout,
-    registro,
-    avatar,
-    login,
-    registroError,
-    loginError } = require('../controller/controller.usuario');
 const upload = require('../config/config.multer');
 const { usuarioLogueado } = require('../middlewares/usuarios.mid');
 const { UserController } = require('../controller/controller.usuario');

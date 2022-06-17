@@ -6,10 +6,14 @@ const { fnProductos } = require('../persistencia/factory');
 
 // revisa si es admin o no
 function validarAdmin(req, res, next) {
-    if (admin === false) {
-        return errorResponse(401, "middlewareError", "El usuario no posee permisos de administrador -> " + e.message, res);
+    try {
+        if (req.session.user.rol != "admin") {
+            return errorResponse(403, "middlewareError", "El usuario no posee permisos de administrador", res);
+        }
+        next();
+    } catch (e) {
+        return errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del producto -> " + e.message, res);
     }
-    next();
 }
 
 async function validarProducto(req, res, next) {

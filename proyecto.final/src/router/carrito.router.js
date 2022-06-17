@@ -6,7 +6,8 @@ const { validarProductoEnCarrito,
     validarCarrito,
     validarUser,
     validarUnidadesProductos,
-    validarSesion } = require('../middlewares/carrito.mid');
+    validarSesion, 
+    validarCarritoConProductos } = require('../middlewares/carrito.mid');
 const { CartController } = require('../controller/controller.carrito');
 const cart = new CartController();
 
@@ -40,7 +41,7 @@ router.delete('/:idCarr/productos/:idProd',
     cart.elimProdDelCarrito)
 
 // modificar cantidad de unidades de un producto dentro del carrito
-router.post('/:idCarr/modificar/:idProd',
+router.post('/modificar/:idProd',
     [validarSesion, validarUnidadesProductos, validarCarrito, validarProductoEnCarrito],
     (req, res) => cart.modificarCantidadDeProdEnCarrito(req, res))
 
@@ -49,7 +50,7 @@ router.post('/:idCarr/modificar/:idProd',
 
 // endpoint para confirmar compra
 router.post('/confirmar',
-    validarSesion,
+    [validarCarritoConProductos, validarSesion],
     async (req, res) => {
         const compra = await cart.confirmarCompra(req, res);
     })

@@ -89,10 +89,10 @@ async function validarProductoEnCarrito(req, res, next) {
         if (isNaN(req.params.idProd)) {
             return error.errorResponse(400, "middlewareError", "Por favor, introduzca un identificador de producto en formato numero", res);
         }
-        const carrito = await fnCarritos().leerInfoPorId(req.params.idCarr);
+        const carrito = await fnCarritos().leerInfoPorId(req.session.user.cart);
         // console.log(carrito);
-        if (carrito.productos.length === 0) return error("middlewareError", "El carrito esta vacio", res);
-        const prodEnCarrito = carrito.productos.find(e => e.id === +req.params.idProd);
+        if (carrito[0].productos.length === 0) return error("middlewareError", "El carrito esta vacio", res);
+        const prodEnCarrito = carrito[0].productos.find(e => e.id === +req.params.idProd);
         if (!prodEnCarrito) {
             return error.errorResponse(404, "middlewareError", "El producto no se encuentra en el carrito", res);
         }
@@ -107,8 +107,21 @@ function validarUnidadesProductos(req, res, next) {
         if (isNaN(req.body.cantidad) || req.body.cantidad < 1) {
             return error.errorResponse(400, "middlewareError", "Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero", res);
         }
+        next();
     } catch (e) {
         return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando las unidades del producto -> " + e.message, res);
+    }
+}
+
+async function validarCarritoConProductos(req, res, next) {
+    try {
+        const carritoSeleccionado = await fnCarritos().leerInfoPorId(req.session.user.cart);
+        if (carritoSeleccionado[0].productos.length === 0) {
+            return error.errorResponse(400, "middlewareError", "Para realizar una compra, el carrito no debe estar vacio", res);
+        }
+        next();
+    } catch (e) {
+        return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando si existen productos en el carrito -> " + e.message, res);
     }
 }
 
@@ -117,5 +130,6 @@ module.exports = {
     validarCarrito,
     validarUser,
     validarUnidadesProductos,
-    validarSesion
+    validarSesion,
+    validarCarritoConProductos
 }

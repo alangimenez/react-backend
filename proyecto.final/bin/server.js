@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const routerProductos = require('../src/router/productos.router');
 const routerCarrito = require('../src/router/carrito.router');
 const routerUsuario = require('../src/router/usuario.router');
+const routerOrdenes = require('../src/router/ordenes.router');
 const { validarRuta } = require('../src/middlewares/middlewares');
 const { engine } = require('express-handlebars');
 const { logger, errorLogger} = require('../src/config/config.log4js');
@@ -79,6 +80,7 @@ app.use(express.static('./public'));
 app.use('/api/productos', routerProductos);
 app.use('/api/carrito', routerCarrito);
 app.use('/api/usuario', routerUsuario);
+app.use('/api/ordenes', routerOrdenes);
 app.get('/', (req, res) => {res.redirect('/api/productos')})
 app.use('*', validarRuta);
 

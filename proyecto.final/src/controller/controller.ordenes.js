@@ -13,10 +13,11 @@ class OrderController {
             const orden = {
                 id: idNuevo,
                 user: req.session.user.id,
-                fechaDePedido: Date.now(),
                 productos: productos,
                 total: total,
                 status: "En preparación",
+                fechaDePedido: Date.now(),
+                fechaDeDespacho: "",
                 fechaDeEntregado: "",
                 direccion: req.session.user.direccion
             }
@@ -27,17 +28,63 @@ class OrderController {
         }
     }
 
-    cambiarEstado(req, res) {
+    async cambiarEstado(req, res) {
         try {
+            const order = req.params.idOrd;
+            let status = "";
+            let parametros = {
+                $set: {
+                    status: status
+                }
+            }
 
+            switch (req.body.status) {
+                case 1:
+                    parametros = {
+                        $set: {
+                            status: "En preparación",
+                            fechaDeDespacho: "",
+                            fechaDeEntregado: "",
+                        }
+                    };
+                    break;
+                case 2:
+                    parametros = {
+                        $set: {
+                            status: "Despachado",
+                            fechaDeDespacho: Date.now(),
+                            fechaDeEntregado: "",
+                        }
+                    };
+                    break;
+                case 3:
+                    parametros = {
+                        $set: {
+                            status: "Entregado",
+                            fechaDeEntregado: Date.now(),
+                        }
+                    };
+                    break;
+                default:
+                    status = "En preparación"
+            }
+            const ordenActualizada = await fnOrdenes().actualizarInfoPrueba(order, parametros);
+            res.status(201).json(ordenActualizada);
         } catch (e) {
             errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
         }
     }
 
-    obtenerPedidos(req, res) {
+    async obtenerPedidos(req, res) {
         try {
-
+            if (req.session.user.rol === "admin") {
+                const ordenes = await fnOrdenes().leerInfo();
+                res.status(200).json(ordenes);
+            } else {
+                const ordenes = await fnOrdenes().leerInfoPorUser(req.session.user.id);
+                res.status(200).json(ordenes);
+            }
+            
         } catch (e) {
             errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
         }

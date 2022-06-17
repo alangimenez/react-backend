@@ -124,7 +124,7 @@ class CartController {
 
     async vaciarCarrito(req, res) {
         try {
-            const carritoVacio = this.limpiarCarrito(req);
+            const carritoVacio = await this.limpiarCarrito(req);
             res.json(carritoVacio).status(201);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
@@ -133,14 +133,25 @@ class CartController {
 
     async modificarCantidadDeProdEnCarrito(req, res) {
         try {
-            const { idCarr, idProd } = req.params;
+            const { idProd } = req.params;
             const { cantidad } = req.body;
             const listadoCarritos = await fnCarritos().leerInfo();
-            const carritoSeleccionado = listadoCarritos.find(e => e.user === idCarr);
-            const prodEnCarrito = carritoSeleccionado.productos.find(e => e.id === +idProd);
-            prodEnCarrito.cantidad = cantidad;
-            let listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(idCarr, carritoSeleccionado, prodEnCarrito);
-            listadoActualizado = await calculoTotalCarrito(listadoActualizado);
+            const carritoSeleccionado = listadoCarritos.find(e => e.id === req.session.user.cart);
+            const carritoSeleccionadoArray = [carritoSeleccionado];
+            for (let i = 0; i < carritoSeleccionadoArray[0].productos.length; i++) {
+
+                if (carritoSeleccionadoArray[0].productos[i].id === +idProd) {
+
+                    carritoSeleccionadoArray[0].productos[i].cantidad = cantidad;
+                }
+            }
+            const parametros = {
+                $set: {
+                    productos: carritoSeleccionadoArray[0].productos
+                }
+            }
+            let listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(carritoSeleccionadoArray, parametros);
+            listadoActualizado.total = await this.calculoTotalCarrito(carritoSeleccionadoArray[0]);
             res.status(201).json(listadoActualizado);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
@@ -152,7 +163,6 @@ class CartController {
         for (let i = 0; i < lista.length; i++) {
             pedido = pedido + `Producto ${i + 1} es ${lista[i].nombre}. \n `
         }
-        console.log(pedido)
         return pedido;
     }
 
@@ -166,6 +176,22 @@ class CartController {
             productos: carrito[0].productos
         }
         return carritoVacio
+    }
+
+    async calculoTotalCarrito(carrito) {
+        let total = 0;
+        // console.log(carrito);
+        if (!carrito.productos) {
+            total = 0;
+        } else {
+            for (let i = 0; i < carrito.productos.length; i++) {
+
+                total = total + (carrito.productos[i].precio * carrito.productos[i].cantidad);
+            }
+        }
+        // console.log(total);
+        await fnCarritos().actualizarTotalCarrito(carrito.user, total);
+        return total;
     }
 }
 

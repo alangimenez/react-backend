@@ -1521,3 +1521,39 @@
   moreInfo: 'https://www.twilio.com/docs/errors/21606',
   details: undefined
 }
+[2022-06-17T09:28:56.054] [ERROR] error - El usuario no posee permisos de administrador -> 
+[2022-06-17T09:39:51.124] [ERROR] error - Ha ocurrido un error validando si existe el producto en el carrito -> Cannot read property 'length' of undefined
+[2022-06-17T09:40:51.251] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-17T09:41:36.017] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-17T09:42:07.945] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:42:07.950] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:42:07.956] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:47:09.977] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-17T09:47:40.836] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-17T09:48:10.484] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:48:10.488] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:48:10.492] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:49:40.856] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:49:40.859] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:49:40.865] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:50:04.334] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:50:04.338] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:50:04.340] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-17T09:50:49.265] [ERROR] error - El controlador ha tenido un error -> calculoTotalCarrito is not defined
+[2022-06-17T09:58:19.495] [ERROR] error - El producto no se encuentra en el carrito
+[2022-06-17T09:58:31.849] [ERROR] error - Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero
+[2022-06-17T09:58:39.509] [ERROR] error - Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero
+[2022-06-17T10:04:47.467] [ERROR] error - Ha ocurrido un error validando si existen productos en el carrito -> Cannot read property 'productos' of undefined
+[2022-06-17T10:05:16.019] [ERROR] error - Ha ocurrido un error validando si existen productos en el carrito -> Cannot read property 'productos' of undefined
+[2022-06-17T10:05:49.920] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-17T10:43:24.761] [ERROR] error - Cannot read property 'rol' of undefined
+[2022-06-17T10:43:56.586] [ERROR] error - Cannot read property 'rol' of undefined
+[2022-06-17T10:44:05.590] [ERROR] error - Cannot read property 'rol' of undefined
+[2022-06-17T11:07:36.239] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-17T11:07:45.591] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-17T11:08:10.462] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-17T11:08:17.817] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-17T11:09:20.204] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-17T11:26:11.022] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-17T11:27:10.677] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-17T11:27:33.334] [ERROR] error - Assignment to constant variable.
