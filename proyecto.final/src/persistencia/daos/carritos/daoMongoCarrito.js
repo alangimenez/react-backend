@@ -32,7 +32,7 @@ class DaoMongoCarrito extends CrudMongo {
 
     async vaciarCarrito(id) {
         try {
-            const resultado = await this.model.updateOne({ id: id }, { $set: { productos: [] } });
+            const resultado = await this.model.updateOne({ id: id }, { $set: { productos: [], total: 0 } });
             return resultado;    
         } catch (e) {
             return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);

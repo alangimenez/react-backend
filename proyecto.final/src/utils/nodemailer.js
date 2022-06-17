@@ -42,6 +42,7 @@ async function enviarMail (destinatary, subject, body) {
             subject: subject,
             html: body
         });
+        logger.info(mail);
     } catch (error) {
         errorLogger.error(error)
     }

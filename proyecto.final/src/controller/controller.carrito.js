@@ -5,6 +5,8 @@ const { ErrorHandler } = require('../error/error');
 const error = new ErrorHandler();
 const { Repository } = require('../persistencia/repository/repositoryMongo');
 const repository = new Repository();
+const { OrderController } = require('./controller.ordenes');
+const orderController = new OrderController();
 
 class CartController {
     constructor() { }
@@ -90,25 +92,31 @@ class CartController {
 
     async confirmarCompra(req, res) {
         try {
-            const carrito = await fnCarritos().leerInfoPorId(req.params.idCarr);
+            let carrito = await fnCarritos().leerInfoPorId(req.session.user.cart);
+            carrito = carrito[0];
 
             // await enviarMailPedido(req.user.nombre, req.user.id, productosConfirmados);
             await enviarMail(process.env.USER_NODEMAILER,
-                `Nuevo pedido de ${req.user.nombre} - ${req.user.id}`,
-                this.listadoPedido(carrito.productos))
+                `Nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`,
+                await this.listadoPedido(carrito.productos))
 
-            await whatsapp(req.user.telefono,
-                `Ha recibido un nuevo pedido de ${req.user.nombre} - ${req.user.id}`);
-            await mensajeTexto(req.user.telefono,
-                `Su pedido ha sido recibido, y se encuentra en proceso. Muchas gracias ${req.user.nombre}`);
-            let resultado = await fnCarritos().vaciarCarrito(req.params.idCarr);
-            resultado = await calculoTotalCarrito(resultado);
-            const compra = {
+/*             await whatsapp(req.session.user.telefono,
+                `Ha recibido un nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`);
+            await mensajeTexto(req.session.user.telefono,
+                `Su pedido ha sido recibido, y se encuentra en proceso. Muchas gracias ${req.session.user.nombre}`);
+ */            
+
+            let resultado = await this.limpiarCarrito(req);
+            // resultado = await calculoTotalCarrito(resultado);
+            
+            const orden = await orderController.crearOrden(req, carrito.productos, carrito.total);
+
+            /* const compra = {
                 productos: productosConfirmados,
                 total: carrito.total,
             }
-            calculoTotalCarrito({ user: carrito.user });
-            return compra;
+            calculoTotalCarrito({ user: carrito.user }); */
+            res.status(201).json(orden);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
@@ -116,23 +124,8 @@ class CartController {
 
     async vaciarCarrito(req, res) {
         try {
-            const cambio = await fnCarritos().vaciarCarrito(req.session.user.cart);
-            let carrito = await fnCarritos().leerInfoPorId(req.session.user.cart);
-            let carritoNuevo = {
-                id: carrito[0].id,
-                user: carrito[0].user,
-                total: carrito[0].total,
-                productos: carrito[0].productos
-            }
-            carritoNuevo.total = 0;
-            carritoNuevo.productos = [];
-            const parametros = {
-                $set: {
-                    total: carritoNuevo.total
-                }
-            }
-            await fnCarritos().actualizarInfoPrueba(req.session.user.cart, parametros);
-            res.json(carritoNuevo).status(201);
+            const carritoVacio = this.limpiarCarrito(req);
+            res.json(carritoVacio).status(201);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
@@ -159,7 +152,20 @@ class CartController {
         for (let i = 0; i < lista.length; i++) {
             pedido = pedido + `Producto ${i + 1} es ${lista[i].nombre}. \n `
         }
+        console.log(pedido)
         return pedido;
+    }
+
+    async limpiarCarrito(req) {
+        const cambio = await fnCarritos().vaciarCarrito(req.session.user.cart);
+        let carrito = await fnCarritos().leerInfoPorId(req.session.user.cart);
+        let carritoVacio = {
+            id: carrito[0].id,
+            user: carrito[0].user,
+            total: carrito[0].total,
+            productos: carrito[0].productos
+        }
+        return carritoVacio
     }
 }
 

@@ -68,7 +68,7 @@ app.use(session({
         ttl: 60,
     }),
     cookie: {
-        maxAge: 600000,
+        maxAge: +process.env.MAX_AGE_SESSION * 60000,
     }
 }));
 app.use(passport.initialize());

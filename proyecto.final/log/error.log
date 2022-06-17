@@ -1036,3 +1036,488 @@
 [2022-06-16T20:13:25.625] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
 [2022-06-16T20:13:25.626] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
 [2022-06-16T20:13:25.628] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "jueves20220616.1845@gmail.com" (type string) at path "id" for model "carritos"
+[2022-06-16T22:57:29.962] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-16T23:16:46.700] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-16T23:18:35.559] [ERROR] error - El controlador ha tenido un error -> Assignment to constant variable.
+[2022-06-16T23:24:01.324] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-16T23:24:02.110] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-16T23:24:02.331] [ERROR] error - El controlador ha tenido un error -> fnOrdenes(...).crearOrden is not a function
+[2022-06-16T23:24:48.428] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-16T23:24:49.227] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-16T23:24:49.449] [ERROR] error - El controlador ha tenido un error -> fnOrdenes(...).crearOrden is not a function
+[2022-06-16T23:29:08.402] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-16T23:29:09.188] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-16T23:29:09.416] [ERROR] error - El controlador ha tenido un error -> fnOrdenes(...).crearOrden is not a function
+[2022-06-16T23:35:21.228] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-16T23:35:22.014] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-16T23:39:40.160] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-16T23:39:40.889] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-16T23:39:41.986] [ERROR] error - El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-16T23:39:41.988] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Cannot set headers after they are sent to the client
+[2022-06-16T23:44:32.046] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-16T23:44:32.815] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-16T23:49:52.916] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-16T23:49:53.700] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-17T00:01:21.956] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-17T00:01:35.842] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:01:36.611] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-17T00:03:46.026] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:03:46.782] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-17T00:08:10.386] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:08:11.137] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-17T00:09:30.223] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:09:30.991] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-17T00:11:37.845] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:11:38.611] [ERROR] error - RestException [Error]: The From phone number 18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-17T00:12:04.804] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:12:05.576] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-17T00:13:32.012] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:15:08.135] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:15:08.922] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}
+[2022-06-17T00:15:47.807] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:18:38.609] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:19:48.779] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:28:03.502] [ERROR] error - RestException [Error]: Twilio could not find a Channel with the specified From address
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 63007,
+  moreInfo: 'https://www.twilio.com/docs/errors/63007',
+  details: undefined
+}
+[2022-06-17T00:28:04.271] [ERROR] error - RestException [Error]: The From phone number +18597150942 is not a valid, SMS-capable inbound phone number or short code for your account.
+    at success (C:\Users\Alan\Documents\proyecto.final\node_modules\twilio\lib\base\Version.js:135:15)
+    at Promise_then_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:766:44)
+    at Promise_done_fulfilled (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:835:31)
+    at Fulfilled_dispatch [as dispatch] (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1229:9)
+    at Pending_become_eachMessage_task (C:\Users\Alan\Documents\proyecto.final\node_modules\q\q.js:1369:30)
+    at RawTask.call (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\asap.js:40:19)
+    at flush (C:\Users\Alan\Documents\proyecto.final\node_modules\asap\raw.js:50:29)
+    at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+  status: 400,
+  code: 21606,
+  moreInfo: 'https://www.twilio.com/docs/errors/21606',
+  details: undefined
+}

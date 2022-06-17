@@ -60,7 +60,6 @@ class UserController {
                 })
                 
             } else {
-                console.log(req.session.user);
                 res.status(400).json({ message: `No existe usuario logueado para desloguearse` })
             }
         } catch (e) {
@@ -128,7 +127,6 @@ class UserController {
 
     login = (req, res) => {
         try {
-            console.log(req.session)
             const user = {
                 nombre: req.user.nombre,
                 direccion: req.user.direccion,

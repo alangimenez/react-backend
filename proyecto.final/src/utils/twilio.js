@@ -43,7 +43,7 @@ async function whatsapp (destino, cuerpo) {
 async function mensajeTexto (destino, cuerpo) {
     try {
         const message = await client.messages.create({
-            from: process.env.NUMBER_SMS_TWILIO,
+            from: "+18597150942",
             to: `${destino}`,
             body: cuerpo
         });

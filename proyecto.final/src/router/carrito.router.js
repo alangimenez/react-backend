@@ -48,11 +48,10 @@ router.post('/:idCarr/modificar/:idProd',
 /////////////////////////////////////////////
 
 // endpoint para confirmar compra
-router.post('/:idCarr/confirmar',
+router.post('/confirmar',
     validarSesion,
     async (req, res) => {
         const compra = await cart.confirmarCompra(req, res);
-        res.status(201).json(compra);
     })
 
 // endpoint post finalizada la compra
