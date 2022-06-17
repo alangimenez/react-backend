@@ -1557,3 +1557,10 @@
 [2022-06-17T11:26:11.022] [ERROR] error - Por favor, primero debe loguearse para esta petición
 [2022-06-17T11:27:10.677] [ERROR] error - El usuario no posee permisos de administrador
 [2022-06-17T11:27:33.334] [ERROR] error - Assignment to constant variable.
+[2022-06-17T14:10:54.179] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-17T14:22:59.906] [ERROR] error - Stock insuficiente. No existe stock suficiente del producto Sin limite. 
+                    Stock disponible: 100. Stock solicitado: 100  
+[2022-06-17T14:23:27.431] [ERROR] error - Stock insuficiente. No existe stock suficiente del producto Sin limite. 
+                    Stock disponible: 100. Stock solicitado: 150  
+[2022-06-17T14:25:26.066] [ERROR] error - Stock insuficiente. No existe stock suficiente del producto Sin limite. 
+                    Stock disponible: 100. Stock solicitado: 150  

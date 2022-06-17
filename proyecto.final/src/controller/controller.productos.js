@@ -1,6 +1,7 @@
 const { Repository } = require('../persistencia/repository/repositoryMongo');
 const repository = new Repository();
 const { ErrorHandler } = require('../error/error');
+const { fnProductos } = require('../persistencia/factory');
 const error = new ErrorHandler();
 
 class ProductController {
@@ -66,6 +67,7 @@ class ProductController {
             return error.errorResponse("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
+
 }
 
 module.exports = {

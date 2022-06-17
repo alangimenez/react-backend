@@ -1,4 +1,4 @@
-const { fnOrdenes } = require('../persistencia/factory');
+const { fnOrdenes, fnProductos } = require('../persistencia/factory');
 const { errorResponse } = require('../error/error.response');
 
 class OrderController {
@@ -21,6 +21,9 @@ class OrderController {
                 fechaDeEntregado: "",
                 direccion: req.session.user.direccion
             }
+
+            this.modificarStock(orden);
+
             const nuevaOrden = await fnOrdenes().subirInfo(orden);
             return orden;
         } catch (e) {
@@ -87,6 +90,22 @@ class OrderController {
             
         } catch (e) {
             errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
+        }
+    }
+
+    async modificarStock(orden) {
+        const productos = await fnProductos().leerInfo();
+        for (let i = 0; i < orden.productos.length; i++) {
+            const stockProducto = productos.find(e => e.id === orden.productos[i].id)
+            if (stockProducto) {
+                const nuevoStock = stockProducto.stock - orden.productos[i].cantidad;
+                const parametros = {
+                    $set: {
+                        stock: nuevoStock,
+                    }
+                }
+                await fnProductos().actualizarInfoPrueba(stockProducto.id, parametros);
+            }
         }
     }
 }

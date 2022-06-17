@@ -8,6 +8,7 @@ const { validarProductoEnCarrito,
     validarUnidadesProductos,
     validarSesion, 
     validarCarritoConProductos } = require('../middlewares/carrito.mid');
+const { validarStock } = require('../middlewares/ordenes.mid');
 const { CartController } = require('../controller/controller.carrito');
 const cart = new CartController();
 
@@ -50,7 +51,7 @@ router.post('/modificar/:idProd',
 
 // endpoint para confirmar compra
 router.post('/confirmar',
-    [validarCarritoConProductos, validarSesion],
+    [validarSesion, validarCarritoConProductos, validarStock],
     async (req, res) => {
         const compra = await cart.confirmarCompra(req, res);
     })
