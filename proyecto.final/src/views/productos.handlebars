@@ -1,8 +1,8 @@
 <div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
     {{#if isActive}}
         <p>Bienvenido {{isActive}}</p>
-        <a href='/api/usuario/{{user}}/mi-perfil' class="btn btn-dark">Mi perfil</a>
-        <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+        <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
+        <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
         <a href="/api/usuario/{{logout}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
     {{#if login }}  

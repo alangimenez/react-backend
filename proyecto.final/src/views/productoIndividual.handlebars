@@ -2,7 +2,7 @@
     {{#if isActive}}
     <p>Bienvenido {{isActive}}</p>
     <a href="/api/productos" class="btn btn-dark">Volver a pagina principal</a>
-    <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+    <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
     {{/if}}
     <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
 </div>
@@ -35,7 +35,7 @@
     function post() {
         document.getElementById("spinner").style.display = "block";
         document.getElementById("mensaje").innerHTML = "Aguarde un momento";
-        fetch(`${ruta}/api/carrito/{{user}}/productos/{{objeto.id}}`, {
+        fetch(`${ruta}/api/carrito/productos/{{objeto.id}}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
