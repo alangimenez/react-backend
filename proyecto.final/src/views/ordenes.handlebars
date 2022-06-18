@@ -1,0 +1,28 @@
+<div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
+    {{#if isActive}}
+        <p>Bienvenido {{isActive}}</p>
+        <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
+        <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
+        <a href="/api/usuario/{{logout}}" class="btn btn-dark">{{boton}}</a>
+    {{/if}}
+    {{#if login }}  
+        <a href="/api/usuario/{{login}}" class="btn btn-dark">{{boton}}</a>
+    {{/if}}
+</div>
+<div class="container">
+    <table class="table">
+        <th>Orden</th>
+        <th>Fecha de pedido</th>
+        <th>Status actual</th>
+        <th>Total</th>
+        <div></div>
+        {{#each ordenes}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.fechaDePedido}}</td>
+            <td>{{this.status}}</td>
+            <td>{{this.total}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>

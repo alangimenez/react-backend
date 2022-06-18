@@ -2463,3 +2463,28 @@
 [2022-06-17T20:32:11.638] [ERROR] error - ruta '/' metodo POST no implementado
 [2022-06-17T20:32:14.550] [ERROR] error - ruta '/' metodo GET no implementado
 [2022-06-17T20:42:48.910] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-17T22:07:36.092] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-17T22:13:30.290] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-17T22:14:50.607] [ERROR] error - ruta '/' metodo POST no implementado
+[2022-06-17T22:22:08.220] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-17T22:23:04.109] [ERROR] error - Error: Invalid login: 535 Authentication failed
+    at SMTPConnection._formatError (C:\Users\Alan\Documents\proyecto.final\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection._actionAUTHComplete (C:\Users\Alan\Documents\proyecto.final\node_modules\nodemailer\lib\smtp-connection\index.js:1536:34)
+    at SMTPConnection.<anonymous> (C:\Users\Alan\Documents\proyecto.final\node_modules\nodemailer\lib\smtp-connection\index.js:540:26)
+    at SMTPConnection._processResponse (C:\Users\Alan\Documents\proyecto.final\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (C:\Users\Alan\Documents\proyecto.final\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (C:\Users\Alan\Documents\proyecto.final\node_modules\nodemailer\lib\smtp-connection\index.js:189:44)
+    at TLSSocket.emit (events.js:400:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9)
+    at TLSSocket.Readable.push (internal/streams/readable.js:204:10) {
+  code: 'EAUTH',
+  response: '535 Authentication failed',
+  responseCode: 535,
+  command: 'AUTH PLAIN'
+}
+[2022-06-17T22:43:17.682] [ERROR] error - Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero
+[2022-06-17T22:46:11.968] [ERROR] error - Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero
+[2022-06-17T22:50:59.233] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-17T23:02:12.775] [ERROR] error - Assignment to constant variable.
+[2022-06-17T23:13:07.760] [ERROR] error - ruta '/' metodo GET no implementado

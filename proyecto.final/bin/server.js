@@ -9,6 +9,7 @@ const routerApiOrdenes = require('../src/routerApi/ordenes.router');
 const routerIntegProductos = require('../src/routerIntegrado/productos.router');
 const routerIntegUsuario = require('../src/routerIntegrado/usuario.router');
 const routerIntegCarrito = require('../src/routerIntegrado/carrito.router');
+const routerIntegOrdenes = require('../src/routerIntegrado/ordenes.router');
 const { validarRuta } = require('../src/middlewares/middlewares');
 const { engine } = require('express-handlebars');
 const { logger, errorLogger} = require('../src/config/config.log4js');
@@ -89,7 +90,7 @@ if (process.env.MODE === "api") {
     app.use('/api/productos', routerIntegProductos);
     app.use('/api/carrito', routerIntegCarrito);
     app.use('/api/usuario', routerIntegUsuario);
-    // app.use('/api/ordenes', routerOrdenes);
+    app.use('/api/ordenes', routerIntegOrdenes);
 }
 
 app.get('/', (req, res) => {res.redirect('/api/productos')})

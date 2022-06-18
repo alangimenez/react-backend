@@ -1,7 +1,15 @@
 <div>
     <h1>Muchas gracias por su compra</h1>
-    <h3>Le enviaremos los detalles por e-mail</h3>
-    <p>Lo redirigiremos a la pagina de inicio</p>
+    <h3>Le detallamos su pedido:</h3>
+    <p>Numero de orden: {{orden}}</p>
+    <p>Direccion de entrega: {{direccion}}</p>
+    <p>Pedido:</p>
+    <ul>
+        {{#each productos}}
+        <li>Nombre de producto: {{this.nombre}}. Cantidad: {{this.cantidad}}. Precio individual: {{this.precio}}. Subtotal: </li>
+        {{/each}}
+    </ul>
+    <p>Total del pedido: {{total}}</p>
 </div>
 
 <script>
@@ -14,5 +22,5 @@
     }
     setTimeout(() => {
         window.location.href = `${ruta}/api/productos`;
-    }, 5000)
+    }, 10000)
 </script>

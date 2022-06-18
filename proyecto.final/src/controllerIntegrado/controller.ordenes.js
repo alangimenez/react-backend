@@ -84,8 +84,13 @@ class OrderController {
                 const ordenes = await fnOrdenes().leerInfo();
                 res.status(200).json(ordenes);
             } else {
-                const ordenes = await fnOrdenes().leerInfoPorUser(req.session.user.id);
-                res.status(200).json(ordenes);
+                let ordenes = await fnOrdenes().leerInfoPorUser(req.session.user.id);
+                ordenes = ordenes.map(i => i.toObject())
+                res.render('../views/ordenes', {
+                    ordenes: ordenes,
+                    isActive: req.session.user.id,
+                    boton: "Logout"
+                })
             }
             
         } catch (e) {

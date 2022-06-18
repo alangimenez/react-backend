@@ -57,7 +57,12 @@ router.post('/confirmar',
     })
 
 // endpoint post finalizada la compra
-router.get('/compra/realizada/muchas/gracias', (req, res) => res.render('../views/resultado'))
+router.get('/comprafinalizada', (req, res) => res.render('../views/resultado', {
+    total: req.session.order.total,
+    orden: req.session.order.id,
+    direccion: req.session.order.direccion,
+    productos: req.session.order.productos
+}))
 
 // endpoint para vaciar el carrito
 router.post('/vaciar',

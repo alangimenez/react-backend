@@ -79,7 +79,11 @@ class CartController {
 
             // response con template
             if (req.user) {
-                res.render('../views/carrito', { productosEnCarrito: carritoFiltrado[0].productos, user: req.session.user.id, isActive: req.session.user.id, boton: "Cerrar sesión" });
+                res.render('../views/carrito', { productosEnCarrito: carritoFiltrado[0].productos, 
+                    user: req.session.user.id, 
+                    isActive: req.session.user.id, 
+                    boton: "Cerrar sesión",
+                    total: carritoFiltrado[0].total });
             } else {
                 // chequear esto, tecnicamente no deberia acceder al carrito si no esta logueado
                 res.render('../views/loginError', { error: "Primero debe loguearse" });
@@ -111,6 +115,7 @@ class CartController {
             
             const orden = await orderController.crearOrden(req, carrito.productos, carrito.total);
 
+            req.session.order = orden;
             /* const compra = {
                 productos: productosConfirmados,
                 total: carrito.total,
