@@ -5,6 +5,10 @@ class DaoMongoProducto extends CrudMongo {
     constructor () {
         super(productoModel)
     }
+
+    async traerProductosPorCategoria (categoria) {
+        return await this.model.find({ categoria: categoria }, { __v: 0 });
+    }
 }
 
 module.exports = {

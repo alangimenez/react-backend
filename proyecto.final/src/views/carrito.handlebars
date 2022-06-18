@@ -24,15 +24,16 @@
             <td>{{this.cantidad}}</td>
             <td>
                 <input id="cantidad" type="number" style="width: 50px">
-                <button onclick=cambiarQ({{this.id}})>Cambiar cantidad</button>
+                <button id="cambiarCantidad" onclick=cambiarQ({{this.id}})>Cambiar cantidad</button>
+                <button id="eliminarProducto" onclick=eliminar({{this.id}})>Eliminar producto</button>
             </td>
             <td>{{this.precio}}</td>
         </tr>
         {{/each}}
     </table>
     <div style="font-weight: bold; text-align: right; margin-right: 8rem">Total de la compra: {{total}}</div>
-    <button onclick=comprar()>Confirmar compra</button>
-    <button onclick=vaciar()>Vaciar carrito</button>
+    <button id="confirmarCompra" onclick=comprar()>Confirmar compra</button>
+    <button id="vaciarCarrito" onclick=vaciar()>Vaciar carrito</button>
 </div>
 <div class="spinner" style="font-size: 18px" id="spinner">
     <div class="head"></div>
@@ -48,6 +49,8 @@
         ruta = window.location.href.slice(0, ubicacion);
     }
     function comprar() {
+        document.getElementById("confirmarCompra").innerHTML = "Aguarde...";
+        document.getElementById("confirmarCompra").disabled = true;
         document.getElementById("spinner").style.display = "block";
         document.getElementById("mensaje").innerHTML = "Por favor, espere mientras generamos su pedido";
         fetch(`${ruta}/api/carrito/confirmar`, {
@@ -65,6 +68,8 @@
     }
 
     function vaciar() {
+        document.getElementById("vaciarCarrito").innerHTML = "Aguarde...";
+        document.getElementById("vaciarCarrito").disabled = true;
         fetch(`${ruta}/api/carrito/vaciar`, {
             method: 'POST',
             headers: {
@@ -78,6 +83,8 @@
         }).catch(error => console.error('Error:', error))
     }
     function cambiarQ(id) {
+        document.getElementById("cambiarCantidad").innerHTML = "Aguarde...";
+        document.getElementById("cambiarCantidad").disabled = true;
         const nuevoQ = document.getElementById("cantidad").value;
         fetch(`${ruta}/api/carrito/modificar/${id}`, {
             method: 'POST',
@@ -85,6 +92,26 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ cantidad: nuevoQ })
+        }).then(data =>
+            data.json()
+        ).then(response => {
+            if (response.errorType) {
+                document.getElementById("cambiarCantidad").innerHTML = "Cambiar cantidad";
+                document.getElementById("cambiarCantidad").disabled = false;
+                return alert(response.errorMessage)
+
+            }
+            window.location.href = `${ruta}/api/carrito`;
+        }).catch(error => console.error('Error:', error))
+    }
+    function eliminar(id) {
+        document.getElementById("eliminarProducto").innerHTML = "Aguarde...";
+        document.getElementById("eliminarProducto").disabled = true;
+        fetch(`${ruta}/api/carrito/productos/${id}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+            },
         }).then(data =>
             data.json()
         ).then(response => {

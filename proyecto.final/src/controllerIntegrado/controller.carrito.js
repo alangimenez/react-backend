@@ -62,7 +62,7 @@ class CartController {
     // elimina productos del carrito, muestra listado de productos del carrito
     async elimProdDelCarrito(req, res) {
         try {
-            res.status(201).json(await repository.eliminarProductosDelCarrito(req.params.idCarr, +req.params.idProd));
+            res.status(201).json(await repository.eliminarProductosDelCarrito(req.session.user.cart, +req.params.idProd));
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }

@@ -52,6 +52,14 @@ class ProductController {
         }
     }
 
+    async obtenerProductoPorCategoria (req, res) {
+        try {
+            res.status(200).json(await repository.traerProductosPorCategoria(req.params.cat));
+        } catch (e) {
+            return error.errorResponse("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+        }
+    }
+
 }
 
 module.exports = {

@@ -187,6 +187,17 @@ class Repository {
         await fnCarritos().actualizarTotalCarrito(carrito.user, total);
         return total;
     }
+
+    async traerProductosPorCategoria(categoria) {
+        try {
+            const productos = await fnProductos().traerProductosPorCategoria(categoria);
+            const productosDTOresponse = converter.converterVariosProductosDTO(productos);
+            return productosDTOresponse;
+        } catch (e) {
+            errorLogger.error(`Ocurrio un error en traerProductosPorCategoria Repository -> ` + e.message);
+            throw new Error(`Ocurrio un error en traerProductosPorCategoria Repository -> ` + e.message)
+        }
+    }
 }
 
 

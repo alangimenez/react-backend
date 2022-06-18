@@ -12,7 +12,7 @@ NODE_TLS_REJECT_UNAUTHORIZED='0'
 # datos para acceso a twilio
 ACCOUNT_TWILIO='account twilio'
 TOKEN_TWILIO='toker twilio'
-NUMBER_SMS_TWILIO='+18597150942'
+NUMBER_SMS_TWILIO='numero twilio'
 
 # datos para acceso nodemailer
 USER_NODEMAILER='mail nodemailer'

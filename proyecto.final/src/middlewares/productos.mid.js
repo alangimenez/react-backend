@@ -74,6 +74,27 @@ class ProdMid {
         }
         next();
     }
+
+    validarCategoria(req, res, next) {
+        try {
+            const categoria = ["comedia", "accion", "drama"];
+            let insertar = "";
+            let bool = false;
+            for (let i = 0; i < categoria.length; i++) {
+                if (categoria[i] === req.params.cat) {
+                    bool = true;
+                    break;
+                }
+                insertar = insertar + categoria[i] + ", ";
+            }
+            if (!bool) {
+                return errorResponse(400, "middlewareError", "Por favor, introduzca una categoria valida. Solo son posibles las categorias: " + insertar, res);
+            }
+            next();
+        } catch (e) {
+            return errorResponse(500, "middlewareError", "Ha ocurrido un error validando los atributos del producto -> " + e.message, res);
+        }
+    }
 }
 
 module.exports = {

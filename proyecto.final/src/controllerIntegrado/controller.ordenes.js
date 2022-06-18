@@ -80,19 +80,19 @@ class OrderController {
 
     async obtenerPedidos(req, res) {
         try {
+            let ordenes = "";
             if (req.session.user.rol === "admin") {
-                const ordenes = await fnOrdenes().leerInfo();
-                res.status(200).json(ordenes);
+                ordenes = await fnOrdenes().leerInfo();
             } else {
-                let ordenes = await fnOrdenes().leerInfoPorUser(req.session.user.id);
-                ordenes = ordenes.map(i => i.toObject())
-                res.render('../views/ordenes', {
-                    ordenes: ordenes,
-                    isActive: req.session.user.id,
-                    boton: "Logout"
-                })
+                ordenes = await fnOrdenes().leerInfoPorUser(req.session.user.id);
             }
-            
+            ordenes = ordenes.map(i => i.toObject());
+            res.render('../views/ordenes', {
+                ordenes: ordenes,
+                isActive: req.session.user.id,
+                boton: "Logout"
+            })
+
         } catch (e) {
             errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
         }

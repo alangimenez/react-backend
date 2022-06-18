@@ -1,7 +1,8 @@
-<div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
+<div class="container" style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
     {{#if isActive}}
         <p>Bienvenido {{isActive}}</p>
         <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
+        <a href='/api/ordenes/' class="btn btn-dark">Mis ordenes</a>
         <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
         <a href="/api/usuario/{{logout}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
@@ -9,7 +10,7 @@
         <a href="/api/usuario/{{login}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
 </div>
-<div style="display: flex; justify-content: space-around">
+<div class="container" style="display: flex; justify-content: space-around">
     {{#each listaProductos}}
 
     <div class="card" style="width: 18rem;">
