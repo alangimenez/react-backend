@@ -1,4 +1,4 @@
-const express = require('express');
+/* const express = require('express');
 const router = express.Router();
 const { validarArchivo } = require('../middlewares/middlewares');
 const { validarProducto } = require('../middlewares/productos.mid');
@@ -69,4 +69,4 @@ router.post('/vaciar',
     validarSesion,
     async (req, res) => cart.vaciarCarrito(req, res))
 
-module.exports = router;
+module.exports = router; */

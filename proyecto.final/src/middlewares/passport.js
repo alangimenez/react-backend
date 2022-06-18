@@ -42,13 +42,13 @@ passport.use('login', new LocalStrategy({
     async (req, username, password, done) => {
         /* const usuarioLogueado = Usuario.getByEmail(username) */ // con FileSystem
         const usuarioLogueado = await fnUsuarios().leerInfoPorId(username);
-        if (!usuarioLogueado) {
-            req.session.error = "El usuario no existe";
+        if (usuarioLogueado.length === 0) {
+            req.session.error = "Error en el login, el usuario ingresado no esta registrado.";
             errorLogger.error(req.session.error);
             return done(null, false);
         }
         if (!isValidPassword(usuarioLogueado, password)) {
-            req.session.error = "La contraseña ingresada es invalida"
+            req.session.error = "Error en el login, la contraseña ingresada es incorrecta"
             errorLogger.error('Invalid password');
             // console.log('Invalid password');
             return done(null, false);

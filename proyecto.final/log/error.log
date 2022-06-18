@@ -2488,3 +2488,68 @@
 [2022-06-17T22:50:59.233] [ERROR] error - ruta '/' metodo GET no implementado
 [2022-06-17T23:02:12.775] [ERROR] error - Assignment to constant variable.
 [2022-06-17T23:13:07.760] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T11:09:03.571] [ERROR] error - Invalid password
+[2022-06-18T11:10:34.098] [ERROR] error - El usuario no existe
+[2022-06-18T11:11:34.916] [ERROR] error - Error en el login, el usuario ingresado no esta registrado.
+[2022-06-18T11:11:43.575] [ERROR] error - Invalid password
+[2022-06-18T11:18:04.911] [ERROR] error - Por favor, debe ingresar su usuario y contraseña para poder loguearse.
+[2022-06-18T11:18:21.326] [ERROR] error - Invalid password
+[2022-06-18T11:20:00.416] [ERROR] error - El email ya se encuentra registrado
+[2022-06-18T11:20:07.181] [ERROR] error - El email ya se encuentra registrado
+[2022-06-18T11:22:51.286] [ERROR] error - El email ya se encuentra registrado
+[2022-06-18T11:25:17.337] [ERROR] error - Por favor, debe ingresar todos los campos obligatorios para poder registrarse: firstname, direction, username (email), password, age y telephone.
+[2022-06-18T11:28:55.930] [ERROR] error - Por favor, debe ingresar su usuario y contraseña para poder loguearse.
+[2022-06-18T11:29:05.400] [ERROR] error - Por favor, debe ingresar su usuario y contraseña para poder loguearse.
+[2022-06-18T11:29:07.305] [ERROR] error - Por favor, debe ingresar su usuario y contraseña para poder loguearse.
+[2022-06-18T11:38:39.487] [ERROR] error - El producto buscado no se encuentra
+[2022-06-18T11:38:45.214] [ERROR] error - El producto buscado no se encuentra
+[2022-06-18T11:38:50.219] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-18T11:39:40.291] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-18T11:39:46.809] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-18T11:39:50.712] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-18T11:40:57.910] [ERROR] error - Debe completar todas las propiedades del productos
+[2022-06-18T11:43:22.606] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria
+[2022-06-18T11:48:38.519] [ERROR] error - El producto buscado no se encuentra
+[2022-06-18T11:48:43.533] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-18T11:51:05.928] [ERROR] error - El producto buscado no se encuentra
+[2022-06-18T11:51:19.505] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-18T11:56:01.980] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-18T12:15:11.382] [ERROR] error - El carrito buscado no se encuentra
+[2022-06-18T12:15:23.851] [ERROR] error - El carrito buscado no se encuentra
+[2022-06-18T12:16:09.126] [ERROR] error - El carrito buscado no se encuentra
+[2022-06-18T12:17:39.104] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> req is not defined
+[2022-06-18T12:17:39.110] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> req is not defined
+[2022-06-18T12:17:39.116] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> req is not defined
+[2022-06-18T12:17:41.964] [ERROR] error - El carrito buscado no se encuentra
+[2022-06-18T12:18:22.231] [ERROR] error - El carrito buscado no se encuentra
+[2022-06-18T12:18:47.447] [ERROR] error - El carrito buscado no se encuentra
+[2022-06-18T12:20:50.331] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> req is not defined
+[2022-06-18T12:20:50.333] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> req is not defined
+[2022-06-18T12:20:50.336] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> req is not defined
+[2022-06-18T12:22:25.892] [ERROR] error - El email ya se encuentra registrado
+[2022-06-18T12:22:40.832] [ERROR] error - El carrito buscado no se encuentra
+[2022-06-18T12:23:44.483] [ERROR] error - El carrito buscado no se encuentra
+[2022-06-18T12:31:08.985] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-18T12:33:05.462] [ERROR] error - Cannot read property 'rol' of undefined
+[2022-06-18T12:34:07.111] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T12:36:06.083] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T12:36:35.033] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-18T12:37:48.052] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-18T12:37:57.068] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-18T12:41:28.609] [ERROR] error - Ha ocurrido un error en la validación de la orden -> error is not defined
+[2022-06-18T12:41:43.836] [ERROR] error - La orden que se intenta actualizar no existe. 
+[2022-06-18T12:41:51.076] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "id" for model "ordenes"
+[2022-06-18T12:41:51.078] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "id" for model "ordenes"
+[2022-06-18T12:41:51.079] [ERROR] error - Ha ocurrido un error en la validación de la orden -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "id" for model "ordenes"
+[2022-06-18T12:43:03.180] [ERROR] error - Ha ocurrido un error en la validación de la orden -> error is not defined
+[2022-06-18T12:43:24.379] [ERROR] error - Por favor, introduzca una orden en formato number
+[2022-06-18T12:43:31.335] [ERROR] error - Por favor, introduzca una orden en formato number
+[2022-06-18T12:43:38.028] [ERROR] error - Por favor, introduzca una orden en formato number
+[2022-06-18T12:44:21.812] [ERROR] error - Ocurrio un error en CRUD Error CRUD -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "id" for model "ordenes"
+[2022-06-18T12:44:21.814] [ERROR] error - Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "id" for model "ordenes"
+[2022-06-18T12:44:21.816] [ERROR] error - Ha ocurrido un error en la validación de la orden -> Ocurrio un error en el ErrorHandler -> El Crud ha tenido un error -> Cast to Number failed for value "NaN" (type number) at path "id" for model "ordenes"
+[2022-06-18T12:45:24.067] [ERROR] error - Por favor, introduzca una orden en formato number
+[2022-06-18T12:45:39.802] [ERROR] error - La orden que se intenta actualizar no existe. 
+[2022-06-18T12:45:45.902] [ERROR] error - La orden que se intenta actualizar no existe. 
+[2022-06-18T12:46:05.421] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T12:48:03.382] [ERROR] error - Por favor, primero debe loguearse para esta petición

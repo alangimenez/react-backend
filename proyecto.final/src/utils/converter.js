@@ -30,7 +30,8 @@ class Converter {
             foto: producto.foto,
             precio: producto.precio,
             stock: producto.stock,
-            codigo: producto.codigo
+            codigo: producto.codigo,
+            categoria: producto.categoria,
         }
         return productoDTO;
     }

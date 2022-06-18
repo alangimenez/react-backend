@@ -8,7 +8,7 @@ class Repository {
 
     // Arma un nuevo Carrito y lo envia al DAO. Al recibirlo, lo convierte a DTO para enviarlo al cliente.
     // Adicionalmente carga el numero de carrito al perfil de usuario
-    nuevoCarrito = async (user) => {
+    nuevoCarrito = async (req, user) => {
         try {
             const lista = await fnCarritos().leerInfo();
             let idNuevo = 0;
@@ -16,13 +16,14 @@ class Repository {
             const nuevoCarritoDTOrequest = converter.converterCarritoDTOrequest(idNuevo, user);
             const nuevoCarritoDTOresponse = await fnCarritos().subirInfo(nuevoCarritoDTOrequest);
 
-
             const parametros = {
                 $set: {
                     cart: idNuevo
                 }
             }
             await fnUsuarios().actualizarInfoPrueba(user, parametros);
+            req.session.user.cart = idNuevo;
+            req.session.save(err => errorLogger.error(`Hubo un error al actualizar datos de la sesión => ${err}`));
 
             return converter.converterCarritoDTOresponse(nuevoCarritoDTOresponse);
         } catch (e) {

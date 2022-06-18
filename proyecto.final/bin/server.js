@@ -87,10 +87,10 @@ if (process.env.MODE === "api") {
     app.use('/api/usuario', routerApiUsuario);
     app.use('/api/ordenes', routerApiOrdenes);
 } else {
-    app.use('/api/productos', routerIntegProductos);
+    /* app.use('/api/productos', routerIntegProductos);
     app.use('/api/carrito', routerIntegCarrito);
     app.use('/api/usuario', routerIntegUsuario);
-    app.use('/api/ordenes', routerIntegOrdenes);
+    app.use('/api/ordenes', routerIntegOrdenes); */
 }
 
 app.get('/', (req, res) => {res.redirect('/api/productos')})

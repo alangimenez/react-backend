@@ -1,4 +1,4 @@
-const express = require('express');
+/* const express = require('express');
 const router = express.Router();
 const { OrderController } = require('../controllerIntegrado/controller.ordenes');
 const order = new OrderController();
@@ -17,4 +17,4 @@ async (req, res) => order.cambiarEstado(req, res))
 // obtener el listado de pedidos (el mismo endpoint es para admin/user)
 router.get("/", async (req, res) => order.obtenerPedidos(req, res))
 
-module.exports = router;
+module.exports = router; */

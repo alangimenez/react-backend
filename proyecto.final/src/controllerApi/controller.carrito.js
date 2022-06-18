@@ -24,7 +24,7 @@ class CartController {
     async crearCarrito(req, res) {
         try {
             // console.log(req.body);
-            await repository.nuevoCarrito(req.body.username);
+            await repository.nuevoCarrito(req, req.body.username);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }

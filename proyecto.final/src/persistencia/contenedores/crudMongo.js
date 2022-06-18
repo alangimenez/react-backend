@@ -87,6 +87,7 @@ class CrudMongo {
             if (objeto.foto) resultado = await this.model.updateOne({ id: objeto.id }, { $set: { foto: objeto.foto } });
             if (objeto.precio) resultado = await this.model.updateOne({ id: objeto.id }, { $set: { precio: objeto.precio } });
             if (objeto.timestamp) resultado = await this.model.updateOne({ id: objeto.id }, { $set: { timestamp: Date.now() } });
+            if (objeto.categoria) resultado = await this.model.updateOne({ id: objeto.id }, { $set: { categoria: objeto.categoria } });
             return this.leerInfoPorId(objeto.id);
         } catch (e) {
             return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);

@@ -1,4 +1,4 @@
-const express = require('express');
+/* const express = require('express');
 const router = express.Router();
 const passport = require('../middlewares/passport');
 const upload = require('../config/config.multer');
@@ -45,4 +45,4 @@ router.get('/registro', (req, res) => res.render('../views/registro'))
 // lleva a la vista tabla de entregas anteriores, no debería estar
 // router.get('/', async (req, res) => renderizarVista(req, res))
 
-module.exports = router;
+module.exports = router; */

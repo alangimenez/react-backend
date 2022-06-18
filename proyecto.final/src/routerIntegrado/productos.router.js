@@ -1,4 +1,4 @@
-const express = require('express');
+/* const express = require('express');
 const router = express.Router();
 const { validarAtributosProducto,
     validarProducto,
@@ -21,4 +21,4 @@ router.post('/', [validarAdmin, validarAtributosProducto], product.subirProducto
 // actualiza datos de producto (actualiza el timestamp si o si)
 router.put('/:idProd', [validarAdmin, validarProducto, validarAtributosProducto], product.modificarProducto)
 
-module.exports = router;
+module.exports = router; */
