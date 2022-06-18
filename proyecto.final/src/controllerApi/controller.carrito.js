@@ -52,7 +52,7 @@ class CartController {
     // lista todos los productos de un carrito
     async prodDelCarrito(req, res) {
         try {
-            const carritoSeleccionado = await repository.obtenerProductosDelCarrito(req.params.idCarr);
+            const carritoSeleccionado = await repository.obtenerProductosDelCarrito(req.session.user.cart);
             res.status(200).json(carritoSeleccionado.productos);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
@@ -62,7 +62,7 @@ class CartController {
     // elimina productos del carrito, muestra listado de productos del carrito
     async elimProdDelCarrito(req, res) {
         try {
-            res.status(201).json(await repository.eliminarProductosDelCarrito(req.params.idCarr, +req.params.idProd));
+            res.status(201).json(await repository.eliminarProductosDelCarrito(req.session.user.cart, +req.params.idProd));
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }

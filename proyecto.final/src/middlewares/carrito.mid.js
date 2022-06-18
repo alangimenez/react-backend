@@ -1,6 +1,6 @@
 const { ErrorHandler } = require('../error/error');
 const error = new ErrorHandler();
-const { fnCarritos } = require('../persistencia/factory');
+const { fnCarritos, fnProductos } = require('../persistencia/factory');
 
 class CartMid {
     constructor(){}
@@ -32,7 +32,6 @@ class CartMid {
     
     async validarCarrito(req, res, next) {
         try {
-            console.log(req.session.user);
             const carrito = await fnCarritos().leerInfoPorId(req.session.user.cart);
             if (carrito.length === 0) {
                 return error.errorResponse(400, "middlewareError", "El carrito buscado no se encuentra", res);
@@ -49,7 +48,7 @@ class CartMid {
                 return error.errorResponse(400, "middlewareError", "Por favor, introduzca un identificador de producto en formato numero", res);
             }
             const carrito = await fnCarritos().leerInfoPorId(req.session.user.cart);
-            if (carrito[0].productos.length === 0) return error("middlewareError", "El carrito esta vacio", res);
+            if (carrito[0].productos.length === 0) return error.errorResponse(404, "middlewareError", "El carrito esta vacio", res);
             const prodEnCarrito = carrito[0].productos.find(e => e.id === +req.params.idProd);
             if (!prodEnCarrito) {
                 return error.errorResponse(404, "middlewareError", "El producto no se encuentra en el carrito", res);
@@ -83,7 +82,19 @@ class CartMid {
         }
     }
     
+    async validarStockActual (req, res, next) {
+        try {
+            const producto = await fnProductos().leerInfoPorId(+req.params.idProd);
+            console.log(producto[0]);
+            if (producto[0].stock < +req.body.cantidad) {
+                return error.errorResponse(400, "middlewareError", `No existe stock suficiente para cubrir este eventual pedido. Stock disponible: ${producto[0].stock}. Stock que solicitaría: ${+req.body.cantidad}`, res);
+            }
+            next();
+        } catch (e) {
+            return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando si existe actualmente stock para la cantidad solicitada -> " + e.message, res);
+        }
 
+    }
 }
 
 module.exports = {

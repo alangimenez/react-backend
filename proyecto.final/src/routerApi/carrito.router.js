@@ -30,18 +30,18 @@ router.post('/productos/:idProd',
     cart.prodAlCarrito)
 
 // array de los productos de un carrito
-router.get('/:idCarr/productos',
+router.get('/productos',
     [cartMid.validarSesion, cartMid.validarCarrito],
     cart.prodDelCarrito)
 
 // elimina productos de un carrito (los elimina de a uno, no todos juntos)
-router.delete('/:idCarr/productos/:idProd',
+router.delete('/productos/:idProd',
     [cartMid.validarSesion, cartMid.validarCarrito, cartMid.validarProductoEnCarrito],
     cart.elimProdDelCarrito)
 
 // modificar cantidad de unidades de un producto dentro del carrito
 router.post('/modificar/:idProd',
-    [cartMid.validarSesion, cartMid.validarUnidadesProductos, cartMid.validarCarrito, cartMid.validarProductoEnCarrito],
+    [cartMid.validarSesion, cartMid.validarUnidadesProductos, cartMid.validarCarrito, cartMid.validarProductoEnCarrito, cartMid.validarStockActual],
     (req, res) => cart.modificarCantidadDeProdEnCarrito(req, res))
 
 /////////////////////////////////////////////

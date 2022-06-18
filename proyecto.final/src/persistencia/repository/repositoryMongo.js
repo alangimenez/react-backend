@@ -38,10 +38,14 @@ class Repository {
     eliminarProductosDelCarrito = async (idCarrito, idProducto) => {
         try {
             const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarrito);
-            const indexProdEnCarrito = carritoSeleccionado.productos.findIndex(e => e.id === idProducto);
-            carritoSeleccionado.productos.splice(indexProdEnCarrito, 1);
-            const carritoActualizado = await fnCarritos().eliminarProdEnCarrito(idCarrito, carritoSeleccionado.productos);
+            const indexProdEnCarrito = carritoSeleccionado[0].productos.findIndex(e => e.id === idProducto);
+            carritoSeleccionado[0].productos.splice(indexProdEnCarrito, 1);
+            const carritoActualizado = await fnCarritos().eliminarProdEnCarrito(idCarrito, carritoSeleccionado[0].productos);
             const carritoActualizadoDTOResponse = converter.converterCarritoDTOresponse(carritoActualizado);
+
+            const nuevoTotal = await this.calculoTotalCarrito(carritoActualizadoDTOResponse);
+            carritoActualizadoDTOResponse.total = nuevoTotal;
+
             return carritoActualizadoDTOResponse;
         } catch (e) {
             errorLogger.error(`Ocurrio un error en eliminarProductosDelCarrito Repository -> ` + e.message);
@@ -55,10 +59,12 @@ class Repository {
     agregarProductosAlCarrito = async (idCarrito, idProducto) => {
         try {
             let carritoActualizado;
+            let nuevoProducto = true;
             const productoSeleccionado = await fnProductos().leerInfoPorId(idProducto);
             const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarrito);
             if(carritoSeleccionado[0].productos.length === 0) {
                 carritoActualizado = await fnCarritos().actualizarProdEnCarrito(idCarrito, productoSeleccionado[0])
+                nuevoProducto = false;
             } else {
                 for (let i = 0; i < carritoSeleccionado[0].productos.length; i++) {
                     if (carritoSeleccionado[0].productos[i].id === idProducto) {
@@ -70,8 +76,12 @@ class Repository {
                             }
                         }
                         carritoActualizado = await fnCarritos().actualizarCantidadDeProductos(carritoSeleccionado, parametros);
+                        nuevoProducto = false;
                     }
                 }
+            }
+            if (nuevoProducto === true) {
+                carritoActualizado = await fnCarritos().actualizarProdEnCarrito(idCarrito, productoSeleccionado[0])
             }
             const carritoActualizadoDTOResponse = converter.converterCarritoDTOresponse(carritoActualizado);
             const nuevoTotal = await this.calculoTotalCarrito(carritoActualizadoDTOResponse);
@@ -90,7 +100,7 @@ class Repository {
     obtenerProductosDelCarrito = async (idCarrito) => {
         try {
             const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarrito);
-            const carritoActualizadoDTOResponse = converter.converterCarritoDTOresponse(carritoSeleccionado);
+            const carritoActualizadoDTOResponse = converter.converterCarritoDTOresponse(carritoSeleccionado[0]);
             return carritoActualizadoDTOResponse;
         } catch (e) {
             errorLogger.error(`Ocurrio un error en agregarProductosAlCarrito Repository -> ` + e.message);
