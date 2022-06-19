@@ -3,11 +3,11 @@ const error = new ErrorHandler();
 const { fnCarritos, fnProductos } = require('../persistencia/factory');
 
 class CartMid {
-    constructor(){}
+    constructor() { }
 
     validarSesion(req, res, next) {
         try {
-            if(!req.session.user) {
+            if (!req.session.user) {
                 return error.errorResponse(401, "middlewareError", "Por favor, primero debe loguearse para esta petición", res);
             }
             next();
@@ -15,7 +15,7 @@ class CartMid {
             return error.errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación de sesión -> " + e.message, res);
         }
     }
-    
+
     validarUser(req, res, next) {
         try {
             if (!req.body.name) {
@@ -29,7 +29,7 @@ class CartMid {
             return error.errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del usuario -> " + e.message, res);
         }
     }
-    
+
     async validarCarrito(req, res, next) {
         try {
             const carrito = await fnCarritos().leerInfoPorId(req.session.user.cart);
@@ -41,7 +41,7 @@ class CartMid {
             return error.errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del carrito -> " + e.message, res);
         }
     }
-    
+
     async validarProductoEnCarrito(req, res, next) {
         try {
             if (isNaN(req.params.idProd)) {
@@ -58,7 +58,7 @@ class CartMid {
             return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando si existe el producto en el carrito -> " + e.message, res);
         }
     }
-    
+
     validarUnidadesProductos(req, res, next) {
         try {
             if (isNaN(req.body.cantidad) || req.body.cantidad < 1) {
@@ -69,7 +69,7 @@ class CartMid {
             return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando las unidades del producto -> " + e.message, res);
         }
     }
-    
+
     async validarCarritoConProductos(req, res, next) {
         try {
             const carritoSeleccionado = await fnCarritos().leerInfoPorId(req.session.user.cart);
@@ -81,8 +81,8 @@ class CartMid {
             return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando si existen productos en el carrito -> " + e.message, res);
         }
     }
-    
-    async validarStockActual (req, res, next) {
+
+    async validarStockActual(req, res, next) {
         try {
             const producto = await fnProductos().leerInfoPorId(+req.params.idProd);
             console.log(producto[0]);
@@ -93,7 +93,22 @@ class CartMid {
         } catch (e) {
             return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando si existe actualmente stock para la cantidad solicitada -> " + e.message, res);
         }
+    }
 
+    validarDatosActualizacion(req, res, next) {
+        try {
+            if (!req.body.direccion && !req.body.telefono) {
+                return error.errorResponse(400, "middlewareError", `Por favor, ingrese su dirección o telefono para actualizar`, res);
+            }
+            if (req.body.direccion) {
+                if (typeof (req.body.direccion) != "string") {
+                    return error.errorResponse(400, "middlewareError", `La direccion ingresada debe ser en formato string`, res);
+                }
+            }
+            next();
+        } catch (e) {
+            return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando los datos de perfil a actualizar -> " + e.message, res);
+        }
     }
 }
 

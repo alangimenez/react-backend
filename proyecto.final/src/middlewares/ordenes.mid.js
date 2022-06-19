@@ -16,6 +16,18 @@ class OrderMid {
         }
     }
 
+        // revisa si es admin o no
+        validarStatusEnParams(req, res, next) {
+            try {
+                if (req.params.status <= 0 || req.params.status >= 4 || isNaN(req.params.status)) {
+                    return errorResponse(403, "middlewareError", "Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)", res);
+                }
+                next();
+            } catch (e) {
+                return errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del status -> " + e.message, res);
+            }
+        }
+
     async validarStock(req, res, next) {
         try {
             let error = "";

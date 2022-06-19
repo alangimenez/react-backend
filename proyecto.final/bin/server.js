@@ -16,6 +16,11 @@ const { logger, errorLogger} = require('../src/config/config.log4js');
 const cluster = require('cluster');
 const os = require('os');
 
+// chat
+const { Server: HttpServer } = require('http');
+const httpServer = new HttpServer(app);
+require('../src/routerIntegrado/chat.router')(httpServer);
+
 // SERVER ORIGINAL SIN FORK NI CLUSTER
 /* const server = app.listen(config.PORT, () => {
     logger.info(`Servidor escuchando en puerto ${config.PORT}`);
@@ -42,7 +47,7 @@ if (config.MODE === "CLUSTER") {
         })
     }
 } else {
-    const server = app.listen(config.PORT, () => {
+    const server = httpServer.listen(config.PORT, () => {
         logger.info(`Servidor escuchando en el puerto ${config.PORT} en modo ${config.MODE} y funcionalidad "${process.env.MODE}"`);
     }).on('error', (error => {
         errorLogger.error(error);
@@ -91,6 +96,7 @@ if (process.env.MODE === "api") {
     app.use('/api/carrito', routerIntegCarrito);
     app.use('/api/usuario', routerIntegUsuario);
     app.use('/api/ordenes', routerIntegOrdenes);
+    app.get('/api/chat', (req, res) => {res.render('../views/chat')})
 }
 
 app.get('/', (req, res) => {res.redirect('/api/productos')})

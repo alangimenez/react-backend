@@ -26,7 +26,11 @@ class ProductController {
         try {
             const producto = await repository.obtenerProductPorId(+req.params.idProd);
             if (req.user) {
-                res.render('../views/productoIndividual', { objeto: producto, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id });
+                if (req.session.user.rol === "admin") {
+                    res.render('../views/productoIndividual', { objeto: producto, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, admin: "true" });
+                } else {
+                    res.render('../views/productoIndividual', { objeto: producto, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id });
+                }
             } else {
                 res.render('../views/productoIndividual', { objeto: producto, boton: "Iniciar sesión", user: "na" });
             }

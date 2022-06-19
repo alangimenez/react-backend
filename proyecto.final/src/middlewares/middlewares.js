@@ -15,7 +15,6 @@ function validarAdmin(req, res, next) {
 
 // error si no existe ruta
 function validarRuta(req, res, next) {
-    console.log(req);
     errorLogger.error(`ruta '${req.url}' metodo ${req.method} no implementado`)
     res.status(404).json({ error: -2, descripcion: `ruta '${req.url}' metodo ${req.method} no implementado` })
 }

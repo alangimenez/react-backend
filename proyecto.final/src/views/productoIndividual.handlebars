@@ -15,11 +15,67 @@
         <p class="card-text">Timestamp: {{objeto.timestamp}}</p>
         <p class="card-text">Precio: <strong>{{objeto.precio}}</strong></p>
         <button onclick=post() class="btn btn-dark">Agregar al carrito</button>
+
+        {{#if admin}}
+        <button class="btn btn-dark" data-toggle="modal" data-target="#exampleModalActualizar">Actualizar
+            producto</button>
+        <button class="btn btn-dark" data-toggle="modal" data-target="#exampleModalEliminar">Eliminar producto</button>
+        {{/if}}
+
     </span>
     <div class="spinner" style="font-size: 18px" id="spinner">
         <div class="head"></div>
     </div>
     <div id="mensaje"></div>
+
+    <!-- Modal de eliminar producto-->
+    <div class="modal fade" id="exampleModalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Esta seguro que desea eliminar este producto?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No eliminar</button>
+                    <button id="eliminarProducto" type="button" class="btn btn-primary" onclick=eliminar({{objeto.id}})>Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de actualizar producto-->
+    <div class="modal fade" id="exampleModalActualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualizar producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input id="descripcion" class="form-control" placeholder="descripcion">
+                        <input id="stock" class="form-control" placeholder="stock">
+                        <input id="precio" class="form-control" placeholder="precio" type="number">
+                        <button id="actualizarProducto" type="submit" class="btn btn-primary" onclick=actualizar({{objeto.id}})>Actualizar datos</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar sin actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div id="error-login"></div>
@@ -57,6 +113,47 @@
                     document.getElementById("mensaje").innerHTML = "";
                 }, 3500)
             }
+        }).catch(error => console.error('Error:', error))
+    }
+
+    function eliminar(id) {
+        document.getElementById("eliminarProducto").innerHTML = "Aguarde...";
+        document.getElementById("eliminarProducto").disabled = true;
+        fetch(`${ruta}/api/productos/${id}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(data =>
+            data.json()
+        ).then(response => {
+            window.location.href = `${ruta}/api/productos`;
+        }).catch(error => console.error('Error:', error))
+    }
+
+    function actualizar(id) {
+        document.getElementById("actualizarProducto").innerHTML = "Aguarde...";
+        document.getElementById("actualizarProducto").disabled = true;
+        const objeto = {}
+        if (document.getElementById("descripcion").value != "") {
+            objeto.descripcion = document.getElementById("descripcion").value
+        }
+        if (document.getElementById("stock").value != "") {
+            objeto.stock = +document.getElementById("stock").value
+        }
+        if (document.getElementById("precio").value != "") {
+            objeto.precio = +document.getElementById("precio").value
+        }
+        fetch(`${ruta}/api/productos/${id}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(objeto)
+        }).then(data =>
+            data.json()
+        ).then(response => {
+            window.location.href = `${ruta}/api/productos/${id}`;
         }).catch(error => console.error('Error:', error))
     }
 </script>

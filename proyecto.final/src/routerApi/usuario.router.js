@@ -41,6 +41,11 @@ router.get('/mi-perfil',
     cartMid.validarSesion,
     (req, res) => user.perfil(req, res))
 
+// endpoint para actualizar datos de perfil
+router.put('/mi-perfil',
+    [cartMid.validarSesion, cartMid.validarDatosActualizacion],
+    (req, res) => user.actualizarPerfil(req, res))
+
 // endpoint para subir foto de perfil
 router.post('/perfil',
     [cartMid.validarSesion, userMid.usuarioLogueado, upload.single('archivo')],

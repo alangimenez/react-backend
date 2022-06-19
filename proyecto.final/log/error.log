@@ -4352,3 +4352,38 @@
 [2022-06-19T00:07:29.076] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
 [2022-06-19T10:52:01.634] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
 [2022-06-19T11:19:31.055] [ERROR] error - El carrito buscado no se encuentra
+[2022-06-19T15:48:01.432] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T15:50:18.328] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T15:50:57.532] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T15:52:23.621] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T15:54:51.842] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T15:54:58.076] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T15:55:03.141] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T15:58:05.070] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T15:59:09.825] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T15:59:18.837] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T19:07:45.312] [ERROR] error - ruta '/' metodo PUT no implementado
+[2022-06-19T19:08:04.539] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-19T19:08:25.326] [ERROR] error - La direccion ingresada debe ser en formato string
+[2022-06-19T19:09:29.647] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-19T19:09:51.241] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-19T19:10:00.772] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-19T19:21:30.969] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-19T19:21:58.930] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-19T19:22:18.290] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-19T19:23:29.876] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-19T19:23:41.377] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-19T19:24:06.275] [ERROR] error - Ocurrio un error en actualizarDatosPerfil Repository -> fnOrdenes(...).traerOrdenesPorStatus is not a function
+[2022-06-19T19:24:06.279] [ERROR] error - Ocurrio un error en actualizarDatosPerfil Repository -> fnOrdenes(...).traerOrdenesPorStatus is not a function
+[2022-06-19T19:26:35.143] [ERROR] error - Ocurrio un error en actualizarDatosPerfil Repository -> req is not defined
+[2022-06-19T19:26:35.149] [ERROR] error - Ocurrio un error en actualizarDatosPerfil Repository -> req is not defined
+[2022-06-19T19:27:07.991] [ERROR] error - Ocurrio un error en actualizarDatosPerfil Repository -> req is not defined
+[2022-06-19T19:27:07.993] [ERROR] error - Ocurrio un error en actualizarDatosPerfil Repository -> req is not defined
+[2022-06-19T19:27:57.808] [ERROR] error - Ocurrio un error en actualizarDatosPerfil Repository -> req is not defined
+[2022-06-19T19:27:57.810] [ERROR] error - Ocurrio un error en actualizarDatosPerfil Repository -> req is not defined
+[2022-06-19T19:29:14.409] [ERROR] error - Ocurrio un error en actualizarDatosPerfil Repository -> req is not defined
+[2022-06-19T19:29:14.412] [ERROR] error - Ocurrio un error en actualizarDatosPerfil Repository -> req is not defined
+[2022-06-19T19:41:33.202] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T19:45:11.279] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-19T20:13:33.165] [ERROR] error - Por favor, introduzca un precio en formato number
+[2022-06-19T20:14:48.573] [ERROR] error - Por favor, introduzca un stock en formato number

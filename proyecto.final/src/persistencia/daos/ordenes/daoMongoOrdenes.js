@@ -31,6 +31,14 @@ class DaoMongoOrdenes extends CrudMongo {
             return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
         }
     }
+
+    async traerOrdenesPorStatus (status) {
+        try {
+            return await this.model.find({ status: status }, { __v: 0 });
+        } catch (e) {
+            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
+        }
+    }
 }
 
 module.exports = {

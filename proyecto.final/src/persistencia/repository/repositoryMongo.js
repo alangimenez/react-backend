@@ -1,4 +1,4 @@
-const { fnProductos, fnCarritos, fnUsuarios } = require('../factory');
+const { fnProductos, fnCarritos, fnUsuarios, fnOrdenes } = require('../factory');
 const { errorLogger } = require('../../config/config.log4js');
 const { Converter } = require('../../utils/converter');
 const converter = new Converter();
@@ -56,7 +56,7 @@ class Repository {
             let nuevoProducto = true;
             const productoSeleccionado = await fnProductos().leerInfoPorId(idProducto);
             const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarrito);
-            if(carritoSeleccionado[0].productos.length === 0) {
+            if (carritoSeleccionado[0].productos.length === 0) {
                 carritoActualizado = await fnCarritos().actualizarProdEnCarrito(idCarrito, productoSeleccionado[0])
                 nuevoProducto = false;
             } else {
@@ -181,6 +181,54 @@ class Repository {
         } catch (e) {
             errorLogger.error(`Ocurrio un error en traerProductosPorCategoria Repository -> ` + e.message);
             throw new Error(`Ocurrio un error en traerProductosPorCategoria Repository -> ` + e.message)
+        }
+    }
+
+    async actualizarDatosPerfil(req, res) {
+        try {
+            let datos = {
+                direccion: req.session.user.direccion,
+                telefono: req.session.user.telefono
+            }
+            if (req.body.direccion) {
+                datos.direccion = req.body.direccion;
+                req.session.user.direccion = req.body.direccion;
+            }
+            if (req.body.telefono) {
+                datos.telefono = req.body.telefono;
+                req.session.user.telefono = req.body.telefono
+            }
+            await fnUsuarios().actualizarPerfil(req.session.user.id, datos);
+            req.session.save(err => errorLogger.error(`Hubo un error al actualizar datos de la sesión => ${err}`));
+            const userActualizado = await fnUsuarios().leerInfoPorId(req.session.user.id);
+            return userActualizado[0];
+        } catch (e) {
+            errorLogger.error(`Ocurrio un error en actualizarDatosPerfil Repository -> ` + e.message);
+            throw new Error(`Ocurrio un error en actualizarDatosPerfil Repository -> ` + e.message)
+        }
+    }
+
+    async obtenerPedidosPorStatus(status) {
+        try {
+            let statusString = "";
+            switch (status) {
+                case 1:
+                    statusString = "En preparacion";
+                    break;
+                case 2:
+                    statusString = "Despachado";
+                    break;
+                case 3:
+                    statusString = "Entregado";
+                    break;
+                default:
+                    break;
+            }
+            const ordenes = await fnOrdenes().traerOrdenesPorStatus(statusString);
+            return ordenes;
+        } catch (e) {
+            errorLogger.error(`Ocurrio un error en obtenerPedidosPorStatus Repository -> ` + e.message);
+            throw new Error(`Ocurrio un error en obtenerPedidosPorStatus Repository -> ` + e.message)
         }
     }
 }

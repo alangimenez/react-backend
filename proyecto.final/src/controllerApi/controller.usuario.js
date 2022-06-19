@@ -9,6 +9,9 @@ const UsuarioMongo = new DaoMongoUsuario();
 const { ErrorHandler } = require('../error/error');
 const error = new ErrorHandler();
 
+const { Repository } = require('../persistencia/repository/repositoryMongo');
+const repository = new Repository();
+
 class UserController {
     constructor() { }
 
@@ -160,6 +163,14 @@ class UserController {
             // res.render('loginError', { error: req.session.error })
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+        }
+    }
+
+    async actualizarPerfil (req, res) {
+        try {
+            res.status(201).json(await repository.actualizarDatosPerfil(req, res))
+        } catch (e) {
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res); 
         }
     }
 }
