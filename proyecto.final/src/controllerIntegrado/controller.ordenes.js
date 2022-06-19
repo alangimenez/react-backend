@@ -34,44 +34,20 @@ class OrderController {
     async cambiarEstado(req, res) {
         try {
             const order = req.params.idOrd;
-            let status = "";
-            let parametros = {
-                $set: {
-                    status: status
-                }
-            }
-
+            let ordenActualizada;
             switch (req.body.status) {
                 case 1:
-                    parametros = {
-                        $set: {
-                            status: "En preparación",
-                            fechaDeDespacho: "",
-                            fechaDeEntregado: "",
-                        }
-                    };
+                    ordenActualizada = await fnOrdenes().actualizarStatusPreparacionDespachado(order, "En preparacion", "", "");
                     break;
                 case 2:
-                    parametros = {
-                        $set: {
-                            status: "Despachado",
-                            fechaDeDespacho: Date.now(),
-                            fechaDeEntregado: "",
-                        }
-                    };
+                    ordenActualizada = await fnOrdenes().actualizarStatusPreparacionDespachado(order, "Despachado", Date.now(), "");
                     break;
                 case 3:
-                    parametros = {
-                        $set: {
-                            status: "Entregado",
-                            fechaDeEntregado: Date.now(),
-                        }
-                    };
+                    ordenActualizada = await fnOrdenes().actualizarStatusEntregado(order, "Entregado", Date.now());
                     break;
                 default:
-                    status = "En preparación"
+                    break;
             }
-            const ordenActualizada = await fnOrdenes().actualizarInfoPrueba(order, parametros);
             res.status(201).json(ordenActualizada);
         } catch (e) {
             errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
@@ -104,12 +80,7 @@ class OrderController {
             const stockProducto = productos.find(e => e.id === orden.productos[i].id)
             if (stockProducto) {
                 const nuevoStock = stockProducto.stock - orden.productos[i].cantidad;
-                const parametros = {
-                    $set: {
-                        stock: nuevoStock,
-                    }
-                }
-                await fnProductos().actualizarInfoPrueba(stockProducto.id, parametros);
+                await fnProductos().actualizarStockProducto(stockProducto.id, nuevoStock);
             }
         }
     }

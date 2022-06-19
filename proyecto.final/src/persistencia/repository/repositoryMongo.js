@@ -15,13 +15,7 @@ class Repository {
             lista.length === 0 ? idNuevo = 1 : idNuevo = lista[lista.length - 1].id + 1;
             const nuevoCarritoDTOrequest = converter.converterCarritoDTOrequest(idNuevo, user);
             const nuevoCarritoDTOresponse = await fnCarritos().subirInfo(nuevoCarritoDTOrequest);
-
-            const parametros = {
-                $set: {
-                    cart: idNuevo
-                }
-            }
-            await fnUsuarios().actualizarInfoPrueba(user, parametros);
+            await fnUsuarios().actualizarCarritoDeUsuario(user, idNuevo);
             req.session.user.cart = idNuevo;
             req.session.save(err => errorLogger.error(`Hubo un error al actualizar datos de la sesión => ${err}`));
 
@@ -69,13 +63,7 @@ class Repository {
                 for (let i = 0; i < carritoSeleccionado[0].productos.length; i++) {
                     if (carritoSeleccionado[0].productos[i].id === idProducto) {
                         carritoSeleccionado[0].productos[i].cantidad++;
-                        // console.log(carritoSeleccionado[0].productos);
-                        const parametros = {
-                            $set: {
-                                productos: carritoSeleccionado[0].productos
-                            }
-                        }
-                        carritoActualizado = await fnCarritos().actualizarCantidadDeProductos(carritoSeleccionado, parametros);
+                        carritoActualizado = await fnCarritos().actualizarCantidadDeProductos(carritoSeleccionado, carritoSeleccionado[0].productos);
                         nuevoProducto = false;
                     }
                 }
@@ -174,16 +162,13 @@ class Repository {
 
     async calculoTotalCarrito(carrito) {
         let total = 0;
-        // console.log(carrito);
         if (!carrito.productos) {
             total = 0;
         } else {
             for (let i = 0; i < carrito.productos.length; i++) {
-
                 total = total + (carrito.productos[i].precio * carrito.productos[i].cantidad);
             }
         }
-        // console.log(total);
         await fnCarritos().actualizarTotalCarrito(carrito.user, total);
         return total;
     }

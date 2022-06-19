@@ -151,12 +151,7 @@ class CartController {
                     carritoSeleccionadoArray[0].productos[i].cantidad = cantidad;
                 }
             }
-            const parametros = {
-                $set: {
-                    productos: carritoSeleccionadoArray[0].productos
-                }
-            }
-            let listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(carritoSeleccionadoArray, parametros);
+            let listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(carritoSeleccionadoArray, carritoSeleccionadoArray[0].productos);
             listadoActualizado.total = await this.calculoTotalCarrito(carritoSeleccionadoArray[0]);
             res.status(201).json(listadoActualizado);
         } catch (e) {

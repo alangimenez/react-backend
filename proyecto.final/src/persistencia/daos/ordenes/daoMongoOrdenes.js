@@ -13,6 +13,24 @@ class DaoMongoOrdenes extends CrudMongo {
             return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
         }
     }
+
+    async actualizarStatusPreparacionDespachado (idOrder, status, fechaDeDespacho, fechaDeEntregado) {
+        try {
+            await this.model.updateOne({id: idOrder}, {$set: {status: status, fechaDeDespacho: fechaDeDespacho, fechaDeEntregado: fechaDeEntregado}});
+            return await this.leerInfoPorId(idOrder);
+        } catch (e) {
+            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
+        }
+    }
+
+    async actualizarStatusEntregado (idOrder, status, fechaDeEntregado) {
+        try {
+            await this.model.updateOne({id: idOrder}, {$set: {status: status, fechaDeEntregado: fechaDeEntregado}});
+            return await this.leerInfoPorId(idOrder);
+        } catch (e) {
+            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
+        }
+    }
 }
 
 module.exports = {

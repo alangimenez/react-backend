@@ -23,7 +23,6 @@ class CartController {
     // crea carrito, muestra objeto
     async crearCarrito(req, res) {
         try {
-            // console.log(req.body);
             await repository.nuevoCarrito(req, req.body.username);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
@@ -145,12 +144,7 @@ class CartController {
                     carritoSeleccionadoArray[0].productos[i].cantidad = cantidad;
                 }
             }
-            const parametros = {
-                $set: {
-                    productos: carritoSeleccionadoArray[0].productos
-                }
-            }
-            let listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(carritoSeleccionadoArray, parametros);
+            let listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(carritoSeleccionadoArray, carritoSeleccionadoArray[0].productos);
             listadoActualizado.total = await this.calculoTotalCarrito(carritoSeleccionadoArray[0]);
             res.status(201).json(listadoActualizado);
         } catch (e) {

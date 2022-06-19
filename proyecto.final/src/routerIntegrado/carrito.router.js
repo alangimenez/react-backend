@@ -47,18 +47,14 @@ router.post('/modificar/:idProd',
     [cartMid.validarSesion, cartMid.validarUnidadesProductos, cartMid.validarCarrito, cartMid.validarProductoEnCarrito, cartMid.validarStockActual],
     (req, res) => cart.modificarCantidadDeProdEnCarrito(req, res))
 
-/////////////////////////////////////////////
-/////////////////////////////////////////////
-
 // endpoint para confirmar compra
 router.post('/confirmar',
     [cartMid.validarSesion, cartMid.validarCarritoConProductos, orderMid.validarStock],
-    async (req, res) => {
-        const compra = await cart.confirmarCompra(req, res);
-    })
+    async (req, res) => { const compra = await cart.confirmarCompra(req, res); })
 
 // endpoint post finalizada la compra
 router.get('/comprafinalizada',
+    cartMid.validarSesion,
     (req, res) => res.render('../views/resultado', {
         total: req.session.order.total,
         orden: req.session.order.id,

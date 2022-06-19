@@ -29,18 +29,21 @@ router.post('/registro',
     (req, res) => user.registro(req, res))
 
 // endpoint para renderizar pantalla de error de registro
-router.get('/registro-error', (req, res) => user.registroError(req, res));
+router.get('/registro-error',
+    (req, res) => user.registroError(req, res));
 
 // endpoint para renderizar pantalla de error de login
-router.get('/login-error', (req, res) => user.loginError(req, res));
+router.get('/login-error',
+    (req, res) => user.loginError(req, res));
 
 // endpoint para ver mi perfil
 router.get('/mi-perfil',
     cartMid.validarSesion,
     (req, res) => user.perfil(req, res))
 
+// endpoint para subir foto de perfil
 router.post('/perfil',
-    [userMid.usuarioLogueado, upload.single('archivo')],
+    [cartMid.validarSesion, userMid.usuarioLogueado, upload.single('archivo')],
     (req, res) => user.avatar(req, res))
 
 module.exports = router;

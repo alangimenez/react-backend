@@ -15,6 +15,15 @@ class DaoMongoUsuario extends CrudMongo {
             return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message, res);
         }
     }
+
+    async actualizarCarritoDeUsuario (idUser, idCart ) {
+        try {
+            await this.model.updateOne({id: idUser}, {$set: {cart: idCart}});
+            return await this.leerInfoPorId(idUser);
+        } catch (e) {
+            return error.errorProcess("CRUD Error", `El Crud ha tenido un error -> ` + e.message);
+        }
+    }
 }
 
 module.exports = {

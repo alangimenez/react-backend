@@ -4350,3 +4350,5 @@
 [2022-06-19T00:07:14.429] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
 [2022-06-19T00:07:19.833] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
 [2022-06-19T00:07:29.076] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-19T10:52:01.634] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-19T11:19:31.055] [ERROR] error - El carrito buscado no se encuentra

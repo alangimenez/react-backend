@@ -10,7 +10,9 @@ const { CartMid } = require('../middlewares/carrito.mid');
 const cartMid = new CartMid();
 
 // crea una nueva orden
-router.post("/", async (req, res) => await order.crearOrden(req, res))
+router.post("/",
+    cartMid.validarSesion,
+    async (req, res) => await order.crearOrden(req, res))
 
 // cambiar estado de las ordenes (entre "En progreso", "En camino", "Entregado")
 router.post("/:idOrd/estado",

@@ -43,7 +43,7 @@ router.get('/mi-perfil',
 
 // enpoint para subir foto de perfil
 router.post('/perfil',
-    [userMid.usuarioLogueado, upload.single('archivo')],
+    [cartMid.validarSesion, userMid.usuarioLogueado, upload.single('archivo')],
     (req, res) => user.avatar(req, res))
 
 // endpoint para renderizar pantalla de login

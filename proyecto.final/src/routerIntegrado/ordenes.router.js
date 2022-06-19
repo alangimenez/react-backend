@@ -11,6 +11,7 @@ const cartMid = new CartMid();
 
 // crea una nueva orden
 router.post("/",
+    cartMid.validarSesion,
     async (req, res) => await order.crearOrden(req, res))
 
 // cambiar estado de las ordenes (entre "En progreso", "En camino", "Entregado")
