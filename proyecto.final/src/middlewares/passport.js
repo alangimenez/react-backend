@@ -18,7 +18,7 @@ passport.use('registro', new LocalStrategy({
             password: encrypt(password),
             edad: req.body.age,
             telefono: req.body.telephone,
-            foto: "",
+            foto: "/admin@gmail.com-1655602143893.png",
             rol: "buyer",
             cart: 0 // provisorio, el correcto se asigna con la creación del cart
         };

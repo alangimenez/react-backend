@@ -1,16 +1,29 @@
 <div class="container" style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
     {{#if isActive}}
-        <p>Bienvenido {{isActive}}</p>
-        <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
-        <a href='/api/ordenes/' class="btn btn-dark">Mis ordenes</a>
-        <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
-        <a href="/api/usuario/{{logout}}" class="btn btn-dark">{{boton}}</a>
+    <p>Bienvenido {{isActive}}</p>
+    <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
+    <a href='/api/ordenes/' class="btn btn-dark">Mis ordenes</a>
+    <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
+    <a href="/api/usuario/{{logout}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
-    {{#if login }}  
-        <a href="/api/usuario/{{login}}" class="btn btn-dark">{{boton}}</a>
+    {{#if login }}
+    <a href="/api/usuario/{{login}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
 </div>
 <div class="container" style="display: flex; justify-content: space-around">
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Categoria
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="/api/productos">Todas</a>
+            <a class="dropdown-item" href="/api/productos/categoria/comedia">Comedia</a>
+            <a class="dropdown-item" href="/api/productos/categoria/accion">Accion</a>
+            <a class="dropdown-item" href="/api/productos/categoria/drama">Drama</a>
+        </div>
+    </div>
     {{#each listaProductos}}
 
     <div class="card" style="width: 18rem;">

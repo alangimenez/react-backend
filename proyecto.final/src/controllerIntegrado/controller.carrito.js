@@ -24,7 +24,7 @@ class CartController {
     async crearCarrito(req, res) {
         try {
             // console.log(req.body);
-            await repository.nuevoCarrito(req.body.username);
+            await repository.nuevoCarrito(req, req.body.username);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
@@ -52,7 +52,7 @@ class CartController {
     // lista todos los productos de un carrito
     async prodDelCarrito(req, res) {
         try {
-            const carritoSeleccionado = await repository.obtenerProductosDelCarrito(req.params.idCarr);
+            const carritoSeleccionado = await repository.obtenerProductosDelCarrito(req.session.user.cart);
             res.status(200).json(carritoSeleccionado.productos);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
@@ -79,7 +79,8 @@ class CartController {
 
             // response con template
             if (req.user) {
-                res.render('../views/carrito', { productosEnCarrito: carritoFiltrado[0].productos, 
+                res.render('../views/carrito', { 
+                    productosEnCarrito: carritoFiltrado[0].productos, 
                     user: req.session.user.id, 
                     isActive: req.session.user.id, 
                     boton: "Cerrar sesión",

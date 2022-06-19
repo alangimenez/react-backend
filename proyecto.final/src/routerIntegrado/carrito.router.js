@@ -33,7 +33,7 @@ router.post('/productos/:idProd',
     cart.prodAlCarrito)
 
 // array de los productos de un carrito
-router.get('/:idCarr/productos',
+router.get('/productos',
     [cartMid.validarSesion, cartMid.validarCarrito],
     cart.prodDelCarrito)
 

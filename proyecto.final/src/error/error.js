@@ -16,7 +16,13 @@ class ErrorHandler {
     errorResponse(status, type, message, res) {
         try {
             errorLogger.error(message);
-            res.status(status).json({errorType: type, errorMessage: message});   
+            if (process.env.MODE === "api") {
+                res.status(status).json({errorType: type, errorMessage: message});   
+            } else {
+                res.render('redireccion', {
+                    mensaje: message,
+                })
+            }
         } catch (e) {
             errorLogger.error(`Ocurrio un error en el ErrorHandler -> ` + message );
             throw new Error(`Ocurrio un error en el ErrorHandler -> ` + message);

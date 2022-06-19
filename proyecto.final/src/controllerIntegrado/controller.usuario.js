@@ -1,7 +1,8 @@
 const { CartController } = require('./controller.carrito');
 const cart = new CartController();
 const { enviarMailRegistro, enviarMail } = require('../utils/nodemailer');
-path = require('path')
+path = require('path');
+const { errorLogger } = require('../config/config.log4js');
 
 const { DaoMongoUsuario } = require('../persistencia/daos/usuario/daoMongoUsuario');
 const UsuarioMongo = new DaoMongoUsuario();
@@ -35,10 +36,10 @@ class UserController {
             delete req.body.password;
 
             // response con JSON
-            res.status(201).json(req.body);
+            // res.status(201).json(req.body);
 
             // response con template
-            // res.redirect('/api/productos');    
+            res.redirect('/api/productos');    
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
@@ -47,17 +48,11 @@ class UserController {
     logout = (req, res) => {
         try {
             if (req.session.user) {
-                const user = req.user.id;
+                const user = req.session.user.id;
                 req.session.destroy(() => {
                     res.clearCookie('my-session');
-                    // respuesta con JSON
-                    res.status(200).json({ message: `El usuario se ha deslogueado correctamente` })
-
-
-                    // respuesta con template
-                    // res.render('../views/logout', { usuario: user });
-                })
-                
+                    res.render('../views/logout', { usuario: user });
+                })     
             } else {
                 res.status(400).json({ message: `No existe usuario logueado para desloguearse` })
             }
@@ -113,11 +108,14 @@ class UserController {
             }
             await UsuarioMongo.actualizarAvatarUsuario(usuario);
 
+            req.session.user.foto = usuario.foto;
+            req.session.save(err => errorLogger.error(`Hubo un error al actualizar datos de la sesión => ${err}`));
+
             // response con json
-            res.status(201).json(usuario);
+            // res.status(201).json(usuario);
 
             // response con template
-            // res.redirect(`${req.user.id}/mi-perfil`)
+            res.redirect(`/api/usuario/mi-perfil`)
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
@@ -147,10 +145,10 @@ class UserController {
     loginError = (req, res) => {
         try {
             // response con JSON
-            res.status(400).json({ error: req.session.error });
+            // res.status(400).json({ error: req.session.error });
 
             // response con template
-            // res.render('loginError', { error: req.session.error })
+            res.render('loginError', { error: req.session.error })
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }

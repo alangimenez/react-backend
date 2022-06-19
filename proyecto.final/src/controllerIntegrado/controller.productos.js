@@ -62,6 +62,20 @@ class ProductController {
         }
     }
 
+    async obtenerProductoPorCategoria(req, res) {
+        try {
+            const productos = await repository.traerProductosPorCategoria(req.params.cat);
+            if (req.user) {
+                res.render('../views/productos', { listaProductos: productos, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, logout: 'logout' });
+            } else {
+                res.render('../views/productos', { listaProductos: productos, boton: "Iniciar sesión", login: 'login' });
+            }
+        }
+        catch (e) {
+            return error.errorResponse("controllerError", `El controlador ha tenido un error -> ` + e.message, res);
+        }
+    }
+
 }
 
 module.exports = {

@@ -4,6 +4,8 @@ const passport = require('../middlewares/passport');
 const upload = require('../config/config.multer');
 const { UserMid } = require('../middlewares/usuarios.mid');
 const userMid = new UserMid();
+const { CartMid } = require('../middlewares/carrito.mid');
+const cartMid = new CartMid();
 const { UserController } = require('../controllerIntegrado/controller.usuario');
 const user = new UserController();
 
@@ -18,6 +20,7 @@ router.post('/login',
 
 // endpoint para desloguearse
 router.get('/logout',
+    cartMid.validarSesion,
     (req, res) => user.logout(req, res))
 
 // endpoint para registrarse
@@ -35,8 +38,10 @@ router.get('/login-error',
 
 // endpoint para ver mi perfil
 router.get('/mi-perfil',
+    cartMid.validarSesion,
     (req, res) => user.perfil(req, res))
 
+// enpoint para subir foto de perfil
 router.post('/perfil',
     [userMid.usuarioLogueado, upload.single('archivo')],
     (req, res) => user.avatar(req, res))
@@ -45,11 +50,8 @@ router.post('/perfil',
 router.get('/login',
     (req, res) => res.render('../views/login'));
 
-// endpoint para renderizar pantalla de registro (ESTE ENDPOINT DEVUELVE UN TEMPLATE)
+// endpoint para renderizar pantalla de registro
 router.get('/registro',
     (req, res) => res.render('../views/registro'))
-
-// lleva a la vista tabla de entregas anteriores, no debería estar
-// router.get('/', async (req, res) => renderizarVista(req, res))
 
 module.exports = router;

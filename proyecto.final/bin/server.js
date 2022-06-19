@@ -79,7 +79,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static('./public'));
+app.use(express.static('src/public'));
 
 if (process.env.MODE === "api") {
     app.use('/api/productos', routerApiProductos);

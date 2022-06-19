@@ -148,7 +148,7 @@ class Repository {
             lista.length === 0 ? idNuevo = 1 : idNuevo = lista[lista.length - 1].id + 1;
             producto = {
                 ...producto,
-                foto: ""
+                foto: "https://gesisarg.com/sistema-gestion/res/archivos/imagen_articulo_por_defecto.jpg"
             }
             const productoDTOrequest = converter.convertProductoDTOrequest(idNuevo, producto);
             const nuevoProducto = await fnProductos().subirInfo(productoDTOrequest);

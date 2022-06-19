@@ -4,6 +4,8 @@ const passport = require('../middlewares/passport');
 const upload = require('../config/config.multer');
 const { UserMid } = require('../middlewares/usuarios.mid');
 const userMid = new UserMid();
+const { CartMid } = require('../middlewares/carrito.mid');
+const cartMid = new CartMid();
 const { UserController } = require('../controllerApi/controller.usuario');
 const user = new UserController();
 
@@ -17,7 +19,9 @@ router.post('/login',
     async (req, res) => user.login(req, res));
 
 // endpoint para desloguearse
-router.get('/logout', (req, res) => user.logout(req, res))
+router.get('/logout',
+    cartMid.validarSesion,
+    (req, res) => user.logout(req, res))
 
 // endpoint para registrarse
 router.post('/registro',
@@ -31,7 +35,9 @@ router.get('/registro-error', (req, res) => user.registroError(req, res));
 router.get('/login-error', (req, res) => user.loginError(req, res));
 
 // endpoint para ver mi perfil
-router.get('/mi-perfil', (req, res) => user.perfil(req, res))
+router.get('/mi-perfil',
+    cartMid.validarSesion,
+    (req, res) => user.perfil(req, res))
 
 router.post('/perfil',
     [userMid.usuarioLogueado, upload.single('archivo')],

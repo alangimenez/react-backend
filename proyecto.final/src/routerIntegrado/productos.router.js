@@ -29,4 +29,8 @@ router.put('/:idProd',
     [prodMid.validarAdmin, prodMid.validarProducto, prodMid.validarAtributosProducto],
     product.modificarProducto)
 
+router.get('/categoria/:cat',
+    [prodMid.validarCategoria],
+    product.obtenerProductoPorCategoria)
+
 module.exports = router;

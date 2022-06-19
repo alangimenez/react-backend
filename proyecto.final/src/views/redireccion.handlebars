@@ -1,0 +1,18 @@
+<div>
+    <h3>{{mensaje}}</h3>
+    <h4>Se lo va a redirigir a la pagina principal</h4>
+</div>
+<script>
+    window.onload = () => {
+        let ruta;
+        if (window.location.href.includes("localhost")) {
+            ruta = "http://localhost:8080"
+        } else {
+            let ubicacion = window.location.href.indexOf('/api');
+            ruta = window.location.href.slice(0, ubicacion);
+        }
+        setTimeout(() => {
+            window.location.href = `${ruta}/api/productos`;
+        }, 3500)
+    }
+</script>

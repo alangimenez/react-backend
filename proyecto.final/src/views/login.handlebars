@@ -7,11 +7,11 @@
         <form action="/api/usuario/login" method="POST">
             <label id="username" style="margin: 0.5rem 0rem"><strong>Usuario</strong></label>
             <br>
-            <input id="username" name="username" style="margin: 0.5rem 0rem">
+            <input id="username" name="username" style="margin: 0.5rem 0rem" required type="email">
             <br>
             <label id="password" style="margin: 0.5rem 0rem"><strong>Contraseña</strong></label>
             <br>
-            <input id="password" name="password" style="margin: 0.5rem 0rem" type="password">
+            <input id="password" name="password" style="margin: 0.5rem 0rem" type="password" required>
             <br>
             <button type="submit" class="btn btn-dark" style="margin: 0.5rem 0rem">Iniciar sesión</button>
         </form>

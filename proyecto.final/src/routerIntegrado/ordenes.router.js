@@ -20,6 +20,7 @@ router.post("/:idOrd/estado",
 
 // obtener el listado de pedidos (el mismo endpoint es para admin/user)
 router.get("/",
+    cartMid.validarSesion,
     async (req, res) => order.obtenerPedidos(req, res))
 
 module.exports = router;

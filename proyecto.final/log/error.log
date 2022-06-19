@@ -4275,3 +4275,78 @@
 [2022-06-18T20:29:39.272] [ERROR] error - No existe stock suficiente para cubrir este eventual pedido. Stock disponible: 100. Stock que solicitaría: 125
 [2022-06-18T20:30:39.672] [ERROR] error - No existe stock suficiente para cubrir este eventual pedido. Stock disponible: 100. Stock que solicitaría: 110
 [2022-06-18T20:40:13.828] [ERROR] error - Assignment to constant variable.
+[2022-06-18T22:30:05.998] [ERROR] error - Cannot read property 'rol' of undefined
+[2022-06-18T22:30:10.368] [ERROR] error - Cannot read property 'rol' of undefined
+[2022-06-18T22:30:36.657] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:33:57.688] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:34:40.608] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> Cannot read property 'user' of undefined
+[2022-06-18T22:34:40.609] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> Cannot read property 'user' of undefined
+[2022-06-18T22:34:40.610] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> Cannot read property 'user' of undefined
+[2022-06-18T22:34:52.885] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:35:12.194] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:35:18.131] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:42:31.704] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:43:43.906] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:45:08.977] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:45:21.501] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:46:47.553] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:47:02.987] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:47:59.792] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:48:45.750] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:50:50.663] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:51:51.370] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> Cannot read property 'user' of undefined
+[2022-06-18T22:51:51.373] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> Cannot read property 'user' of undefined
+[2022-06-18T22:51:51.375] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> Cannot read property 'user' of undefined
+[2022-06-18T22:54:59.089] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:55:41.983] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T22:58:47.184] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-18T22:59:31.958] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-18T23:02:23.223] [ERROR] error - Ha ocurrido un error en la validación del producto -> Cannot read property 'rol' of undefined
+[2022-06-18T23:13:15.054] [ERROR] error - El carrito buscado no se encuentra
+[2022-06-18T23:13:17.315] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-18T23:13:29.268] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-18T23:13:40.540] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-18T23:14:29.421] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-18T23:14:46.874] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-18T23:15:36.082] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-18T23:18:19.055] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'productos' of undefined
+[2022-06-18T23:18:30.562] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T23:18:52.829] [ERROR] error - Ocurrio un error en nuevoCarrito Repository -> Cannot read property 'user' of undefined
+[2022-06-18T23:18:52.832] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> Cannot read property 'user' of undefined
+[2022-06-18T23:18:52.838] [ERROR] error - Ocurrio un error en el ErrorHandler -> El controlador ha tenido un error -> Ocurrio un error en nuevoCarrito Repository -> Cannot read property 'user' of undefined
+[2022-06-18T23:20:25.848] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-18T23:24:29.809] [ERROR] error - Invalid password
+[2022-06-18T23:25:04.233] [ERROR] error - Invalid password
+[2022-06-18T23:26:24.804] [ERROR] error - Error en el login, el usuario ingresado no esta registrado.
+[2022-06-18T23:27:05.533] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-18T23:30:00.303] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T23:34:40.754] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T23:34:58.249] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T23:35:12.012] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T23:35:31.500] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-18T23:35:41.498] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T23:35:52.265] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-18T23:36:28.491] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T23:39:51.703] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T23:41:30.354] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'id' of undefined
+[2022-06-18T23:42:16.122] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T23:43:05.181] [ERROR] error - Cannot read property 'rol' of undefined
+[2022-06-18T23:43:29.180] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-18T23:46:45.562] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-18T23:51:13.830] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-18T23:52:10.069] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-18T23:52:49.218] [ERROR] error - Por favor, introduzca una categoria valida. Solo son posibles las categorias: comedia, accion, drama, 
+[2022-06-18T23:53:38.934] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-18T23:54:28.981] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-18T23:55:15.116] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-18T23:55:37.848] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-18T23:56:06.976] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-18T23:58:16.113] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-19T00:02:14.229] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-19T00:04:41.761] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-19T00:05:58.408] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-19T00:06:48.900] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-19T00:06:52.898] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-19T00:07:14.429] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-19T00:07:19.833] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-19T00:07:29.076] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
