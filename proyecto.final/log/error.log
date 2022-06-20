@@ -4387,3 +4387,19 @@
 [2022-06-19T19:45:11.279] [ERROR] error - Por favor, primero debe loguearse para esta petición
 [2022-06-19T20:13:33.165] [ERROR] error - Por favor, introduzca un precio en formato number
 [2022-06-19T20:14:48.573] [ERROR] error - Por favor, introduzca un stock en formato number
+[2022-06-19T22:28:42.013] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria
+[2022-06-19T22:29:36.973] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria
+[2022-06-19T22:30:28.480] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria
+[2022-06-19T22:31:07.071] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria
+[2022-06-19T22:32:29.570] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria
+[2022-06-19T22:33:18.680] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria
+[2022-06-19T22:34:43.445] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria
+[2022-06-19T22:35:21.532] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria
+[2022-06-19T22:36:01.357] [ERROR] error - Por favor, introduzca un código en formato number
+[2022-06-19T22:48:29.951] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T22:52:43.034] [ERROR] error - repository is not defined
+[2022-06-19T22:56:18.810] [ERROR] error - Assignment to constant variable.
+[2022-06-19T23:00:11.761] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T23:00:48.573] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T23:18:59.011] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-19T23:19:30.376] [ERROR] error - ruta '/' metodo GET no implementado

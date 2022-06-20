@@ -1,5 +1,7 @@
 const { fnOrdenes, fnProductos } = require('../persistencia/factory');
 const { errorResponse } = require('../error/error.response');
+const { Repository } = require('../persistencia/repository/repositoryMongo');
+const repository = new Repository();
 
 class OrderController {
     constructor() { }
@@ -63,11 +65,21 @@ class OrderController {
                 ordenes = await fnOrdenes().leerInfoPorUser(req.session.user.id);
             }
             ordenes = ordenes.map(i => i.toObject());
-            res.render('../views/ordenes', {
-                ordenes: ordenes,
-                isActive: req.session.user.id,
-                boton: "Logout"
-            })
+            if (req.session.user.rol === "admin") {
+                res.render('../views/ordenes', {
+                    ordenes: ordenes,
+                    isActive: req.session.user.id,
+                    boton: "Logout",
+                    admin: "true"
+                })
+            } else {
+                res.render('../views/ordenes', {
+                    ordenes: ordenes,
+                    isActive: req.session.user.id,
+                    boton: "Logout"
+                })
+            }
+            
 
         } catch (e) {
             errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
@@ -82,6 +94,21 @@ class OrderController {
                 const nuevoStock = stockProducto.stock - orden.productos[i].cantidad;
                 await fnProductos().actualizarStockProducto(stockProducto.id, nuevoStock);
             }
+        }
+    }
+
+    async obtenerPedidosFiltrados (req, res) {
+        try {
+            let ordenes = await repository.obtenerPedidosPorStatus(+req.params.status);
+            ordenes = ordenes.map(i => i.toObject());
+            res.render('../views/ordenes', {
+                ordenes: ordenes,
+                isActive: req.session.user.id,
+                boton: "Logout",
+                admin: "true"
+            })
+        } catch (e) {
+            errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
         }
     }
 }

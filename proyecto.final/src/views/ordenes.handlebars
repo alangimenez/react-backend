@@ -1,14 +1,29 @@
 <div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
     {{#if isActive}}
-        <p>Bienvenido {{isActive}}</p>
-        <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
-        <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
-        <a href="/api/usuario/{{logout}}" class="btn btn-dark">{{boton}}</a>
+    <p>Bienvenido {{isActive}}</p>
+    <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
+    <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
+    <a href="/api/usuario/{{logout}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
-    {{#if login }}  
-        <a href="/api/usuario/{{login}}" class="btn btn-dark">{{boton}}</a>
+    {{#if login }}
+    <a href="/api/usuario/{{login}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
 </div>
+{{#if admin}}
+<div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Estado
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="/api/ordenes">Todas</a>
+        <a class="dropdown-item" href="/api/ordenes/1">En preparacion</a>
+        <a class="dropdown-item" href="/api/ordenes/2">Despachado</a>
+        <a class="dropdown-item" href="/api/ordenes/3">Entregado</a>
+    </div>
+</div>
+<button class="btn btn-dark" data-toggle="modal" data-target="#ordenStatus">Cambiar estado de orden</button>
+{{/if}}
 <div class="container">
     <table class="table">
         <th>Orden</th>
@@ -26,3 +41,58 @@
         {{/each}}
     </table>
 </div>
+
+<!-- Modal cambio estado orden-->
+<div class="modal fade" id="ordenStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cambio de estado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" id="numeroOrden" placeholder="Numero de orden" type="number" required>
+                <input class="form-control" id="statusOrden" placeholder="Status de orden" type="number" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button id="cambiarOrden" onclick=cambiar() type="button" class="btn btn-primary">Cambiar
+                    estado</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let ruta;
+    if (window.location.href.includes("localhost")) {
+        ruta = "http://localhost:8080"
+    } else {
+        let ubicacion = window.location.href.indexOf('/api');
+        ruta = window.location.href.slice(0, ubicacion);
+    }
+
+    function cambiar() {
+        document.getElementById("cambiarOrden").innerHTML = "Aguarde...";
+        document.getElementById("cambiarOrden").disabled = true;
+        const orden = document.getElementById("numeroOrden").value
+        const status = {
+            status: +document.getElementById("statusOrden").value
+        }
+        fetch(`${ruta}/api/ordenes/${orden}/estado`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(status)
+        }).then(data =>
+            data.json()
+        ).then(response => {
+            window.location.href = `${ruta}/api/ordenes`;
+        }).catch(error => console.error('Error:', error))
+
+    }
+</script>

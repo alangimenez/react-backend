@@ -24,4 +24,9 @@ router.get("/",
     cartMid.validarSesion,
     async (req, res) => order.obtenerPedidos(req, res))
 
+// obtener el listado de pedidos filtrado por status
+router.get("/:status",
+    [cartMid.validarSesion, prodMid.validarAdmin, orderMid.validarStatusEnParams],
+    async (req, res) => order.obtenerPedidosFiltrados(req, res))
+
 module.exports = router;

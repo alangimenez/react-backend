@@ -12,7 +12,11 @@ class ProductController {
         try {
             const productos = await repository.obtenerTodosLosProductos();
             if (req.user) {
-                res.render('../views/productos', { listaProductos: productos, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, logout: 'logout' });
+                if (req.session.user.rol === "admin") {
+                    res.render('../views/productos', { listaProductos: productos, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, logout: 'logout', admin: "true" });
+                } else {
+                    res.render('../views/productos', { listaProductos: productos, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, logout: 'logout' });
+                }
             } else {
                 res.render('../views/productos', { listaProductos: productos, boton: "Iniciar sesión", login: 'login' });
             }
