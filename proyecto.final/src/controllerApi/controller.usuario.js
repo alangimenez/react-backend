@@ -173,6 +173,14 @@ class UserController {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res); 
         }
     }
+
+    async cambiarPassword (req, res) {
+        try {
+            res.status(201).json(await repository.cambiarContrasena(req.session.user.id ,req.body.newPass))
+        } catch (e) {
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res); 
+        }
+    }
 }
 
 module.exports = {

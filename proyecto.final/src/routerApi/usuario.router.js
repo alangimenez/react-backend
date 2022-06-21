@@ -51,4 +51,9 @@ router.post('/perfil',
     [cartMid.validarSesion, userMid.usuarioLogueado, upload.single('archivo')],
     (req, res) => user.avatar(req, res))
 
+// endpoint para cambiar contraseña de usuario
+router.post('/password',
+    [cartMid.validarSesion, userMid.validarExistaPass, userMid.validarViejaPass, userMid.validarNuevasPass],
+    (req, res) => user.cambiarPassword(req, res))
+
 module.exports = router;

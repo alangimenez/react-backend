@@ -4403,3 +4403,19 @@
 [2022-06-19T23:00:48.573] [ERROR] error - ruta '/' metodo GET no implementado
 [2022-06-19T23:18:59.011] [ERROR] error - ruta '/' metodo GET no implementado
 [2022-06-19T23:19:30.376] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-21T15:12:38.307] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-21T15:12:50.496] [ERROR] error - ruta '/' metodo POST no implementado
+[2022-06-21T15:13:06.223] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-21T15:13:58.516] [ERROR] error - Ha ocurrido un error validando las contraseñas -> Cannot read property 'password' of undefined
+[2022-06-21T15:14:15.171] [ERROR] error - Ha ocurrido un error validando las contraseñas -> data and hash arguments required
+[2022-06-21T15:14:52.607] [ERROR] error - Ha ocurrido un error validando las contraseñas -> Error: data and hash arguments required
+[2022-06-21T15:22:18.105] [ERROR] error - La vieja contraseña ingresada no coincide, por favor, reintente.
+[2022-06-21T15:22:45.042] [ERROR] error - La vieja contraseña ingresada no coincide, por favor, reintente.
+[2022-06-21T15:25:21.913] [ERROR] error - Por favor, complete los 3 campos para poder cambiar su contraseña.
+[2022-06-21T15:28:28.003] [ERROR] error - Las nuevas contraseñas no coinciden, por favor, reintente.
+[2022-06-21T15:28:57.481] [ERROR] error - Ocurrio un error en cambiarContraseña Repository -> data and salt arguments required
+[2022-06-21T15:28:57.484] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en cambiarContraseña Repository -> data and salt arguments required
+[2022-06-21T15:33:04.999] [ERROR] error - La vieja contraseña ingresada no coincide, por favor, reintente.
+[2022-06-21T15:33:46.936] [ERROR] error - La vieja contraseña ingresada no coincide, por favor, reintente.
+[2022-06-21T15:34:55.240] [ERROR] error - La vieja contraseña ingresada no coincide, por favor, reintente.
+[2022-06-21T15:35:45.112] [ERROR] error - Invalid password

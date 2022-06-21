@@ -86,6 +86,16 @@ class Converter {
             cantidad: 1
         }
     }
+
+    converterUsuarioDTOResponse(user) {
+        return {
+            id: user.id,
+            nombre: user.nombre,
+            direccion: user.nombre,
+            edad: user.edad,
+            telefono: user.telefono
+        }
+    }
 }
 
 

@@ -2,6 +2,7 @@ const { fnProductos, fnCarritos, fnUsuarios, fnOrdenes } = require('../factory')
 const { errorLogger } = require('../../config/config.log4js');
 const { Converter } = require('../../utils/converter');
 const converter = new Converter();
+const bcrypt = require('bcrypt');
 
 class Repository {
     constructor() { }
@@ -229,6 +230,20 @@ class Repository {
         } catch (e) {
             errorLogger.error(`Ocurrio un error en obtenerPedidosPorStatus Repository -> ` + e.message);
             throw new Error(`Ocurrio un error en obtenerPedidosPorStatus Repository -> ` + e.message)
+        }
+    }
+
+    async cambiarContrasena (usuario, contrasena) {
+        try {
+            const salt = () => bcrypt.genSaltSync(10);
+            const encrypt = (password) => bcrypt.hashSync(password, salt());
+            const usuarioActualizado = await fnUsuarios().actualizarPassword(usuario ,encrypt(contrasena));
+            const usuarioDTOresponse = converter.converterUsuarioDTOResponse(usuarioActualizado[0]);
+            return usuarioDTOresponse;
+        } catch (e) {
+            // errorLogger.error(`Ocurrio un error en cambiarContraseña Repository -> ` + e.message);
+            // throw new Error(`Ocurrio un error en cambiarContraseña Repository -> ` + e.message);
+            console.log(e);
         }
     }
 }
