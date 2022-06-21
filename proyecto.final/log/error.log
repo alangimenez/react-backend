@@ -4419,3 +4419,6 @@
 [2022-06-21T15:33:46.936] [ERROR] error - La vieja contraseña ingresada no coincide, por favor, reintente.
 [2022-06-21T15:34:55.240] [ERROR] error - La vieja contraseña ingresada no coincide, por favor, reintente.
 [2022-06-21T15:35:45.112] [ERROR] error - Invalid password
+[2022-06-21T15:43:57.111] [ERROR] error - ruta '/' metodo GET no implementado
+[2022-06-21T15:44:19.823] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-21T15:44:58.056] [ERROR] error - ruta '/' metodo GET no implementado

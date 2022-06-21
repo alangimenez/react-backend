@@ -70,13 +70,15 @@ class OrderController {
                     ordenes: ordenes,
                     isActive: req.session.user.id,
                     boton: "Logout",
-                    admin: "true"
+                    admin: "true",
+                    title: "Mis ordenes"
                 })
             } else {
                 res.render('../views/ordenes', {
                     ordenes: ordenes,
                     isActive: req.session.user.id,
-                    boton: "Logout"
+                    boton: "Logout",
+                    title: "Mis ordenes"
                 })
             }
             
@@ -105,7 +107,8 @@ class OrderController {
                 ordenes: ordenes,
                 isActive: req.session.user.id,
                 boton: "Logout",
-                admin: "true"
+                admin: "true",
+                title: "Mis pedidos"
             })
         } catch (e) {
             errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);

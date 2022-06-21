@@ -79,12 +79,14 @@ class CartController {
 
             // response con template
             if (req.user) {
-                res.render('../views/carrito', { 
-                    productosEnCarrito: carritoFiltrado[0].productos, 
-                    user: req.session.user.id, 
-                    isActive: req.session.user.id, 
+                res.render('../views/carrito', {
+                    productosEnCarrito: carritoFiltrado[0].productos,
+                    user: req.session.user.id,
+                    isActive: req.session.user.id,
                     boton: "Cerrar sesión",
-                    total: carritoFiltrado[0].total });
+                    total: carritoFiltrado[0].total,
+                    title: "Mi carrito"
+                });
             } else {
                 // chequear esto, tecnicamente no deberia acceder al carrito si no esta logueado
                 res.render('../views/loginError', { error: "Primero debe loguearse" });
@@ -105,15 +107,15 @@ class CartController {
                 `Nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`,
                 await this.listadoPedido(carrito.productos))
 
-/*             await whatsapp(req.session.user.telefono,
-                `Ha recibido un nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`);
-            await mensajeTexto(req.session.user.telefono,
-                `Su pedido ha sido recibido, y se encuentra en proceso. Muchas gracias ${req.session.user.nombre}`);
- */            
+            /*             await whatsapp(req.session.user.telefono,
+                            `Ha recibido un nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`);
+                        await mensajeTexto(req.session.user.telefono,
+                            `Su pedido ha sido recibido, y se encuentra en proceso. Muchas gracias ${req.session.user.nombre}`);
+             */
 
             let resultado = await this.limpiarCarrito(req);
             // resultado = await calculoTotalCarrito(resultado);
-            
+
             const orden = await orderController.crearOrden(req, carrito.productos, carrito.total);
 
             req.session.order = orden;

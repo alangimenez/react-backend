@@ -13,12 +13,12 @@ class ProductController {
             const productos = await repository.obtenerTodosLosProductos();
             if (req.user) {
                 if (req.session.user.rol === "admin") {
-                    res.render('../views/productos', { listaProductos: productos, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, logout: 'logout', admin: "true" });
+                    res.render('../views/productos', { listaProductos: productos, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, logout: 'logout', admin: "true", title: "¡Bienvenido!" });
                 } else {
-                    res.render('../views/productos', { listaProductos: productos, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, logout: 'logout' });
+                    res.render('../views/productos', { listaProductos: productos, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, logout: 'logout', title: "¡Bienvenido!" });
                 }
             } else {
-                res.render('../views/productos', { listaProductos: productos, boton: "Iniciar sesión", login: 'login' });
+                res.render('../views/productos', { listaProductos: productos, boton: "Iniciar sesión", login: 'login', title: "¡Bienvenido!" });
             }
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador "Producto - Obtener Productos" ha tenido un error -> ` + e.message, res);
@@ -31,12 +31,12 @@ class ProductController {
             const producto = await repository.obtenerProductPorId(+req.params.idProd);
             if (req.user) {
                 if (req.session.user.rol === "admin") {
-                    res.render('../views/productoIndividual', { objeto: producto, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, admin: "true" });
+                    res.render('../views/productoIndividual', { objeto: producto, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, admin: "true", title: producto.nombre });
                 } else {
-                    res.render('../views/productoIndividual', { objeto: producto, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id });
+                    res.render('../views/productoIndividual', { objeto: producto, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, title: producto.nombre });
                 }
             } else {
-                res.render('../views/productoIndividual', { objeto: producto, boton: "Iniciar sesión", user: "na" });
+                res.render('../views/productoIndividual', { objeto: producto, boton: "Iniciar sesión", user: "na", title: producto.nombre });
             }
         } catch (e) {
             return error.errorResponse("controllerError", `El controlador "Producto" ha tenido un error -> ` + e.message, res);
@@ -74,9 +74,9 @@ class ProductController {
         try {
             const productos = await repository.traerProductosPorCategoria(req.params.cat);
             if (req.user) {
-                res.render('../views/productos', { listaProductos: productos, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, logout: 'logout' });
+                res.render('../views/productos', { listaProductos: productos, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, logout: 'logout', title:"¡Bienvenido!" });
             } else {
-                res.render('../views/productos', { listaProductos: productos, boton: "Iniciar sesión", login: 'login' });
+                res.render('../views/productos', { listaProductos: productos, boton: "Iniciar sesión", login: 'login', title:"¡Bienvenido!" });
             }
         }
         catch (e) {

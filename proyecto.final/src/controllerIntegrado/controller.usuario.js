@@ -51,10 +51,10 @@ class UserController {
                 const user = req.session.user.id;
                 req.session.destroy(() => {
                     res.clearCookie('my-session');
-                    res.render('../views/logout', { usuario: user });
+                    res.render('../views/logout', { usuario: user, title: "¡Vuelva pronto!" });
                 })     
             } else {
-                res.status(400).json({ message: `No existe usuario logueado para desloguearse` })
+                res.status(400).json({ message: `No existe usuario logueado para desloguearse`, title: "¡Ops!" })
             }
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
@@ -87,6 +87,7 @@ class UserController {
                 edad: req.session.user.edad,
                 telefono: req.session.user.telefono,
                 foto: req.session.user.foto, // ver como setear este dato en la sesion una vez subida la foto
+                title: "Mi perfil"
             })
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
@@ -133,10 +134,10 @@ class UserController {
     registroError = (req, res) => {
         try {
             // response con JSON
-            res.status(400).json({ error: req.session.error });
+            // res.status(400).json({ error: req.session.error });
 
             // response con template
-            // res.render('registroError', { error: req.session.error })
+            res.render('registroError', { error: req.session.error, title: "¡Ops!" })
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
@@ -148,7 +149,7 @@ class UserController {
             // res.status(400).json({ error: req.session.error });
 
             // response con template
-            res.render('loginError', { error: req.session.error })
+            res.render('loginError', { error: req.session.error, title: "¡Ops!" })
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }

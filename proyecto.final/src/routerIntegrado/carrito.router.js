@@ -59,7 +59,8 @@ router.get('/comprafinalizada',
         total: req.session.order.total,
         orden: req.session.order.id,
         direccion: req.session.order.direccion,
-        productos: req.session.order.productos
+        productos: req.session.order.productos,
+        title: "¡Muchas gracias por su compra!"
     }))
 
 // endpoint para vaciar el carrito
