@@ -48,10 +48,15 @@ router.post('/perfil',
 
 // endpoint para renderizar pantalla de login
 router.get('/login',
-    (req, res) => res.render('../views/login', {title: "Inicio de sesion"}));
+    (req, res) => res.render('../views/login', { title: "Inicio de sesion" }));
 
 // endpoint para renderizar pantalla de registro
 router.get('/registro',
-    (req, res) => res.render('../views/registro', {title: "Registrese"}))
+    (req, res) => res.render('../views/registro', { title: "Registrese" }))
+
+// endpoint para actualizar datos de perfil
+router.put('/mi-perfil-update',
+    [cartMid.validarSesion, cartMid.validarDatosActualizacion],
+    (req, res) => user.actualizarPerfil(req, res))
 
 module.exports = router;

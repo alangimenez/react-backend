@@ -10,12 +10,114 @@
     <h2>Perfil de {{user}}</h2>
     <img src="{{foto}}" style="width: 15rem; height: 15rem" alt="foto-de-perfil">
     <p>Nombre: {{nombre}}</p>
-    <p>Dirección: {{direccion}}</p>
+    <div style="display: flex">
+        <p>Dirección: {{direccion}}</p>
+        <button class="btn btn-danger" style="margin-left: 3rem" data-toggle="modal"
+            data-target="#actualizarDireccion">Actualizar dirección</button>
+    </div>
     <p>Edad: {{edad}}</p>
-    <p>Telefono: {{telefono}}</p>
+    <div style="display: flex">
+        <p>Telefono: {{telefono}}</p>
+        <button class="btn btn-danger" style="margin-left: 3rem" data-toggle="modal"
+            data-target="#actualizarTelefono">Actualizar telefono</button>
+    </div>
     <form action='/api/usuario/perfil' enctype="multipart/form-data" method="POST">
         <input type="file" id="archivo" name="archivo" class="input-file"><span onclick="clearFile('single')"
             class="clear-button">X</span>
         <div><input type="submit" value="Upload File" class="submit-button"></div>
     </form>
 </div>
+
+<!-- Modal actualizar direccion -->
+<div class="modal fade" id="actualizarDireccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar direccion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" placeholder="Ingrese su nueva dirección" required id="nuevaDireccion">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button id="nuevaDire" type="button" class="btn btn-primary" onclick=direccion()>Actualizar dirección</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal actualizar telefono -->
+<div class="modal fade" id="actualizarTelefono" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar telefono</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" placeholder="Ingrese su nuevo telefono" required id="nuevoTelefono">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button id="nuevoTele" type="button" class="btn btn-primary" onclick=telefono()>Actualizar telefono</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let ruta;
+    if (window.location.href.includes("localhost")) {
+        ruta = "http://localhost:8080"
+    } else {
+        let ubicacion = window.location.href.indexOf('/api');
+        ruta = window.location.href.slice(0, ubicacion);
+    }
+
+    function direccion() {
+        document.getElementById("nuevaDire").innerHTML = "Aguarde...";
+        document.getElementById("nuevaDire").disabled = true;
+        const direInput = document.getElementById("nuevaDireccion").value
+        const direccion = {
+            direccion: direInput
+        }
+        fetch(`${ruta}/api/usuario/mi-perfil-update`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(direccion)
+        }).then(data =>
+            data.json()
+        ).then(response => {
+            window.location.href = `${ruta}/api/usuario/mi-perfil`;
+        }).catch(error => console.error('Error:', error))
+    }
+
+    function telefono() {
+        document.getElementById("nuevoTele").innerHTML = "Aguarde...";
+        document.getElementById("nuevoTele").disabled = true;
+        const teleInput = document.getElementById("nuevoTelefono").value
+        const telefono = {
+            telefono: teleInput
+        }
+        fetch(`${ruta}/api/usuario/mi-perfil-update`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(telefono)
+        }).then(data =>
+            data.json()
+        ).then(response => {
+            window.location.href = `${ruta}/api/usuario/mi-perfil`;
+        }).catch(error => console.error('Error:', error))
+    }
+</script>
