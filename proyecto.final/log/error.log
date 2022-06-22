@@ -4457,3 +4457,6 @@
 [2022-06-21T17:31:44.623] [ERROR] error - ruta '/' metodo PUT no implementado
 [2022-06-21T17:34:25.771] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
 [2022-06-21T17:34:26.123] [ERROR] error - ruta '/' metodo PUT no implementado
+[2022-06-21T21:56:46.980] [ERROR] error - ruta '/' metodo PUT no implementado
+[2022-06-21T21:57:20.740] [ERROR] error - Por favor, complete los 3 campos para poder cambiar su contraseña.
+[2022-06-21T21:58:09.318] [ERROR] error - La vieja contraseña ingresada no coincide, por favor, reintente.

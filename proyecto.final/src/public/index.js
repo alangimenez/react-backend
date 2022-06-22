@@ -15,7 +15,7 @@ socket.on('caracterRecibido', (data) => {
     let mensaje = "";
     if (data.length > 0) {
         data.map(e => {
-            mensaje += `${e.socketId}: ${e.mensaje} <br>`
+            mensaje += `${e.user}: ${e.mensaje} <br>`
         });
     } else {
         console.log('algo');

@@ -1,5 +1,5 @@
 const admin = true;
-const { leerArchivo } = require('../persistencia/fileSystem');
+//const { leerArchivo } = require('../persistencia/fileSystem');
 const pathCarrito = './assets/carrito.txt';
 const pathProductos = './assets/productos.txt';
 const { logger, errorLogger } = require('../config/config.log4js');
@@ -20,7 +20,7 @@ function validarRuta(req, res, next) {
 }
 
 // revisa si los archivos existen
-function validarArchivo(req, res, next) {
+/* function validarArchivo(req, res, next) {
     try {
         const datoProducto = leerArchivo(pathProductos);
         const datoCarrito = leerArchivo(pathCarrito);
@@ -30,12 +30,12 @@ function validarArchivo(req, res, next) {
         return res.status(400).json({ error: -3, message: `Los archivos que se buscan leer no existen o el formato es incorrecto.` })
     }
     next();
-}
+} */
 
 module.exports = {
     validarAdmin,
     validarRuta,
-    validarArchivo,
+    //validarArchivo,
     pathCarrito,
     pathProductos
 };

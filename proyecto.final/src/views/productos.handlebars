@@ -13,13 +13,13 @@
     <a href="/api/usuario/{{login}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
 </div>
-<div class="container" style="display: flex; justify-content: space-around">
+<div class="container">
+
     <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Categoria
         </a>
-
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="/api/productos">Todas</a>
             <a class="dropdown-item" href="/api/productos/categoria/comedia">Comedia</a>
@@ -27,20 +27,26 @@
             <a class="dropdown-item" href="/api/productos/categoria/drama">Drama</a>
         </div>
     </div>
-    {{#each listaProductos}}
 
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{this.foto}}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{this.nombre}}</h5>
-            <p class="card-text">{{this.descripcion}}</p>
-            <p class="card-text">Stock: {{this.stock}}</p>
-            <p class="card-text">Timestamp: {{this.timestamp}}</p>
-            <p class="card-text">Precio: <strong>{{this.precio}}</strong></p>
-            <a href='/api/productos/{{this.id}}' class="btn btn-primary">Ver producto</a>
+    <div class="row">
+        {{#each listaProductos}}
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{this.foto}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.nombre}}</h5>
+                    <p class="card-text">{{this.descripcion}}</p>
+                    <p class="card-text">Stock: {{this.stock}}</p>
+                    <p class="card-text">Timestamp: {{this.timestamp}}</p>
+                    <p class="card-text">Precio: <strong>{{this.precio}}</strong></p>
+                    <a href='/api/productos/{{this.id}}' class="btn btn-primary">Ver producto</a>
+                </div>
+            </div>
         </div>
+
+        {{/each}}
     </div>
-    {{/each}}
+
 
     <!-- Modal nuevo producto -->
     <div class="modal fade" id="nuevoProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -63,7 +69,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button id="cargarProducto" type="button" class="btn btn-primary" onclick=cargar()>Cargar producto</button>
+                    <button id="cargarProducto" type="button" class="btn btn-primary" onclick=cargar()>Cargar
+                        producto</button>
                 </div>
             </div>
         </div>

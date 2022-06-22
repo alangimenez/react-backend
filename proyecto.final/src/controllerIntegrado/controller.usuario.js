@@ -160,8 +160,16 @@ class UserController {
     async actualizarPerfil (req, res) {
         try {
             await repository.actualizarDatosPerfil(req, res);
-            console.log("pasa por aca")
             res.redirect('/api/usuario/mi-perfil')
+        } catch (e) {
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res); 
+        }
+    }
+
+    async cambiarPassword (req, res) {
+        try {
+            await repository.cambiarContrasena(req.session.user.id ,req.body.newPass);
+            return res.status(201).json({message: `La contraseña fue cambiada con éxito`});
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res); 
         }

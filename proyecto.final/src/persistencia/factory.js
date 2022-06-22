@@ -100,9 +100,35 @@ function fnUsuarios() {
     return opUsuarios;
 }
 
+function fnMensaje() {
+    let opMensaje = "";
+    switch (config) {
+        /* case 'filesystem':
+            const { DaoMemoriaCarritoFS } = require('./daos/carritos/daoFileSystemCarrito');
+            opOrdenes = new DaoMemoriaCarritoFS();
+            break;
+        case 'memoria':
+            const { DaoMemoriaCarrito } = require('./daos/carritos/daoMemoriaCarrito');
+            opOrdenes = new DaoMemoriaCarrito();
+            break; */
+        case 'mongodb':
+            const { DaoMongoMensaje } = require('./daos/mensajes/daoMongoMensaje');
+            opMensaje = new DaoMongoMensaje();
+            break;
+        /* case 'firebase':
+            const { DaoFirebaseCarrito } = require('./daos/carritos/daoFirebaseCarrito');
+            opOrdenes = new DaoFirebaseCarrito();
+            break; */
+        default:
+            break;
+    }
+    return opMensaje;
+}
+
 module.exports = {
     fnProductos,
     fnCarritos, 
     fnOrdenes,
-    fnUsuarios
+    fnUsuarios,
+    fnMensaje
 }

@@ -59,4 +59,9 @@ router.put('/mi-perfil-update',
     [cartMid.validarSesion, cartMid.validarDatosActualizacion],
     (req, res) => user.actualizarPerfil(req, res))
 
+// endpoint para cambiar contraseña de usuario
+router.post('/password',
+    [cartMid.validarSesion, userMid.validarExistaPass, userMid.validarViejaPass, userMid.validarNuevasPass],
+    (req, res) => user.cambiarPassword(req, res))
+
 module.exports = router;
