@@ -7,8 +7,19 @@ const bcrypt = require('bcrypt');
 class Repository {
     constructor() { }
 
+    // Obtiene los datos del carrito de un usuario en formato Model y se devuelve en formato DTO
+    obtenerCarrito = async (user) => {
+        try {
+            const carrito = await fnCarritos().leerInfoPorId(user);
+            return converter.converterCarritoDTOresponse(carrito[0]);
+        } catch (e) {
+            errorLogger.error(`Ocurrio un error en obtenerCarrito Repository -> ` + e.message);
+            throw new Error(`Ocurrio un error en obtenerCarrito Repository -> ` + e.message)
+        }
+    }
+
     // Arma un nuevo Carrito y lo envia al DAO. Al recibirlo, lo convierte a DTO para enviarlo al cliente.
-    // Adicionalmente carga el numero de carrito al perfil de usuario
+    // Adicionalmente carga el numero de carrito al perfil de usuario y lo actualiza en la sesión
     nuevoCarrito = async (req, user) => {
         try {
             const lista = await fnCarritos().leerInfo();
@@ -19,17 +30,15 @@ class Repository {
             await fnUsuarios().actualizarCarritoDeUsuario(user, idNuevo);
             req.session.user.cart = idNuevo;
             req.session.save(err => errorLogger.error(`Hubo un error al actualizar datos de la sesión => ${err}`));
-
             return converter.converterCarritoDTOresponse(nuevoCarritoDTOresponse);
         } catch (e) {
             errorLogger.error(`Ocurrio un error en nuevoCarrito Repository -> ` + e.message);
             throw new Error(`Ocurrio un error en nuevoCarrito Repository -> ` + e.message)
         }
-
     }
 
     // Recolecta los datos necesarios para pedir al DAO eliminar el producto
-    // Al recibir la respuesta, lo convierte a DTO para el cliente
+    // Al recibir la respuesta, lo convierte a DTO para el cliente, previo calculo del nuevo total
     eliminarProductosDelCarrito = async (idCarrito, idProducto) => {
         try {
             const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarrito);
@@ -57,6 +66,11 @@ class Repository {
             let nuevoProducto = true;
             const productoSeleccionado = await fnProductos().leerInfoPorId(idProducto);
             const carritoSeleccionado = await fnCarritos().leerInfoPorId(idCarrito);
+
+            // existen 3 casos posibles al agregar un producto al carrito (estan en igual orden en listado y codigo):
+            // 1) que el carrito no tenga productos
+            // 2) que el carrito tenga productos y posea al que se desea agregar
+            // 3) que el carrito tenga productos y no posea al que se desea agregar
             if (carritoSeleccionado[0].productos.length === 0) {
                 carritoActualizado = await fnCarritos().actualizarProdEnCarrito(idCarrito, productoSeleccionado[0])
                 nuevoProducto = false;
@@ -72,10 +86,10 @@ class Repository {
             if (nuevoProducto === true) {
                 carritoActualizado = await fnCarritos().actualizarProdEnCarrito(idCarrito, productoSeleccionado[0])
             }
+
             const carritoActualizadoDTOResponse = converter.converterCarritoDTOresponse(carritoActualizado);
             const nuevoTotal = await this.calculoTotalCarrito(carritoActualizadoDTOResponse);
             carritoActualizadoDTOResponse.total = nuevoTotal;
-
             return carritoActualizadoDTOResponse;
         } catch (e) {
             errorLogger.error(`Ocurrio un error en agregarProductosAlCarrito Repository -> ` + e.message);
@@ -97,6 +111,7 @@ class Repository {
         }
     }
 
+    // Obtiene todos los productos, y los convierte de Model a DTO
     obtenerTodosLosProductos = async () => {
         try {
             const listadoProductos = await fnProductos().leerInfo();
@@ -108,6 +123,7 @@ class Repository {
         }
     }
 
+    // Obtiene un producto en particular, y lo convierte de Model a DTO para devolverlo
     obtenerProductPorId = async (idProducto) => {
         try {
             const productoBuscado = await fnProductos().leerInfoPorId(idProducto);
@@ -119,6 +135,7 @@ class Repository {
         }
     }
 
+    // elimina un producto en particular, y devuelve el listado de productos en formato DTO
     eliminarProductPorId = async (idProduct) => {
         try {
             const productosRecibidos = await fnProductos().eliminarInfo(idProduct);
@@ -130,6 +147,7 @@ class Repository {
         }
     }
 
+    
     subirNuevoProducto = async (producto) => {
         try {
             let idNuevo = 0;

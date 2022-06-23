@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { validarArchivo } = require('../middlewares/middlewares');
 const { ProdMid } = require('../middlewares/productos.mid');
 const prodMid = new ProdMid();
 const { CartMid } = require('../middlewares/carrito.mid');
@@ -10,30 +9,28 @@ const orderMid = new OrderMid();
 const { CartController } = require('../controllerApi/controller.carrito');
 const cart = new CartController();
 
-// ver carritos (eliminar luego de controlado todo, porque la consigna no lo pide)
-// router.get('/', async (req, res) => cart.obtenerTodosLosCarritos(req, res))
-
-// ver un carrito en particular de algun usuario
+// obtener datos del carrito de un usuario
 router.get('/',
     cartMid.validarSesion,
     async (req, res) => cart.verCarritoUsuario(req, res))
 
-// crear un carrito
-router.post('/',
+// crear un carrito (en ningun caso se crea un carrito directamente, solo desde registrar un usuario)
+// de todas maneras, se deja la lógica
+/* router.post('/',
     cartMid.validarUser,
-    cart.crearCarrito)
+    cart.crearCarrito) */
 
-// elimina carrito
-router.delete('/:idCarr',
+// elimina carrito (en ningun caso se elimina un carrito, pero se deja la lógica)
+/* router.delete('/:idCarr',
     cartMid.validarCarrito,
-    cart.eliminarCarrito)
+    cart.eliminarCarrito) */
 
-// agrega productos al carrito
+// agrega productos al carrito de un usuario
 router.post('/productos/:idProd',
     [cartMid.validarSesion, cartMid.validarCarrito, prodMid.validarProducto],
     cart.prodAlCarrito)
 
-// array de los productos de un carrito
+// listado de los productos en unc arrito
 router.get('/productos',
     [cartMid.validarSesion, cartMid.validarCarrito],
     cart.prodDelCarrito)
@@ -48,12 +45,12 @@ router.post('/modificar/:idProd',
     [cartMid.validarSesion, cartMid.validarUnidadesProductos, cartMid.validarCarrito, cartMid.validarProductoEnCarrito, cartMid.validarStockActual],
     (req, res) => cart.modificarCantidadDeProdEnCarrito(req, res))
 
-// endpoint para confirmar compra
+// confirma la compra
 router.post('/confirmar',
     [cartMid.validarSesion, cartMid.validarCarritoConProductos, orderMid.validarStock],
     async (req, res) => {const compra = await cart.confirmarCompra(req, res)})
 
-// endpoint para vaciar el carrito
+// vacia el carrito de un usuario
 router.post('/vaciar',
     cartMid.validarSesion,
     async (req, res) => cart.vaciarCarrito(req, res))

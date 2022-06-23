@@ -2,17 +2,10 @@ const config = require('../src/config/config.process.env');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const routerApiProductos = require('../src/routerApi/productos.router');
-const routerApiCarrito = require('../src/routerApi/carrito.router');
-const routerApiUsuario = require('../src/routerApi/usuario.router');
-const routerApiOrdenes = require('../src/routerApi/ordenes.router');
-const routerIntegProductos = require('../src/routerIntegrado/productos.router');
-const routerIntegUsuario = require('../src/routerIntegrado/usuario.router');
-const routerIntegCarrito = require('../src/routerIntegrado/carrito.router');
-const routerIntegOrdenes = require('../src/routerIntegrado/ordenes.router');
-const { validarRuta } = require('../src/middlewares/middlewares');
+const { AppMidd } = require('../src/middlewares/app.mid');
+const appMidd = new AppMidd();
 const { engine } = require('express-handlebars');
-const { logger, errorLogger} = require('../src/config/config.log4js');
+const { logger, errorLogger } = require('../src/config/config.log4js');
 const cluster = require('cluster');
 const os = require('os');
 
@@ -20,13 +13,6 @@ const os = require('os');
 const { Server: HttpServer } = require('http');
 const httpServer = new HttpServer(app);
 require('../src/routerIntegrado/chat.router')(httpServer);
-
-// SERVER ORIGINAL SIN FORK NI CLUSTER
-/* const server = app.listen(config.PORT, () => {
-    logger.info(`Servidor escuchando en puerto ${config.PORT}`);
-}).on('error', (error => {
-    errorLogger.error(error);
-})); */
 
 // SERVER CON CLUSTER Y FORK
 if (config.MODE === "CLUSTER") {
@@ -62,10 +48,9 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
-// session
+// session y passport
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-
 const passport = require('../src/middlewares/passport');
 app.use(session({
     name: 'my-session',
@@ -86,19 +71,32 @@ app.use(passport.session());
 
 app.use(express.static('src/public'));
 
+// router
 if (process.env.MODE === "api") {
+    const routerApiProductos = require('../src/routerApi/productos.router');
+    const routerApiCarrito = require('../src/routerApi/carrito.router');
+    const routerApiUsuario = require('../src/routerApi/usuario.router');
+    const routerApiOrdenes = require('../src/routerApi/ordenes.router');
     app.use('/api/productos', routerApiProductos);
     app.use('/api/carrito', routerApiCarrito);
     app.use('/api/usuario', routerApiUsuario);
     app.use('/api/ordenes', routerApiOrdenes);
-} else {
+} 
+if (process.env.MODE === "integrado") {
+    const routerIntegProductos = require('../src/routerIntegrado/productos.router');
+    const routerIntegUsuario = require('../src/routerIntegrado/usuario.router');
+    const routerIntegCarrito = require('../src/routerIntegrado/carrito.router');
+    const routerIntegOrdenes = require('../src/routerIntegrado/ordenes.router');
     app.use('/api/productos', routerIntegProductos);
     app.use('/api/carrito', routerIntegCarrito);
     app.use('/api/usuario', routerIntegUsuario);
     app.use('/api/ordenes', routerIntegOrdenes);
-    app.get('/api/chat', (req, res) => {res.render('../views/chat')})
+    app.get('/api/chat', (req, res) => { res.render('../views/chat') })
+}
+if (process.env.MODE != "api" && process.env.MODE != "integrado") {
+    app.use('*', appMidd.errorModo);
 }
 
-app.get('/', (req, res) => {res.redirect('/api/productos')})
-app.use('*', validarRuta);
+app.get('/', (req, res) => { res.redirect('/api/productos') })
+app.use('*', appMidd.validarRuta);
 

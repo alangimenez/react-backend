@@ -1,32 +1,34 @@
 const { errorResponse } = require('../error/error.response');
+const { ErrorHandler } = require('../error/error');
+const error = new ErrorHandler();
 const { fnProductos, fnOrdenes, fnCarritos } = require('../persistencia/factory');
 
 class OrderMid {
     constructor() { }
 
-    // revisa si es admin o no
+    // revisa si el status es uno de los existentes
     validarStatus(req, res, next) {
         try {
             if (req.body.status <= 0 || req.body.status >= 4 || isNaN(req.body.status)) {
-                return errorResponse(403, "middlewareError", "Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)", res);
+                return error.errorResponse(403, "middlewareError", "Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)", res);
             }
             next();
         } catch (e) {
-            return errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del status -> " + e.message, res);
+            return error.errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del status -> " + e.message, res);
         }
     }
 
-        // revisa si es admin o no
-        validarStatusEnParams(req, res, next) {
-            try {
-                if (req.params.status <= 0 || req.params.status >= 4 || isNaN(req.params.status)) {
-                    return errorResponse(403, "middlewareError", "Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)", res);
-                }
-                next();
-            } catch (e) {
-                return errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del status -> " + e.message, res);
+    // revisa si el status es uno de los existentes en params
+    validarStatusEnParams(req, res, next) {
+        try {
+            if (req.params.status <= 0 || req.params.status >= 4 || isNaN(req.params.status)) {
+                return error.errorResponse(403, "middlewareError", "Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)", res);
             }
+            next();
+        } catch (e) {
+            return error.errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del status -> " + e.message, res);
         }
+    }
 
     async validarStock(req, res, next) {
         try {
@@ -43,26 +45,27 @@ class OrderMid {
                 }
             }
             if (error != "") {
-                return errorResponse(400, "middlewareError", "Stock insuficiente. " + error, res);
+                return error.errorResponse(400, "middlewareError", "Stock insuficiente. " + error, res);
             }
             next();
         } catch (e) {
-            return errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del status de la orden-> " + e.message, res);
+            return error.errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación del stock de la orden-> " + e.message, res);
         }
     }
 
-    async validarOrder (req, res, next) {
+    // valida que la orden buscada tenga formato number y que exista.
+    async validarOrder(req, res, next) {
         try {
             if (isNaN(+req.params.idOrd)) {
-                return errorResponse(400, "middlewareError", "Por favor, introduzca una orden en formato number", res);
+                return error.errorResponse(400, "middlewareError", "Por favor, introduzca una orden en formato number", res);
             }
             const orden = await fnOrdenes().leerInfoPorId(+req.params.idOrd);
-            if(orden.length === 0) {
-                return errorResponse(400, "middlewareError", "La orden que se intenta actualizar no existe. ", res);
+            if (orden.length === 0) {
+                return error.errorResponse(400, "middlewareError", "La orden que se intenta actualizar no existe. ", res);
             }
             next();
         } catch (e) {
-            return errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación de la orden -> " + e.message, res);
+            return error.errorResponse(500, "middlewareError", "Ha ocurrido un error en la validación de la orden -> " + e.message, res);
         }
     }
 }

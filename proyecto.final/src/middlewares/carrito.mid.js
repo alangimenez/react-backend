@@ -5,6 +5,7 @@ const { fnCarritos, fnProductos } = require('../persistencia/factory');
 class CartMid {
     constructor() { }
 
+    // valida que exista un usuario logueado
     validarSesion(req, res, next) {
         try {
             if (!req.session.user) {
@@ -16,6 +17,7 @@ class CartMid {
         }
     }
 
+    // validar que el nombre del usuario sea ingresado y que sea en formato string
     validarUser(req, res, next) {
         try {
             if (!req.body.name) {
@@ -30,6 +32,7 @@ class CartMid {
         }
     }
 
+    // valida que el carrito exista
     async validarCarrito(req, res, next) {
         try {
             const carrito = await fnCarritos().leerInfoPorId(req.session.user.cart);
@@ -42,6 +45,10 @@ class CartMid {
         }
     }
 
+    // valida que el producto que se busca en un carrito
+    // 1) sea en formato numero
+    // 2) exista en el carrito
+    // 3) a su vez, se valida que el carrito no este vacio
     async validarProductoEnCarrito(req, res, next) {
         try {
             if (isNaN(req.params.idProd)) {
@@ -59,6 +66,7 @@ class CartMid {
         }
     }
 
+    // valida que la cantidad que se desea modificar, sea un numero mayor a 0
     validarUnidadesProductos(req, res, next) {
         try {
             if (isNaN(req.body.cantidad) || req.body.cantidad < 1) {
@@ -70,6 +78,7 @@ class CartMid {
         }
     }
 
+    // validar que el carrito no este vacio para hacer una compra
     async validarCarritoConProductos(req, res, next) {
         try {
             const carritoSeleccionado = await fnCarritos().leerInfoPorId(req.session.user.cart);
@@ -82,10 +91,10 @@ class CartMid {
         }
     }
 
+    // valida que exista stock suficiente antes de agregar mas unidades a un carrito de un producto
     async validarStockActual(req, res, next) {
         try {
             const producto = await fnProductos().leerInfoPorId(+req.params.idProd);
-            console.log(producto[0]);
             if (producto[0].stock < +req.body.cantidad) {
                 return error.errorResponse(400, "middlewareError", `No existe stock suficiente para cubrir este eventual pedido. Stock disponible: ${producto[0].stock}. Stock que solicitaría: ${+req.body.cantidad}`, res);
             }
@@ -95,6 +104,7 @@ class CartMid {
         }
     }
 
+    // valida que exista al menos un dato de perfil para actualizar, y que si es la dirección, sea en formato string
     validarDatosActualizacion(req, res, next) {
         try {
             if (!req.body.direccion && !req.body.telefono) {
