@@ -22,6 +22,23 @@ Carrito
 En este modulo, se podrá obtener el carrito completo de un usuario, agregar productos al carrito, listar los productos del carrito, eliminar productos del carrito, modificar la cantidad de un producto en carrito, vaciar el carrito y confirmar la compra.
 Para saber a que carrito se debe acceder, se utiliza la información almacenada en req.session.user, sea que el usuario se haya logueado o registrado previamente (no podrá acceder si no tiene sesión activa en la aplicación). 
 
+Estructura del proyecto
+El proyecto está trabajado en capas, partiendo de un archivo server.js principal que es quien levanta la aplicación, y de ahi se pasa al resto de capas (router, controller, repository y DAO/CRUD). Cada capa posee su propia responsabilidad:
+-Router: se encarga de setear las diferentes rutas de la aplicación, validar la petición vía middlewares y llamar a la capa controller.
+-Controller: se encarga de llamar a la función especifica de la capa repository, pasandole unicamente los datos necesarios para su funcionamiento, y una vez obtenida la información, la devuelve, ya sea en formato json o renderizado.
+-Repository: se encarga de ejecutar lógica de la aplicación, convertir los datos de Model a DTO y viceversa, y persistir la información en la base de datos vía conexión a la capa DAO/CRUD.
+-DAO/CRUD: se encarga de conectar directamente a la base para persistir la información recibida de la capa repository. 
+
+A su vez, existen otros utilitarios/auxiliares que son de gran utilidad en la aplicación para su correcto funcionamiento, o para facilitar el código:
+-Middlewares: estan usados para validar la información recibida en las request, de manera de evitar que al controlador llegue una petición que pueda generar un error. Cada validación otorga un mensaje descriptivo del error si la misma no es superada.
+-Converter: esta clase contiene metodos que sirven para convertir la información de Model a DTO y viceversa. Es usada en la capa Repository.
+-Error: esta clase es pequeña pero sirve basicamente para manejar los diferentes errores que la aplicación puede arrojar (sea por errores 5xx o 4xx), teniendo en cuenta el modo en que se ejecuta la aplicación ("api" o "integrado").
+
+Por último, existen diferentes carpetas adicionales que no pertenecen a los 2 puntos anteriores, pero que, sin embargo, sirven al funcionamiento de la aplicación, como:
+-Config: contiene la configuración de aquellas librerias que lo necesitan (como multer, o log4js, entre otros)
+-Models: contiene los Schemas de Mongo para persistir en base de datos.
+-Views: contiene las plantillas para que funcione el modo "integrado" de la aplicación (que renderizará un frontend muy básico).
+
 Para levantar la aplicación localmente, se debe setear el archivo .env para un correcto funcionamiento. En la carpeta proyecto.final, existe un archivo llamado "example.env.js" que indica cuales son los parametros necesarios para que funcione correctamente, existiendo un comentario de cada variable a setear para mayor ayuda.
 
 Hago mencion especial de la variable de entorno "MODE", para profundizar acerca de la misma. Esta variable indica el modo de funcionamiento de la aplicación. Permite 2 valores posibles: api o integrado. 
