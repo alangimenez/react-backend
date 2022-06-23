@@ -4473,3 +4473,6 @@
 [2022-06-22T20:27:05.244] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'length' of undefined
 [2022-06-23T07:09:50.989] [ERROR] error - ruta '/favicon.ico' metodo GET no implementado
 [2022-06-23T07:10:03.657] [ERROR] error - Invalid password
+[2022-06-23T19:38:40.656] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-23T19:43:35.278] [ERROR] error - Ocurrio un error en subirAvatarPerfil Repository -> req is not defined
+[2022-06-23T19:43:35.282] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en subirAvatarPerfil Repository -> req is not defined

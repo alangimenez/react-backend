@@ -1,140 +1,83 @@
-const { crearCarrito } = require('./controller.carrito')
 const { CartController } = require('./controller.carrito');
 const cart = new CartController();
-const { enviarMailRegistro, enviarMail } = require('../utils/nodemailer');
+const { enviarMail } = require('../utils/nodemailer');
 path = require('path')
-
-const { DaoMongoUsuario } = require('../persistencia/daos/usuario/daoMongoUsuario');
-const UsuarioMongo = new DaoMongoUsuario();
 const { ErrorHandler } = require('../error/error');
 const error = new ErrorHandler();
-
 const { Repository } = require('../persistencia/repository/repositoryMongo');
 const repository = new Repository();
 
 class UserController {
     constructor() { }
 
-    renderizarVista = (req, res) => {
-        try {
-            if (req.user) {
-                res.render('../views/table', { mensaje: req.user.id });
-            }
-            else {
-                res.redirect('/api/usuario/login')
-            }
-        }
-        catch (e) {
-            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
-        }
-    }
-
+    // registra un nuevo usuario
+    // 1) crea el carrito del usuario y lo asocia al mismo
+    // 2) envia el email de registro
+    // 3) devuelve al usuario registrado
     registro = async (req, res) => {
         try {
             cart.crearCarrito(req, res);
-            enviarMail(process.env.USER_NODEMAILER, 
-                `Nuevo registro`, 
+            enviarMail(process.env.USER_NODEMAILER,
+                `Nuevo registro`,
                 `Se registro el usuario ${req.body.username}. Nombre: ${req.body.firstname}. Direccion: ${req.body.direction}. 
                 Edad: ${req.body.age}. Telefono: ${req.body.telephone}`)
             delete req.body.password;
-
-            // response con JSON
             res.status(201).json(req.body);
-
-            // response con template
-            // res.redirect('/api/productos');    
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
+    // desloguea al usuario y destruye la sesión
     logout = (req, res) => {
         try {
-            if (req.session.user) {
-                const user = req.user.id;
-                req.session.destroy(() => {
-                    res.clearCookie('my-session');
-                    // respuesta con JSON
-                    res.status(200).json({ message: `El usuario se ha deslogueado correctamente` })
-
-
-                    // respuesta con template
-                    // res.render('../views/logout', { usuario: user });
-                })
-                
-            } else {
-                res.status(400).json({ message: `No existe usuario logueado para desloguearse` })
-            }
+            req.session.destroy(() => {
+                res.clearCookie('my-session');
+                res.status(200).json({ message: `El usuario se ha deslogueado correctamente` })
+            })
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
+    // obtiene datos del perfil del usuario
     perfil = (req, res) => {
         try {
-            // response con JSON
-            if (req.user) {
-                res.status(200).json({
-                    user: req.user.id,
-                    nombre: req.user.nombre,
-                    direccion: req.user.direccion,
-                    edad: req.user.edad,
-                    telefono: req.user.telefono,
-                    foto: req.user.foto,
-                })
-            } else {
-                res.status(401).json({ error: `No existe usuario logueado` });
-            }
-
-            // response con template
-            /*res.render('../views/perfil', {
-                isActive: req.user.id,
+            res.status(200).json({
                 user: req.user.id,
-                boton: "Cerrar sesión",
                 nombre: req.user.nombre,
                 direccion: req.user.direccion,
                 edad: req.user.edad,
                 telefono: req.user.telefono,
                 foto: req.user.foto,
-            })*/
+            })
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
+    // subir un avatar al perfil y guardarla en la carpeta public con nombre unico
     avatar = async (req, res) => {
         try {
             const file = req.file;
             if (!file) {
-                // const error = new Error('Debes cargar un archivo');
-                // error.httpStatusCode = 400;
-                // return next(error);
-                return res.status(400).json({ error: `No hay un archivo cargado` });
+                return error.errorResponse(400, "controllerError", `Por favor, debe cargar un archivo`);
             }
-            const usuario = {
-                id: req.user.id,
-                foto: path.join(`/${file.filename}`)
-            }
-            await UsuarioMongo.actualizarAvatarUsuario(usuario);
-
-            // response con json
-            res.status(201).json(usuario);
-
-            // response con template
-            // res.redirect(`${req.user.id}/mi-perfil`)
+            res.status(201).json(await repository.subirAvatarPerfil(req.file, req.session.user.id, res));
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
 
     }
 
+    // loguearse y obtener los datos de perfil
     login = (req, res) => {
         try {
             const user = {
-                nombre: req.user.nombre,
-                direccion: req.user.direccion,
-                edad: req.user.edad,
-                telefono: req.user.telefono
+                nombre: req.session.user.nombre,
+                direccion: req.session.user.direccion,
+                edad: req.session.user.edad,
+                telefono: req.session.user.telefono
             }
             res.status(200).json(user);
         } catch (e) {
@@ -142,43 +85,39 @@ class UserController {
         }
     }
 
+    // endpoint para renderizar error de registro
     registroError = (req, res) => {
         try {
-            // response con JSON
             res.status(400).json({ error: req.session.error });
-
-            // response con template
-            // res.render('registroError', { error: req.session.error })
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
+    // endpoint para renderizar error de login
     loginError = (req, res) => {
         try {
-            // response con JSON
             res.status(400).json({ error: req.session.error });
-
-            // response con template
-            // res.render('loginError', { error: req.session.error })
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
-    async actualizarPerfil (req, res) {
+    // endpoint para actualizar datos de perfil (telefono y dirección)
+    async actualizarPerfil(req, res) {
         try {
             res.status(201).json(await repository.actualizarDatosPerfil(req, res))
         } catch (e) {
-            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res); 
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
-    async cambiarPassword (req, res) {
+    // endpoint para cambiar la password
+    async cambiarPassword(req, res) {
         try {
-            res.status(201).json(await repository.cambiarContrasena(req.session.user.id ,req.body.newPass))
+            res.status(201).json(await repository.cambiarContrasena(req.session.user.id, req.body.newPass))
         } catch (e) {
-            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res); 
+            return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 }

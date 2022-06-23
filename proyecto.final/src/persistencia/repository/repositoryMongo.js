@@ -282,6 +282,20 @@ class Repository {
             throw new Error(`Ocurrio un error en modifyCantProdEnCart Repository -> ` + e.message);
         }
     }
+
+    async subirAvatarPerfil (file, user) {
+        try {
+            const usuario = {
+                id: user,
+                foto: path.join(`/${file.filename}`)
+            }
+            await fnUsuarios().actualizarAvatarUsuario(usuario);
+            return usuario;
+        } catch (e) {
+            errorLogger.error(`Ocurrio un error en subirAvatarPerfil Repository -> ` + e.message);
+            throw new Error(`Ocurrio un error en subirAvatarPerfil Repository -> ` + e.message);
+        }
+    }
 }
 
 
