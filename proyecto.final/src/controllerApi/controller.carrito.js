@@ -1,5 +1,5 @@
-const { fnProductos, fnCarritos } = require('../persistencia/factory');
-const { enviarMailPedido, enviarMail } = require('../utils/nodemailer');
+const { fnCarritos } = require('../persistencia/factory');
+const { enviarMail } = require('../utils/nodemailer');
 const { whatsapp, mensajeTexto } = require('../utils/twilio');
 const { ErrorHandler } = require('../error/error');
 const error = new ErrorHandler();
@@ -67,28 +67,33 @@ class CartController {
         }
     }
 
+    // realiza el proceso de compra
+    // 1) obtiene la información del carrito y pide al controlador Ordenes que genere la orden
+    // 2) una vez generada la orden, vacia el carrito y lo pone a cero (en total)
+    // 3) envia un mail de confirmación de la compra
+    // 4) envia un whatsapp de confirmación de la compra
+    // 5) devuelve la información de la orden generada
     async confirmarCompra(req, res) {
         try {
             let carrito = await fnCarritos().leerInfoPorId(req.session.user.cart);
             carrito = carrito[0];
+            const orden = await orderController.crearOrden(req, carrito.productos, carrito.total);
+            let resultado = await this.limpiarCarrito(req);
             await enviarMail(process.env.USER_NODEMAILER,
                 `Nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`,
                 await this.listadoPedido(carrito.productos))
-
             /*             await whatsapp(req.session.user.telefono,
-                            `Ha recibido un nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`);
-                        await mensajeTexto(req.session.user.telefono,
-                            `Su pedido ha sido recibido, y se encuentra en proceso. Muchas gracias ${req.session.user.nombre}`);
-             */
-
-            let resultado = await this.limpiarCarrito(req);
-            const orden = await orderController.crearOrden(req, carrito.productos, carrito.total);
+                        `Ha recibido un nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`);
+                    await mensajeTexto(req.session.user.telefono,
+                        `Su pedido ha sido recibido, y se encuentra en proceso. Muchas gracias ${req.session.user.nombre}`);
+         */
             res.status(201).json(orden);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
+    // vacia el carrito (porque el usuario lo solicita o como parte del proceso de confirmación de compra)
     async vaciarCarrito(req, res) {
         try {
             const carritoVacio = await this.limpiarCarrito(req);
@@ -98,26 +103,18 @@ class CartController {
         }
     }
 
+    // modifica la cantidad de unidades que se tienen agregados de un producto a un carrito
     async modificarCantidadDeProdEnCarrito(req, res) {
         try {
-            const { idProd } = req.params;
-            const { cantidad } = req.body;
-            const listadoCarritos = await fnCarritos().leerInfo();
-            const carritoSeleccionado = listadoCarritos.find(e => e.id === req.session.user.cart);
-            const carritoSeleccionadoArray = [carritoSeleccionado];
-            for (let i = 0; i < carritoSeleccionadoArray[0].productos.length; i++) {
-                if (carritoSeleccionadoArray[0].productos[i].id === +idProd) {
-                    carritoSeleccionadoArray[0].productos[i].cantidad = cantidad;
-                }
-            }
-            let listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(carritoSeleccionadoArray, carritoSeleccionadoArray[0].productos);
-            listadoActualizado.total = await this.calculoTotalCarrito(carritoSeleccionadoArray[0]);
-            res.status(201).json(listadoActualizado);
+            res.status(201).json(await repository.modifyCantProdEnCart(req.params.idProd, req.body.cantidad, req.session.user.cart))
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
     }
 
+    // metodos auxiliares //
+
+    // genera un string con el pedido de productos para enviar mail al confirmar la compra
     async listadoPedido(lista) {
         let pedido = "";
         for (let i = 0; i < lista.length; i++) {
@@ -126,11 +123,13 @@ class CartController {
         return pedido;
     }
 
+    // vacia el carrito
     async limpiarCarrito(req) {
         await fnCarritos().vaciarCarrito(req.session.user.cart);
         return await repository.obtenerCarrito(req.session.user.cart);
     }
 
+    // calcula el nuevo total del carrito al agregar productos o modificar cantidades de los mismos
     async calculoTotalCarrito(carrito) {
         let total = 0;
         if (!carrito.productos) {

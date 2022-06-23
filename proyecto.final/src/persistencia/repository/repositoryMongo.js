@@ -147,7 +147,7 @@ class Repository {
         }
     }
 
-    
+
     subirNuevoProducto = async (producto) => {
         try {
             let idNuevo = 0;
@@ -251,17 +251,35 @@ class Repository {
         }
     }
 
-    async cambiarContrasena (usuario, contrasena) {
+    async cambiarContrasena(usuario, contrasena) {
         try {
             const salt = () => bcrypt.genSaltSync(10);
             const encrypt = (password) => bcrypt.hashSync(password, salt());
-            const usuarioActualizado = await fnUsuarios().actualizarPassword(usuario ,encrypt(contrasena));
+            const usuarioActualizado = await fnUsuarios().actualizarPassword(usuario, encrypt(contrasena));
             const usuarioDTOresponse = converter.converterUsuarioDTOResponse(usuarioActualizado[0]);
             return usuarioDTOresponse;
         } catch (e) {
-            // errorLogger.error(`Ocurrio un error en cambiarContraseña Repository -> ` + e.message);
-            // throw new Error(`Ocurrio un error en cambiarContraseña Repository -> ` + e.message);
-            console.log(e);
+            errorLogger.error(`Ocurrio un error en cambiarContraseña Repository -> ` + e.message);
+            throw new Error(`Ocurrio un error en cambiarContraseña Repository -> ` + e.message);
+        }
+    }
+
+    async modifyCantProdEnCart(idProd, cantidad, idCart) {
+        try {
+            const listadoCarritos = await fnCarritos().leerInfo();
+            const carritoSeleccionado = listadoCarritos.find(e => e.id === idCart);
+            const carritoSeleccionadoArray = [carritoSeleccionado];
+            for (let i = 0; i < carritoSeleccionadoArray[0].productos.length; i++) {
+                if (carritoSeleccionadoArray[0].productos[i].id === +idProd) {
+                    carritoSeleccionadoArray[0].productos[i].cantidad = cantidad;
+                }
+            }
+            let listadoActualizado = await fnCarritos().actualizarCantidadDeProductos(carritoSeleccionadoArray, carritoSeleccionadoArray[0].productos);
+            listadoActualizado.total = await this.calculoTotalCarrito(carritoSeleccionadoArray[0]);
+            return converter.converterCarritoDTOresponse(listadoActualizado);
+        } catch (e) {
+            errorLogger.error(`Ocurrio un error en modifyCantProdEnCart Repository -> ` + e.message);
+            throw new Error(`Ocurrio un error en modifyCantProdEnCart Repository -> ` + e.message);
         }
     }
 }

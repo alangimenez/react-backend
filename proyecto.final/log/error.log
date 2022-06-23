@@ -4471,3 +4471,5 @@
 [2022-06-22T20:26:49.092] [ERROR] error - El controlador ha tenido un error -> Cannot read property 'cart' of undefined
 [2022-06-22T20:27:05.238] [ERROR] error - Ocurrio un error en obtenerCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'length' of undefined
 [2022-06-22T20:27:05.244] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en obtenerCarrito Repository -> Hubo un error en converterCarritoDTOresponse Cannot read property 'length' of undefined
+[2022-06-23T07:09:50.989] [ERROR] error - ruta '/favicon.ico' metodo GET no implementado
+[2022-06-23T07:10:03.657] [ERROR] error - Invalid password
