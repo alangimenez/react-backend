@@ -1,7 +1,6 @@
 const { Repository } = require('../persistencia/repository/repositoryMongo');
 const repository = new Repository();
 const { ErrorHandler } = require('../error/error');
-const { fnProductos } = require('../persistencia/factory');
 const error = new ErrorHandler();
 
 class ProductController {
@@ -70,6 +69,7 @@ class ProductController {
         }
     }
 
+    // obtiene los productos filtrado por categoria para renderizarlos
     async obtenerProductoPorCategoria(req, res) {
         try {
             const productos = await repository.traerProductosPorCategoria(req.params.cat);

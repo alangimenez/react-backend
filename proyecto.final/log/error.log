@@ -4476,3 +4476,5 @@
 [2022-06-23T19:38:40.656] [ERROR] error - Por favor, primero debe loguearse para esta petición
 [2022-06-23T19:43:35.278] [ERROR] error - Ocurrio un error en subirAvatarPerfil Repository -> req is not defined
 [2022-06-23T19:43:35.282] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en subirAvatarPerfil Repository -> req is not defined
+[2022-06-25T09:33:22.545] [ERROR] error - ruta '/favicon.ico' metodo GET no implementado
+[2022-06-25T09:54:08.154] [ERROR] error - Por favor, primero debe loguearse para esta petición

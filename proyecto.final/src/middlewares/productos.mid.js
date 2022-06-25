@@ -1,4 +1,3 @@
-const { errorResponse } = require('../error/error.response');
 const { ErrorHandler } = require('../error/error');
 const error = new ErrorHandler();
 const { fnProductos } = require('../persistencia/factory');

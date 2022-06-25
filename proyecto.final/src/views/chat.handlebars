@@ -1,7 +1,16 @@
-<div>
-    <h1>Primer prueba de sockets</h1>
+<div class="container">
+    {{!-- <h1>Primer prueba de sockets</h1>
     <label for="textoInput">Ingrese un texto</label>
     <input id="textoInput">
-    <button type="submit" onclick=boton()>Enviar</button>
+    <button type="submit" onclick=boton()>Enviar</button> --}}
+
+    <h1>Chat de soporte</h1>
+    <h3>Usuario logueado: <em id="user">{{usuario}}</em></h3>
+    <div class="form-group">
+        <label for="textoInput">Mensaje a enviar</label>
+        <input class="form-control" id="textoInput" aria-describedby="mensajeHelp" placeholder="Ingrese su mensaje">
+    </div>
+    <button type="submit" class="btn btn-primary" onclick=boton()>Enviar</button>
+
     <p id="destinoTexto"></p>
 </div>

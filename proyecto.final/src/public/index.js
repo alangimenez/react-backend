@@ -1,9 +1,6 @@
 const socket = io();
 
-console.log("Hola alan")
-
 socket.on('mensaje', (dato) => {
-    console.log(dato);
     socket.emit('recepcion', 'El mensaje fue recibido con éxito')
 })
 
@@ -15,7 +12,7 @@ socket.on('caracterRecibido', (data) => {
     let mensaje = "";
     if (data.length > 0) {
         data.map(e => {
-            mensaje += `${e.user}: ${e.mensaje} <br>`
+            mensaje += `<strong>${e.user}</strong>: ${e.mensaje} <br>`
         });
     } else {
         console.log('algo');
@@ -25,6 +22,11 @@ socket.on('caracterRecibido', (data) => {
 
 function boton() {
     const textoIngresado = document.getElementById('textoInput').value;
-    console.log(textoIngresado);
-    socket.emit('botones', textoIngresado)
+    const usuarioLogueado = document.getElementById('user').innerHTML;
+    const body = {
+        mensaje: textoIngresado,
+        usuario: usuarioLogueado
+    }
+    document.getElementById('textoInput').value = "";
+    socket.emit('botones', body);
 }

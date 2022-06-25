@@ -12,7 +12,7 @@ const os = require('os');
 // chat
 const { Server: HttpServer } = require('http');
 const httpServer = new HttpServer(app);
-require('../src/routerIntegrado/chat.router')(httpServer);
+require('../src/utils/chat')(httpServer);
 
 // SERVER CON CLUSTER Y FORK
 if (config.MODE === "CLUSTER") {
@@ -87,11 +87,12 @@ if (process.env.MODE === "integrado") {
     const routerIntegUsuario = require('../src/routerIntegrado/usuario.router');
     const routerIntegCarrito = require('../src/routerIntegrado/carrito.router');
     const routerIntegOrdenes = require('../src/routerIntegrado/ordenes.router');
+    const routerIntegChat = require('../src/routerIntegrado/chat.router');
     app.use('/api/productos', routerIntegProductos);
     app.use('/api/carrito', routerIntegCarrito);
     app.use('/api/usuario', routerIntegUsuario);
     app.use('/api/ordenes', routerIntegOrdenes);
-    app.get('/api/chat', (req, res) => { res.render('../views/chat') })
+    app.use('/api/chat', routerIntegChat);
 }
 if (process.env.MODE != "api" && process.env.MODE != "integrado") {
     app.use('*', appMidd.errorModo);
