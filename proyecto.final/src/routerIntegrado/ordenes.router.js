@@ -16,7 +16,7 @@ const cartMid = new CartMid();
 
 // cambiar estado de las ordenes (entre "En progreso", "En camino", "Entregado")
 router.post("/:idOrd/estado",
-    [cartMid.validarSesion, prodMid.validarAdmin, orderMid.validarStatus],
+    [cartMid.validarSesion, prodMid.validarAdmin, orderMid.validarOrder, orderMid.validarStatus],
     async (req, res) => order.cambiarEstado(req, res))
 
 // obtener el listado de pedidos (el mismo endpoint es para admin/user)

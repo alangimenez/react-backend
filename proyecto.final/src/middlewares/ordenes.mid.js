@@ -56,11 +56,11 @@ class OrderMid {
     async validarOrder(req, res, next) {
         try {
             if (isNaN(+req.params.idOrd)) {
-                return error.errorResponse(400, "middlewareError", "Por favor, introduzca una orden en formato number", res);
+                return error.errorResponse(400, "middlewareError", "Por favor, introduzca una orden en formato number", res, "json");
             }
             const orden = await fnOrdenes().leerInfoPorId(+req.params.idOrd);
             if (orden.length === 0) {
-                return error.errorResponse(400, "middlewareError", "La orden que se intenta actualizar no existe. ", res);
+                return error.errorResponse(400, "middlewareError", "La orden que se intenta actualizar no existe. ", res,"json");
             }
             next();
         } catch (e) {

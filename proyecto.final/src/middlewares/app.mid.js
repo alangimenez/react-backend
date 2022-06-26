@@ -12,12 +12,12 @@ class AppMidd {
 
     // error por si esta mal seteado el modo de funcionamiento de la aplicación
     errorModo(req, res, next) {
-        return error.errorResponse(404, "middlewareError", `El modo de la aplicación es incorrecto. Solo funcionará en modo "api" o "integrado"`, res);
+        return error.errorResponse(404, "middlewareError", `El modo de la aplicación es incorrecto. Solo funcionará en modo "api" o "integrado"`, res, "json");
     }
 
     // error por si esta mal seteado el modo de inicio de la aplicación
     errorStartModo(req, res, next) {
-        return error.errorResponse(404, "middlewareError", `El modo de inicio de la aplicación es incorrecto. Solo funcionará en modo "FORK" o "CLUSTER"`, res);
+        return error.errorResponse(404, "middlewareError", `El modo de inicio de la aplicación es incorrecto. Solo funcionará en modo "FORK" o "CLUSTER"`, res, "json");
     }
 }
 

@@ -33,7 +33,7 @@ if (process.env.START_MODE === "CLUSTER") {
             logger.info(`Servidor corriendo en ${PORT}`)
         })
     }
-} 
+}
 if (process.env.START_MODE === 'FORK') {
     const server = httpServer.listen(PORT, () => {
         logger.info(`Servidor escuchando en el puerto ${PORT} en modo ${process.env.START_MODE} y funcionalidad "${process.env.MODE}"`);
@@ -90,7 +90,9 @@ if (process.env.MODE === "api" && (process.env.START_MODE === 'CLUSTER' || proce
     app.use('/api/carrito', routerApiCarrito);
     app.use('/api/usuario', routerApiUsuario);
     app.use('/api/ordenes', routerApiOrdenes);
-} 
+    app.get('/', (req, res) => { res.redirect('/api/productos') })
+    app.use('*', appMidd.validarRuta);
+}
 if (process.env.MODE === "integrado" && (process.env.START_MODE === 'CLUSTER' || process.env.START_MODE === 'FORK')) {
     const routerIntegProductos = require('../src/routerIntegrado/productos.router');
     const routerIntegUsuario = require('../src/routerIntegrado/usuario.router');
@@ -102,6 +104,8 @@ if (process.env.MODE === "integrado" && (process.env.START_MODE === 'CLUSTER' ||
     app.use('/api/usuario', routerIntegUsuario);
     app.use('/api/ordenes', routerIntegOrdenes);
     app.use('/api/chat', routerIntegChat);
+    app.get('/', (req, res) => { res.redirect('/api/productos') })
+    app.use('*', appMidd.validarRuta);
 }
 if (process.env.MODE != "api" && process.env.MODE != "integrado" && (process.env.START_MODE === 'CLUSTER' || process.env.START_MODE === 'FORK')) {
     app.use('*', appMidd.errorModo);
@@ -109,7 +113,3 @@ if (process.env.MODE != "api" && process.env.MODE != "integrado" && (process.env
 if (process.env.START_MODE != 'CLUSTER' || process.env.START_MODE != 'FORK') {
     app.use('*', appMidd.errorStartModo);
 }
-
-app.get('/', (req, res) => { res.redirect('/api/productos') })
-app.use('*', appMidd.validarRuta);
-

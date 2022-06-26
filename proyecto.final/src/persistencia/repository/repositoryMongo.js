@@ -293,7 +293,7 @@ class Repository {
         try {
             const usuario = {
                 id: user,
-                foto: path.join(`/${file.filename}`)
+                foto: path.join(`/avatar/${file.filename}`)
             }
             await fnUsuarios().actualizarAvatarUsuario(usuario);
             return usuario;

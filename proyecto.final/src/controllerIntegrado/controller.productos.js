@@ -35,7 +35,7 @@ class ProductController {
                     res.render('../views/productoIndividual', { objeto: producto, isActive: req.session.user.id, boton: "Cerrar sesión", user: req.session.user.id, title: producto.nombre });
                 }
             } else {
-                res.render('../views/productoIndividual', { objeto: producto, boton: "Iniciar sesión", user: "na", title: producto.nombre });
+                res.render('../views/productoIndividual', { objeto: producto, boton: "Iniciar sesión", login: 'login', title: producto.nombre });
             }
         } catch (e) {
             return error.errorResponse("controllerError", `El controlador "Producto" ha tenido un error -> ` + e.message, res);

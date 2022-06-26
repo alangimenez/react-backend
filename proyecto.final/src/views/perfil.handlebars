@@ -168,14 +168,18 @@
     function contrasena() {
         document.getElementById("nuevaPass").innerHTML = "Aguarde...";
         document.getElementById("nuevaPass").disabled = true;
-        const oldPass = document.getElementById("oldPass").value
-        const newPass = document.getElementById("newPass").value
-        const repeatNewPass = document.getElementById("repeatNewPass").value
-
+        const oldPass = document.getElementById("oldPass").value;
+        const newPass = document.getElementById("newPass").value;
+        const repeatNewPass = document.getElementById("repeatNewPass").value;
+        if (!oldPass || !newPass || !repeatNewPass) {
+            document.getElementById("nuevaPass").innerHTML = "Actualizar contraseña";
+            document.getElementById("nuevaPass").disabled = false;
+            return alert("Debe completar los 3 campos");
+        }
         const password = {
             oldPass: oldPass,
             newPass: newPass,
-            repeatNewPass: newPass
+            repeatNewPass: repeatNewPass
         }
         fetch(`${ruta}/api/usuario/password`, {
             method: 'POST',
@@ -186,12 +190,18 @@
         }).then(data =>
             data.json()
         ).then(response => {
-            alert(response.message);
-            document.getElementById("nuevaPass").innerHTML = "Actualizar contraseña";
-            document.getElementById("nuevaPass").disabled = false;
-            document.getElementById("oldPass").value = "";
-            document.getElementById("newPass").value = "";
-            document.getElementById("repeatNewPass").value = "";
+            if (response.errorType) {
+                document.getElementById("nuevaPass").innerHTML = "Actualizar contraseña";
+                document.getElementById("nuevaPass").disabled = false;
+                alert(response.errorMessage);
+            } else {
+                alert(response.message);
+                document.getElementById("nuevaPass").innerHTML = "Actualizar contraseña";
+                document.getElementById("nuevaPass").disabled = false;
+                document.getElementById("oldPass").value = "";
+                document.getElementById("newPass").value = "";
+                document.getElementById("repeatNewPass").value = "";
+            }
         }).catch(error => console.error('Error:', error))
     }
 </script>

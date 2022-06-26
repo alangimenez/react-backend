@@ -7,7 +7,9 @@
     <a href="/api/chat/" class="btn btn-dark">Chat</a>
     <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
     {{/if}}
-    <a href="/api/usuario/logout" class="btn btn-dark" id="boton-login">{{boton}}</a>
+    {{#if login }}
+    <a href="/api/usuario/{{login}}" class="btn btn-dark">{{boton}}</a>
+    {{/if}}
 </div>
 <div class="card" style="flex-direction: unset; width: 18rem;">
     <img class="card-img-top" src="{{objeto.foto}}" alt="Card image cap">

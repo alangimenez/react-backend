@@ -61,7 +61,7 @@ class UserMid {
             const user = await fnUsuarios().leerInfoPorId(req.session.user.id);
             const isValidPassword = (user, password) => bcrypt.compareSync(password, user);
             if (!isValidPassword(user[0].password, req.body.oldPass)) {
-                return error.errorResponse(400, "middlewareError", "La vieja contraseña ingresada no coincide, por favor, reintente.", res);
+                return error.errorResponse(400, "middlewareError", "La vieja contraseña ingresada no coincide, por favor, reintente.", res, "json");
             } 
             next();
         } catch (e) {
@@ -73,7 +73,7 @@ class UserMid {
     validarNuevasPass(req, res, next) {
         try {
             if (req.body.newPass != req.body.repeatNewPass) {
-                return error.errorResponse(400, "middlewareError", "Las nuevas contraseñas no coinciden, por favor, reintente.", res);
+                return error.errorResponse(400, "middlewareError", "Las nuevas contraseñas no coinciden, por favor, reintente.", res, "json");
             }
             next();
         } catch (e) {
