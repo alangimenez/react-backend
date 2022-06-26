@@ -4478,3 +4478,234 @@
 [2022-06-23T19:43:35.282] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en subirAvatarPerfil Repository -> req is not defined
 [2022-06-25T09:33:22.545] [ERROR] error - ruta '/favicon.ico' metodo GET no implementado
 [2022-06-25T09:54:08.154] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:44:07.119] [ERROR] error - Por favor, debe ingresar su usuario y contraseña para poder loguearse.
+[2022-06-25T10:44:36.251] [ERROR] error - Invalid password
+[2022-06-25T10:44:59.057] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:45:14.253] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:45:19.117] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:45:26.930] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:45:33.375] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:45:37.981] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:45:42.444] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:03.476] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:07.557] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:11.182] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:16.859] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:22.324] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:26.295] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:30.778] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:35.260] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:42.562] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:46.137] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:46:49.757] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:47:48.338] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-25T10:47:53.030] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-25T10:48:03.042] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-25T10:48:06.773] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-25T10:48:10.378] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-25T10:48:34.517] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T10:50:12.082] [ERROR] error - Por favor, debe cargar un archivo
+[2022-06-25T10:50:12.083] [ERROR] error - Ocurrio un error en el ErrorHandler -> Por favor, debe cargar un archivo
+[2022-06-25T10:50:12.084] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en el ErrorHandler -> Por favor, debe cargar un archivo
+[2022-06-25T10:52:08.324] [ERROR] error - Por favor, debe cargar un archivo
+[2022-06-25T10:53:57.983] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T10:55:24.855] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T10:57:03.460] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T10:57:29.675] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T10:57:41.101] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T10:59:18.627] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T10:59:38.314] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T11:01:14.267] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T11:03:05.596] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T11:03:19.312] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T11:03:28.641] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T11:03:45.158] [ERROR] error - La vieja contraseña ingresada no coincide, por favor, reintente.
+[2022-06-25T11:03:57.578] [ERROR] error - Por favor, complete los 3 campos para poder cambiar su contraseña.
+[2022-06-25T11:04:20.039] [ERROR] error - Las nuevas contraseñas no coinciden, por favor, reintente.
+[2022-06-25T11:04:32.523] [ERROR] error - ruta '/api/usuario/password/sdkljf' metodo POST no implementado
+[2022-06-25T11:04:41.830] [ERROR] error - La vieja contraseña ingresada no coincide, por favor, reintente.
+[2022-06-25T11:05:09.261] [ERROR] error - El producto buscado no se encuentra
+[2022-06-25T11:05:17.803] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-25T11:05:28.443] [ERROR] error - Por favor, introduzca una categoria valida. Solo son posibles las categorias: comedia, accion, drama, 
+[2022-06-25T11:05:40.170] [ERROR] error - Por favor, introduzca una categoria valida. Solo son posibles las categorias: comedia, accion, drama, 
+[2022-06-25T11:06:18.387] [ERROR] error - El usuario no posee permisos de administrador
+[2022-06-25T11:07:37.054] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria
+[2022-06-25T11:09:55.357] [ERROR] error - Por favor, introduzca una categoria valida. Solo son posibles las categorias: comedia, accion, drama, 
+[2022-06-25T11:10:14.816] [ERROR] error - Por favor, introduzca un stock en formato number
+[2022-06-25T11:10:49.194] [ERROR] error - El producto buscado no se encuentra
+[2022-06-25T11:10:52.548] [ERROR] error - ruta '/api/productos' metodo DELETE no implementado
+[2022-06-25T11:10:55.566] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-25T11:12:36.458] [ERROR] error - La orden que se intenta actualizar no existe. 
+[2022-06-25T11:13:02.137] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-25T11:13:08.044] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-25T11:13:13.193] [ERROR] error - Por favor, introduzca una orden en formato number
+[2022-06-25T11:13:31.622] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-25T11:13:36.902] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-25T11:25:46.709] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T11:27:16.280] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-25T11:27:21.503] [ERROR] error - El producto no se encuentra en el carrito
+[2022-06-25T11:27:38.576] [ERROR] error - El producto no se encuentra en el carrito
+[2022-06-25T11:27:42.379] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-25T11:28:08.009] [ERROR] error - No existe stock suficiente para cubrir este eventual pedido. Stock disponible: 165. Stock que solicitaría: 1500
+[2022-06-25T11:28:30.526] [ERROR] error - El carrito esta vacio
+[2022-06-25T11:28:53.037] [ERROR] error - Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero
+[2022-06-25T13:46:37.808] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T13:46:56.220] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T13:48:06.823] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T13:51:22.280] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T13:53:29.727] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T13:53:47.832] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T13:54:01.967] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T13:54:16.528] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T13:55:51.986] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T13:59:04.977] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T14:00:02.255] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T14:00:15.244] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T14:04:24.584] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T14:04:25.014] [ERROR] error - ruta '/api/usuario/mi-perfil' metodo PUT no implementado
+[2022-06-25T14:04:33.924] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T14:04:34.321] [ERROR] error - ruta '/api/usuario/mi-perfil' metodo PUT no implementado
+[2022-06-25T14:05:09.115] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:05:23.971] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:06:21.473] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:06:49.344] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:10:22.662] [ERROR] error - Invalid password
+[2022-06-25T14:10:46.990] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:11:15.045] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:12:14.420] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:13:22.206] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:13:59.872] [ERROR] error - Ocurrio un error en subirAvatarPerfil Repository -> Cannot read property 'filename' of undefined
+[2022-06-25T14:13:59.874] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en subirAvatarPerfil Repository -> Cannot read property 'filename' of undefined
+[2022-06-25T14:14:52.794] [ERROR] error - Ocurrio un error en subirAvatarPerfil Repository -> Cannot read property 'filename' of undefined
+[2022-06-25T14:14:52.798] [ERROR] error - El controlador ha tenido un error -> Ocurrio un error en subirAvatarPerfil Repository -> Cannot read property 'filename' of undefined
+[2022-06-25T14:15:47.097] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:16:15.164] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:17:19.099] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:19:30.052] [ERROR] error - Por favor, debe cargar un archivo.
+[2022-06-25T14:20:42.597] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T14:21:26.670] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T14:21:36.270] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T14:21:50.369] [ERROR] error - Invalid password
+[2022-06-25T14:22:53.991] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T14:22:54.879] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T14:23:09.650] [ERROR] error - Invalid password
+[2022-06-25T14:24:56.974] [ERROR] error - El controlador ha tenido un error -> user is not defined
+[2022-06-25T14:25:20.796] [ERROR] error - El controlador ha tenido un error -> user is not defined
+[2022-06-25T14:25:53.067] [ERROR] error - Invalid password
+[2022-06-25T14:26:12.591] [ERROR] error - Invalid password
+[2022-06-25T14:26:35.656] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T14:26:53.284] [ERROR] error - Assignment to constant variable.
+[2022-06-25T14:27:48.011] [ERROR] error - ruta '/api/carrito/user10@gmail.com' metodo GET no implementado
+[2022-06-25T14:29:40.209] [ERROR] error - Para realizar una compra, el carrito no debe estar vacio
+[2022-06-25T14:31:50.552] [ERROR] error - No existe stock suficiente para cubrir este eventual pedido. Stock disponible: 100. Stock que solicitaría: 200
+[2022-06-25T14:38:45.833] [ERROR] error - No existe stock suficiente para cubrir este eventual pedido. Stock disponible: 100. Stock que solicitaría: 200
+[2022-06-25T14:39:10.710] [ERROR] error - Por favor, introduzca una categoria valida. Solo son posibles las categorias: comedia, accion, drama, 
+[2022-06-25T17:58:20.720] [ERROR] error - El producto buscado no se encuentra
+[2022-06-25T18:00:06.985] [ERROR] error - El producto buscado no se encuentra
+[2022-06-25T18:00:49.429] [ERROR] error - ruta '/api/usuario/login/casdf' metodo GET no implementado
+[2022-06-25T18:02:43.172] [ERROR] error - ruta '/api/usuario/login/casdf' metodo GET no implementado
+[2022-06-25T18:02:43.174] [ERROR] error - ruta '/api/usuario/login/casdf' metodo GET no implementado
+[2022-06-25T18:03:14.599] [ERROR] error - ruta '/api/productos/alsdjf/lasdkjf/sjdf' metodo GET no implementado
+[2022-06-25T18:03:14.600] [ERROR] error - La ruta '/api/productos/alsdjf/lasdkjf/sjdf' con el metodo GET no existe.
+[2022-06-25T18:03:29.987] [ERROR] error - Por favor, introduzca una categoria valida. Solo son posibles las categorias: comedia, accion, drama, 
+[2022-06-25T18:04:08.564] [ERROR] error - Invalid password
+[2022-06-25T18:04:23.584] [ERROR] error - Invalid password
+[2022-06-25T18:04:33.103] [ERROR] error - Invalid password
+[2022-06-25T18:04:43.590] [ERROR] error - Invalid password
+[2022-06-25T18:05:02.191] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:08:02.119] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:08:16.464] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:08:39.112] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:09:48.883] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:10:22.368] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:10:38.036] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:10:38.436] [ERROR] error - ruta '/api/usuario/mi-perfil' metodo PUT no implementado
+[2022-06-25T18:10:38.438] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:11:57.500] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:12:05.908] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:12:06.275] [ERROR] error - ruta '/api/usuario/mi-perfil' metodo PUT no implementado
+[2022-06-25T18:12:06.277] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:13:29.619] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:13:29.987] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:14:16.865] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:14:17.251] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:15:30.625] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:15:31.023] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:15:54.471] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:15:54.890] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:17:16.417] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:17:16.797] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:18:46.683] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:19:08.771] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T18:19:46.208] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:20:21.258] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:20:48.672] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:21:01.653] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:21:49.914] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:22:25.246] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:23:28.494] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:23:36.116] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:23:36.502] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:24:08.208] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:24:46.427] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:25:07.982] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:26:13.020] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:26:13.406] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:26:52.763] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:26:53.148] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:28:22.485] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:28:22.866] [ERROR] error - La ruta '/api/usuario/mi-perfil' con el metodo PUT no existe.
+[2022-06-25T18:30:37.569] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:31:59.239] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:32:10.645] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:32:47.281] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:33:06.099] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:33:59.229] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:34:48.039] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:34:55.222] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:34:57.808] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:35:34.304] [ERROR] error - Por favor, ingrese su dirección o telefono para actualizar
+[2022-06-25T18:35:38.955] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T18:36:07.416] [ERROR] error - No existe stock suficiente para cubrir este eventual pedido. Stock disponible: 100. Stock que solicitaría: 200
+[2022-06-25T18:37:23.077] [ERROR] error - No existe stock suficiente para cubrir este eventual pedido. Stock disponible: 100. Stock que solicitaría: 200
+[2022-06-25T18:37:29.626] [ERROR] error - No existe stock suficiente para cubrir este eventual pedido. Stock disponible: 100. Stock que solicitaría: 200
+[2022-06-25T18:38:26.878] [ERROR] error - La ruta '/api/usuario' con el metodo GET no existe.
+[2022-06-25T18:50:22.824] [ERROR] error - La ruta '/api/carrito/user10@gmail.com' con el metodo GET no existe.
+[2022-06-25T18:50:53.182] [ERROR] error - La ruta '/api/carrito/user10@gmail.com' con el metodo GET no existe.
+[2022-06-25T18:55:50.541] [ERROR] error - La ruta '/api/productos/categoria/accion/asldkf' con el metodo GET no existe.
+[2022-06-25T18:56:04.483] [ERROR] error - Por favor, introduzca una categoria valida. Solo son posibles las categorias: comedia, accion, drama, 
+[2022-06-25T18:56:16.396] [ERROR] error - El producto buscado no se encuentra
+[2022-06-25T19:11:33.811] [ERROR] error - Hubo un error al actualizar datos de la sesión => null
+[2022-06-25T19:11:56.026] [ERROR] error - La ruta '/api/productos/%3Cscript%3Econsole.log(%22hola%22)%3C/script%3E' con el metodo GET no existe.
+[2022-06-25T21:09:44.196] [ERROR] error - Por favor, primero debe loguearse para esta petición
+[2022-06-25T21:10:24.561] [ERROR] error - Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero
+[2022-06-25T21:10:58.606] [ERROR] error - Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero
+[2022-06-25T21:21:24.531] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria, foto
+[2022-06-25T21:22:55.525] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria, foto
+[2022-06-25T21:24:47.452] [ERROR] error - Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria, foto
+[2022-06-25T21:25:58.891] [ERROR] error - Por favor, introduzca una categoria valida. Solo son posibles las categorias: comedia, accion, drama, 
+[2022-06-25T21:26:47.391] [ERROR] error - Por favor, introduzca una categoria valida. Solo son posibles las categorias: comedia, accion, drama, 
+[2022-06-25T21:26:56.611] [ERROR] error - La ruta '/api/asdf' con el metodo GET no existe.
+[2022-06-25T21:28:41.731] [ERROR] error - La ruta '/api/asdf' con el metodo GET no existe.
+[2022-06-25T21:28:45.909] [ERROR] error - Por favor, introduzca un identificador de producto en formato numero
+[2022-06-25T21:30:01.995] [ERROR] error - Por favor, introduzca un codigo mayor a cero
+[2022-06-25T21:30:11.197] [ERROR] error - Por favor, introduzca un precio mayor a cero
+[2022-06-25T21:30:16.828] [ERROR] error - Por favor, introduzca un stock mayor a cero
+[2022-06-25T21:30:21.631] [ERROR] error - Por favor, introduzca una categoria valida. Solo son posibles las categorias: comedia, accion, drama, 
+[2022-06-25T21:37:42.007] [ERROR] error - La ruta '/api/ordenes//estado' con el metodo POST no existe.
+[2022-06-25T21:39:40.025] [ERROR] error - La ruta '/api/ordenes//estado' con el metodo POST no existe.
+[2022-06-25T21:39:45.319] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-25T21:41:16.777] [ERROR] error - La ruta '/api/ordenes//estado' con el metodo POST no existe.
+[2022-06-25T21:41:43.097] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-25T21:41:44.613] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-25T21:42:15.974] [ERROR] error - La ruta '/api/ordenes//estado' con el metodo POST no existe.
+[2022-06-25T21:42:20.359] [ERROR] error - La ruta '/api/ordenes//estado' con el metodo POST no existe.
+[2022-06-25T21:42:21.957] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-25T21:43:33.609] [ERROR] error - Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)
+[2022-06-25T21:44:15.135] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-06-25T21:47:17.204] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-06-25T21:49:45.360] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-06-25T21:50:32.972] [ERROR] error - Por favor, introduzca un stock mayor a cero
+[2022-06-25T21:50:40.475] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
+[2022-06-25T21:52:11.586] [ERROR] error - Por favor, introduzca un stock mayor a cero
+[2022-06-25T21:52:23.897] [ERROR] error - Por favor, introduzca un precio mayor a cero

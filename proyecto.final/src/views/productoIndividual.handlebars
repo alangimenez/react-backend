@@ -2,9 +2,12 @@
     {{#if isActive}}
     <p>Bienvenido {{isActive}}</p>
     <a href="/api/productos" class="btn btn-dark">Volver a pagina principal</a>
+    <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
+    <a href='/api/ordenes/' class="btn btn-dark">Mis ordenes</a>
+    <a href="/api/chat/" class="btn btn-dark">Chat</a>
     <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
     {{/if}}
-    <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
+    <a href="/api/usuario/logout" class="btn btn-dark" id="boton-login">{{boton}}</a>
 </div>
 <div class="card" style="flex-direction: unset; width: 18rem;">
     <img class="card-img-top" src="{{objeto.foto}}" alt="Card image cap">
@@ -14,7 +17,7 @@
         <p class="card-text">Stock: {{objeto.stock}}</p>
         <p class="card-text">Timestamp: {{objeto.timestamp}}</p>
         <p class="card-text">Precio: <strong>{{objeto.precio}}</strong></p>
-        <button onclick=post() class="btn btn-dark">Agregar al carrito</button>
+        <button onclick=agregar() id="agregar-boton" class="btn btn-dark">Agregar al carrito</button>
 
         {{#if admin}}
         <button class="btn btn-dark" data-toggle="modal" data-target="#exampleModalActualizar">Actualizar
@@ -44,7 +47,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No eliminar</button>
-                    <button id="eliminarProducto" type="button" class="btn btn-primary" onclick=eliminar({{objeto.id}})>Eliminar</button>
+                    <button id="eliminarProducto" type="button" class="btn btn-primary"
+                        onclick=eliminar({{objeto.id}})>Eliminar</button>
                 </div>
             </div>
         </div>
@@ -64,9 +68,10 @@
                 <div class="modal-body">
                     <form>
                         <input id="descripcion" class="form-control" placeholder="descripcion">
-                        <input id="stock" class="form-control" placeholder="stock">
+                        <input id="stock" class="form-control" placeholder="stock" type="number">
                         <input id="precio" class="form-control" placeholder="precio" type="number">
-                        <button id="actualizarProducto" type="submit" class="btn btn-primary" onclick=actualizar({{objeto.id}})>Actualizar datos</button>
+                        <button id="actualizarProducto" type="submit" class="btn btn-primary"
+                            onclick=actualizar({{objeto.id}})>Actualizar datos</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -88,32 +93,35 @@
         let ubicacion = window.location.href.indexOf('/api');
         ruta = window.location.href.slice(0, ubicacion);
     }
-    function post() {
-        document.getElementById("spinner").style.display = "block";
-        document.getElementById("mensaje").innerHTML = "Aguarde un momento";
-        fetch(`${ruta}/api/carrito/productos/{{objeto.id}}`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then(data =>
-            data.json()
-        ).then(response => {
-            if (response.login === "login") {
-                document.getElementById("spinner").style.display = "none";
-                document.getElementById("mensaje").innerHTML = "";
-                document.getElementById("error-login").innerHTML = "Debe loguearse para agregar productos al carrito. Lo vamos a redirigir :D";
-                setTimeout(() => {
-                    window.location.href = `${ruta}/api/usuario/login`;
-                }, 2000)
-            } else {
+
+
+
+    function agregar() {
+        document.getElementById('agregar-boton').disabled = true;
+        if (document.getElementById('boton-login').innerHTML === "Iniciar sesión") {
+            document.getElementById("spinner").style.display = "block";
+            document.getElementById("mensaje").innerHTML = "Primero debe loguearse, lo redireccionaremos al login. Por favor, espere";
+            setTimeout(() => {
+                window.location.href = `${ruta}/api/usuario/login`;
+            }, 3500)
+        } else {
+            document.getElementById("spinner").style.display = "block";
+            document.getElementById("mensaje").innerHTML = "Aguarde un momento";
+            fetch(`${ruta}/api/carrito/productos/{{objeto.id}}`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).then(data =>
+                data.json()
+            ).then(response => {
                 document.getElementById("spinner").style.display = "none";
                 document.getElementById("mensaje").innerHTML = "El producto fue agregado con éxito";
                 setTimeout(() => {
                     document.getElementById("mensaje").innerHTML = "";
                 }, 3500)
-            }
-        }).catch(error => console.error('Error:', error))
+            }).catch(error => console.error('Error:', error.message))
+        }
     }
 
     function eliminar(id) {
@@ -134,6 +142,15 @@
     function actualizar(id) {
         document.getElementById("actualizarProducto").innerHTML = "Aguarde...";
         document.getElementById("actualizarProducto").disabled = true;
+        const descripcion = document.getElementById("descripcion").value;
+        const stock = document.getElementById("stock").value;
+        const precio = document.getElementById("precio").value;
+        if (!descripcion && !stock && !precio) {
+            alert("Por favor, complete alguna propiedad del producto para actualizar");
+            document.getElementById("actualizarProducto").innerHTML = "Actualizar datos";
+            document.getElementById("actualizarProducto").disabled = false;
+            return;
+        }
         const objeto = {}
         if (document.getElementById("descripcion").value != "") {
             objeto.descripcion = document.getElementById("descripcion").value
@@ -153,7 +170,13 @@
         }).then(data =>
             data.json()
         ).then(response => {
-            window.location.href = `${ruta}/api/productos/${id}`;
+            if (response.errorType) {
+                alert(response.errorMessage);
+                document.getElementById("actualizarProducto").innerHTML = "Actualizar datos";
+                document.getElementById("actualizarProducto").disabled = false;
+            } else {
+                window.location.href = `${ruta}/api/productos/${id}`;
+            }
         }).catch(error => console.error('Error:', error))
     }
 </script>

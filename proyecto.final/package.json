@@ -15,6 +15,7 @@
     "bcrypt": "^5.0.1",
     "better-sqlite3": "^7.5.0",
     "connect-mongo": "^4.6.0",
+    "dotenv": "^16.0.1",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.5",
     "express-session": "^1.17.2",
@@ -31,7 +32,5 @@
     "socket.io": "^4.5.1",
     "twilio": "^3.76.1"
   },
-  "devDependencies": {
-    "dotenv": "^16.0.0"
-  }
+  "devDependencies": {}
 }

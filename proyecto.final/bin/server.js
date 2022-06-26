@@ -1,4 +1,5 @@
 const config = require('../src/config/config.process.env');
+const PORT = process.env.PORT || process.env.PORT;
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -28,13 +29,13 @@ if (config.MODE === "CLUSTER") {
             logger.info(`Worker ${worker.process.pid} se cerró`)
         })
     } else {
-        const server = app.listen(config.PORT, () => {
-            logger.info(`Servidor corriendo en ${config.PORT}`)
+        const server = app.listen(PORT, () => {
+            logger.info(`Servidor corriendo en ${PORT}`)
         })
     }
 } else {
-    const server = httpServer.listen(config.PORT, () => {
-        logger.info(`Servidor escuchando en el puerto ${config.PORT} en modo ${config.MODE} y funcionalidad "${process.env.MODE}"`);
+    const server = httpServer.listen(PORT, () => {
+        logger.info(`Servidor escuchando en el puerto ${PORT} en modo ${config.MODE} y funcionalidad "${process.env.MODE}"`);
     }).on('error', (error => {
         errorLogger.error(error);
     }));

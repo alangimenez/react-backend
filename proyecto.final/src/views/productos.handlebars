@@ -4,6 +4,7 @@
     <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
     <a href='/api/ordenes/' class="btn btn-dark">Mis ordenes</a>
     <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
+    <a href="/api/chat/" class="btn btn-dark">Chat</a>
     <a href="/api/usuario/{{logout}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
     {{#if admin}}
@@ -66,6 +67,7 @@
                     <input id="precio" placeholder="precio" required class="form-control" type="number">
                     <input id="stock" placeholder="stock" required class="form-control" type="number">
                     <input id="categoria" placeholder="categoria" required class="form-control">
+                    <input id="foto" placeholder="url de la foto" required class="form-control">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -96,6 +98,7 @@
             precio: +document.getElementById("precio").value,
             stock: +document.getElementById("stock").value,
             categoria: document.getElementById("categoria").value,
+            foto: document.getElementById("foto").value,
         }
         fetch(`${ruta}/api/productos`, {
             method: 'POST',
@@ -106,7 +109,13 @@
         }).then(data =>
             data.json()
         ).then(response => {
-            window.location.href = `${ruta}/api/productos`;
+            if (response.errorType) {
+                alert(response.errorMessage);
+                document.getElementById("cargarProducto").innerHTML = "Cargar producto";
+                document.getElementById("cargarProducto").disabled = false;
+            } else {
+                window.location.href = `${ruta}/api/productos`;
+            }
         }).catch(error => console.error('Error:', error))
     }
 </script>

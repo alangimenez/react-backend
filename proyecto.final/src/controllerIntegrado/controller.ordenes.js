@@ -1,5 +1,5 @@
-const { fnOrdenes, fnProductos } = require('../persistencia/factory');
-const { errorResponse } = require('../error/error.response');
+const { ErrorHandler } = require('../error/error');
+const error = new ErrorHandler();
 const { Repository } = require('../persistencia/repository/repositoryMongo');
 const repository = new Repository();
 
@@ -10,7 +10,7 @@ class OrderController {
         try {
             return await repository.crearNuevaOrden(req.session.user.id, productos, total, req.session.user.direccion);
         } catch (e) {
-            errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
+            error.errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
         }
     }
 
@@ -18,34 +18,36 @@ class OrderController {
         try {
             res.status(201).json(await repository.cambiarEstadoOrden(req.params.idOrd, req.body.status));
         } catch (e) {
-            errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
+            error.errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
         }
     }
 
     async obtenerPedidos(req, res) {
         try {
-            const ordenes = await repository.obtenerPedidos(req.session.user.rol, req.session.user.id);
+            let ordenes = await repository.obtenerPedidos(req.session.user.rol, req.session.user.id);
             ordenes = ordenes.map(i => i.toObject());
             if (req.session.user.rol === "admin") {
                 res.render('../views/ordenes', {
                     ordenes: ordenes,
                     isActive: req.session.user.id,
-                    boton: "Logout",
+                    boton: "Cerrar sesión",
                     admin: "true",
-                    title: "Mis ordenes"
+                    title: "Mis ordenes",
+                    logout: "logout"
                 })
             } else {
                 res.render('../views/ordenes', {
                     ordenes: ordenes,
                     isActive: req.session.user.id,
-                    boton: "Logout",
-                    title: "Mis ordenes"
+                    boton: "Cerrar sesión",
+                    title: "Mis ordenes",
+                    logout: "logout"
                 })
             }
             
 
         } catch (e) {
-            errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
+            error.errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
         }
     }
 
@@ -61,7 +63,7 @@ class OrderController {
                 title: "Mis pedidos"
             })
         } catch (e) {
-            errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
+            error.errorResponse(500, "Ha ocurrido un error en el OrderController ", e.message, res);
         }
     }
 }

@@ -59,15 +59,13 @@ class UserController {
     // subir un avatar al perfil y guardarla en la carpeta public con nombre unico
     avatar = async (req, res) => {
         try {
-            const file = req.file;
-            if (!file) {
-                return error.errorResponse(400, "controllerError", `Por favor, debe cargar un archivo`);
+            if (!req.file) {
+                return error.errorResponse(400, "middlewareError", "Por favor, debe cargar un archivo.", res);
             }
             res.status(201).json(await repository.subirAvatarPerfil(req.file, req.session.user.id, res));
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
-
     }
 
     // loguearse y obtener los datos de perfil
@@ -106,7 +104,7 @@ class UserController {
     // endpoint para actualizar datos de perfil (telefono y dirección)
     async actualizarPerfil(req, res) {
         try {
-            res.status(201).json(await repository.actualizarDatosPerfil(req, res))
+            res.status(201).json(await repository.actualizarDatosPerfil(req))
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }

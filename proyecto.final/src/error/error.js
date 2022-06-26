@@ -13,12 +13,12 @@ class ErrorHandler {
         }
     }
     
-    errorResponse(status, type, message, res) {
+    errorResponse(status, type, message, res, code) {
         try {
             errorLogger.error(message);
-            if (process.env.MODE === "api") {
+            if (process.env.MODE === "api" || code === "json") {
                 res.status(status).json({errorType: type, errorMessage: message});   
-            } else {
+             } else {
                 res.render('redireccion', {
                     mensaje: message,
                 })

@@ -80,6 +80,18 @@ class UserMid {
             return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando las contraseñas -> " + e.message, res);
         }
     }
+
+    async validarArchivo (req, res, next) {
+        try {
+            console.log(await req.file);
+            if (!req.file) {
+                return error.errorResponse(400, "middlewareError", "Por favor, debe cargar un archivo.", res);
+            }
+            next();
+        } catch (e) {
+            return error.errorResponse(500, "middlewareError", "Ha ocurrido un error validando el archivo cargado -> " + e.message, res);
+        }
+    }
 }
 
 

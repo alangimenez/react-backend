@@ -1,9 +1,21 @@
-<div class="container">
-    {{!-- <h1>Primer prueba de sockets</h1>
-    <label for="textoInput">Ingrese un texto</label>
-    <input id="textoInput">
-    <button type="submit" onclick=boton()>Enviar</button> --}}
+<div class="container" style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
+    {{#if isActive}}
+    <p>Bienvenido {{isActive}}</p>
+    <a href='/api/productos' class="btn btn-dark">Pagina principal</a>
+    <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
+    <a href='/api/ordenes/' class="btn btn-dark">Mis ordenes</a>
+    <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
+    <a href="/api/usuario/logout" class="btn btn-dark">Cerrar sesión</a>
+    {{/if}}
+    {{#if admin}}
+    <button class="btn btn-dark" data-toggle="modal" data-target="#nuevoProducto">Nuevo producto</button>
+    {{/if}}
+    {{#if login }}
+    <a href="/api/usuario/{{login}}" class="btn btn-dark">{{boton}}</a>
+    {{/if}}
+</div>
 
+<div class="container">
     <h1>Chat de soporte</h1>
     <h3>Usuario logueado: <em id="user">{{usuario}}</em></h3>
     <div class="form-group">

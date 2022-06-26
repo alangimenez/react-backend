@@ -1,8 +1,10 @@
 <div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
     {{#if isActive}}
     <p>Bienvenido {{isActive}}</p>
+    <a href="/api/productos" class="btn btn-dark">Volver a pagina principal</a>
     <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
     <a href='/api/carrito' class="btn btn-dark">Ver carrito</a>
+    <a href="/api/chat/" class="btn btn-dark">Chat</a>
     <a href="/api/usuario/{{logout}}" class="btn btn-dark">{{boton}}</a>
     {{/if}}
     {{#if login }}
@@ -78,9 +80,15 @@
     function cambiar() {
         document.getElementById("cambiarOrden").innerHTML = "Aguarde...";
         document.getElementById("cambiarOrden").disabled = true;
-        const orden = document.getElementById("numeroOrden").value
+        const orden = document.getElementById("numeroOrden").value;
+        const statusIngresado = document.getElementById("statusOrden").value;
+        if (!orden || !statusIngresado) {
+            alert('Por favor, complete el numero de orden a modificar y el nuevo status');
+            document.getElementById("cambiarOrden").innerHTML = "Cambiar estado";
+            document.getElementById("cambiarOrden").disabled = false;
+        }
         const status = {
-            status: +document.getElementById("statusOrden").value
+            status: +statusIngresado,
         }
         fetch(`${ruta}/api/ordenes/${orden}/estado`, {
             method: 'POST',
@@ -91,7 +99,13 @@
         }).then(data =>
             data.json()
         ).then(response => {
-            window.location.href = `${ruta}/api/ordenes`;
+            if (response.errorType) {
+                alert(response.errorMessage);
+                document.getElementById("cambiarOrden").innerHTML = "Cambiar estado";
+                document.getElementById("cambiarOrden").disabled = false;
+            } else {
+                window.location.href = `${ruta}/api/ordenes`;
+            }
         }).catch(error => console.error('Error:', error))
 
     }

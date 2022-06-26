@@ -36,40 +36,69 @@ class ProdMid {
     // valida que los atributos del producto existan, y que tengan el formato correcto
     validarAtributosProducto(req, res, next) {
         try {
-            if ((!req.body.nombre || !req.body.descripcion || !req.body.codigo || !req.body.precio || !req.body.stock || !req.body.categoria) && req.method === "POST") {
-                return error.errorResponse(400, "middlewareError", "Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria", res);
+            if ((!req.body.nombre || !req.body.descripcion || !req.body.codigo || !req.body.precio || !req.body.stock || !req.body.categoria || !req.body.foto) && req.method === "POST") {
+                return error.errorResponse(400, "middlewareError", "Debe completar todas las propiedades del productos. Propiedades: nombre, descripción, codigo, precio, stock, categoria, foto", res, "json");
             }
-            if ((!req.body.nombre && !req.body.descripcion && !req.body.codigo && !req.body.foto && !req.body.precio && !req.body.stock && !req.body.categoria) && req.method === "PUT") {
-                return error.errorResponse(400, "middlewareError", `Las caracteristicas que se intentan actualizar del producto no existen`, res);
+            if ((!req.body.nombre && !req.body.descripcion && !req.body.codigo && !req.body.foto && !req.body.precio && !req.body.stock && !req.body.categoria && !req.body.foto) && req.method === "PUT") {
+                return error.errorResponse(400, "middlewareError", `Las caracteristicas que se intentan actualizar del producto no existen`, res, "json");
             }
             if (req.body.nombre) {
                 if (typeof (req.body.nombre) != "string") {
-                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un nombre en formato string", res);
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un nombre en formato string", res, "json");
                 }
             }
             if (req.body.descripcion) {
                 if (typeof (req.body.descripcion) != "string") {
-                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca una descripcion en formato string", res);
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca una descripcion en formato string", res, "json");
                 }
             }
             if (req.body.codigo) {
                 if (typeof (req.body.codigo) != "number") {
-                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un código en formato number", res);
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un código en formato number", res, "json");
+                }
+                if (req.body.codigo < 1) {
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un codigo mayor a cero", res, "json");
                 }
             }
             if (req.body.precio) {
                 if (typeof (req.body.precio) != "number") {
-                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un precio en formato number", res);
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un precio en formato number", res, "json");
+                }
+                if (req.body.precio < 1) {
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un precio mayor a cero", res, "json");
                 }
             }
             if (req.body.stock) {
                 if (typeof (req.body.stock) != "number") {
-                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un stock en formato number", res);
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un stock en formato number", res, "json");
+                }
+                if (req.body.stock < 1) {
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca un stock mayor a cero", res, "json");
+                }
+            }
+            if (req.body.foto) {
+                if (typeof (req.body.foto) != "string") {
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca la url de la foto en formato string", res, "json");
                 }
             }
             if (req.body.categoria) {
                 if (typeof (req.body.categoria) != "string") {
-                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca una categoria en formato string", res);
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca una categoria en formato string", res, "json");
+                }
+            }
+            if (req.body.categoria) {
+                const categoria = ["comedia", "accion", "drama"];
+                let insertar = "";
+                let bool = false;
+                for (let i = 0; i < categoria.length; i++) {
+                    if (categoria[i] === req.body.categoria) {
+                        bool = true;
+                        break;
+                    }
+                    insertar = insertar + categoria[i] + ", ";
+                }
+                if (!bool) {
+                    return error.errorResponse(400, "middlewareError", "Por favor, introduzca una categoria valida. Solo son posibles las categorias: " + insertar, res, "json");
                 }
             }
         } catch (e) {

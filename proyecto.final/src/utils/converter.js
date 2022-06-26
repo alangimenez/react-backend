@@ -87,11 +87,12 @@ class Converter {
         }
     }
 
+    // convierte un usuario Model a un usuario DTO
     converterUsuarioDTOResponse(user) {
         return {
             id: user.id,
             nombre: user.nombre,
-            direccion: user.nombre,
+            direccion: user.direccion,
             edad: user.edad,
             telefono: user.telefono
         }

@@ -155,7 +155,6 @@ class Repository {
             lista.length === 0 ? idNuevo = 1 : idNuevo = lista[lista.length - 1].id + 1;
             producto = {
                 ...producto,
-                foto: "https://gesisarg.com/sistema-gestion/res/archivos/imagen_articulo_por_defecto.jpg"
             }
             const productoDTOrequest = converter.convertProductoDTOrequest(idNuevo, producto);
             const nuevoProducto = await fnProductos().subirInfo(productoDTOrequest);
@@ -205,7 +204,7 @@ class Repository {
 
     // actualiza los datos de perfil en la base de datos, seteando los dos datos posibles a modificar (direccion y telefono) 
     // y devolviendo los datos del usuario actualizados en formato DTO.
-    async actualizarDatosPerfil(req, res) {
+    async actualizarDatosPerfil(req) {
         try {
             let datos = {
                 direccion: req.session.user.direccion,
@@ -222,7 +221,7 @@ class Repository {
             await fnUsuarios().actualizarPerfil(req.session.user.id, datos);
             req.session.save(err => errorLogger.error(`Hubo un error al actualizar datos de la sesión => ${err}`));
             const userActualizado = await fnUsuarios().leerInfoPorId(req.session.user.id);
-            return userActualizado[0];
+            return converter.converterUsuarioDTOResponse(userActualizado[0]);
         } catch (e) {
             errorLogger.error(`Ocurrio un error en actualizarDatosPerfil Repository -> ` + e.message);
             throw new Error(`Ocurrio un error en actualizarDatosPerfil Repository -> ` + e.message)
@@ -235,7 +234,7 @@ class Repository {
             let statusString = "";
             switch (status) {
                 case 1:
-                    statusString = "En preparacion";
+                    statusString = "En preparación";
                     break;
                 case 2:
                     statusString = "Despachado";
@@ -337,7 +336,7 @@ class Repository {
             let ordenActualizada;
             switch (status) {
                 case 1:
-                    ordenActualizada = await fnOrdenes().actualizarStatusPreparacionDespachado(idOrder, "En preparacion", "", "");
+                    ordenActualizada = await fnOrdenes().actualizarStatusPreparacionDespachado(idOrder, "En preparación", "", "");
                     break;
                 case 2:
                     ordenActualizada = await fnOrdenes().actualizarStatusPreparacionDespachado(idOrder, "Despachado", Date.now(), "");

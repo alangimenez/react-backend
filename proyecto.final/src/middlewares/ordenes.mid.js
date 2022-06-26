@@ -9,7 +9,7 @@ class OrderMid {
     validarStatus(req, res, next) {
         try {
             if (req.body.status <= 0 || req.body.status >= 4 || isNaN(req.body.status)) {
-                return error.errorResponse(403, "middlewareError", "Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)", res);
+                return error.errorResponse(403, "middlewareError", "Status incorrecto. Solo se puede establecer status 1 (en preparacion), 2 (despachado) o 3 (entregado)", res, "json");
             }
             next();
         } catch (e) {

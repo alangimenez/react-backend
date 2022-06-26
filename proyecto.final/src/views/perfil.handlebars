@@ -2,8 +2,10 @@
     {{#if isActive}}
     <p>Bienvenido {{isActive}}</p>
     <a href='/api/productos' class="btn btn-dark">Pagina principal</a>
-    <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
+    <a href='/api/ordenes/' class="btn btn-dark">Mis ordenes</a>
+    <a href='/api/carrito/' class="btn btn-dark">Ver carrito</a>
     {{/if}}
+    <a href="/api/chat/" class="btn btn-dark">Chat</a>
     <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
 </div>
 <div>
@@ -127,7 +129,13 @@
         }).then(data =>
             data.json()
         ).then(response => {
-            window.location.href = `${ruta}/api/usuario/mi-perfil`;
+            if (response.errorType) {
+                alert(response.errorMessage);
+                document.getElementById("nuevaDire").innerHTML = "Actualizar direccion";
+                document.getElementById("nuevaDire").disabled = false;
+            } else {
+                window.location.href = `${ruta}/api/usuario/mi-perfil`;
+            }
         }).catch(error => console.error('Error:', error))
     }
 
@@ -147,7 +155,13 @@
         }).then(data =>
             data.json()
         ).then(response => {
-            window.location.href = `${ruta}/api/usuario/mi-perfil`;
+            if (response.errorType) {
+                alert(response.errorMessage);
+                document.getElementById("nuevoTele").innerHTML = "Actualizar telefono";
+                document.getElementById("nuevoTele").disabled = false;
+            } else {
+                window.location.href = `${ruta}/api/usuario/mi-perfil`;
+            }
         }).catch(error => console.error('Error:', error))
     }
 

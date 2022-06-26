@@ -70,7 +70,7 @@ class CartMid {
     validarUnidadesProductos(req, res, next) {
         try {
             if (isNaN(req.body.cantidad) || req.body.cantidad < 1) {
-                return error.errorResponse(400, "middlewareError", "Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero", res);
+                return error.errorResponse(400, "middlewareError", "Cantidad ingresada incorrecta, por favor, ingrese una cantidad numerica mayor a cero", res, "json");
             }
             next();
         } catch (e) {
@@ -96,7 +96,7 @@ class CartMid {
         try {
             const producto = await fnProductos().leerInfoPorId(+req.params.idProd);
             if (producto[0].stock < +req.body.cantidad) {
-                return error.errorResponse(400, "middlewareError", `No existe stock suficiente para cubrir este eventual pedido. Stock disponible: ${producto[0].stock}. Stock que solicitaría: ${+req.body.cantidad}`, res);
+                return error.errorResponse(400, "middlewareError", `No existe stock suficiente para cubrir este eventual pedido. Stock disponible: ${producto[0].stock}. Stock que solicitaría: ${+req.body.cantidad}`, res, "json");
             }
             next();
         } catch (e) {
@@ -108,11 +108,11 @@ class CartMid {
     validarDatosActualizacion(req, res, next) {
         try {
             if (!req.body.direccion && !req.body.telefono) {
-                return error.errorResponse(400, "middlewareError", `Por favor, ingrese su dirección o telefono para actualizar`, res);
+                return error.errorResponse(400, "middlewareError", `Por favor, ingrese su dirección o telefono para actualizar`, res, "json");
             }
             if (req.body.direccion) {
                 if (typeof (req.body.direccion) != "string") {
-                    return error.errorResponse(400, "middlewareError", `La direccion ingresada debe ser en formato string`, res);
+                    return error.errorResponse(400, "middlewareError", `La direccion ingresada debe ser en formato string`, res, "json");
                 }
             }
             next();

@@ -1,9 +1,11 @@
 <div style="background-color: rgb(0, 255, 0); display: flex; justify-content: flex-end">
     {{#if isActive}}
     <p>Bienvenido {{isActive}}</p>
-    <a href='/api/carrito/{{user}}' class="btn btn-dark">Ver carrito</a>
     {{/if}}
     <a href="/api/productos" class="btn btn-dark">Volver a pagina principal</a>
+    <a href='/api/usuario/mi-perfil' class="btn btn-dark">Mi perfil</a>
+    <a href='/api/ordenes/' class="btn btn-dark">Mis ordenes</a>
+    <a href="/api/chat/" class="btn btn-dark">Chat</a>
     <a href="/api/usuario/logout" class="btn btn-dark">{{boton}}</a>
 </div>
 <div>
@@ -48,6 +50,10 @@
         let ubicacion = window.location.href.indexOf('/api');
         ruta = window.location.href.slice(0, ubicacion);
     }
+    if (document.getElementsByTagName('td').length === 0) {
+        document.getElementById('confirmarCompra').disabled = true;
+        document.getElementById('vaciarCarrito').disabled = true;
+    }
     function comprar() {
         document.getElementById("confirmarCompra").innerHTML = "Aguarde...";
         document.getElementById("confirmarCompra").disabled = true;
@@ -64,7 +70,7 @@
             console.log(response);
             console.log("hola");
             window.location.href = `${ruta}/api/carrito/comprafinalizada`;
-        }).catch(error => console.log({"error": error}))
+        }).catch(error => console.log({ "error": error }))
     }
 
     function vaciar() {

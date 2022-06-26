@@ -32,9 +32,10 @@ class UserController {
     // desloguea al usuario y destruye la sesión
     logout = (req, res) => {
         try {
+            const user = req.session.user.id;
             req.session.destroy(() => {
                 res.clearCookie('my-session');
-                res.render('../views/logout', { usuario: req.session.user.id, title: "¡Vuelva pronto!" });
+                res.render('../views/logout', { usuario: user, title: "¡Vuelva pronto!" });
             })
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
@@ -63,9 +64,8 @@ class UserController {
     // subir un avatar al perfil y guardarla en la carpeta public con nombre unico
     avatar = async (req, res) => {
         try {
-            const file = req.file;
-            if (!file) {
-                return res.status(400).json({ error: `No hay un archivo cargado` });
+            if (!req.file) {
+                return error.errorResponse(400, "middlewareError", "Por favor, debe cargar un archivo.", res);
             }
             const usuario = await repository.subirAvatarPerfil(req.file, req.session.user.id, res);
             req.session.user.foto = usuario.foto;
@@ -107,8 +107,8 @@ class UserController {
     // endpoint para actualizar datos de perfil (telefono y dirección)
     async actualizarPerfil(req, res) {
         try {
-            await repository.actualizarDatosPerfil(req, res);
-            res.redirect('/api/usuario/mi-perfil')
+            const user = await repository.actualizarDatosPerfil(req, res);
+            return res.status(201).json(user);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);
         }
