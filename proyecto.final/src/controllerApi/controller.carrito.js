@@ -1,6 +1,5 @@
 const { fnCarritos } = require('../persistencia/factory');
 const { enviarMail } = require('../utils/nodemailer');
-const { whatsapp, mensajeTexto } = require('../utils/twilio');
 const { ErrorHandler } = require('../error/error');
 const error = new ErrorHandler();
 const { Repository } = require('../persistencia/repository/repositoryMongo');
@@ -82,11 +81,16 @@ class CartController {
             await enviarMail(process.env.USER_NODEMAILER,
                 `Nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`,
                 await this.listadoPedido(carrito.productos))
-                         await whatsapp(req.session.user.telefono,
-                        `Ha recibido un nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`);
-                    await mensajeTexto(req.session.user.telefono,
-                        `Su pedido ha sido recibido, y se encuentra en proceso. Muchas gracias ${req.session.user.nombre}`);
-         
+            if (process.env.TWILIO_TURN === 'on') {
+                console.log("esta pasando por aca");
+                const { whatsapp, mensajeTexto } = require('../utils/twilio');
+                await whatsapp(req.session.user.telefono,
+                    `Ha recibido un nuevo pedido de ${req.session.user.nombre} - ${req.session.user.id}`);
+                await mensajeTexto(req.session.user.telefono,
+                    `Su pedido ha sido recibido, y se encuentra en proceso. Muchas gracias ${req.session.user.nombre}`);
+            }
+
+
             res.status(201).json(orden);
         } catch (e) {
             return error.errorResponse(500, "controllerError", `El controlador ha tenido un error -> ` + e.message, res);

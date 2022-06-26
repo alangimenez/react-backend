@@ -1,5 +1,5 @@
-const config = require('../src/config/config.process.env');
-const PORT = process.env.PORT || process.env.PORT;
+require('dotenv').config();
+const PORT = process.env.PORT;
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -16,7 +16,7 @@ const httpServer = new HttpServer(app);
 require('../src/utils/chat')(httpServer);
 
 // SERVER CON CLUSTER Y FORK
-if (config.MODE === "CLUSTER") {
+if (process.env.START_MODE === "CLUSTER") {
     if (cluster.isMaster) {
         logger.info(`El proceso primario es ${process.pid}`);
 
@@ -33,9 +33,17 @@ if (config.MODE === "CLUSTER") {
             logger.info(`Servidor corriendo en ${PORT}`)
         })
     }
-} else {
+} 
+if (process.env.START_MODE === 'FORK') {
     const server = httpServer.listen(PORT, () => {
-        logger.info(`Servidor escuchando en el puerto ${PORT} en modo ${config.MODE} y funcionalidad "${process.env.MODE}"`);
+        logger.info(`Servidor escuchando en el puerto ${PORT} en modo ${process.env.START_MODE} y funcionalidad "${process.env.MODE}"`);
+    }).on('error', (error => {
+        errorLogger.error(error);
+    }));
+}
+if (process.env.START_MODE != 'CLUSTER' && process.env.START_MODE != 'FORK') {
+    const server = httpServer.listen(PORT, () => {
+        logger.info(`El servidor solo puede funcionar en modo 'CLUSTER' o 'FORK'. Por favor, cambie el modo de iniciar la aplicación.`);
     }).on('error', (error => {
         errorLogger.error(error);
     }));
@@ -73,7 +81,7 @@ app.use(passport.session());
 app.use(express.static('src/public'));
 
 // router
-if (process.env.MODE === "api") {
+if (process.env.MODE === "api" && (process.env.START_MODE === 'CLUSTER' || process.env.START_MODE === 'FORK')) {
     const routerApiProductos = require('../src/routerApi/productos.router');
     const routerApiCarrito = require('../src/routerApi/carrito.router');
     const routerApiUsuario = require('../src/routerApi/usuario.router');
@@ -83,7 +91,7 @@ if (process.env.MODE === "api") {
     app.use('/api/usuario', routerApiUsuario);
     app.use('/api/ordenes', routerApiOrdenes);
 } 
-if (process.env.MODE === "integrado") {
+if (process.env.MODE === "integrado" && (process.env.START_MODE === 'CLUSTER' || process.env.START_MODE === 'FORK')) {
     const routerIntegProductos = require('../src/routerIntegrado/productos.router');
     const routerIntegUsuario = require('../src/routerIntegrado/usuario.router');
     const routerIntegCarrito = require('../src/routerIntegrado/carrito.router');
@@ -95,8 +103,11 @@ if (process.env.MODE === "integrado") {
     app.use('/api/ordenes', routerIntegOrdenes);
     app.use('/api/chat', routerIntegChat);
 }
-if (process.env.MODE != "api" && process.env.MODE != "integrado") {
+if (process.env.MODE != "api" && process.env.MODE != "integrado" && (process.env.START_MODE === 'CLUSTER' || process.env.START_MODE === 'FORK')) {
     app.use('*', appMidd.errorModo);
+}
+if (process.env.START_MODE != 'CLUSTER' || process.env.START_MODE != 'FORK') {
+    app.use('*', appMidd.errorStartModo);
 }
 
 app.get('/', (req, res) => { res.redirect('/api/productos') })

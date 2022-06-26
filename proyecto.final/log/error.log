@@ -4709,3 +4709,7 @@
 [2022-06-25T21:50:40.475] [ERROR] error - Las caracteristicas que se intentan actualizar del producto no existen
 [2022-06-25T21:52:11.586] [ERROR] error - Por favor, introduzca un stock mayor a cero
 [2022-06-25T21:52:23.897] [ERROR] error - Por favor, introduzca un precio mayor a cero
+[2022-06-26T09:01:03.609] [ERROR] error - La ruta '/HNAP1' con el metodo GET no existe.
+[2022-06-26T09:06:25.003] [ERROR] error - El modo de inicio de la aplicación es incorrecto. Solo funcionará en modo "FORK" o "CLUSTER"
+[2022-06-26T09:06:32.888] [ERROR] error - El modo de inicio de la aplicación es incorrecto. Solo funcionará en modo "FORK" o "CLUSTER"
+[2022-06-26T09:06:50.587] [ERROR] error - Por favor, primero debe loguearse para esta petición
