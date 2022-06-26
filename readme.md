@@ -84,6 +84,8 @@ La aplicación está deployada en 2 apps distintas en Heroku:
 - En modo API: https://backend-api-coder.herokuapp.com/api/productos
 - En modo Integrado: https://backend-integrado-coder.herokuapp.com/api/productos
 
+Considerar que al utilizar cualquiera de las app, no tiene activado el uso de Twilio. En caso de querer probar esta funcionalidad, correr la aplicación a nivel local, seteando la variable de entorno correspondiente en "on".
+
 ## Consideraciones finales
 
 Siendo el proyecto final, y la primera vez que armo una aplicación completa de backend, rescato muchas cosas positivas sobre lo hecho y aprendido durante el proceso de armado de la misma (y sobre el curso tambien). Tanto desde pensar la estructura, modelar los datos necesarios, integrarle un frontend (lo cual fue algo no tan sencillo para mi), y hasta llegar a momentos donde se debe pensar concientemente como resolver un problema, dado que quizas es algo que afecta en varios puntos del proyecto, y se debe analizarlo a nivel general. Fue un ejercicio realmente interesante y divertido en el camino (excepto la parte de testear que funcione, eso fue cansador en cierto punto, por la cantidad de endpoints y posibles errores/inputs posibles). 
