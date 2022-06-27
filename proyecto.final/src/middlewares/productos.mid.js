@@ -87,7 +87,7 @@ class ProdMid {
                 }
             }
             if (req.body.categoria) {
-                const categoria = ["comedia", "accion", "drama"];
+                const categoria = ["clasico", "romantico", "historico", "terror", "policial"];
                 let insertar = "";
                 let bool = false;
                 for (let i = 0; i < categoria.length; i++) {
@@ -110,7 +110,7 @@ class ProdMid {
     // valida que la categoria exista
     validarCategoria(req, res, next) {
         try {
-            const categoria = ["comedia", "accion", "drama"];
+            const categoria = ["clasico", "romantico", "historico", "terror", "policial"];
             let insertar = "";
             let bool = false;
             for (let i = 0; i < categoria.length; i++) {
