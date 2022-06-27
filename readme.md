@@ -24,6 +24,9 @@ Dependerá del rol que tenga el usuario la real interacción que podrá tener en
 En este modulo, se podrá obtener el carrito completo de un usuario, agregar productos al carrito, listar los productos del carrito, eliminar productos del carrito, modificar la cantidad de un producto en carrito, vaciar el carrito y confirmar la compra.
 Para saber a que carrito se debe acceder, se utiliza la información almacenada en req.session.user, sea que el usuario se haya logueado o registrado previamente (no podrá acceder si no tiene sesión activa en la aplicación). 
 
+### Chat
+En este modulo, se podrá chatear con soporte para poder obtener atención al usuario. Este modulo esta implementado unicamente en el modo "integrado" (para mas información sobre los modos, ver la variable de entorno "MODE").
+
 ## Estructura del proyecto
 El proyecto está trabajado en capas, partiendo de un archivo server.js principal que es quien levanta la aplicación, y de ahi se pasa al resto de capas (router, controller, repository y DAO/CRUD). Cada capa posee su propia responsabilidad:
 - Router: se encarga de setear las diferentes rutas de la aplicación, validar la petición vía middlewares y llamar a la capa controller.
@@ -76,6 +79,7 @@ A pesar de esto, se trato de implementar esto dentro de la app de la manera mas 
 - Tal como comenté, la aplicación en modo integrado posee un frontend, el cual es realmente muy básico, sin ser responsive ni seguir patrones de UX/UI. Dado que no era el objetivo del curso, no se focalizó bien en esta parte. Sin embargo, el mismo debería funcionar practicamente sin errores a pesar de su falta de estetica si un usuario la utiliza normalmente. En caso de querer forzarle errores con el inspector del navegador, muy probablemente la aplicación falle dado que el manejo de errores en esta parte no es sumamente abarcativo.
 - Los views que renderiza la aplicación en modo integrado poseen bastante codigo JavaScript. Probablemente en un proyecto real no sea asi y esto se pueda mejorar, pero tal como se mencionaba, no se priorizó el frontend, si no el backend.
 - La aplicación solo persiste en Mongo. Lamentablemente no llegue a armar la parte de persistir en otro sistema, pero la estructura del proyecto esta pensado para que solo se deba agregar los DAOs y CRUD correspondiente, con sus modelos de ser necesario, y debería funcionar (seguramente lo haga mas tranquilo luego para tenerlo en mi portfolio)
+- Al correr la aplicación en local, en caso de iniciarla en modo "integrado" y con modo de inicio "cluster", el chat no funciona. Lo revise rápido pero no di con el error, sin embargo creo que esta en los condicionales que agregue al final del server. Esa parte no quedó bien plasmada en código, y es probable que ahi haya alguna irregularidad con el chat y el manejo de errores (el error es que no encuentra a socket.io.js)
 
 ## Deploys
 
@@ -85,6 +89,14 @@ La aplicación está deployada en 2 apps distintas en Heroku:
 - En modo Integrado: https://backend-integrado-coder.herokuapp.com/api/productos
 
 Considerar que al utilizar cualquiera de las app, no tiene activado el uso de Twilio. En caso de querer probar esta funcionalidad, correr la aplicación a nivel local, seteando la variable de entorno correspondiente en "on".
+
+También tener presente que ambas aplicaciones utilizan la misma base de datos. Por lo tanto, las modificaciones que se realicen en una, sirven para a otra (si se crean usuarios, eliminar productos, actualizan datos, etc.).
+
+Dado que en los proyectos deployados, no existe el acceso a la base de datos para generar un usuario administrador, se aclará que el siguiente ya está seteado (siendo el único usuario existente en la base de datos):
+
+`USER: admin@gmail.com`
+
+`PASS: admin`
 
 ## Consideraciones finales
 
