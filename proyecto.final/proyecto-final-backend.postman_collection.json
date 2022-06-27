@@ -1,0 +1,650 @@
+{
+	"info": {
+		"_postman_id": "00946424-dd6f-4b94-b2a2-8a86cbca2649",
+		"name": "proyecto-final-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18988681"
+	},
+	"item": [
+		{
+			"name": "Carrito",
+			"item": [
+				{
+					"name": "Obtener carrito por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								""
+							]
+						},
+						"description": "Obtiene el carrito del usuario logueado.\n\nValidaciones:\n\n*   Que exista un usuario logueado.\n    \n\nDevolverá todos los datos del carrito del usuario."
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar productos a carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/productos/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"productos",
+								"6"
+							]
+						},
+						"description": "Agrega un producto al carrito que exista en req.session.user, especificando el producto por URL.\n\nValidaciones:\n\n*   Que exista un usuario logueado\n*   Que el carrito exista (redundante)\n*   Que el producto que se intenta agregar al carrito exista.\n    \n\nEste endpoint esta hecho de manera que agrega por primera vez el producto al carrito (y agrega por defecto 1 unidad del mismo). En el caso de que el producto ya exista en el carrito, agregará de a una unidad mas.\n\nEn el caso de que se quiera actualizar las unidades sin tener que hacerlo de a 1 unidad, utilizar el endpoint \"/api/carrito/modificar/:idProducto\", siguiendo los lineamientos del mismo.\n\nDevolverá como response el carrito completo del usuario, con el producto agregado, la cantidad del mismo al momento y el total de la compra."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar productos de carrito",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"productos"
+							]
+						},
+						"description": "Devuelve todos los productos que tenga un carrito cargados, tomando el carrito que exista en req.session.user.\n\nValidaciones:\n\n*   Que exista un usuario logueado\n*   Que el carrito exista (redundante)\n    \n\nDevolverá un listado de los productos cargados al carrito, incluyendo la cantidad de cada uno de los productos."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto de carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/productos/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"productos",
+								"6"
+							]
+						},
+						"description": "Elimina un producto de un carrito, especificando el producto por URL y tomando el carrito guardado en req.session.user.\n\nValidaciones:\n\n*   Que exista un usuario logueado.\n*   Que exista el carrito (redundante).\n*   Que existe el producto en el carrito.\n    \n\nEste endpoint eliminará el producto del carrito, independientemente de las unidades que tenga el mismo cargadas. En caso de querer disminuir las cantidad que existen del mismo, utilizar el endpoint \"/api/carrito/modificar/:idProducto\".\n\nDevolverá los datos del carrito, con el listado de productos restantes y el nuevo total."
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar cantidad de prod en carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"cantidad\": 125}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/modificar/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"modificar",
+								"2"
+							]
+						},
+						"description": "Modifica la cantidad de unidades de un producto que existen en un carrito, indicando el producto por URL, y tomando el carrito que existe en el req.session.user.\n\nValidaciones:\n\n*   Que exista un usuario logueado.\n*   Que las unidades ingresadas en el body sea numerica y mayor a 0.\n*   Que el carrito exista (redundante).\n*   Que el producto exista en el carrito.\n*   Que exista stock actual para cubrir el eventual pedido.\n    \n\nDevolverá el carrito completo con todos los productos y el total actualizado.\n\nTener presente que una de las validaciones es que exista stock actual para cubrir el eventual pedido. Este control es de caracter inicial. Atento a que podría ser vulnerado con relativa facilidad (entre que lo cargué al carrito y confirmé la compra, otro comprador pudo haber confirmado otra compra y reducir el stock), el mismo control esta implementado a la hora de confirmar la compra."
+					},
+					"response": []
+				},
+				{
+					"name": "Vaciar un carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/vaciar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"vaciar"
+							]
+						},
+						"description": "Elimina todos los productos de un carrito.\n\nAun NO tiene implementada la validación de saber si el usuario esta logueado para ejecutar este comando."
+					},
+					"response": []
+				},
+				{
+					"name": "Confirmar compra",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/confirmar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"confirmar"
+							]
+						},
+						"description": "Confirma la compra de un usuario, con los productos que tenga al momento en el carrito. El carrito se toma de lo que exista al momento en req.session.user.\n\nValidaciones:\n\n*   Que exista un usuario logueado.\n*   Que el carrito posea productos.\n*   Que exista stock para cubrir el pedido en su totalidad.\n    \n\nDevolverá la orden de compra generada, indicando su numero, usuario que la generó, productos pedidos, total, status, direccion de entrega y fecha de cambios de estado de la misma."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Obtener todos los productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos"
+							]
+						},
+						"description": "Obtiene todos los productos cargados"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener producto por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/productos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"1"
+							]
+						},
+						"description": "Obtener un producto en particular pasandole el id especifico.\n\nValidaciones: que el producto exista."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener productos por categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/productos/categoria/drama",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"categoria",
+								"drama"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar producto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"foto\": \"https://micartelera.com.ar/images/peliculas/poster/2009/marley_yo.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/productos/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"2"
+							]
+						},
+						"description": "Actualiza los atributos pasados en el body al producto indicado en la URL.\n\nValidaciones:\n\n*   Que el usuario posea el rol de administrador.\n*   Que el producto indicado tenga formato number.\n*   Que el producto indicado exista.\n*   Que alguno de los campos ingresado en el body para actualizar exista como atributo del producto.\n*   Que los atributos que se intentan actualizar, tengan el formato correcto (string para nombre, descripción y categoria, number para stock, codigo y precio).\n    \n\nEn el caso de que exista algún error, devolverá un error con la descripción del mismo.\n\nEn caso de que la petición sea correcta, devolvera el mismo producto ya actualizado, con todos sus atributos."
+					},
+					"response": []
+				},
+				{
+					"name": "Subir producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Sin limite\",\r\n    \"descripcion\": \"Sin descripcion\",\r\n    \"codigo\": 5003,\r\n    \"precio\": 2725,\r\n    \"stock\": 150,\r\n    \"categoria\": \"ficcion\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/productos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								""
+							]
+						},
+						"description": "Carga un nuevo producto a la base de datos.\n\nValidaciones:\n\n*   que el usuario tenga rol de administrador,\n*   que esten detallados todos los atributos necesarios (nombre, descripción, codigo, precio, stock, categoria, foto),\n*   que los atributos tengan el tipo de dato correcto (string para nombre, descripción, categoria y foto, number para codigo, precio y stock).\n    \n\nDevolvera como respuesta el mismo producto, pero incluyendo su id y foto."
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/productos/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"8"
+							]
+						},
+						"description": "Elimina el producto solicitado via parametro en la URL.\n\nValidaciones:\n\n*   Que el usuario tenga rol de administrador\n*   Que el producto indicado sea en formato number\n*   Que el producto indicado a eliminar exista.\n    \n\nDevolverá como respuesta el listado de todos los libros existentes, posterior a la request de eliminación."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Login usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"admin@gmail.com\", \"password\": \"admin\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"login"
+							]
+						},
+						"description": "Desde aca se puede loguear un usuario ingresando su email y contraseña.\n\nValidaciones:\n\n*   si el usuario existe\n*   si la contraseña es correcta.\n    \n\nDevolvera los datos principales del usuario (nombre, direccion, edad y telefono) si el login es correcto, y si no lo fuera, devolvera un mensaje de error con el detalle correspondiente."
+					},
+					"response": []
+				},
+				{
+					"name": "Desloguear usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"logout"
+							]
+						},
+						"description": "Se desloguea el usuario. No utiliza parametros dado que lo hará con el req.session.user que tiene seteado la aplicación al momento de ejecutar el request. Si no hay usuario registrado, dará el error correspondiente (400)"
+					},
+					"response": []
+				},
+				{
+					"name": "Registro usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Alan\",\r\n    \"direction\": \"Saavedra\",\r\n    \"username\": \"admin@gmail.com\",\r\n    \"password\": \"admin\",\r\n    \"age\": 28,\r\n    \"telephone\": \"+5491122558261\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/registro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"registro"
+							]
+						},
+						"description": "Sirve para el registro de usuario.\n\nValidaciones: todos los campos completos, si el email ya esta registrado.\n\nDevolvera como response los mismos datos ingresados (que serían sus datos de perfil) con excepcion de la password. Una vez registrado, el usuario ya queda logueado.\n\nEn el caso de no superar alguna validación, devolvera el error con el detalle del mismo."
+					},
+					"response": []
+				},
+				{
+					"name": "Perfil de usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/mi-perfil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"mi-perfil"
+							]
+						},
+						"description": "Muestra la información personal del usuario logueado. Utilizará la información del req.session.user para saber que usuario debe buscar. En caso de no haber usuario logueado, dará el error correspondiente (400)."
+					},
+					"response": []
+				},
+				{
+					"name": "Subir foto de perfil",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/Alan/Pictures/avatar-defecto.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/perfil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"perfil"
+							]
+						},
+						"description": "Sirve para cargar una foto de usuario al perfil.\n\nValidaciones: si se seleccionó un archivo a cargar.\n\nResponderá con el usuario que cargó el avatar y el nombre de la foto cargada."
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar datos de usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"direccion\": \"vieja direccion\", \"telefono\": \"viejo telefono\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/mi-perfil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"mi-perfil"
+							]
+						},
+						"description": "Endpoint para poder actualizar datos de perfil. Solo podra actualizarse la direccion y el telefono.\n\nValidaciones:\n\n*   Que exista un usuario logueado.\n*   Que este cargado al menos la direccion o el telefono a actualizar.\n*   Que la direccion tenga formato string.\n    \n\nSe hizo pensando que solo estos 2 datos pueden ser cambiados sin demasiado problema. Se asume que el nombre no cambia con el tiempo, el mail NO puede cambiarse, y la edad debería cambiarse sola (aunque no está implementado esto).\n\nRetornará como respuesta al mismo usuario, con todos sus otros datos mas los datos actualizados."
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oldPass\": \"hola\", \"newPass\": \"chau\", \"repeatNewPass\": \"chau\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"password"
+							]
+						},
+						"description": "Permite cambiar la contraseña del usuario.\n\nValidaciones:\n\n*   Que exista un usuario logueado.\n*   Que los 3 campos existan y esten completos.\n*   Que la vieja password coincida con la existente en la base de datos.\n*   Que las nuevas password coincidan entre si.\n    \n\nSi las validaciones son superadas, la nueva contraseña se guardará encriptada en la base de datos, y devolverá simplemente los datos del usuario."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ordenes",
+			"item": [
+				{
+					"name": "Obtener todas las ordenes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/ordenes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ordenes"
+							]
+						},
+						"description": "Obtiene todas las ordenes cursadas, dependiendo del rol del usuario.\n\nValidaciones:\n\n*   El usuario debe estar logueado\n    \n\nEn el caso de que el usuario logueado tenga el rol de administrador, cargará todas las ordenes cursadas por todos los usuarios registrados.\n\nEn el caso de que el usuario logueado tenga el rol de comprador, cargará todas las ordenes cursadas por dicho usuario logueado.\n\nEn el caso de que se intente ingresar sin un usuario logueado, arrojará el error correspondiente con un mensaje del mismo."
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar status de ordenes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"status\": 2}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/ordenes/7/estado",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ordenes",
+								"7",
+								"estado"
+							]
+						},
+						"description": "Puede actualizar el estado de las ordenes de compra recibidas entre \"En preparación\" (1), \"Despachado\"(2) y \"Entregado\"(3).\n\nValidaciones:\n\n*   Que exista un usuario logueado.\n*   Que el usuario tenga el rol de administrador.\n*   Que el status ingresado en el body de la petición sea 1, 2 o 3.\n*   Que la orden ingresada a actualizar exista.\n    \n\nDevolverá como respuesta la orden actualizada, con el nuevo status seteado, y el momento en que se realizó el cambio."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener ordenes por status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/ordenes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ordenes",
+								"2"
+							]
+						},
+						"description": "Obtiene las ordenes filtradas por status.\n\nValidaciones:\n\n*   Que exista un usuario logueado.\n*   Que el usuario tenga rol de administrador.\n*   Que el status ingresado sea 1, 2 o 3.\n    \n\nDevolverá un listado de las ordenes con el status pedido correspondiente."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
